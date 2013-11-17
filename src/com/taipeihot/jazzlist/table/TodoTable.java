@@ -18,13 +18,10 @@ public class TodoTable extends Table{
 		columns.add(new ColumnElement("content","TINYTEXT NOT NULL"));
 		columns.add(new ColumnElement("status","VARCHAR(20)"));
 		dropSQL = "DROP TABLE IF EXISTS "+tableName;
-		createSQL=makeCreateSQL(tableName, columns);
+		createSQL = makeCreateSQL(tableName, columns);
 		insertSQL = makeInsertSQL(tableName, columns);
 		selectSQL = "select * from "+tableName+" ";
 		updateSQL = makeUpdateSQL(tableName, columns);
-		Log.d("Constructer","in "+tableName );
-		Log.d("createSQL=",createSQL);
-		Log.e("meow","OAO");
 	}
 	
 	static public long insert(Todo todo){
@@ -54,7 +51,6 @@ public class TodoTable extends Table{
 	static public Todo find(long id){
 		SQLiteDatabase db = con.getReadableDatabase();
 		String sql = selectSQL + "WHERE _id = " + id;
-		Log.e("Todo Find",sql);
 		Cursor c = db.rawQuery(sql, null);
 		if(c!=null)c.moveToFirst();
 		else{
