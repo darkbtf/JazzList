@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import com.taipeihot.jazzlist.model.Todo;
 
+import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.util.Log;
 
 public class TodoTable extends Table{
@@ -65,6 +67,32 @@ public class TodoTable extends Table{
 		SQLiteDatabase db = con.getReadableDatabase();
 		String sql = selectSQL;
 		Cursor c = db.rawQuery(sql, null);
+		if(c.moveToFirst()){
+			do{
+				ret.add(instance(c));
+			}while(c.moveToNext());
+		}
+		return ret;
+	}
+	
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN) static public ArrayList<Todo> where(String format, String[] params){
+		SQLiteDatabase db = con.getReadableDatabase();
+		ArrayList<Todo>ret = new ArrayList<Todo>();
+		Cursor c =
+				db.query(true, tableName, new String[]{"*"}, format, params, null, null, "_id", null, null);
+		if(c.moveToFirst()){
+			do{
+				ret.add(instance(c));
+			}while(c.moveToNext());
+		}
+		return ret;
+	}
+	
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN) static public ArrayList<Todo> where(String format){
+		SQLiteDatabase db = con.getReadableDatabase();
+		ArrayList<Todo>ret = new ArrayList<Todo>();
+		Cursor c =
+				db.query(true, tableName, new String[]{"*"}, format, new String[]{}, null, null, "_id", null, null);
 		if(c.moveToFirst()){
 			do{
 				ret.add(instance(c));

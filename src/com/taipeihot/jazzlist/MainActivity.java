@@ -31,6 +31,12 @@ public class MainActivity extends Activity {
         TodoTable.insert(todo2);
         for(Todo t:TodoTable.All())
         	Log.e("All","id="+t.id()+" content="+t.content+" stauts="+t.status);
+        
+        for(Todo t:TodoTable.where("content = ? and _id <=6", new String[]{"QQ"}))
+        	Log.e("where","id="+t.id()+" content="+t.content+" stauts="+t.status);
+        for(Todo t:TodoTable.where("content = \"QQ\" and _id <=6"))
+        	Log.e("where","id="+t.id()+" content="+t.content+" stauts="+t.status);
+        
         Todo t = TodoTable.find(2);
         Log.e("Before","id="+t.id()+" content="+t.content+" stauts="+t.status);
         t.content += " change!";
