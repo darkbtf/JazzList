@@ -1,5 +1,7 @@
 package com.taipeihot.jazzlist;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -49,8 +51,6 @@ public class MainActivity extends Activity {
     static Socket socket=null;
     private final String SERVER_IP = "140.112.18.198";
     private final int SERVERPORT = 8765;
-    private PrintWriter out;
-    public BufferedReader in;
     static private String str1="nothing",str2="nothing";
     public static Handler receiveServer = null;
  
@@ -63,17 +63,19 @@ public class MainActivity extends Activity {
         ed = (EditText) findViewById(R.id.et_input);
         setAction();
     }
-    
+
+    private BufferedInputStream in = null;
+	private OutputStream out = null;
     private void setAction()  {
 		Log.i("OAQ","fuyyyyyyyyyyyyyyyyyyyyck");
     	btn_connect.setOnClickListener(new OnClickListener() {
     		public void onClick(View arg0) {
     				Thread t = new thread();
     				t.start();
-    	            /*try {
+    	            try {
     	            	//先讓他等待個 3 秒
     	            	t.sleep(3000);
-    	            } catch (InterruptedException e) {}*/
+    	            } catch (InterruptedException e) {}
     				/*Log.i("OAQ","fuck");
     				Socket socket=new Socket(SERVER_IP,SERVERPORT);
     				socket.sleep(5000);
@@ -95,11 +97,27 @@ public class MainActivity extends Activity {
     	btn_send.setOnClickListener(new OnClickListener(){
     		public void onClick(View v){
     			String str = ed.getText().toString();
-    			out.println(str);
-    			out.flush();
+    			sendMessage(new String[]{str});
     		}
     	});
     }
+    public Boolean sendMessage(String[] messages){
+		for(String str: messages)
+			if(!sendMessage(str.getBytes()))
+				return false;
+		return true;
+	}
+	public Boolean sendMessage(byte[] byteStream){
+		byte[] length = Util.intToByteArray(byteStream.length);
+		try {
+			out.write(length);
+			out.write(byteStream);
+			out.flush();
+		} catch (IOException e) {
+			return Util.errorReport("sendMessage fail");
+		}
+		return true;
+	}
     class thread extends Thread{
         public void run() {
          try{
@@ -107,17 +125,21 @@ public class MainActivity extends Activity {
          String server="140.112.18.198";
          int servPort=8765;
          Socket socket=new Socket(server,servPort);
-         InputStream in=socket.getInputStream();
-         OutputStream out=socket.getOutputStream();
+         //InputStream in=socket.getInputStream();
+         //OutputStream out=socket.getOutputStream();
+         in = new BufferedInputStream(socket.getInputStream());
+		 out = new BufferedOutputStream(socket.getOutputStream());
          System.out.println("Connected!!");
-         byte[] rebyte = new byte[18];
-         in.read(rebyte);
-         str2 ="(Client端)接收的文字:"+ new String(new String(rebyte));
-         String str = "android client string";
+         //byte[] rebyte = new byte[18];
+         //in.read(rebyte);
+         //str2 ="(Client端)接收的文字:"+ new String(new String(rebyte));
+         /*String str = "android client string";
          str1 = "(Client端)傳送的文字:"+str;
-         byte[] sendstr = new byte[21];
+         byte[] sendstr = new byte[201];
          System.arraycopy(str.getBytes(), 0, sendstr, 0, str.length());
          out.write(sendstr);
+         out.flush();
+         socket.close();*/
          }catch(Exception e)
          {
           System.out.println("Error: "+e.getMessage());
