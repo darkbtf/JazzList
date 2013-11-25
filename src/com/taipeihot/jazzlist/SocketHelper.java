@@ -1,11 +1,16 @@
 package com.taipeihot.jazzlist;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -15,15 +20,15 @@ public class SocketHelper {
 	static Thread try_connect = null;
 	static private Deque<Byte> bufferInput = new LinkedList<Byte>();
 	static private Queue<String> messages = new LinkedList<String>();
-	static private boolean hasNet = true;
+	static public boolean hasNet = true;
 	static private final String SERVER_IP = "140.112.18.198";
 	static private final int SERVERPORT = 8766;
 	static private Thread getMessageToBuffer;
 
     static private BufferedInputStream in = null;
     static private BufferedOutputStream out = null;
-    static public void start(){
-
+    static public boolean start(){
+    	hasNet=true;
     	getMessageToBuffer=new Thread(new Runnable(){
 			@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 			@Override
@@ -45,28 +50,21 @@ public class SocketHelper {
 				}
 			}
 		});
-    	
-    	try_connect = new Thread(new Runnable(){
-			@Override
-			public void run(){
-				try{
-					Util.errorReport("Waitting to connect......");
-					if(hasNet){
-						socket=new Socket(SERVER_IP,SERVERPORT);
-						in = new BufferedInputStream(socket.getInputStream());
-						out = new BufferedOutputStream(socket.getOutputStream());
-						getMessageToBuffer.start();
-					}
-					else{
-						Util.errorReport("No Internet");
-					}
-				}catch(Exception e){
-					System.out.println("Error: "+e.getMessage());
-				}
+		if(hasNet){
+			try {
+				socket=new Socket(SERVER_IP,SERVERPORT);
+				in = new BufferedInputStream(socket.getInputStream());
+				out = new BufferedOutputStream(socket.getOutputStream());
+				getMessageToBuffer.start();
+			}catch (Exception e) {
+				close();
+				e.printStackTrace();
 			}
-		});
-    	try_connect.start();
+			return true;
+		}
+		return false;
     }
+
     static public Boolean sendMessage(String[] messages){
 		for(String str: messages)
 			if(!sendMessage(str.getBytes()))
@@ -80,6 +78,7 @@ public class SocketHelper {
 			out.write(byteStream);
 			out.flush();
 		} catch (IOException e) {
+			close();
 			return Util.errorReport("sendMessage fail");
 		}
 		return true;
@@ -99,15 +98,11 @@ public class SocketHelper {
 	}
     static void close(){
     	try {
-	    	if(in != null){
-	    		in.close();
-	    	}
-	    	if(out != null){
-	    		out.close();
-	    	}
-	    	if(socket!=null && socket.isConnected()){
-	    		socket.close();
-	    	}
+    		hasNet=false;
+	    	if(in != null)in.close();
+	    	if(out != null)out.close();
+	    	if(socket!=null && socket.isConnected())socket.close();
+	    	in=null;out=null;socket=null;
     	} catch (IOException e) {
 			e.printStackTrace();
 		}
