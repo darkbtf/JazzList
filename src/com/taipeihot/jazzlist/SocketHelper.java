@@ -1,16 +1,11 @@
 package com.taipeihot.jazzlist;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Build;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;

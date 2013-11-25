@@ -4,13 +4,14 @@ import com.taipeihot.jazzlist.model.Todo;
 import com.taipeihot.jazzlist.table.Table;
 import com.taipeihot.jazzlist.table.TodoTable;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,20 +40,45 @@ public class MainActivity extends Activity {
         tv2 = (TextView) findViewById(R.id.clientmsg);
         ed = (EditText) findViewById(R.id.et_input);
     }
-    //Thread thread;
+    private boolean isNetworkAvailable(){
+		ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+	}
+    
+    static private int updatePeriod = 20000; 
     private void socket_connect(){
-        setAction();
+    	Thread thread = new Thread(new Runnable(){
+    		@Override
+    		public void run(){
+    			while(true){
+    				if(isNetworkAvailable())
+    					UpdateHelper.start();
+    				try {
+						Thread.sleep(updatePeriod);// what if the last update not finished yet?
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+    			}
+    		}
+    	});
+    	thread.start();
+        
     }
 
-    private void setAction()  {
+    /*private void setAction()  {
+    	btn_send.setEnabled(false);
     	btn_connect.setOnClickListener(new OnClickListener() {
     		public void onClick(View arg0) {
     			SocketHelper.start();
+    			btn_send.setEnabled(true);
+    			arg0.setEnabled(false);
     		}
     	});  
     	btn_send.setOnClickListener(new OnClickListener(){
     		public void onClick(View v){
     			String str = ed.getText().toString();
+    			tv2.setText(str);
     			sendMessage(new String[]{str});
     		}
     	});
@@ -77,14 +103,8 @@ public class MainActivity extends Activity {
     		}
     	});
     	t.start();
-    }
-    public Boolean sendMessage(String[] messages){
-    	return SocketHelper.sendMessage(messages);
-	}
-	public Boolean sendMessage(byte[] byteStream){
-		return SocketHelper.sendMessage(byteStream);
-	}
-   
+    }*/
+    
     private void databaseSample(){
     	Todo todo1 = new Todo("haha","not done yet");
         Todo todo2 = new Todo("QQ","Done!");
