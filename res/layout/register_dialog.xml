@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000" >
+
+    <TextView
+        android:id="@+id/register_account_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="31dp"
+        android:layout_toLeftOf="@+id/register_title_text"
+        android:text="Your Account:" />
+
+    <TextView
+        android:id="@+id/register_password_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/register_title_text"
+        android:layout_alignLeft="@+id/register_account_title"
+        android:text="Your Password:" />
+
+    <TextView
+        android:id="@+id/register_confirm_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/register_password_title"
+        android:layout_below="@+id/register_password_title"
+        android:layout_marginTop="23dp"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/register_confirm_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/register_confirm_title"
+        android:layout_alignBottom="@+id/register_confirm_title"
+        android:layout_alignLeft="@+id/register_title_text"
+        android:layout_alignRight="@+id/register_title_text"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:background="#ff333333"
+        android:textColor="#ffffffff" />
+
+    <EditText
+        android:id="@+id/register_title_text"
+        android:layout_width="165dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/register_account_text"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:background="#ff333333"
+        android:textColor="#ffffffff" />
+
+    <EditText
+        android:id="@+id/register_account_text"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/register_account_title"
+        android:layout_alignBottom="@+id/register_account_title"
+        android:layout_alignLeft="@+id/register_title_text"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        android:background="#ff333333"
+        android:textColor="#ffffffff" />
+
+</RelativeLayout>
