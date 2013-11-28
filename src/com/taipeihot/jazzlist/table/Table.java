@@ -6,11 +6,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 public class Table {
-	public static final String LOG = Table.class.getName();
 	public static DatabaseHelper con; 
 	public Table(){}
 	public Table(Context context){
 		new TodoTable();
+		new UserTable();
 		con = new DatabaseHelper(context);
 	}
 	protected String makeCreateSQL(String tableName,ArrayList<ColumnElement>columns){
