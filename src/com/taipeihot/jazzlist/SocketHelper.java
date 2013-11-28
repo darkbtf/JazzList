@@ -16,8 +16,6 @@ public class SocketHelper {
 	static private Deque<Byte> bufferInput = new LinkedList<Byte>();
 	static private Queue<String> messages = new LinkedList<String>();
 	static public boolean hasNet = true;
-	static private final String SERVER_IP = "140.112.18.198";
-	static private final int SERVERPORT = 8766;
 	static private Thread getMessageToBuffer;
 
     static private BufferedInputStream in = null;
@@ -49,7 +47,7 @@ public class SocketHelper {
 			try {
 				if(socket != null && socket.isConnected())return true;
 				UpdateHelper.logined=false;
-				socket=new Socket(SERVER_IP,SERVERPORT);
+				socket=new Socket(Parameter.SERVER_IP,Parameter.port);
 				in = new BufferedInputStream(socket.getInputStream());
 				out = new BufferedOutputStream(socket.getOutputStream());
 				getMessageToBuffer.start();
