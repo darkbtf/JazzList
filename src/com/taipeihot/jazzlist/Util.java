@@ -1,6 +1,10 @@
 package com.taipeihot.jazzlist;
 
 import android.annotation.SuppressLint;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.Queue;
 
@@ -39,6 +43,26 @@ public class Util {
 			b[i] = bufferInput.pollFirst();
 		data += new String(b, 0, length);
 		messages.add(data);
+		return true;
+	}
+
+	public static String readline(FileInputStream in) {
+		String ret = "";
+		while(true){
+			int c;
+			try {
+				c = in.read();
+				if(!validChar(c))return ret;
+				ret+=(char)c;
+			} catch (IOException e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+	}
+	
+	public static boolean validChar(int c){
+		if(c=='\n' || c=='\r' || c<=0)return false;
 		return true;
 	}
 }

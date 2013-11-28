@@ -10,7 +10,6 @@ public class Table {
 	public Table(){}
 	public Table(Context context){
 		new TodoTable();
-		new UserTable();
 		new CategoryTable();
 		con = new DatabaseHelper(context);
 	}
