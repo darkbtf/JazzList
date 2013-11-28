@@ -1,13 +1,8 @@
 package com.taipeihot.jazzlist;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -43,30 +38,15 @@ public class LoginActivity extends Activity {
     }
     
     private void write_to_file_test(){
-		try {
-	        FileOutputStream out = openFileOutput("user.dat", Context.MODE_PRIVATE);
-			String account = "david";
-	        String password = "Hue Nguyen";
-	        out.write(account.getBytes());
-	        out.write("\n".getBytes());
-	        out.write(password.getBytes());
-	        out.write("\n".getBytes());
-	        out.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		SharedPreferences pre = getSharedPreferences("loginValue",MODE_PRIVATE);
+		String account = "david";
+		String password = "Hue Nguyen";  
+		pre.edit().putString("account", account).putString("password",Util.MD5(password)).commit();
     }
     private void read_from_file_test(){
-    	try{
-    		FileInputStream in = openFileInput("user.dat");
-    		String account = Util.readline(in);
-    		String password = Util.readline(in);
-    		Util.errorReport("account: "+account+", password = "+password);
-    	}
-    	catch(FileNotFoundException e){
-    		e.printStackTrace();
-    	}
+		SharedPreferences sp = getSharedPreferences("loginValue", MODE_PRIVATE);  
+        String account = sp.getString("account", null);  
+        String password = sp.getString("password", null);
+		Util.errorReport("account: "+account+", password = "+password);
     }
 }
