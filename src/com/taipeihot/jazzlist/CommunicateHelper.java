@@ -2,7 +2,7 @@ package com.taipeihot.jazzlist;
 
 import com.taipeihot.jazzlist.command.CommandManager;
 
-public class UpdateHelper {
+public class CommunicateHelper {
 	static CommandManager cmdMgr = new CommandManager();
 	static boolean logined = false;
 	static Thread msgThread = null;

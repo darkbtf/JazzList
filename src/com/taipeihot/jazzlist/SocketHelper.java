@@ -39,6 +39,7 @@ public class SocketHelper {
 						}
 			        }
 				}catch(IOException e){
+					close();
 					System.out.println("getMessage Error");
 				}
 			}
@@ -46,7 +47,7 @@ public class SocketHelper {
 		if(hasNet){
 			try {
 				if(socket != null && socket.isConnected())return true;
-				UpdateHelper.logined=false;
+				CommunicateHelper.logined=false;
 				socket=new Socket(Parameter.SERVER_IP,Parameter.port);
 				in = new BufferedInputStream(socket.getInputStream());
 				out = new BufferedOutputStream(socket.getOutputStream());
