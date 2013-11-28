@@ -2,6 +2,7 @@ package com.taipeihot.jazzlist.table;
 
 import java.util.ArrayList;
 
+import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.model.Todo;
 
 import android.annotation.TargetApi;
@@ -17,8 +18,13 @@ public class TodoTable extends Table{
 	static private ArrayList<ColumnElement>columns = new ArrayList<ColumnElement>();
 	public TodoTable(){
 		tableName="todo";
-		columns.add(new ColumnElement("content","TINYTEXT NOT NULL"));
-		columns.add(new ColumnElement("status","VARCHAR(20)"));
+		columns.add(new ColumnElement("title","TINYTEXT NOT NULL"));
+		columns.add(new ColumnElement("category_id","SMALLINT NOT NULL"));
+		columns.add(new ColumnElement("status","TINYINT NOT NULL"));
+		columns.add(new ColumnElement("deadline","DATETIME NOT NULL"));
+		columns.add(new ColumnElement("user_id","INTEGER NOT NULL"));
+		columns.add(new ColumnElement("description","TEXT NOT NULL"));
+		columns.add(new ColumnElement("belong_id","INTEGER NOT NULL"));
 		dropSQL = "DROP TABLE IF EXISTS "+tableName;
 		createSQL = makeCreateSQL(tableName, columns);
 		insertSQL = makeInsertSQL(tableName, columns);
@@ -27,8 +33,8 @@ public class TodoTable extends Table{
 	}
 	
 	static public long insert(Todo todo){
-		if(todo.id() != 0){
-			Log.e("Insert todo","You can't insert todo with id, use update instead.");
+		if(todo.getId() != 0){
+			Util.errorReport("Insert todo, You can't insert todo with id!=0, use update instead.");
 			return 0;
 		}
 		SQLiteDatabase db = con.getWritableDatabase();
@@ -40,14 +46,22 @@ public class TodoTable extends Table{
 	}
 	
 	static public int update(Todo todo){
+		if(todo.getId() == 0){
+			Util.errorReport("Update todo, You can't update todo with id=0, use insert instead.");
+			return 0;
+		}
 		SQLiteDatabase db = con.getWritableDatabase();
 		ContentValues values=makeValue(todo);
-		return db.update(tableName, values, "_id = ?", new String[]{todo.id()+""});
+		return db.update(tableName, values, "_id = ?", new String[]{todo.getId()+""});
 	}
 	
 	static public void delete(Todo todo){
+		if(todo.getId() == 0){
+			Util.errorReport("delete todo, You can't delete todo with id=0.");
+			return;
+		}
 		SQLiteDatabase db = con.getWritableDatabase();
-		db.delete(tableName,"_id = ?",new String[]{todo.id()+""});
+		db.delete(tableName,"_id = ?",new String[]{todo.getId()+""});
 	}
 	
 	static public Todo find(long id){
@@ -105,14 +119,24 @@ public class TodoTable extends Table{
 		return new Todo(
 				c.getInt(0),
 				c.getString(1),
-				c.getString(2)
+				c.getInt(2),
+				c.getShort(3),
+				c.getLong(4),
+				c.getInt(5),
+				c.getString(6),
+				c.getInt(7)
 				);
 	}
 
 	static private ContentValues makeValue(Todo todo){
 		ContentValues values = new ContentValues();
-		values.put("content", todo.content);
-		values.put("status", todo.status);
+		values.put("title", todo.getTitle());
+		values.put("category_id", todo.getCategoryId());
+		values.put("status", todo.getStatus());
+		values.put("deadline", todo.getDeadlineLong());
+		values.put("user_id", todo.getUserId());
+		values.put("description", todo.getDescription());
+		values.put("belong_id", todo.getBelongId());
 		return values;
 	}
 }
