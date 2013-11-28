@@ -6,17 +6,9 @@ import com.taipeihot.jazzlist.model.Todo;
 import com.taipeihot.jazzlist.table.Table;
 import com.taipeihot.jazzlist.table.TodoTable;
 
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
 import android.app.Activity;
-import android.content.Context;
-import android.util.Log;
 import android.view.Menu;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -62,7 +54,7 @@ public class MainActivity extends Activity {
         TodoTable.insert(todo1);
         TodoTable.insert(todo2);
         for(Todo t:TodoTable.All())
-        	Log.e("All","id="+t.getId()+" title="+t.getTitle()+" deadline="+t.getDeadline());
+        	Util.errorReport("All: id="+t.getId()+" title="+t.getTitle()+" deadline="+t.getDeadline());
         
         /*for(Todo t:TodoTable.where("content = ? and _id <=6", new String[]{"QQ"}))
         	Log.e("where","id="+t.id()+" content="+t.content+" stauts="+t.status);
