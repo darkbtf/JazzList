@@ -11,6 +11,7 @@ public class Table {
 	public Table(Context context){
 		new TodoTable();
 		new UserTable();
+		new CategoryTable();
 		con = new DatabaseHelper(context);
 	}
 	protected String makeCreateSQL(String tableName,ArrayList<ColumnElement>columns){
