@@ -9,8 +9,11 @@ import android.app.Activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -49,6 +52,7 @@ import com.taipeihot.jazzlist.table.TodoTable;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        connect_to_server();
         mTitle = mDrawerTitle = getTitle();
 
         // load slide menu items
@@ -194,7 +198,7 @@ import com.taipeihot.jazzlist.table.TodoTable;
         super.onResume();
         Log.e("taipeihot", "main resumed!");
     }
-    /*
+
     private boolean isNetworkAvailable(){
 		ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
@@ -202,24 +206,21 @@ import com.taipeihot.jazzlist.table.TodoTable;
 	}
     
     static private int updatePeriod = 20000; 
-    private void socket_connect(){
+    private void connect_to_server(){
     	Thread thread = new Thread(new Runnable(){
     		@Override
     		public void run(){
-    			while(true){
-    				if(isNetworkAvailable())
-    					UpdateHelper.start();
-    				try {
-						Thread.sleep(updatePeriod);// what if the last update not finished yet?
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-    			}
+    			if(isNetworkAvailable())
+    				CommunicateHelper.start();
+				/*try {
+					Thread.sleep(updatePeriod);// what if the last update not finished yet?
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}*/
     		}
     	});
     	thread.start();
-        
-    }*/
+    }
  
     @Override
     protected void onStop() {

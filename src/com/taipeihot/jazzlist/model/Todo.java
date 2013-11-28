@@ -1,6 +1,7 @@
 package com.taipeihot.jazzlist.model;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import com.taipeihot.jazzlist.Util;
@@ -42,6 +43,10 @@ public class Todo {
 	public boolean isAlive(){return alive;}
 	public void setAlive(boolean alive){this.alive=alive;}
 
+	public String getDeadlineString(){
+		Date d = new Date(deadline);
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
+	}
 	public Date getDeadline(){return new Date(deadline);}
 	public void setDeadline(Date deadline){this.deadline=deadline.getTime();}
 	
