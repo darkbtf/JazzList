@@ -1,28 +1,18 @@
 package com.taipeihot.jazzlist;
 
-import java.util.ArrayList;
-
 import com.taipeihot.jazzlist.command.CommandManager;
-import com.taipeihot.jazzlist.model.Status;
-import com.taipeihot.jazzlist.model.User;
+import com.taipeihot.jazzlist.model.Data;
 
 public class CommunicateHelper {
 	static CommandManager cmdMgr = new CommandManager();
 	static boolean logined = false;
 	static Thread msgThread = null;
 	
-	static public void addFriend(String account){
-		sendMessage(new String[]{"friend","add",account});
-	}
-	static public ArrayList<User> getFriends(){
-		return new ArrayList<User>();
+	static public boolean addFriend(String account){
+		return sendMessage(new String[]{"friend","add",account});
 	}
 	
-	static public ArrayList<Status> getStatus(){
-		return new ArrayList<Status>();
-	}
-	
-	/****************************** Need not to know***************************/
+	/******************************Do not edit here***************************/
 	static boolean start(){
     	if(!SocketHelper.start())return false;
     	msgThread = new Thread(new Runnable(){
@@ -47,7 +37,8 @@ public class CommunicateHelper {
 	static private boolean trylogin(){
 		if(logined)return true;
 		if(!SocketHelper.connecting)return false;
-		if(!sendMessage(new String[]{"login","david942j","Hue Nguyen"}))return false;
+		if(Data.account==null)return false;
+		if(!sendMessage(new String[]{"login",Data.account,Data.encryptedPassword}))return false;
 		String cmd = getMessage();
 		if(cmd.equals("login")){
 			if(cmdMgr.parseCmd("login"))return logined=true;

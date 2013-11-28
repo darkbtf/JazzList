@@ -1,5 +1,7 @@
 package com.taipeihot.jazzlist;
 
+import com.taipeihot.jazzlist.model.Data;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,8 +15,8 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        write_to_file_test();
-        read_from_file_test();
+        writeAccount();
+        readAccount();
     }
 
     @Override
@@ -37,16 +39,18 @@ public class LoginActivity extends Activity {
     	startActivity(intent);
     }
     
-    private void write_to_file_test(){
+    private void writeAccount(){
 		SharedPreferences pre = getSharedPreferences("loginValue",MODE_PRIVATE);
-		String account = "david";
+		String account = "david942j@gmail.com";
+		String nickname = "david";
 		String password = "Hue Nguyen";  
-		pre.edit().putString("account", account).putString("password",Util.MD5(password)).commit();
+		pre.edit().putString("account", account).putString("nickname",nickname).putString("password",Util.MD5(password)).commit();
     }
-    private void read_from_file_test(){
+    private void readAccount(){
 		SharedPreferences sp = getSharedPreferences("loginValue", MODE_PRIVATE);  
-        String account = sp.getString("account", null);  
+        String account = sp.getString("account", null);
+        String nickname = sp.getString("nickname", null);  
         String password = sp.getString("password", null);
-		Util.errorReport("account: "+account+", password = "+password);
+        Data.setAccount(account,nickname,password);
     }
 }

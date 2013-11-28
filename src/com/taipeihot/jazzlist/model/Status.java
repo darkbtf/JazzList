@@ -7,6 +7,7 @@ public class Status {
 	private String nickname;
 	private Todo todo;
 	private int score = 0; //number of like 
+	private boolean visible = true;
 	private ArrayList<Comment> comments = new ArrayList<Comment>();
 	
 	public Status(String nickname, Todo todo, ArrayList<Comment>comments){
@@ -31,6 +32,8 @@ public class Status {
 	public void incScore(){score++;}
 	public void decScore(){score--;}
 	
+	public boolean getVisible(){return visible;}
+	public void setVisible(boolean visible){this.visible = visible;}
 	public ArrayList<Comment> getComments(){
 		return comments;
 	}
