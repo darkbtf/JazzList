@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
 public class LoginActivity extends Activity {
 
@@ -11,11 +12,6 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // TODO: implement login
-        System.out.println("login");
-        Intent intent = new Intent();
-        intent.setClass(LoginActivity.this, MainActivity.class);
-        //startActivity(intent);
     }
 
     @Override
@@ -24,5 +20,17 @@ public class LoginActivity extends Activity {
         getMenuInflater().inflate(R.menu.login, menu);
         return true;
     }
+    
+    public void login(View view) {
+        // TODO: implement login
+        Intent intent = new Intent();
+        intent.setClass(LoginActivity.this, MainActivity.class);
+    	startActivity(intent);
+    }
 
+    public void registerLater(View view) {
+    	Intent intent = new Intent();
+        intent.setClass(LoginActivity.this, MainActivity.class);
+    	startActivity(intent);
+    }
 }
