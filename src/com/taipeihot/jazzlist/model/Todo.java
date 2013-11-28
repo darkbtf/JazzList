@@ -58,7 +58,9 @@ public class Todo {
 		}
 		return TodoTable.where("belong_id = "+_id);
 	}
-	
+	public int subtodoCount(){
+		return this.getSubtodos().size();
+	}
 	/***************************** For Database ********************************/
 	public Todo(){}
 	public Todo(int _id,String title,int category_id,short status, long deadline,

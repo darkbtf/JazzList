@@ -12,6 +12,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="244dp"
         android:maxLines="1"
+        android:singleLine="true"
         android:background="#ff333333"
         android:textColor="#ffffffff"
         android:ems="10" >
