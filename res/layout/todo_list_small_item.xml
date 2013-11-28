@@ -2,46 +2,51 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="#000000" >
+    android:background="#00000000" >
 
-    <ImageView
+    <RelativeLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ff3d5a99" >
+        <ImageView
         android:id="@+id/small_todo_state"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
          />
 
-    <TextView
-        android:id="@+id/small_todo_name"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/small_todo_state"
-        android:textSize="30sp"
-        android:textColor="@android:color/white"
-        android:text="TextView" />
-
-    <Button
-        android:id="@+id/small_setting_button"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/settings" />
-
-    <TextView
-        android:id="@+id/small_todo_time"
-        android:layout_width="wrap_content"
-        android:layout_height="10dp"
-        android:layout_alignLeft="@+id/small_todo_name"
-        android:layout_marginTop="40dp"
-        android:textSize="10sp"
-        android:textColor="@android:color/white"
-        android:text="TextView" />
-
+	    <TextView
+	        android:id="@+id/small_todo_name"
+	        android:layout_width="wrap_content"
+	        android:layout_height="30dp"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginLeft="10dp"
+	        android:layout_toRightOf="@+id/small_todo_state"
+	        android:textSize="25sp"
+	        android:textColor="@android:color/white"
+	        android:text="TextView" />
+	
+	    <Button
+	        android:id="@+id/small_setting_button"
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="15dp"
+	        android:layout_marginTop="15dp"
+	        android:background="@drawable/settings" />
+	
+	    <TextView
+	        android:id="@+id/small_todo_time"
+	        android:layout_width="wrap_content"
+	        android:layout_height="10dp"
+	        android:layout_alignLeft="@+id/small_todo_name"
+	        android:layout_marginTop="40dp"
+	        android:textSize="10sp"
+	        android:textColor="@android:color/white"
+	        android:text="TextView" />
+    </RelativeLayout>
 </RelativeLayout>
