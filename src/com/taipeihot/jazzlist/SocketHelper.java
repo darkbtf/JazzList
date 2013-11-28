@@ -47,6 +47,8 @@ public class SocketHelper {
 		});
 		if(hasNet){
 			try {
+				if(socket != null && socket.isConnected())return true;
+				UpdateHelper.logined=false;
 				socket=new Socket(SERVER_IP,SERVERPORT);
 				in = new BufferedInputStream(socket.getInputStream());
 				out = new BufferedOutputStream(socket.getOutputStream());
@@ -97,9 +99,11 @@ public class SocketHelper {
 	    	if(in != null)in.close();
 	    	if(out != null)out.close();
 	    	if(socket!=null && socket.isConnected())socket.close();
-	    	in=null;out=null;socket=null;
     	} catch (IOException e) {
 			e.printStackTrace();
 		}
+    	finally{
+    		in=null;out=null;socket=null;
+    	}
     }
 }

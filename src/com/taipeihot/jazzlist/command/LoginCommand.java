@@ -9,7 +9,7 @@ public class LoginCommand implements Command{
 		String cmd = SocketHelper.getMessage();
 		if(cmd.equals("success"))
 			Util.errorReport("login success");
-		else return Util.errorReport("login fail");
+		else return Util.errorReport("login fail"); // logout if receive this?
 		return true;
 	}
 }
