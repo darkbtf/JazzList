@@ -24,25 +24,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //initialComponent();
-        
-        //new Table(this);
+        new Table(this);
         //databaseSample();
         //socket_connect();
-        //Table.close();
+        Table.close();
     }
     /*
-    private Button btn_connect,btn_send;
-    private EditText ed;
-    private  TextView tv1,tv2;
-    public static Handler receiveServer = null;
-    private void initialComponent(){
-    	btn_connect = (Button) findViewById(R.id.btn_connect);
-    	btn_send = (Button) findViewById(R.id.btn_send);
-        tv1 = (TextView) findViewById(R.id.servermsg);
-        tv2 = (TextView) findViewById(R.id.clientmsg);
-        ed = (EditText) findViewById(R.id.et_input);
-    }
     private boolean isNetworkAvailable(){
 		ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
