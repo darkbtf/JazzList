@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ffeeeeee" >
+		<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="0dp"
+            android:background="#ffffffff" >
+
+            <ImageView
+                android:id="@+id/state_user_photo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_pages"/>"
+
+            <TextView
+                android:id="@+id/state_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/state_user_photo"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                android:textSize="40dp" />
+
+
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="0dp" >
+
+            <TextView
+                android:id="@+id/big_todo_name"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                android:textSize="54dp" />
+
+            <TextView
+                android:id="@+id/big_todo_time"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignLeft="@+id/big_todo_name"
+                android:layout_below="@+id/big_todo_name"
+                android:text="TextView"
+                android:textColor="#ff3d5a99"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             >
+
+            <ImageView
+                android:id="@+id/status_like_graph"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_communities"
+                android:background="#ffffffff" />
+			
+            <TextView
+                android:id="@+id/status_like_count"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="30dp"
+                android:text="10"
+                android:layout_marginTop="10dp"
+
+                android:background="#ffffffff" />
+
+            <ImageView
+                android:id="@+id/status_commed_graph"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_home"
+                android:layout_marginTop="10dp"
+                android:background="#ffffffff" />
+
+            <TextView
+                android:id="@+id/status_commend_count"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="10"
+                android:textSize="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#ffffffff" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerPadding="0dp"
+            android:background="#ffeeeeee" >
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:background="#ffffffff"
+                
+                android:text="Like" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#ffffffff"
+                android:text="Commend" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
