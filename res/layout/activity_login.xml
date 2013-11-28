@@ -11,6 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="244dp"
+        android:textColor="#ffffff"
         android:ems="10" >
 
         <requestFocus />
@@ -33,6 +34,7 @@
         android:layout_below="@+id/account_text"
         android:layout_marginTop="99dp"
         android:ems="10"
+        android:textColor="#ffffff"
         android:inputType="textPassword" />
 
     <Button

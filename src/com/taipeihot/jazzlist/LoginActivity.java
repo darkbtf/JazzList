@@ -13,9 +13,9 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
         // TODO: implement login
         System.out.println("login");
-        Intent intent = new Intent();
-        intent.setClass(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent();
+        //intent.setClass(LoginActivity.this, MainActivity.class);
+        //startActivity(intent);
     }
 
     @Override
