@@ -11,7 +11,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="244dp"
-        android:textColor="#ffffff"
+        android:maxLines="1"
+        android:background="#ff333333"
+        android:textColor="#ffffffff"
         android:ems="10" >
 
         <requestFocus />
@@ -34,7 +36,9 @@
         android:layout_below="@+id/account_text"
         android:layout_marginTop="99dp"
         android:ems="10"
-        android:textColor="#ffffff"
+        android:maxLines="1"
+        android:background="#ff333333"
+        android:textColor="#ffffffff"
         android:inputType="textPassword" />
 
     <Button
@@ -45,5 +49,15 @@
         android:layout_below="@+id/password_text"
         android:layout_marginTop="100dp"
         android:text="Register" />
+
+    <Button
+        android:id="@+id/login_later_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Login"
+        android:layout_alignRight="@+id/button1"
+        android:layout_below="@+id/Login"
+        android:layout_marginTop="18dp"
+        android:text="Later" />
 
 </RelativeLayout>
