@@ -6,6 +6,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="str1">Jizz</string>
     <string name="str2">In my Pants</string>
+    <string name="github">GitHub</string>
+    <string name="left_and_right">Left and Right</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
