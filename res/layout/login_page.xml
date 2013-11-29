@@ -23,8 +23,8 @@
         android:id="@+id/Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/addTodo"
-        android:layout_alignBottom="@+id/addTodo"
+        android:layout_alignBaseline="@+id/category_addtodo_btn"
+        android:layout_alignBottom="@+id/category_addtodo_btn"
         android:layout_alignLeft="@+id/password_text"
         android:text="Login" />
 
@@ -42,7 +42,7 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/addTodo"
+        android:id="@+id/category_addtodo_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/password_text"
@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Login"
-        android:layout_alignRight="@+id/addTodo"
+        android:layout_alignRight="@+id/category_addtodo_btn"
         android:layout_below="@+id/Login"
         android:layout_marginTop="18dp"
         android:text="Later" />
