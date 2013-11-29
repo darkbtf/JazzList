@@ -28,7 +28,7 @@
         android:layout_alignLeft="@+id/password_text"
         android:text="Login"
         android:textColor="@color/login_text_color"
-        android:background="@drawable/login_btn" />
+        android:background="@drawable/login_norm_bg" />
 
     <EditText
         android:id="@+id/password_text"
@@ -50,7 +50,7 @@
         android:layout_alignRight="@+id/password_text"
         android:layout_below="@+id/password_text"
         android:layout_marginTop="100dp"
-        android:background="@drawable/login_btn"
+        android:background="@drawable/login_norm_bg"
         android:textColor="@color/login_text_color"
         android:text="Register" />
 
@@ -62,7 +62,7 @@
         android:layout_alignRight="@+id/category_addtodo_btn"
         android:layout_below="@+id/Login"
         android:layout_marginTop="18dp"
-        android:background="@drawable/login_btn"
+        android:background="@drawable/login_norm_bg"
         android:textColor="@color/login_text_color"
         android:text="Later" />
 
