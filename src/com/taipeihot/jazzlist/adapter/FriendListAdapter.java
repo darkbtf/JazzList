@@ -12,27 +12,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.taipeihot.jazzlist.R;
-import com.taipeihot.jazzlist.model.Category;
 import com.taipeihot.jazzlist.model.User;
  
-public class CategoryListAdapter extends BaseAdapter {
+public class FriendListAdapter extends BaseAdapter {
      
     private Context context;
-    private ArrayList<Category> categoryItems;
+    private ArrayList<User> userItems;
      
-    public CategoryListAdapter(Context context, ArrayList<Category> categoryItems){
+    public FriendListAdapter(Context context, ArrayList<User> categoryItems){
         this.context = context;
-        this.categoryItems = categoryItems;
+        this.userItems = categoryItems;
     }
  
     @Override
     public int getCount() {
-        return categoryItems.size();
+        return userItems.size();
     }
  
     @Override
     public Object getItem(int position) {       
-        return categoryItems.get(position);
+        return userItems.get(position);
     }
  
     @Override
@@ -45,24 +44,17 @@ public class CategoryListAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.drawer_list_item, null);
+            convertView = mInflater.inflate(R.layout.friend_list_item, null);
         }
           
-        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
-        TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
-        TextView txtCount = (TextView) convertView.findViewById(R.id.counter);
-          
-        imgIcon.setImageResource(categoryItems.get(position).getIcon());        
-        txtTitle.setText(categoryItems.get(position).getTitle());
+        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.friend_user_icon);
+        TextView txtTitle = (TextView) convertView.findViewById(R.id.friend_user_name);
+       
+        txtTitle.setText(userItems.get(position).getNickname());
          
         // displaying count
         // check whether it set visible or not
-        if(categoryItems.get(position).getCount() != 0){
-            txtCount.setText(categoryItems.get(position).getCount());
-        }else{
-            // hide the counter view
-            txtCount.setVisibility(View.GONE);
-        }
+
          
         return convertView;
     }

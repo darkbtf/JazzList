@@ -3,33 +3,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/addTodo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="ADD" />
-
     <ExpandableListView
         android:id="@+id/todoList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/addTodo" >
+        android:layout_below="@+id/category_addtodo_btn" >
 
     </ExpandableListView>
 
     <EditText
-        android:id="@+id/todoInput"
+        android:id="@+id/category_todoinput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/addTodo"
-        android:layout_alignBottom="@+id/addTodo"
-        android:layout_marginRight="16dp"
-        android:layout_toLeftOf="@+id/addTodo"
-        android:ems="10" >
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/category_addtodo_btn"
+        android:layout_marginLeft="25dp"
+        android:layout_toLeftOf="@+id/category_settime_btn"
+        android:ems="10"
+        android:hint="Add todo..."
+        android:maxLines="1"
+        android:singleLine="true" >
 
         <requestFocus />
     </EditText>
+
+    <Button
+        android:id="@+id/category_addtodo_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="16dp"
+        android:text="ADD" />
+
+    <Button
+        android:id="@+id/category_settime_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/todoList"
+        android:layout_toLeftOf="@+id/category_addtodo_btn"
+        android:text="SET" />
 
 </RelativeLayout>

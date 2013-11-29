@@ -8,9 +8,35 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".FreindListActivity" >
 
-    <TextView
+    <EditText
+        android:id="@+id/friend_add_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="friend name ..." >
+
+        <requestFocus />
+    </EditText>
+
+    <ListView
+        android:id="@+id/friendList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/friend_add_name" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/friend_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/friendList"
+        android:layout_alignParentRight="true"
+        android:text="ADD" />
 
 </RelativeLayout>
