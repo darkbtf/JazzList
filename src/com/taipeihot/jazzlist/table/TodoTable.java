@@ -40,9 +40,9 @@ public class TodoTable extends Table{
 		}
 		SQLiteDatabase db = con.getWritableDatabase();
 		ContentValues values = makeValue(todo);
-		long todo_id = db.insert(tableName, null, values);
-		todo.setId(todo_id);
-		return todo_id;
+		long id = db.insert(tableName, null, values);
+		todo.setId(id);
+		return id;
 	}
 	
 	static public int update(Todo todo){

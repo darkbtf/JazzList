@@ -18,7 +18,6 @@ public class CommunicateHelper {
 
 	public static boolean addTodo(Todo a) {
 		if(!sendMessage(new String[]{"todo","new"}))return false;
-		Util.errorReport("putting strings");
 		ArrayList<String> V = new ArrayList<String>();
 		V.add(a.getId()+"");
 		V.add(a.getTitle()+"");
@@ -36,7 +35,22 @@ public class CommunicateHelper {
 		}
 		return true;
 	}
-	
+
+	public static boolean addCategory(Category a) {
+		if(!sendMessage(new String[]{"category","new"}))return false;
+		ArrayList<String> V = new ArrayList<String>();
+		V.add(a.getId()+"");
+		V.add(a.getTitle()+"");
+		V.add(a.getIcon()+"");
+		V.add(a.getCount()+"");
+		V.add(a.getRealId()+"");
+		for(String s:V){
+			Util.errorReport(s);
+			if(!sendMessage(new String[]{s}))
+				return false;
+		}
+		return true;
+	}
 	/******************************Do not edit here***************************/
 	static boolean start(){
     	if(!SocketHelper.start())return false;
@@ -44,7 +58,9 @@ public class CommunicateHelper {
     		@Override
     		public void run(){
     			if(!trylogin())return;
-    			sendMessage(new String[]{"hello meow"});
+    			/*Data.addCategory("Today");
+    			Category c = new Category("meow",0);
+    			c.addTodo("ohoh");*/
     			while(SocketHelper.connecting){
 	    			String cmd=SocketHelper.getMessage();
 	    			cmdMgr.parseCmd(cmd);

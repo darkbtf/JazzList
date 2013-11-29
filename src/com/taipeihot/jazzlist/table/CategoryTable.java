@@ -17,9 +17,10 @@ public class CategoryTable extends Table{
 	static private ArrayList<ColumnElement>columns = new ArrayList<ColumnElement>();
 	public CategoryTable(){
 		tableName="category";
-		columns.add(new ColumnElement("title","VARCHAR(20) NOT NULL"));
+		columns.add(new ColumnElement("title","TINYTEXT NOT NULL"));
 		columns.add(new ColumnElement("icon","INTEGER NOT NULL"));
 		columns.add(new ColumnElement("count","INTEGER NOT NULL DEFAULT 0"));
+		columns.add(new ColumnElement("real_id","INTEGER DEFAULT 0"));
 		dropSQL = "DROP TABLE IF EXISTS "+tableName;
 		createSQL = makeCreateSQL(tableName, columns);
 		insertSQL = makeInsertSQL(tableName, columns);
@@ -34,10 +35,10 @@ public class CategoryTable extends Table{
 		}
 		SQLiteDatabase db = con.getWritableDatabase();
 		ContentValues values = makeValue(a);
-		
-		long todo_id = db.insert(tableName, null, values);
-		a.setId(todo_id);
-		return todo_id;
+		Util.errorReport(values.toString());
+		long id = db.insert(tableName, null, values);
+		a.setId(id);
+		return id;
 	}
 	
 	static public int update(Category a){
@@ -115,7 +116,8 @@ public class CategoryTable extends Table{
 				c.getInt(0),
 				c.getString(1),
 				c.getInt(2),
-				c.getInt(3)
+				c.getInt(3),
+				c.getInt(4)
 				);
 	}
 
@@ -124,6 +126,7 @@ public class CategoryTable extends Table{
 		values.put("title", a.getTitle());
 		values.put("icon", a.getIcon());
 		values.put("count", a.getCount());
+		values.put("real_id",a.getRealId());
 		return values;
 	}
 }
