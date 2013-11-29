@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="wrap_content"
+    android:background="@drawable/defualt_corner"
+     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#ffeeeeee" >
+
+         >
 		<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="0dp"
-            android:background="#ffffffff" >
+             >
 
             <ImageView
                 android:id="@+id/state_user_photo"
@@ -25,7 +28,7 @@
                 android:src="@drawable/ic_pages"/>"
 
             <TextView
-                android:id="@+id/state_user_name"
+                android:id="@+id/status_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
@@ -45,7 +48,7 @@
             android:layout_marginTop="0dp" >
 
             <TextView
-                android:id="@+id/big_todo_name"
+                android:id="@+id/status_todo_name"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_marginLeft="40dp"
@@ -55,11 +58,11 @@
                 android:textSize="54dp" />
 
             <TextView
-                android:id="@+id/big_todo_time"
+                android:id="@+id/status_todo_time"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_alignLeft="@+id/big_todo_name"
-                android:layout_below="@+id/big_todo_name"
+                android:layout_alignLeft="@+id/status_todo_name"
+                android:layout_below="@+id/status_todo_name"
                 android:text="TextView"
                 android:textColor="#ff3d5a99"
                 android:textSize="18dp" />
@@ -80,7 +83,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/ic_communities"
-                android:background="#ffffffff" />
+                 />
 			
             <TextView
                 android:id="@+id/status_like_count"
@@ -91,7 +94,7 @@
                 android:text="10"
                 android:layout_marginTop="10dp"
 
-                android:background="#ffffffff" />
+                />
 
             <ImageView
                 android:id="@+id/status_commed_graph"
@@ -100,10 +103,10 @@
                 android:layout_weight="1"
                 android:src="@drawable/ic_home"
                 android:layout_marginTop="10dp"
-                android:background="#ffffffff" />
+                 />
 
             <TextView
-                android:id="@+id/status_commend_count"
+                android:id="@+id/status_comment_count"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -111,7 +114,7 @@
                 android:textSize="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:background="#ffffffff" />
+                 />
 
         </LinearLayout>
 
@@ -119,26 +122,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:dividerPadding="0dp"
-            android:background="#ffeeeeee" >
+             >
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/status_list_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
-                android:background="#ffffffff"
+                android:background="@drawable/defualt_btn"
                 
                 android:text="Like" />
 
             <Button
-                android:id="@+id/button2"
-                android:layout_margin="10dp"
+                android:id="@+id/status_comment_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="#ffffffff"
-                android:text="Commend" />
+                android:background="@drawable/defualt_btn"
+                android:text="Comment" />
+
         </LinearLayout>
     </LinearLayout>
 

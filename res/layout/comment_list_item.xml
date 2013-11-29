@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp" >
+
+        <ImageView
+            android:id="@+id/comment_user_photo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_whats_hot" />
+
+        <TextView
+            android:id="@+id/comment_user_name"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/comment_user_photo"
+            android:text="Paul Hsia"
+            android:textColor="#ff3d5a99"
+            android:textSize="18dp"
+             />
+
+        <ImageButton
+            android:id="@+id/comment_like_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+          	android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/comment_like_count"
+            android:src="@drawable/ic_home"
+            android:background="#00000000" />
+
+        <TextView
+            android:id="@+id/comment_content"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/comment_user_name"
+            android:layout_alignTop="@+id/comment_user_photo"
+            android:layout_marginLeft="103dp"
+            android:text="TextView/nasdfasdfasdfasdfasdfasdfasdfsdf"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/comment_like_count"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="18dp"
+            android:text="100" />
+        
+    </RelativeLayout>
+
+</RelativeLayout>

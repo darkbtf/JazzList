@@ -20,7 +20,7 @@
          />
 
 	    <TextView
-	        android:id="@+id/big_todo_name"
+	        android:id="@+id/status_todo_name"
 	        android:layout_width="wrap_content"
 	        android:layout_height="30dp"
 	        android:layout_marginTop="10dp"
@@ -40,10 +40,10 @@
 	        android:background="@drawable/settings" />
 	
 	    <TextView
-	        android:id="@+id/big_todo_time"
+	        android:id="@+id/status_todo_time"
 	        android:layout_width="wrap_content"
 	        android:layout_height="10dp"
-	        android:layout_alignLeft="@+id/big_todo_name"
+	        android:layout_alignLeft="@+id/status_todo_name"
 	        android:layout_marginTop="40dp"
 	        android:textSize="10sp"
 	        android:textColor="@android:color/white"
