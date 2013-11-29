@@ -3,11 +3,10 @@
     package="com.taipeihot.jazzlist"
     android:versionCode="1"
     android:versionName="1.0" >
-
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
-	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
@@ -18,6 +17,7 @@
             android:name="com.taipeihot.jazzlist.MainActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity android:name="com.taipeihot.jazzlist.LeftAndRightActivity" />
         <activity
             android:name="com.taipeihot.jazzlist.ProfileActivity"
             android:label="@string/title_activity_achievement" >
