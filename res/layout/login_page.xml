@@ -13,7 +13,7 @@
         android:layout_marginTop="244dp"
         android:maxLines="1"
         android:background="#ff333333"
-        android:textColor="#ffffffff"
+        android:textColor="@color/login_text_color"
         android:ems="10" >
 
         <requestFocus />
@@ -26,7 +26,9 @@
         android:layout_alignBaseline="@+id/category_addtodo_btn"
         android:layout_alignBottom="@+id/category_addtodo_btn"
         android:layout_alignLeft="@+id/password_text"
-        android:text="Login" />
+        android:text="Login"
+        android:textColor="@color/login_text_color"
+        android:background="@drawable/login_btn" />
 
     <EditText
         android:id="@+id/password_text"
@@ -38,7 +40,7 @@
         android:ems="10"
         android:maxLines="1"
         android:background="#ff333333"
-        android:textColor="#ffffffff"
+        android:textColor="@color/login_text_color"
         android:inputType="textPassword" />
 
     <Button
@@ -48,6 +50,8 @@
         android:layout_alignRight="@+id/password_text"
         android:layout_below="@+id/password_text"
         android:layout_marginTop="100dp"
+        android:background="@drawable/login_btn"
+        android:textColor="@color/login_text_color"
         android:text="Register" />
 
     <Button
@@ -58,6 +62,8 @@
         android:layout_alignRight="@+id/category_addtodo_btn"
         android:layout_below="@+id/Login"
         android:layout_marginTop="18dp"
+        android:background="@drawable/login_btn"
+        android:textColor="@color/login_text_color"
         android:text="Later" />
 
 </RelativeLayout>

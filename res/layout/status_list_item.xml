@@ -75,15 +75,15 @@
             android:layout_height="wrap_content"
              >
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/status_like_graph"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_communities"
-                 />
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/defualt_btn"
+                android:src="@drawable/ic_communities" />
 			
             <TextView
                 android:id="@+id/status_like_count"
@@ -96,14 +96,14 @@
 
                 />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/status_commed_graph"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_home"
                 android:layout_marginTop="10dp"
-                 />
+                android:layout_weight="1"
+                android:background="@drawable/defualt_btn"
+                android:src="@drawable/ic_home" />
 
             <TextView
                 android:id="@+id/status_comment_count"

@@ -13,8 +13,8 @@
         android:layout_marginTop="244dp"
         android:maxLines="1"
         android:singleLine="true"
-        android:background="#ff333333"
-        android:textColor="#ffffffff"
+        android:background="@drawable/login_btn"
+        android:textColor="@color/login_text_color"
         android:ems="10" >
 
         <requestFocus />
@@ -27,6 +27,8 @@
         android:layout_alignBaseline="@+id/category_addtodo_btn"
         android:layout_alignBottom="@+id/category_addtodo_btn"
         android:layout_alignLeft="@+id/password_text"
+        android:textColor="@color/login_text_color"
+        android:background="@drawable/login_btn"
         android:text="Login" />
 
     <EditText
@@ -38,8 +40,8 @@
         android:layout_marginTop="99dp"
         android:ems="10"
         android:maxLines="1"
-        android:background="#ff333333"
-        android:textColor="#ffffffff"
+        android:background="@drawable/login_btn"
+        android:textColor="@color/login_text_color"
         android:inputType="textPassword" />
 
     <Button
@@ -49,6 +51,8 @@
         android:layout_alignRight="@+id/password_text"
         android:layout_below="@+id/password_text"
         android:layout_marginTop="100dp"
+        android:textColor="@color/login_text_color"
+        android:background="@drawable/login_btn"
         android:text="Register" />
 
     <Button
@@ -60,6 +64,44 @@
         android:layout_below="@+id/Login"
         android:layout_marginTop="18dp"
         android:onClick="login"
+        android:background="@drawable/login_btn"
+        android:textColor="@color/login_text_color"
         android:text="Later" />
+
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="66dp"
+        android:text="Jazz List"
+        android:textColor="@color/facebook_blue"
+        android:textStyle="bold|italic"
+        android:textSize="70dp" />
+
+    <TextView
+        android:id="@+id/login_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/account_text"
+        android:layout_alignLeft="@+id/account_text"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/login_text_color"
+        android:textSize="30dp"
+        android:textStyle="italic"
+        android:text="Account:" />
+
+    <TextView
+        android:id="@+id/login_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/password_text"
+        android:layout_alignLeft="@+id/password_text"
+        android:layout_marginBottom="53dp"
+        android:textColor="@color/login_text_color"
+        android:textStyle="italic"
+        android:textSize="30dp"
+        android:text="Password:" />
 
 </RelativeLayout>

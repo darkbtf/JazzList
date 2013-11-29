@@ -110,10 +110,7 @@ public class TodoListAdapter extends BaseExpandableListAdapter{
 
 			    }
 			});
-			if(todo.subtodoCount()!=0){
-				ImageView i=(ImageView)convertView.findViewById(R.id.big_todo_state);
-				i.setBackgroundResource(R.drawable.ic_photos);
-			}
+
 		}
 		return convertView;
 	}
