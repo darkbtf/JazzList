@@ -26,6 +26,7 @@ public class CommunicateHelper {
 		V.add(a.getUserId());
 		V.add(a.getDescription());
 		V.add(a.getBelongId());
+		V.add(a.getRealId());
 		for(Object s:V.toArray())
 			if(!sendMessage(new String[]{(String)s}))
 				return false;

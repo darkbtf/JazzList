@@ -17,6 +17,7 @@ public class Todo {
 	private long user_id = 0;
 	private String description;
 	private long belong_id = 0;
+	private int real_id = 0;
 	
 	public Todo(String title, long category_id, boolean isPublic, Date deadline, String description){
 		this.title = title;
@@ -84,5 +85,5 @@ public class Todo {
 	public short getStatus(){return (short) ((isPublic?2:0)+(alive?1:0));}
 	public long getDeadlineLong(){return getDeadline().getTime();}
 	public long getUserId(){return user_id;}
-	
+	public int getRealId(){return real_id;}
 }
