@@ -1,7 +1,11 @@
 package com.taipeihot.jazzlist;
 
+import java.util.ArrayList;
+
 import com.taipeihot.jazzlist.command.CommandManager;
+import com.taipeihot.jazzlist.model.Category;
 import com.taipeihot.jazzlist.model.Data;
+import com.taipeihot.jazzlist.model.Todo;
 
 public class CommunicateHelper {
 	static CommandManager cmdMgr = new CommandManager();
@@ -11,7 +15,42 @@ public class CommunicateHelper {
 	static public boolean addFriend(String account){
 		return sendMessage(new String[]{"friend","add",account});
 	}
-	
+
+	public static boolean addTodo(Todo a) {
+		if(!sendMessage(new String[]{"todo","new"}))return false;
+		ArrayList<String> V = new ArrayList<String>();
+		V.add(a.getId()+"");
+		V.add(a.getTitle()+"");
+		V.add(a.getCategoryId()+"");
+		V.add(a.getStatus()+"");
+		V.add(a.getDeadlineLong()+"");
+		V.add(a.getUserId()+"");
+		V.add(a.getDescription()+"");
+		V.add(a.getBelongId()+"");
+		V.add(a.getRealId()+"");
+		for(String s:V){
+			Util.errorReport(s);
+			if(!sendMessage(new String[]{s}))
+				return false;
+		}
+		return true;
+	}
+
+	public static boolean addCategory(Category a) {
+		if(!sendMessage(new String[]{"category","new"}))return false;
+		ArrayList<String> V = new ArrayList<String>();
+		V.add(a.getId()+"");
+		V.add(a.getTitle()+"");
+		V.add(a.getIcon()+"");
+		V.add(a.getCount()+"");
+		V.add(a.getRealId()+"");
+		for(String s:V){
+			Util.errorReport(s);
+			if(!sendMessage(new String[]{s}))
+				return false;
+		}
+		return true;
+	}
 	/******************************Do not edit here***************************/
 	static boolean start(){
     	if(!SocketHelper.start())return false;
@@ -19,7 +58,9 @@ public class CommunicateHelper {
     		@Override
     		public void run(){
     			if(!trylogin())return;
-    			sendMessage(new String[]{"hello meow"});
+    			/*Data.addCategory("Today");
+    			Category c = new Category("meow",0);
+    			c.addTodo("ohoh");*/
     			while(SocketHelper.connecting){
 	    			String cmd=SocketHelper.getMessage();
 	    			cmdMgr.parseCmd(cmd);

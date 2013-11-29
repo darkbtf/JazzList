@@ -25,6 +25,7 @@ public class TodoTable extends Table{
 		columns.add(new ColumnElement("user_id","INTEGER NOT NULL"));
 		columns.add(new ColumnElement("description","TEXT NOT NULL"));
 		columns.add(new ColumnElement("belong_id","INTEGER NOT NULL"));
+		columns.add(new ColumnElement("real_id","INTEGER NOT NULL"));
 		dropSQL = "DROP TABLE IF EXISTS "+tableName;
 		createSQL = makeCreateSQL(tableName, columns);
 		insertSQL = makeInsertSQL(tableName, columns);
@@ -39,10 +40,9 @@ public class TodoTable extends Table{
 		}
 		SQLiteDatabase db = con.getWritableDatabase();
 		ContentValues values = makeValue(todo);
-		
-		long todo_id = db.insert(tableName, null, values);
-		todo.setId(todo_id);
-		return todo_id;
+		long id = db.insert(tableName, null, values);
+		todo.setId(id);
+		return id;
 	}
 	
 	static public int update(Todo todo){
@@ -124,7 +124,8 @@ public class TodoTable extends Table{
 				c.getLong(4),
 				c.getInt(5),
 				c.getString(6),
-				c.getInt(7)
+				c.getInt(7),
+				c.getInt(8)
 				);
 	}
 
@@ -137,6 +138,7 @@ public class TodoTable extends Table{
 		values.put("user_id", todo.getUserId());
 		values.put("description", todo.getDescription());
 		values.put("belong_id", todo.getBelongId());
+		values.put("real_id", todo.getRealId());
 		return values;
 	}
 }

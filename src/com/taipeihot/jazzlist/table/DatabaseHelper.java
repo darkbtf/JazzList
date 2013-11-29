@@ -13,11 +13,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	@Override
 	public void onCreate(SQLiteDatabase db){
 		db.execSQL(TodoTable.createSQL);
+		db.execSQL(CategoryTable.createSQL);
 	}
 	
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
 		db.execSQL(TodoTable.dropSQL);
+		db.execSQL(CategoryTable.dropSQL);
 		onCreate(db);
 	}
 }

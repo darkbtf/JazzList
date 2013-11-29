@@ -26,6 +26,7 @@ import android.widget.ListView;
 
 import com.taipeihot.jazzlist.adapter.CategoryListAdapter;
 import com.taipeihot.jazzlist.model.Category;
+import com.taipeihot.jazzlist.table.Table;
 
 @SuppressLint("NewApi") public class MainActivity extends Activity {
 
@@ -50,6 +51,7 @@ import com.taipeihot.jazzlist.model.Category;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new Table(this);
         connect_to_server();
         mTitle = mDrawerTitle = getTitle();
 
