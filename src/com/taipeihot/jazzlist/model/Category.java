@@ -1,7 +1,9 @@
 package com.taipeihot.jazzlist.model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
+import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.table.CategoryTable;
 import com.taipeihot.jazzlist.table.TodoTable;
 
@@ -22,6 +24,11 @@ public class Category {
 		this.count = count;
 	}
 	
+	public boolean addTodo(String title) { // TODO: not title only?
+		Todo a = new Todo(title,getId(),true,new Date(0),title+"'s description");
+		TodoTable.insert(a);
+		return CommunicateHelper.addTodo(a);
+	}
 	public long getId(){return _id;}
 	public void setId(long _id){this._id = _id;}
 	

@@ -1,7 +1,10 @@
 package com.taipeihot.jazzlist;
 
+import java.util.ArrayList;
+
 import com.taipeihot.jazzlist.command.CommandManager;
 import com.taipeihot.jazzlist.model.Data;
+import com.taipeihot.jazzlist.model.Todo;
 
 public class CommunicateHelper {
 	static CommandManager cmdMgr = new CommandManager();
@@ -10,6 +13,23 @@ public class CommunicateHelper {
 	
 	static public boolean addFriend(String account){
 		return sendMessage(new String[]{"friend","add",account});
+	}
+
+	public static boolean addTodo(Todo a) {
+		if(!sendMessage(new String[]{"todo","new"}))return false;
+		ArrayList<Object> V = new ArrayList<Object>();
+		V.add(a.getId());
+		V.add(a.getTitle());
+		V.add(a.getCategoryId());
+		V.add(a.getStatus());
+		V.add(a.getDeadlineLong());
+		V.add(a.getUserId());
+		V.add(a.getDescription());
+		V.add(a.getBelongId());
+		for(Object s:V.toArray())
+			if(!sendMessage(new String[]{(String)s}))
+				return false;
+		return true;
 	}
 	
 	/******************************Do not edit here***************************/
