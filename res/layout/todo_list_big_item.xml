@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="#00000000" >
+     >
 
     <RelativeLayout
         android:layout_marginLeft="0dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#ff3d5a99" >
+        android:background="@drawable/todo_shape" >
         <ImageView
         android:id="@+id/big_todo_state"
         android:layout_width="20dp"
@@ -52,7 +52,4 @@
 	        android:textColor="@android:color/white"
 	        android:text="TextView" />
     </RelativeLayout>
-
-    
-
 </RelativeLayout>
