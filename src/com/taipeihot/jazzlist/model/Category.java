@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import com.taipeihot.jazzlist.CommunicateHelper;
+import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.table.CategoryTable;
 import com.taipeihot.jazzlist.table.TodoTable;
 
@@ -25,7 +26,7 @@ public class Category {
 	}
 	
 	public boolean addTodo(String title) { // TODO: not title only?
-		Todo a = new Todo(title,getId(),true,new Date(0),title+"'s description");
+		Todo a = new Todo(title,getId(),true,new Date(0),title+" s description");
 		TodoTable.insert(a);
 		return CommunicateHelper.addTodo(a);
 	}

@@ -70,7 +70,7 @@ public class Todo {
 	/***************************** For Database ********************************/
 	public Todo(){}
 	public Todo(int _id,String title,int category_id,short status, long deadline,
-				int user_id, String description, int belong_id){
+				int user_id, String description, int belong_id, int real_id){
 		this._id=_id;
 		this.title=title;
 		this.category_id = category_id;
@@ -80,6 +80,7 @@ public class Todo {
 		this.user_id = user_id;
 		this.description = description;
 		this.belong_id = belong_id;
+		this.real_id = real_id;
 	}
 	public int save(){return TodoTable.update(this);}
 	public short getStatus(){return (short) ((isPublic?2:0)+(alive?1:0));}

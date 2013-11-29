@@ -3,6 +3,7 @@ package com.taipeihot.jazzlist;
 import java.util.ArrayList;
 
 import com.taipeihot.jazzlist.command.CommandManager;
+import com.taipeihot.jazzlist.model.Category;
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.Todo;
 
@@ -17,19 +18,22 @@ public class CommunicateHelper {
 
 	public static boolean addTodo(Todo a) {
 		if(!sendMessage(new String[]{"todo","new"}))return false;
-		ArrayList<Object> V = new ArrayList<Object>();
-		V.add(a.getId());
-		V.add(a.getTitle());
-		V.add(a.getCategoryId());
-		V.add(a.getStatus());
-		V.add(a.getDeadlineLong());
-		V.add(a.getUserId());
-		V.add(a.getDescription());
-		V.add(a.getBelongId());
-		V.add(a.getRealId());
-		for(Object s:V.toArray())
-			if(!sendMessage(new String[]{(String)s}))
+		Util.errorReport("putting strings");
+		ArrayList<String> V = new ArrayList<String>();
+		V.add(a.getId()+"");
+		V.add(a.getTitle()+"");
+		V.add(a.getCategoryId()+"");
+		V.add(a.getStatus()+"");
+		V.add(a.getDeadlineLong()+"");
+		V.add(a.getUserId()+"");
+		V.add(a.getDescription()+"");
+		V.add(a.getBelongId()+"");
+		V.add(a.getRealId()+"");
+		for(String s:V){
+			Util.errorReport(s);
+			if(!sendMessage(new String[]{s}))
 				return false;
+		}
 		return true;
 	}
 	
