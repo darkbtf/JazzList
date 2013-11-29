@@ -1,7 +1,10 @@
 package com.taipeihot.jazzlist;
 
+import com.taipeihot.jazzlist.model.Data;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -12,6 +15,8 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        writeAccount();
+        readAccount();
     }
 
     @Override
@@ -32,5 +37,20 @@ public class LoginActivity extends Activity {
     	Intent intent = new Intent();
         intent.setClass(LoginActivity.this, MainActivity.class);
     	startActivity(intent);
+    }
+    
+    private void writeAccount(){
+		SharedPreferences pre = getSharedPreferences("loginValue",MODE_PRIVATE);
+		String account = "david942j@gmail.com";
+		String nickname = "david";
+		String password = "Hue Nguyen";  
+		pre.edit().putString("account", account).putString("nickname",nickname).putString("password",Util.MD5(password)).commit();
+    }
+    private void readAccount(){
+		SharedPreferences sp = getSharedPreferences("loginValue", MODE_PRIVATE);  
+        String account = sp.getString("account", null);
+        String nickname = sp.getString("nickname", null);  
+        String password = sp.getString("password", null);
+        Data.setAccount(account,nickname,password);
     }
 }

@@ -15,13 +15,13 @@ public class SocketHelper {
 	static Thread try_connect = null;
 	static private Deque<Byte> bufferInput = new LinkedList<Byte>();
 	static private Queue<String> messages = new LinkedList<String>();
-	static public boolean hasNet = true;
+	static public boolean connecting = true;
 	static private Thread getMessageToBuffer;
 
     static private BufferedInputStream in = null;
     static private BufferedOutputStream out = null;
     static public boolean start(){
-    	hasNet=true;
+    	connecting=true;
     	getMessageToBuffer=new Thread(new Runnable(){
 			@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 			@Override
@@ -44,7 +44,7 @@ public class SocketHelper {
 				}
 			}
 		});
-		if(hasNet){
+		if(connecting){
 			try {
 				if(socket != null && socket.isConnected())return true;
 				CommunicateHelper.logined=false;
@@ -94,7 +94,6 @@ public class SocketHelper {
 	}
     static void close(){
     	try {
-    		hasNet=false;
 	    	if(in != null)in.close();
 	    	if(out != null)out.close();
 	    	if(socket!=null && socket.isConnected())socket.close();
@@ -102,6 +101,7 @@ public class SocketHelper {
 			e.printStackTrace();
 		}
     	finally{
+    		connecting=false;
     		in=null;out=null;socket=null;
     	}
     }

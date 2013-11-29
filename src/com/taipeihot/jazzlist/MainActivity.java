@@ -26,8 +26,6 @@ import android.widget.ListView;
 
 import com.taipeihot.jazzlist.adapter.CategoryListAdapter;
 import com.taipeihot.jazzlist.model.Category;
-import com.taipeihot.jazzlist.model.Todo;
-import com.taipeihot.jazzlist.table.TodoTable;
 
 @SuppressLint("NewApi") public class MainActivity extends Activity {
 
@@ -205,18 +203,12 @@ import com.taipeihot.jazzlist.table.TodoTable;
 		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 	}
     
-    static private int updatePeriod = 20000; 
     private void connect_to_server(){
     	Thread thread = new Thread(new Runnable(){
     		@Override
     		public void run(){
     			if(isNetworkAvailable())
     				CommunicateHelper.start();
-				/*try {
-					Thread.sleep(updatePeriod);// what if the last update not finished yet?
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}*/
     		}
     	});
     	thread.start();
