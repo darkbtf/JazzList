@@ -18,16 +18,16 @@ public class Data {
 	public static ArrayList<Category> categorys = new ArrayList<Category>();
 	
 	public static void login(String account, String password){
-		setAccount(account,account,Util.MD5(password));
+		/*setAccount(account,account,Util.MD5(password));
 		new Thread(new Runnable(){
     		@Override
     		public void run(){
     			CommunicateHelper.start();
     		}
-    	}).start();
+    	}).start();*/
 	}
 	public static void register(String account,String password){
-		setAccount(account,account,Util.MD5(password));
+		//setAccount(account,account,Util.MD5(password));
 	}
 	public static void setAccount(String a, String n, String password) {
 		account = a;
