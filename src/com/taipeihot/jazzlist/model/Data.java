@@ -18,6 +18,9 @@ public class Data {
 		nickname = n;
 		encryptedPassword = password;
 	}
+	public static boolean addFriend(String account){
+		return CommunicateHelper.addFriend(account);
+	}
 	public static boolean addCategory(String title){
 		Category c = new Category(title,R.drawable.ic_home);
 		CategoryTable.insert(c);

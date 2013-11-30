@@ -10,6 +10,7 @@ public class CommandManager {
 	public CommandManager() {
 		cmdMap.put("login",new LoginCommand());
 		cmdMap.put("update",new UpdateCommand());
+		cmdMap.put("friend", new FriendCommand());
 	}
 
 	public boolean parseCmd(String cmd) {
