@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000000">
 
     <ExpandableListView
         android:id="@+id/todoList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/category_addtodo_btn" >
-
+        android:layout_below="@+id/category_addtodo_btn"
+        android:layout_margin="20dp"
+        android:background="@drawable/todo_shape" >
     </ExpandableListView>
 
     <EditText
         android:id="@+id/category_todoinput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/todoList"
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/category_addtodo_btn"
         android:layout_marginLeft="25dp"
@@ -28,21 +31,25 @@
     </EditText>
 
     <Button
-        android:id="@+id/category_addtodo_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="16dp"
-        android:text="ADD" />
-
-    <Button
         android:id="@+id/category_settime_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/todoList"
+        android:layout_marginRight="24dp"
         android:layout_toLeftOf="@+id/category_addtodo_btn"
+        android:background="@drawable/login_btn_slc"
+        android:textColor="@color/white"
         android:text="SET" />
+
+    <Button
+        android:id="@+id/category_addtodo_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/todoList"
+        android:layout_marginTop="21dp"
+        android:textColor="@color/white"
+        android:background="@drawable/login_btn_slc"
+        android:text="ADD" />
 
 </RelativeLayout>
