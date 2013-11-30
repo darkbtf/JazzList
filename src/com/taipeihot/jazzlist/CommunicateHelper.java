@@ -61,6 +61,7 @@ public class CommunicateHelper {
     			/*Data.addCategory("Today");
     			Category c = new Category("meow",0);
     			c.addTodo("ohoh");*/
+    			Data.addFriend("david942j@gmail.com");
     			while(SocketHelper.connecting){
 	    			String cmd=SocketHelper.getMessage();
 	    			cmdMgr.parseCmd(cmd);

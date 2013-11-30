@@ -3,15 +3,15 @@ package com.taipeihot.jazzlist.model;
 
 public class User {
 	private String nickname;
-	private int user_id=0; // id in server
+	private int real_id=0; // id in server
 	
-	public User(String nickname,int user_id){
+	public User(String nickname,int real_id){
 		this.nickname = nickname;
-		this.user_id = user_id;
+		this.real_id = real_id;
 	}
 	
 	public String getNickname(){return nickname;}
 	public void setNickname(String nickname){this.nickname=nickname;}
 	
-	public int photoNumber(){return user_id;}
+	public int photoNumber(){return real_id;}
 }
