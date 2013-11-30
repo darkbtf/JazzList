@@ -9,7 +9,7 @@ import com.taipeihot.jazzlist.model.Todo;
 
 public class CommunicateHelper {
 	static CommandManager cmdMgr = new CommandManager();
-	static boolean logined = false;
+	public static boolean logined = false;
 	static Thread msgThread = null;
 	
 	static public boolean addFriend(String account){
@@ -52,7 +52,7 @@ public class CommunicateHelper {
 		return true;
 	}
 	/******************************Do not edit here***************************/
-	static boolean start(){
+	public static boolean start(){
     	if(!SocketHelper.start())return false;
     	msgThread = new Thread(new Runnable(){
     		@Override
