@@ -12,6 +12,7 @@ public class Status {
 	private long deadline;
 	private int score = 0; //number of like 
 	private boolean visible = true;
+	private int real_id;
 	private ArrayList<Comment> comments = new ArrayList<Comment>();
 	
 	public Status(String nickname, Todo todo, ArrayList<Comment>comments){//TODO remove
@@ -59,4 +60,23 @@ public class Status {
 	public void addComments(Comment c){
 		comments.add(c);
 	}
+	
+	/***************************For Database****************************/
+	public Status(String nickname, String title, long deadline, int score, int real_id){
+		this.nickname = nickname;
+		this.title = title;
+		this.deadline = deadline;
+		this.score = score;
+		this.real_id = real_id;
+	}
+	public Status(String nickname, String title, long deadline, int score, boolean visible, int real_id){
+		this.nickname = nickname;
+		this.title = title;
+		this.deadline = deadline;
+		this.score = score;
+		this.visible = visible;
+		this.real_id = real_id;
+	}
+	
+	public int getRealId(){return real_id;}
 }

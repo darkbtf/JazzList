@@ -9,7 +9,7 @@ public class CommandManager {
 	static private Map<String, Command> cmdMap = new HashMap<String, Command>();
 	public CommandManager() {
 		cmdMap.put("login",new LoginCommand());
-		cmdMap.put("update",new UpdateCommand());
+		cmdMap.put("status",new StatusCommand());
 		cmdMap.put("friend", new FriendCommand());
 	}
 

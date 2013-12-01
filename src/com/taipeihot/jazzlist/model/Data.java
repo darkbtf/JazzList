@@ -40,4 +40,8 @@ public class Data {
 		categorys.add(c);
 		return CommunicateHelper.addCategory(c);
 	}
+	public static void addStatus(Status s) {
+		status.add(s);
+		//TODO add to the front? Need a magic sort.
+	}
 }
