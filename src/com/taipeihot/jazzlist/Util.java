@@ -3,6 +3,8 @@ package com.taipeihot.jazzlist;
 import android.annotation.SuppressLint;
 
 import java.security.MessageDigest;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Deque;
 import java.util.Queue;
 
@@ -65,5 +67,10 @@ public class Util {
 		data += new String(b, 0, length);
 		messages.add(data);
 		return true;
+	}
+
+	public static String dateLongToString(long deadline) { 
+		Date d = new Date(deadline);
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
 	}
 }
