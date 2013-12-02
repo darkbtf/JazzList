@@ -10,6 +10,8 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import com.taipeihot.jazzlist.model.Data;
+
 public class SocketHelper {
 	static Socket socket=null;
 	static Thread try_connect = null;
@@ -47,7 +49,7 @@ public class SocketHelper {
 		if(connecting){
 			try {
 				if(socket != null && socket.isConnected())return true;
-				CommunicateHelper.logined=false;
+				Data.loginWait();
 				socket=new Socket(Parameter.SERVER_IP,Parameter.port);
 				in = new BufferedInputStream(socket.getInputStream());
 				out = new BufferedOutputStream(socket.getOutputStream());

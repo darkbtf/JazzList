@@ -9,13 +9,20 @@ import com.taipeihot.jazzlist.model.Todo;
 
 public class CommunicateHelper {
 	static CommandManager cmdMgr = new CommandManager();
-	public static boolean logined = false;
+	//public static boolean logined = false;
 	static Thread msgThread = null;
 	
 	static public boolean addFriend(String account){
 		return sendMessage(new String[]{"friend","add",account});
 	}
+	public static void register(String account, String password) {
+		SocketHelper.sendMessage(new String[]{"register",account,Util.MD5(password)});
+	}
 
+	public static void login(String account, String password) {
+		SocketHelper.sendMessage(new String[]{"login",account,Util.MD5(password)});
+	}
+	
 	public static boolean addTodo(Todo a) {
 		if(!sendMessage(new String[]{"todo","new"}))return false;
 		ArrayList<String> V = new ArrayList<String>();
@@ -66,7 +73,7 @@ public class CommunicateHelper {
     	msgThread = new Thread(new Runnable(){
     		@Override
     		public void run(){
-    			if(!trylogin())return;
+    			//if(!trylogin())return;
     			/*Data.addCategory("Today");
     			Category c = new Category("meow",0);
     			c.addTodo("ohoh");
@@ -82,17 +89,20 @@ public class CommunicateHelper {
 	}
 	static public void close(){
 		//if(msgThread != null && msgThread.isAlive())msgThread.
-		logined=false;
+		Data.loginWait();
 		SocketHelper.close();
 	}
 	static private boolean trylogin(){
-		if(logined)return true;
+		if(Data.hasLogined())return true;
 		if(!SocketHelper.connecting)return false;
 		if(Data.account==null)return false;
 		if(!sendMessage(new String[]{"login",Data.account,Data.encryptedPassword}))return false;
 		String cmd = getMessage();
 		if(cmd.equals("login")){
-			if(cmdMgr.parseCmd("login"))return logined=true;
+			if(cmdMgr.parseCmd("login")){
+				Data.loginSuccess();
+				return true;
+			}
 			else Util.errorReport("why login fail QQ?");
 		}
 		return false;
