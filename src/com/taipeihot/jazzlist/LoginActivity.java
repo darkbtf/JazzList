@@ -100,7 +100,7 @@ public class LoginActivity extends Activity {
 
     private void writeAccount(){
         SharedPreferences pre = getSharedPreferences("loginValue",MODE_PRIVATE);
-        String account = "david942jizzz@gmail.com";
+        String account = "david942jizz@gmail.com";
         String nickname = "david";
         String password = "Hue Nguyen";
         pre.edit().putString("account", account).putString("nickname",nickname).putString("password",Util.MD5(password)).commit();

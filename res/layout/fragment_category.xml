@@ -24,6 +24,7 @@
         android:layout_toLeftOf="@+id/category_settime_btn"
         android:ems="10"
         android:hint="Add todo..."
+        android:textColor="@color/white"
         android:maxLines="1"
         android:singleLine="true" >
 
@@ -39,6 +40,7 @@
         android:layout_toLeftOf="@+id/category_addtodo_btn"
         android:background="@drawable/login_btn_slc"
         android:textColor="@color/white"
+        android:onClick="showMenu"
         android:text="SET" />
 
     <Button
@@ -50,6 +52,7 @@
         android:layout_marginTop="21dp"
         android:textColor="@color/white"
         android:background="@drawable/login_btn_slc"
+        android:onClick="addTodo"
         android:text="ADD" />
 
 </RelativeLayout>
