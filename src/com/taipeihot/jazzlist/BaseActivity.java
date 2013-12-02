@@ -2,7 +2,6 @@ package com.taipeihot.jazzlist;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
 import android.view.MenuItem;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -11,7 +10,6 @@ import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 public class BaseActivity extends SlidingFragmentActivity {
 
     private final int mTitleRes;
-    protected ListFragment mFrag;
 
     public BaseActivity(int titleRes) {
         mTitleRes = titleRes;
@@ -25,14 +23,9 @@ public class BaseActivity extends SlidingFragmentActivity {
 
         // set the Behind View
         setBehindContentView(R.layout.menu_frame);
-        if (savedInstanceState == null) {
-            FragmentTransaction t = this.getSupportFragmentManager().beginTransaction();
-            mFrag = new SampleListFragment();
-            t.replace(R.id.menu_frame, mFrag);
-            t.commit();
-        } else {
-            mFrag = (ListFragment)this.getSupportFragmentManager().findFragmentById(R.id.menu_frame);
-        }
+        FragmentTransaction t = this.getSupportFragmentManager().beginTransaction();
+        t.replace(R.id.menu_frame, new MenuFragment());
+        t.commit();
 
         // customize the SlidingMenu
         SlidingMenu sm = getSlidingMenu();
