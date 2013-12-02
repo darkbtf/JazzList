@@ -2,3 +2,4 @@ gen/
 bin/
 .settings/
 .metadata
+project.properties
