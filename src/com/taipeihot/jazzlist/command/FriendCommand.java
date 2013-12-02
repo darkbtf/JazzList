@@ -8,8 +8,12 @@ public class FriendCommand implements Command{
 	public boolean exec(){
 		String cmd = SocketHelper.getMessage();
 		if(cmd.equals("add")){
-			String nickname = SocketHelper.getMessage();
 			int real_id = Integer.valueOf(SocketHelper.getMessage());
+			if(real_id==0){
+				Data.setFriendUpdating(true);
+				return true;
+			}
+			String nickname = SocketHelper.getMessage();
 			Data.friends.add(new User(nickname,real_id));
 		}
 		return true;
