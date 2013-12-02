@@ -60,6 +60,7 @@ public class LoginActivity extends Activity {
             			boolean result = Data.register(accountStr, passwordStr);
             			if (result == true) {
             				Data.login(accountStr, passwordStr);
+            				toMainActivity();
             			} else {
             				errorDialog("Dulplicated account name.");
             			}
@@ -93,13 +94,25 @@ public class LoginActivity extends Activity {
     }
 
     public void login(View view) {
-        // TODO: implement login
+    	EditText accountText = (EditText) findViewById(R.id.account_text);
+    	EditText passwordText = (EditText) findViewById(R.id.password_text);
+    	
+    	String accountStr = accountText.getText().toString();
+    	String passwordStr = passwordText.getText().toString();
+    	if (Data.login(accountStr, passwordStr)) {
+    		toMainActivity();
+    	} else {
+    		errorDialog("login failed");
+    	}
+    }
+
+    private void toMainActivity() {
         Intent intent = new Intent();
         //intent.setClass(LoginActivity.this, MainActivity.class);
         intent.setClass(LoginActivity.this, MainActivity.class);
         startActivity(intent);
     }
-
+    
     public void register(View view) {
         registerDialog.getWindow().setLayout(800, 1000);
         registerDialog.show();
