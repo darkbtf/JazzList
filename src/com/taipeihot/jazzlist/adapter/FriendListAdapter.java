@@ -48,9 +48,13 @@ public class FriendListAdapter extends BaseAdapter {
         }
           
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.friend_user_icon);
-        TextView txtTitle = (TextView) convertView.findViewById(R.id.friend_user_name);
-       
-        txtTitle.setText(userItems.get(position).getNickname());
+        TextView textTitle = (TextView) convertView.findViewById(R.id.friend_user_name);
+        User user=userItems.get(position);
+        textTitle.setText(user.getNickname());
+        int photoNum=user.photoNumber()%15+1;
+        String s="user_photo_"+Integer.toString(photoNum);
+		int resid=context.getResources().getIdentifier(s, "drawable", context.getPackageName());
+		imgIcon.setBackgroundResource(resid);
          
         // displaying count
         // check whether it set visible or not

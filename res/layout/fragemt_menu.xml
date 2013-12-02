@@ -2,28 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#000000" >
 
-    <EditText
-        android:id="@+id/category_name"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Add a category..." >
+        android:layout_height="wrap_content" >
 
-        <requestFocus />
-    </EditText>
+        <Button
+            android:id="@+id/category_add_btn"
+            style="@style/gray_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="ADD" />
 
-    <Button
-        android:id="@+id/category_add_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ADD" />
+        <EditText
+            android:id="@+id/category_name"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/category_add_btn"
+            android:layout_alignBottom="@+id/category_add_btn"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/category_add_btn"
+            android:ems="10"
+            android:hint="Add a category..." >
+
+            <requestFocus />
+        </EditText>
+
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/category_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="223dp"
+        android:layout_weight="0.73" >
+
     </ListView>
+
+    <Button
+        android:id="@+id/menu_status_btn"
+        style="@style/gray_btn"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:text="Friend Status" />
 
 </LinearLayout>
