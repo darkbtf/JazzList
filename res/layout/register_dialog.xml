@@ -10,13 +10,14 @@
         android:id="@+id/register_account_text"
         android:layout_width="150dp"
         android:layout_height="40dp"
+        
         android:layout_alignBaseline="@+id/register_account_title"
         android:layout_alignBottom="@+id/register_account_title"
         android:layout_alignLeft="@+id/register_title_text"
         android:layout_alignRight="@+id/register_title_text"
-        style="@style/TesingText"
-        android:textCursorDrawable="@null"
-        />
+        
+        style="@style/TestingText"
+        android:textCursorDrawable="@null"/>
 
     <EditText
         android:id="@+id/register_title_text"
@@ -26,12 +27,10 @@
         android:layout_below="@+id/register_account_text"
         android:layout_marginRight="18dp"
         android:layout_marginTop="23dp"
-        android:background="@drawable/register_text_btn_bg"
-        android:ems="10"
+        
         android:inputType="textPassword"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textColor="@color/white" />
+        style="@style/TestingText"
+        />
 
     <TextView
         android:id="@+id/register_confirm_title"
@@ -51,6 +50,7 @@
         android:layout_alignBottom="@+id/register_title_text"
         android:layout_alignLeft="@+id/register_account_title"
         android:text="Your Password:"
+        
         android:textColor="@color/white"
         />
 
@@ -75,7 +75,7 @@
         android:layout_alignRight="@+id/register_title_text"
         android:inputType="textPassword"
         android:textCursorDrawable="@null"
-        style="@style/TesingText" >
+        style="@style/TestingText" >
         
 
         <requestFocus />
