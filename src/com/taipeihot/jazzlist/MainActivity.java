@@ -8,11 +8,13 @@ import android.support.v4.app.Fragment;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.taipeihot.jazzlist.model.Todo;
+import com.taipeihot.jazzlist.table.CategoryTable;
 
 
 public class MainActivity extends BaseActivity {
 
 	ArrayList<Todo> todoList;
+	Fragment contentFragment;
 	
     public MainActivity() {
         super(R.string.left_and_right);
@@ -33,11 +35,10 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.content_frame);
 
         System.out.println("check point 1: ");
-        Fragment fragment = null;
-        fragment = new CategoryFragment();
+        contentFragment = new CategoryFragment();
         getSupportFragmentManager()
         .beginTransaction()
-        .replace(R.id.content_frame, fragment)
+        .replace(R.id.content_frame, contentFragment)
         .commit();
         System.out.println("check point 2: ");
 
@@ -51,7 +52,12 @@ public class MainActivity extends BaseActivity {
         System.out.println("check point 3: ");
     }
 
-    void changeCategory(int Categoryid) {
-    	
+    void changeCategory(int categoryId) {
+    	todoList = CategoryTable.find(categoryId).getTodos();
+    	for (Todo todo : todoList) {
+    		if (todo.getCategoryId() == categoryId) {
+    			
+    		}
+    	}
     }
 }

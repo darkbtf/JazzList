@@ -19,7 +19,7 @@ public class TodoListAdapter extends BaseExpandableListAdapter{
 
 	ArrayList< Todo > todoItem;
 	Context context;
-	TodoListAdapter(Context context,ArrayList<Todo> todoItem){
+	public TodoListAdapter(Context context,ArrayList<Todo> todoItem){
 		this.context=context;
 		this.todoItem=todoItem;
 	}
