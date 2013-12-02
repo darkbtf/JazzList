@@ -31,7 +31,7 @@
 	            android:layout_below="@+id/Login"
 	            android:layout_marginTop="18dp"
 	            android:background="@drawable/login_btn_slc"
-	            android:onClick="login"
+	            android:onClick="registerLater"
 	            android:text="Later"
 	            android:textColor="@color/login_text_color" />
 
@@ -84,6 +84,7 @@
 	            android:layout_marginTop="36dp"
 	            android:background="@drawable/login_btn_slc"
 	            android:text="Register"
+                android:onClick="register"
 	            android:textColor="@color/login_text_color" />
 
 	        <Button
@@ -95,6 +96,7 @@
 	            android:layout_alignLeft="@+id/password_text"
 	            android:background="@drawable/login_btn_slc"
 	            android:text="Login"
+                android:onClick="login"
 	            android:textColor="@color/login_text_color" />
 
 	        <TextView

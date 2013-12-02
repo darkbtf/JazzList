@@ -23,7 +23,7 @@
             android:label="@string/title_activity_achievement" >
         </activity>
         <activity
-            android:name="com.taipeihot.jazzlist.FreindListActivity"
+            android:name="com.taipeihot.jazzlist.FriendListFragment"
             android:label="@string/title_activity_freind_list" >
         </activity>
         <activity
