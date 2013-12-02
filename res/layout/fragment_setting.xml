@@ -27,7 +27,7 @@
            android:layout_centerVertical="true"
            android:text="Todo name"
            android:textColor="@color/white"
-           android:textSize="40" />
+           android:textSize="40dp" />
 
        <Button
            android:id="@+id/setting_time_btn"
