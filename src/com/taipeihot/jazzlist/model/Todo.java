@@ -13,7 +13,7 @@ public class Todo {
 	private boolean isPublic = false; // settings' default?
 	private boolean alive=true;
 	private long deadline; 
-	private long user_id = 0;
+	private int user_id = 0;
 	private String description;
 	private long belong_id = 0;
 	private int real_id = 0;
@@ -83,6 +83,6 @@ public class Todo {
 	public int save(){return TodoTable.update(this);}
 	public short getStatus(){return (short) ((isPublic?2:0)+(alive?1:0));}
 	public long getDeadlineLong(){return getDeadline().getTime();}
-	public long getUserId(){return user_id;}
+	public int getUserId(){return user_id;}
 	public int getRealId(){return real_id;}
 }

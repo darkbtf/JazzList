@@ -9,6 +9,7 @@ public class Status {
 	//private long _id=0;
 	private String nickname;
 	private String title;
+	private int user_id;
 	private long deadline;
 	private int score = 0; //number of like 
 	private boolean visible = true;
@@ -18,6 +19,7 @@ public class Status {
 	public Status(String nickname, Todo todo, ArrayList<Comment>comments){//TODO remove
 		this.nickname = nickname;
 		this.title = todo.getTitle();
+		this.user_id = todo.getUserId();
 		this.deadline = todo.getDeadlineLong();
 		this.comments = comments;
 	}
@@ -25,6 +27,7 @@ public class Status {
 	public Status(String nickname, Todo todo){//TODO remove
 		this.nickname = nickname;
 		this.title = todo.getTitle();
+		this.user_id = todo.getUserId();
 		this.deadline = todo.getDeadlineLong();
 		this.comments = new ArrayList<Comment>();
 	}
@@ -61,22 +64,25 @@ public class Status {
 		comments.add(c);
 	}
 	
+	public int photoNumber(){return user_id;}
+	
 	/***************************For Database****************************/
-	public Status(String nickname, String title, long deadline, int score, int real_id){
+	public Status(String nickname, String title, int user_id, long deadline, int score, int real_id){
 		this.nickname = nickname;
 		this.title = title;
+		this.user_id = user_id;
 		this.deadline = deadline;
 		this.score = score;
 		this.real_id = real_id;
 	}
-	public Status(String nickname, String title, long deadline, int score, boolean visible, int real_id){
+	public Status(String nickname, String title, int user_id, long deadline, int score, boolean visible, int real_id){
 		this.nickname = nickname;
 		this.title = title;
+		this.user_id = user_id;
 		this.deadline = deadline;
 		this.score = score;
 		this.visible = visible;
 		this.real_id = real_id;
 	}
-	
 	public int getRealId(){return real_id;}
 }
