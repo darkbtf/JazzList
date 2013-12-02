@@ -3,19 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/defualt_corner"
+
      >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
+		android:layout_marginTop="10dp"
          >
 		<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="0dp"
-             >
+            android:layout_marginTop="0dp">
 
             <ImageView
                 android:id="@+id/state_user_photo"
@@ -25,7 +25,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/ic_pages"/>"
+                android:background="@drawable/image_shape"
+                />
 
             <TextView
                 android:id="@+id/status_user_name"
@@ -37,16 +38,11 @@
                 android:text="TextView"
                 android:textColor="@android:color/black"
                 android:textSize="40dp" />
-
-
-
-
-        </RelativeLayout>
+       </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="0dp" >
-
             <TextView
                 android:id="@+id/status_todo_name"
                 android:layout_width="wrap_content"
@@ -73,6 +69,7 @@
             android:id="@+id/LinearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
              >
 
             <ImageButton
@@ -82,8 +79,9 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/defualt_btn"
-                android:src="@drawable/ic_communities" />
+                android:background="@drawable/defual_btn"
+                android:src="@drawable/ic_communities"
+                 />
 			
             <TextView
                 android:id="@+id/status_like_count"
@@ -93,17 +91,18 @@
                 android:textSize="30dp"
                 android:text="10"
                 android:layout_marginTop="10dp"
-
+				android:textColor="@android:color/white"
                 />
 
             <ImageButton
-                android:id="@+id/status_commed_graph"
+                android:id="@+id/status_comment_graph"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/defualt_btn"
-                android:src="@drawable/ic_home" />
+                android:background="@drawable/defual_btn"
+                android:src="@drawable/ic_home"
+                 />
 
             <TextView
                 android:id="@+id/status_comment_count"
@@ -114,6 +113,7 @@
                 android:textSize="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:textColor="@android:color/white"
                  />
 
         </LinearLayout>
