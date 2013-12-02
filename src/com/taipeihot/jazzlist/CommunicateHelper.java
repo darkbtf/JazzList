@@ -51,6 +51,15 @@ public class CommunicateHelper {
 		}
 		return true;
 	}
+	
+
+	public static void getFriends() {
+		SocketHelper.sendMessage(new String[]{"friend","get"});
+	}
+
+	public static void getStatus() {
+		SocketHelper.sendMessage(new String[]{"status","get"});
+	}
 	/******************************Do not edit here***************************/
 	public static boolean start(){
     	if(!SocketHelper.start())return false;
