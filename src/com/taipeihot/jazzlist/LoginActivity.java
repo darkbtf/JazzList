@@ -2,6 +2,7 @@ package com.taipeihot.jazzlist;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.table.Table;
@@ -19,6 +21,7 @@ import com.taipeihot.jazzlist.table.Table;
 public class LoginActivity extends Activity {
 
     AlertDialog registerDialog;
+    View alertView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +37,38 @@ public class LoginActivity extends Activity {
 
     private void initRegisterDialog() {
         LayoutInflater inflater = LayoutInflater.from(this);
-        View alert_view = inflater.inflate(R.layout.register_dialog, null);
+        alertView = inflater.inflate(R.layout.register_dialog, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setView(alert_view)
-        .setPositiveButton("Jizz", new DialogInterface.OnClickListener() {
+        builder.setView(alertView)
+        .setPositiveButton("Register", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                // FIRE ZE MISSILES!
+        		System.out.println("errrrr");
+            	EditText accountText = (EditText) alertView.findViewById(R.id.register_account_text);
+            	EditText passwordText = (EditText) alertView.findViewById(R.id.register_password_text);
+            	EditText confirmText = (EditText) alertView.findViewById(R.id.register_confirm_text);
+            	String accountStr = accountText.getText().toString();
+            	String passwordStr = passwordText.getText().toString();
+            	String confirmStr = confirmText.getText().toString();
+            	if (!confirmStr.equals(passwordStr)) {
+            		errorDialog("incorrect confirm password");
+            		System.out.println("errrrr");
+            	} else {
+            		if (!isNetworkAvailable()) {
+                		errorDialog("No Internet connection, try again later.");
+            		} else {
+            			boolean result = Data.register(accountStr, passwordStr);
+            			if (result == true) {
+            				Data.login(accountStr, passwordStr);
+            			} else {
+            				errorDialog("Dulplicated account name.");
+            			}
+            		}
+            		// TODO: galagala
+            	}
             }
         })
-        .setNegativeButton("fuck", new DialogInterface.OnClickListener() {
+        .setNegativeButton("Back", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 // User cancelled the dialog
@@ -69,17 +94,14 @@ public class LoginActivity extends Activity {
 
     public void login(View view) {
         // TODO: implement login
-        System.out.println("login");
         Intent intent = new Intent();
         //intent.setClass(LoginActivity.this, MainActivity.class);
         intent.setClass(LoginActivity.this, MainActivity.class);
-        System.out.println("meow");
         startActivity(intent);
-        System.out.println("meow2");
     }
 
     public void register(View view) {
-        registerDialog.getWindow().setLayout(600, 400);
+        registerDialog.getWindow().setLayout(800, 1000);
         registerDialog.show();
         //Window dialogWindow = registerDialog.getWindow();
         /*WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -87,6 +109,10 @@ public class LoginActivity extends Activity {
         lp.y = 100;
         lp.height = 1000;
         registerDialog.getWindow().setAttributes(lp);*/
+        //Intent intent = new Intent();
+        //intent.setClass(LoginActivity.this, MainActivity.class);
+        //intent.setClass(LoginActivity.this, MainActivity.class);
+        //startActivity(intent);
         return;
 
     }
@@ -126,5 +152,11 @@ public class LoginActivity extends Activity {
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+    
+    public void errorDialog(String errorMessage) {
+		Dialog err = new Dialog(alertView.getContext());
+		err.setTitle(errorMessage);
+		err.show();
     }
 }

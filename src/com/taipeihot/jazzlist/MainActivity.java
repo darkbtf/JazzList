@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity {
         System.out.println("check point 0: ");
         super.onCreate(savedInstanceState);
         getSlidingMenu().setMode(SlidingMenu.LEFT_RIGHT);
-        getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
 
         setContentView(R.layout.content_frame);
 

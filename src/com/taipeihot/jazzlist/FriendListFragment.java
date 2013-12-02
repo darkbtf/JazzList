@@ -52,6 +52,7 @@ public class FriendListFragment extends Fragment {
             //System.out.println(categoryName.getText().toString());
             Data.addFriend(friendName.getText().toString());
             friendListAdapter.notifyDataSetChanged();
+            System.out.println("meow add friend"); 
         }
     }
 }

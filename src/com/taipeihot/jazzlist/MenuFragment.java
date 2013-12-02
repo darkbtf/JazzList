@@ -2,6 +2,7 @@ package com.taipeihot.jazzlist;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -49,6 +50,16 @@ public class MenuFragment extends Fragment {
             	getActivity().setTitle(category.getTitle());
             	((MainActivity) getActivity()).changeCategory(category.getId());
             }
+        });
+        Button timelineButton = (Button) view.findViewById(R.id.menu_status_btn);
+        timelineButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(getActivity(), TimelineActivity.class);
+				startActivity(intent);
+			}
         });
         return view;
     }
