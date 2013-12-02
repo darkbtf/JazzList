@@ -41,7 +41,8 @@ public class Data {
 		return CommunicateHelper.addCategory(c);
 	}
 	public static ArrayList<Category> getCategories() {
-        return categories;
+		return categories=CategoryTable.All();
+        //return categories;
     }
 	public static void addStatus(Status s) {
 		status.add(s);
