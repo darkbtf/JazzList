@@ -44,7 +44,7 @@ public class MainActivity extends BaseActivity {
         getSlidingMenu().setSecondaryShadowDrawable(R.drawable.shadowright);
         getSupportFragmentManager()
         .beginTransaction()
-        .replace(R.id.menu_frame_two, new SampleListFragment())
+        .replace(R.id.menu_frame_two, new FriendListFragment())
         .commit();
 
         System.out.println("check point 3: ");
