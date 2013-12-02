@@ -51,12 +51,19 @@ public class LoginActivity extends Activity {
             	String passwordStr = passwordText.getText().toString();
             	String confirmStr = confirmText.getText().toString();
             	if (!confirmStr.equals(passwordStr)) {
-            		Dialog err = new Dialog(alertView.getContext());
-            		err.setTitle("incorrect confirm password");
-            		err.show();
+            		errorDialog("incorrect confirm password");
             		System.out.println("errrrr");
             	} else {
-            		Data.register(accountStr, passwordStr);
+            		if (!isNetworkAvailable()) {
+                		errorDialog("No Internet connection, try again later.");
+            		} else {
+            			boolean result = Data.register(accountStr, passwordStr);
+            			if (result == true) {
+            				Data.login(accountStr, passwordStr);
+            			} else {
+            				errorDialog("Dulplicated account name.");
+            			}
+            		}
             		// TODO: galagala
             	}
             }
@@ -145,5 +152,11 @@ public class LoginActivity extends Activity {
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+    
+    public void errorDialog(String errorMessage) {
+		Dialog err = new Dialog(alertView.getContext());
+		err.setTitle(errorMessage);
+		err.show();
     }
 }

@@ -20,7 +20,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 
 	ArrayList< Status > statusItems;
 	Context context;
-	StatusListAdapter(Context context,ArrayList<Status> statusItems){
+	public StatusListAdapter(Context context,ArrayList<Status> statusItems){
 		this.context=context;
 		this.statusItems=statusItems;
 	}
