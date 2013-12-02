@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.View;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.taipeihot.jazzlist.model.Todo;
@@ -49,15 +50,15 @@ public class MainActivity extends BaseActivity {
         .replace(R.id.menu_frame_two, new FriendListFragment())
         .commit();
 
+        //getSlidingMenu().showMenu();
+        //getSlidingMenu().showSecondaryMenu();
+        //getSlidingMenu().toggle();
         System.out.println("check point 3: ");
     }
 
-    void changeCategory(int categoryId) {
-    	todoList = CategoryTable.find(categoryId).getTodos();
-    	for (Todo todo : todoList) {
-    		if (todo.getCategoryId() == categoryId) {
-    			
-    		}
-    	}
+    public void changeCategory(long categoryId) {
+    	((CategoryFragment) contentFragment).changeCategory(categoryId);
+    	getSlidingMenu().showContent();
     }
+    
 }

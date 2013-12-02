@@ -25,10 +25,10 @@ public class Category {
 		this.count = count;
 	}
 	
-	public boolean addTodo(String title) { // TODO: not title only?
+	public long addTodo(String title) { // TODO: not title only?
 		Todo a = new Todo(title,getId(),true,new Date(0),title+" s description");
-		TodoTable.insert(a);
-		return CommunicateHelper.addTodo(a);
+		CommunicateHelper.addTodo(a);
+		return TodoTable.insert(a);
 	}
 	public long getId(){return _id;}
 	public void setId(long _id){this._id = _id;}

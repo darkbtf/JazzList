@@ -44,6 +44,10 @@ public class Data {
 		return categories=CategoryTable.All();
         //return categories;
     }
+	public static ArrayList<User> getFriends() {
+		return friends;
+        //return categories;
+    }
 	public static void addStatus(Status s) {
 		status.add(s);
 		//TODO add to the front? Need a magic sort.

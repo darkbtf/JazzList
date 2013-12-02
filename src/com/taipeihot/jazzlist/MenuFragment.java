@@ -45,8 +45,9 @@ public class MenuFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                     long arg3) {
-            	categories.get(position);
-                // TODO: change category
+            	Category category = categories.get(position);
+            	getActivity().setTitle(category.getTitle());
+            	((MainActivity) getActivity()).changeCategory(category.getId());
             }
         });
         return view;
