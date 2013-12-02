@@ -16,17 +16,17 @@ public class Data {
 	public static ArrayList<Category> categories = new ArrayList<Category>();
 	private static boolean statusUpdating = false;
 	private static boolean friendUpdating = false;
+	private static int logined = 0;
 	
-	public static void login(String account, String password){
-		/*setAccount(account,account,Util.MD5(password));
-		new Thread(new Runnable(){
-    		@Override
-    		public void run(){
-    			CommunicateHelper.start();
-    		}
-    	}).start();*/
+	public static boolean login(String account, String password){
+		CommunicateHelper.login(account,password);
+		while(waittingLogin());
+		return hasLogined();
 	}
-	public static void register(String account,String password){
+	public static boolean register(String account,String password){
+		CommunicateHelper.register(account,password);
+		while(waittingLogin());
+		return hasLogined();
 		//setAccount(account,account,Util.MD5(password));
 	}
 	public static void setAccount(String a, String n, String password) {
@@ -60,12 +60,9 @@ public class Data {
 		status.add(s);
 		//TODO add to the front? Need a magic sort.
 	}
-	/*public static ArrayList<Status> getStatus(){
-		setStatusUpdating(true);
-		CommunicateHelper.getStatus();
-		while(getStatusUpdating());
+	public static ArrayList<Status> getStatus(){
 		return status;
-	}*/
+	}
 	public static void setStatusUpdating(boolean b) {
 		if(b){
 			statusUpdating=true;
@@ -83,4 +80,15 @@ public class Data {
 	public static boolean getFriendUpdating() {
 		return friendUpdating;
 	}
+	
+	public static boolean hasLogined(){
+		return logined==1;
+	}
+	
+	public static boolean waittingLogin(){
+		return logined==0;
+	}
+	public static void loginWait(){logined = 0;}
+	public static void loginSuccess(){logined = 1;}
+	public static void loginFail(){logined = 2;}
 }
