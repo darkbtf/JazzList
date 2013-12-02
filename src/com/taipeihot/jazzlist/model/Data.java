@@ -50,8 +50,9 @@ public class Data {
 	public static ArrayList<User> getFriends() {
 		setFriendUpdating(true);
 		CommunicateHelper.getFriends();
+		Util.errorReport("wait friends updating");
 		while(getFriendUpdating());
-		Util.errorReport("get friends!"+friends);
+		Util.errorReport("get friends!");
 		return friends;
         //return categories;
     }

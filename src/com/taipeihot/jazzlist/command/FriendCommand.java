@@ -10,7 +10,6 @@ public class FriendCommand implements Command{
 		String cmd = SocketHelper.getMessage();
 		if(cmd.equals("add")){
 			int real_id = Integer.valueOf(SocketHelper.getMessage());
-			Util.errorReport(real_id+"");
 			if(real_id==0){
 				Data.setFriendUpdating(false);
 				return true;
