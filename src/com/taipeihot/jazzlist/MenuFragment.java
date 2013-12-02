@@ -1,5 +1,7 @@
 package com.taipeihot.jazzlist;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,12 +15,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.taipeihot.jazzlist.adapter.CategoryListAdapter;
+import com.taipeihot.jazzlist.model.Category;
 import com.taipeihot.jazzlist.model.Data;
 
 public class MenuFragment extends Fragment {
 
     CategoryListAdapter categoryListAdapter;
     View view;
+    ArrayList<Category> categories;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -32,15 +36,16 @@ public class MenuFragment extends Fragment {
                         addCategory(view);
                     }
                 });
-        categoryListAdapter = new CategoryListAdapter(this.getActivity(), Data.getCategories());
+        categories=Data.getCategories();
+        categoryListAdapter = new CategoryListAdapter(this.getActivity(), categories);
         ListView categoryListView = (ListView) view.findViewById(R.id.category_list);
         categoryListView.setAdapter(categoryListAdapter);
         categoryListView.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                     long arg3) {
-
+            	categories.get(position);
                 // TODO: change category
             }
         });
