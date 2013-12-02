@@ -13,9 +13,10 @@ public class StatusCommand implements Command{
 			int real_id = Integer.valueOf(SocketHelper.getMessage());
 			String nickname = SocketHelper.getMessage();
 			String title = SocketHelper.getMessage();
+			int user_id = Integer.valueOf(SocketHelper.getMessage());
 			long deadline = Long.valueOf(SocketHelper.getMessage());
 			int score = Integer.valueOf(SocketHelper.getMessage());
-			Data.addStatus(new Status(nickname,title,deadline,score,real_id));
+			Data.addStatus(new Status(nickname,title,user_id,deadline,score,real_id));
 			return true;
 		}
 		return true;
