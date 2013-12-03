@@ -3,6 +3,7 @@ package com.taipeihot.jazzlist.model;
 import java.util.ArrayList;
 import java.sql.Date;
 
+import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.Util;
 
 public class Status {
@@ -60,8 +61,10 @@ public class Status {
 		return comments;
 	}
 	
-	public void addComments(Comment c){
-		comments.add(c);
+	public void addComment(Comment c){
+		c.setStatusId(real_id);
+		//comments.add(c);  // no need this
+		CommunicateHelper.addComment(c);
 	}
 	
 	public int photoNumber(){return user_id;}
