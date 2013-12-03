@@ -112,8 +112,12 @@ public class CategoryFragment extends Fragment {
             //System.out.println(categoryName.getText().toString());
         	long todoId = currentCategory.addTodo(todoName.getText().toString(),d.getTime());
         	todoName.setText("");
-        	todoList.add(TodoTable.find(todoId));
-            todoListAdapter.notifyDataSetChanged();
+        	todoList = currentCategory.getTodos();
+        	todoListAdapter = new TodoListAdapter(this.getActivity(), todoList);
+        	listView = (ExpandableListView) view.findViewById(R.id.todoList);
+        	listView.setAdapter(todoListAdapter);
+        	/*todoList.add(TodoTable.find(todoId));
+            todoListAdapter.notifyDataSetChanged();*/
         }
     }
     private void todoSetTime(){

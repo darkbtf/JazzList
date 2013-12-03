@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.table.TodoTable;
 
-public class Todo {
+public class Todo implements Comparable{
 	private long _id=0;
 	private String title;
 	private long category_id;
@@ -86,4 +86,18 @@ public class Todo {
 	public long getDeadlineLong(){return getDeadline().getTime();}
 	public int getUserId(){return user_id;}
 	public int getRealId(){return real_id;}
+
+	@Override
+	public int compareTo(Object o){
+		Todo A = (Todo)o;
+		if(this.isAlive()!=A.isAlive()){
+			if(this.isAlive())return -1;
+			else return 1;
+		}
+		else{
+			if(this.getDeadlineLong() > A.getDeadlineLong())return 1;
+			else if(this.getDeadlineLong() == A.getDeadlineLong())return 0;
+			return -1;
+		}
+	}
 }
