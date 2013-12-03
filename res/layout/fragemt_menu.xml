@@ -27,8 +27,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/category_add_btn"
-            android:background="@style/black_textview"
-            android:ems="10"
+            style="@style/black_textview"
             android:hint="Add a category..." >
 
             <requestFocus />
