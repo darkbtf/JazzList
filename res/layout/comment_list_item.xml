@@ -14,39 +14,28 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/ic_whats_hot" />
+             />
 
         <TextView
             android:id="@+id/comment_user_name"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/comment_user_photo"
             android:text="Paul Hsia"
             android:textColor="#ff3d5a99"
-            android:textSize="18dp"
-             />
+            android:textSize="15dp" />
 
         <ImageButton
             android:id="@+id/comment_like_btn"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginRight="10dp"
-          	android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/comment_like_count"
-            android:src="@drawable/ic_home"
-            android:background="#00000000" />
-
-        <TextView
-            android:id="@+id/comment_content"
-            android:layout_width="250dp"
+            android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignLeft="@+id/comment_user_name"
-            android:layout_alignTop="@+id/comment_user_photo"
-            android:layout_marginLeft="103dp"
-            android:text="TextView/nasdfasdfasdfasdfasdfasdfasdfsdf"
-            android:textSize="15dp" />
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/comment_like_count"
+            android:background="#00000000"
+            android:src="@drawable/jazz_comment_btn1" />
 
         <TextView
             android:id="@+id/comment_like_count"
@@ -56,6 +45,22 @@
             android:layout_centerVertical="true"
             android:textSize="18dp"
             android:text="100" />
+
+        <TextView
+            android:id="@+id/comment_content"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@+id/comment_user_name"
+            android:text="comment context"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/comment_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/comment_content"
+            android:layout_below="@+id/comment_content"
+            android:text="comment_time" />
         
     </RelativeLayout>
 
