@@ -65,6 +65,7 @@ public class Status {
 		c.setStatusId(real_id);
 		//comments.add(c);  // no need this
 		CommunicateHelper.addComment(c);
+		Data.updateStatus();
 	}
 	
 	public int photoNumber(){return user_id;}
@@ -88,4 +89,8 @@ public class Status {
 		this.real_id = real_id;
 	}
 	public int getRealId(){return real_id;}
+
+	public void updateComment(Comment comment) {
+		comments.add(comment);
+	}
 }

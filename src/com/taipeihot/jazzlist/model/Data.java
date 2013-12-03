@@ -100,4 +100,12 @@ public class Data {
 	public static void loginWait(){logined = 0;}
 	public static void loginSuccess(){logined = 1;}
 	public static void loginFail(){logined = 2;}
+	
+	public static void updateComment(Comment comment) {
+		for(Status s:status)
+			if(s.getRealId() == comment.getStatusId()){
+				s.updateComment(comment);
+				break;
+			}
+	}
 }
