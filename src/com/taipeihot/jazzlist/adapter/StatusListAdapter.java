@@ -137,7 +137,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 			
 		});
 		
-		AlertDialog commentDialog;
+		final AlertDialog commentDialog;
         LayoutInflater inflater = LayoutInflater.from(convertView.getContext());
 		final View alertView = inflater.inflate(R.layout.comment_dialog, null);
 		AlertDialog.Builder builder = new AlertDialog.Builder(convertView.getContext());
@@ -154,9 +154,17 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
             public void onClick(DialogInterface dialog, int id) {
             }
         });
+
         commentDialog = builder.create();
         
-        commentDialog.show();
+        commentBtn.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+		        commentDialog.show();
+			}
+        	
+        });
 		
 		likeBtn.setFocusable(false);
 		commentBtn.setFocusable(false);
