@@ -25,7 +25,7 @@ public class CommunicateHelper {
 	}
 
 	public static void updateStatus() {
-		SocketHelper.sendMessage(new String[]{"status","get",Data.lastUpdateStausTime+""});
+		SocketHelper.sendMessage(new String[]{"status","get",Data.lastUpdateStatusTime+""});
 	}
 	public static boolean addTodo(Todo a) {
 		if(!sendMessage(new String[]{"todo","new"}))return false;

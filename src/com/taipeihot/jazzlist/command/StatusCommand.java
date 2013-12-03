@@ -11,8 +11,9 @@ public class StatusCommand implements Command{
 		String cmd = SocketHelper.getMessage();
 		if(cmd.equals("new")){
 			int real_id = Integer.valueOf(SocketHelper.getMessage());
-			if(real_id == 0){     
-				Data.setStatusUpdating(false);
+			if(real_id == 0){
+				long lastUpdateStausTime=Long.valueOf(SocketHelper.getMessage());
+				Data.doneStatusUpdate(lastUpdateStausTime);
 				return true;
 			}
 			String nickname = SocketHelper.getMessage();
