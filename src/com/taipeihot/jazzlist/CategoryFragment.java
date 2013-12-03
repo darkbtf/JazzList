@@ -64,6 +64,7 @@ public class CategoryFragment extends Fragment {
         if (todoName.getText().toString() != "") {
             //System.out.println(categoryName.getText().toString());
         	long todoId = currentCategory.addTodo(todoName.getText().toString());
+        	todoName.setText("");
         	todoList.add(TodoTable.find(todoId));
             todoListAdapter.notifyDataSetChanged();
         }

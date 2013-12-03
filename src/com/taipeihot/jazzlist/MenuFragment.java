@@ -78,6 +78,7 @@ public class MenuFragment extends Fragment implements OnNavigationListener{
         if (categoryName.getText().toString() != "") {
             //System.out.println(categoryName.getText().toString());
             Data.addCategory(categoryName.getText().toString());
+        	categoryName.setText("");
             categoryListAdapter.notifyDataSetChanged();
         }
     }

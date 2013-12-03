@@ -9,6 +9,9 @@ import com.taipeihot.jazzlist.model.Status;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 
 public class TimelineActivity extends Activity {
@@ -23,8 +26,22 @@ public class TimelineActivity extends Activity {
         setContentView(R.layout.activity_timeline);
         statusListView = (ExpandableListView) findViewById(R.id.status_list);
         statusList = Data.getStatus();
+        //Data.updateStatus();
         statusListAdapter = new StatusListAdapter(this, statusList);
         statusListView.setAdapter(statusListAdapter);
+     
+        //
+        // Set expand
+        Button updateButton = (Button) findViewById(R.id.update_status_btn);
+        updateButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				Data.updateStatus();
+				statusListAdapter.notifyDataSetChanged();
+			}
+        	
+        });
     }
 
     @Override

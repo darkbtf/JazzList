@@ -24,7 +24,7 @@ public class FriendListFragment extends Fragment {
 	View view;
 	ArrayList<User> friends;
 	FriendListAdapter friendListAdapter;
-	
+	ListView friendListView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class FriendListFragment extends Fragment {
                 });
         friends=Data.getFriends();
         friendListAdapter = new FriendListAdapter(this.getActivity(), friends);
-        ListView friendListView = (ListView) view.findViewById(R.id.friendList);
+        friendListView = (ListView) view.findViewById(R.id.friendList);
         friendListView.setAdapter(friendListAdapter);
         
         return view;
@@ -51,8 +51,10 @@ public class FriendListFragment extends Fragment {
         if (friendName.getText().toString() != "") {
             //System.out.println(categoryName.getText().toString());
             Data.addFriend(friendName.getText().toString());
+        	friendName.setText("");
+            friendListView.setAdapter(friendListAdapter);
             friendListAdapter.notifyDataSetChanged();
-            System.out.println("meow add friend"); 
+            //System.out.println("meow add friend"); 
         }
     }
 }

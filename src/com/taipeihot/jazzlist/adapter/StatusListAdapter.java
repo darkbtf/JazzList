@@ -2,18 +2,23 @@ package com.taipeihot.jazzlist.adapter;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.model.Comment;
+import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.Status;
 
 public class StatusListAdapter extends BaseExpandableListAdapter{
@@ -52,7 +57,15 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 		TextView likeCount=(TextView)convertView.findViewById(R.id.comment_like_count);
 		TextView commentContent=(TextView)convertView.findViewById(R.id.comment_content);
 		ImageButton imageButton=(ImageButton)convertView.findViewById(R.id.comment_like_btn);
-		Comment comment=(Comment)getChild(groupPosition,childPosition);
+		final Comment comment=(Comment)getChild(groupPosition,childPosition);
+		imageButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				comment.incScore();
+			}
+			
+		});
 		
 		userName.setText(comment.getNickname());
 		commentContent.setText(comment.getContent());
@@ -104,7 +117,8 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 	                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView=infalInflater.inflate(R.layout.status_list_item,parent,false);
 		}
-		Status status=statusItems.get(groupPosition);
+
+		final Status status=statusItems.get(groupPosition);
 		TextView userName=(TextView)convertView.findViewById(R.id.status_user_name);
 		ImageView userPhoto=(ImageView)convertView.findViewById(R.id.state_user_photo);
 		TextView todoName=(TextView)convertView.findViewById(R.id.status_todo_name);
@@ -114,6 +128,30 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 		ImageButton likeBtn=(ImageButton)convertView.findViewById(R.id.status_like_graph);
 		ImageButton commentBtn=(ImageButton)convertView.findViewById(R.id.status_comment_graph);
 		
+		likeBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				status.incScore();
+			}
+			
+		});
+		/*
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(alertView)
+        .setPositiveButton("Register", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            	
+            }
+        })
+        .setNegativeButton("Back", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+        registerDialog = builder.create();
+		*/
 		likeBtn.setFocusable(false);
 		commentBtn.setFocusable(false);
 		userName.setText(status.getNickname());
