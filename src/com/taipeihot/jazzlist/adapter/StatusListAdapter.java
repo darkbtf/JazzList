@@ -59,7 +59,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 		likeCount.setText(Integer.toString((comment.getScore())));
 		imageButton.setFocusable(false);
 
-		int photoNum=3;//user.photoNumber()%15+1;
+		int photoNum=comment.photoNumber()%15+1;
 		userPhoto.setBackgroundResource(
 				context.getResources()
 				.getIdentifier(
@@ -105,7 +105,6 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 			convertView=infalInflater.inflate(R.layout.status_list_item,parent,false);
 		}
 		Status status=statusItems.get(groupPosition);
-		
 		TextView userName=(TextView)convertView.findViewById(R.id.status_user_name);
 		ImageView userPhoto=(ImageView)convertView.findViewById(R.id.state_user_photo);
 		TextView todoName=(TextView)convertView.findViewById(R.id.status_todo_name);
@@ -122,7 +121,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 		todoTime.setText(status.getDeadline());
 		likeCount.setText(Integer.toString(status.getScore()));
 		commentCount.setText(Integer.toString(status.getComments().size()));
-		int photoNum=3;//user.photoNumber()%15+1;
+		int photoNum=status.photoNumber()%15+1;
 		userPhoto.setBackgroundResource(
 				context.getResources()
 				.getIdentifier(

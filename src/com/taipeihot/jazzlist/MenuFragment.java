@@ -2,6 +2,8 @@ package com.taipeihot.jazzlist;
 
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar.OnNavigationListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,11 +16,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
+import com.haarman.listviewanimations.swinginadapters.prepared.AlphaInAnimationAdapter;
 import com.taipeihot.jazzlist.adapter.CategoryListAdapter;
 import com.taipeihot.jazzlist.model.Category;
 import com.taipeihot.jazzlist.model.Data;
 
-public class MenuFragment extends Fragment {
+@SuppressLint("NewApi")
+public class MenuFragment extends Fragment implements OnNavigationListener{
 
     CategoryListAdapter categoryListAdapter;
     View view;
@@ -38,8 +43,9 @@ public class MenuFragment extends Fragment {
                 });
         categories=Data.getCategories();
         categoryListAdapter = new CategoryListAdapter(this.getActivity(), categories);
+        AnimationAdapter animAdapter=new AlphaInAnimationAdapter(categoryListAdapter);
         ListView categoryListView = (ListView) view.findViewById(R.id.category_list);
-        categoryListView.setAdapter(categoryListAdapter);
+        categoryListView.setAdapter(animAdapter);
         categoryListView.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
@@ -61,4 +67,10 @@ public class MenuFragment extends Fragment {
             categoryListAdapter.notifyDataSetChanged();
         }
     }
+
+	@Override
+	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

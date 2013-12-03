@@ -1,14 +1,6 @@
 package com.taipeihot.jazzlist;
 
 import java.util.ArrayList;
-import java.sql.Date;
-
-import com.taipeihot.jazzlist.adapter.TodoListAdapter;
-import com.taipeihot.jazzlist.model.Category;
-import com.taipeihot.jazzlist.model.Data;
-import com.taipeihot.jazzlist.model.Todo;
-import com.taipeihot.jazzlist.table.CategoryTable;
-import com.taipeihot.jazzlist.table.TodoTable;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -17,9 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+
+import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
+import com.haarman.listviewanimations.swinginadapters.prepared.AlphaInAnimationAdapter;
+import com.taipeihot.jazzlist.adapter.TodoListAdapter;
+import com.taipeihot.jazzlist.model.Category;
+import com.taipeihot.jazzlist.model.Todo;
+import com.taipeihot.jazzlist.table.CategoryTable;
+import com.taipeihot.jazzlist.table.TodoTable;
 
  @SuppressLint("NewApi")
 public class CategoryFragment extends Fragment {
@@ -36,6 +37,7 @@ public class CategoryFragment extends Fragment {
     	view = inflater.inflate(R.layout.fragment_category, null);
     	todoList = new ArrayList<Todo>();
     	todoListAdapter = new TodoListAdapter(this.getActivity(), todoList);
+    	
     	listView = (ExpandableListView) view.findViewById(R.id.todoList);
     	Button addButton = (Button) view.findViewById(R.id.category_addtodo_btn);
     	addButton.setOnClickListener(new OnClickListener(){
