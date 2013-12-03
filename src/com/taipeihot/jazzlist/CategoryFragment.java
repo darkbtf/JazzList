@@ -63,8 +63,8 @@ public class CategoryFragment extends Fragment {
         EditText todoName = (EditText) view.findViewById(R.id.category_todoinput);
         if (todoName.getText().toString() != "") {
             //System.out.println(categoryName.getText().toString());
-        	todoName.setText("");
         	long todoId = currentCategory.addTodo(todoName.getText().toString());
+        	todoName.setText("");
         	todoList.add(TodoTable.find(todoId));
             todoListAdapter.notifyDataSetChanged();
         }

@@ -49,12 +49,12 @@ public class FriendListFragment extends Fragment {
     private void addFriend() {
         EditText friendName = (EditText) view.findViewById(R.id.friend_add_name);
         if (friendName.getText().toString() != "") {
-        	friendName.setText("");
             //System.out.println(categoryName.getText().toString());
             Data.addFriend(friendName.getText().toString());
+        	friendName.setText("");
             friendListView.setAdapter(friendListAdapter);
             friendListAdapter.notifyDataSetChanged();
-            System.out.println("meow add friend"); 
+            //System.out.println("meow add friend"); 
         }
     }
 }

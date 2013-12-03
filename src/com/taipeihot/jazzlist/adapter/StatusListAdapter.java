@@ -2,19 +2,23 @@ package com.taipeihot.jazzlist.adapter;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.model.Comment;
+import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.Status;
 
 public class StatusListAdapter extends BaseExpandableListAdapter{
@@ -132,17 +136,22 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 			}
 			
 		});
-		
-		commentBtn.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		
+		/*
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(alertView)
+        .setPositiveButton("Register", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            	
+            }
+        })
+        .setNegativeButton("Back", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+        registerDialog = builder.create();
+		*/
 		likeBtn.setFocusable(false);
 		commentBtn.setFocusable(false);
 		userName.setText(status.getNickname());
