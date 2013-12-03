@@ -74,6 +74,17 @@ public class CommunicateHelper {
 		}
 		return true;
 	}
+	public static boolean addComment(int status_id,String content) {
+		if(!sendMessage(new String[]{"comment","new"}));
+		ArrayList<String> V = new ArrayList<String>();
+		V.add(status_id+"");
+		V.add(content);
+		for(String s:V){
+			if(!sendMessage(new String[]{s}))
+				return false;
+		}
+		return true;
+	}
 
 	public static void getFriends() {
 		SocketHelper.sendMessage(new String[]{"friend","get"});
