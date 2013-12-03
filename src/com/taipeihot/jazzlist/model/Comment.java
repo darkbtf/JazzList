@@ -1,5 +1,7 @@
 package com.taipeihot.jazzlist.model;
 
+import com.taipeihot.jazzlist.Util;
+
 public class Comment {
 	//private long _id=0;
 	private String nickname;
@@ -8,6 +10,7 @@ public class Comment {
 	private int status_id;
 	private int real_id;
 	private int score = 0; // number of like
+	private long time = 0;
 	
 	public Comment(String nickname,String content,int score){
 		this.nickname = nickname;
@@ -35,14 +38,17 @@ public class Comment {
 	public void incScore(){score++;}
 	public void decScore(){score--;}
 	
+	public String getTimeString(){return Util.dateLongToString(time); }
+	
 	/***********************For database*******************************/
-	public Comment(String nickname, String content, int user_id, int status_id, int real_id, int score){
+	public Comment(String nickname, String content, int user_id, int status_id, int real_id, int score,long time){
 		this.nickname = nickname;
 		this.content = content;
 		this.user_id = user_id;
 		this.status_id = status_id;
 		this.real_id = real_id;
 		this.score = score;
+		this.time = time;
 	}
 	
 	public int getRealId(){return real_id;}

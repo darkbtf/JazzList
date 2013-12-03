@@ -11,6 +11,7 @@ public class CommandManager {
 		cmdMap.put("login",new LoginCommand());
 		cmdMap.put("status",new StatusCommand());
 		cmdMap.put("friend", new FriendCommand());
+		cmdMap.put("comment", new CommentCommand());
 	}
 
 	public boolean parseCmd(String cmd) {
