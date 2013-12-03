@@ -22,6 +22,7 @@
     </style>
     <style name="black_bg">
     	<item name="android:textColor">@color/white</item>
+    	<item name="android:background">#000000</item>
     	
     </style>
     <style name="gray_textview" parent="gray_bg"> 
@@ -33,16 +34,31 @@
     	<item name="android:layout_margin">5dp</item>
     </style>
     
+    <style name="black_btn" parent="black_bg">
+    	<item name="android:layout_margin">5dp</item>
+    	
+    </style>
+    
     <style name="black_textview" parent="black_bg"> 
         <item name="android:ems">10</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:layout_margin">10dp</item>     
+        
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:gravity">center_horizontal</item>     
+    </style>
+    
+    <style name="black_editview" parent="black_textview"> 
+        <item name="android:singleLine">true</item> 
+        <item name="android:maxLines">1</item> 
     </style>
     
     <style name="black_list" parent="black_bg">
         <item name="android:divider">#000000</item>
         <item name="android:dividerHeight">5dp</item>     
     </style>
+    
+    <style name="blackPicker" >
+    	<item name="android:textColor">#ffffff</item>
+	</style>
+
     
 </resources>

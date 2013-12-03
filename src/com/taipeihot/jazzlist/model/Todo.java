@@ -18,12 +18,12 @@ public class Todo {
 	private long belong_id = 0;
 	private int real_id = 0;
 	
-	public Todo(String title, long category_id, boolean isPublic, Date deadline, String description){
+	public Todo(String title, long category_id, boolean isPublic, long deadline, String description){
 		this.title = title;
 		this.category_id = category_id;
 		this.isPublic = isPublic;
 		this.alive = true;
-		this.deadline = deadline.getTime();
+		this.deadline = deadline;
 		// this.user_id = TODO: what's my ID QQ?
 		this.description = description;
 		// this.belong_id = TODO: what's my ID QQ?

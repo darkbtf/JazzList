@@ -49,7 +49,10 @@ public class Status implements Comparable{
 	
 	public String getTitle(){return title;}
 	
-	public String getDeadline(){return Util.dateLongToString(deadline);}
+	public String getDeadline(){
+		if(deadline==0)return "";
+		return Util.dateLongToString(deadline);
+	}
 	public long getDeadlineLong(){return deadline;}
 	
 	public String getNickname(){return nickname;}

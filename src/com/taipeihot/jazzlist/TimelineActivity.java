@@ -26,7 +26,7 @@ public class TimelineActivity extends Activity {
         setContentView(R.layout.activity_timeline);
         statusListView = (ExpandableListView) findViewById(R.id.status_list);
         statusList = Data.getStatus();
-        //Data.updateStatus();
+        Data.updateStatus();
         statusListAdapter = new StatusListAdapter(this, statusList);
         statusListView.setAdapter(statusListAdapter);
      

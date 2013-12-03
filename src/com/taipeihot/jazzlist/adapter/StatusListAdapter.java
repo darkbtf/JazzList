@@ -64,6 +64,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 			@Override
 			public void onClick(View arg0) {
 				comment.incScore();
+				notifyDataSetChanged();
 			}
 			
 		});
@@ -135,10 +136,11 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 			@Override
 			public void onClick(View v) {
 				status.incScore();
+				notifyDataSetChanged();
 			}
 			
 		});
-		statusCategory.setText("DD");
+		statusCategory.setText(status.getCategory());
 		final AlertDialog commentDialog;
         LayoutInflater inflater = LayoutInflater.from(convertView.getContext());
 		final View alertView = inflater.inflate(R.layout.comment_dialog, null);
@@ -149,6 +151,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
             public void onClick(DialogInterface dialog, int id) {
             	EditText commentText = (EditText) alertView.findViewById(R.id.comment_text);
             	status.addComment(commentText.getText().toString());
+            	notifyDataSetChanged();
             }
         })
         .setNegativeButton("Back", new DialogInterface.OnClickListener() {

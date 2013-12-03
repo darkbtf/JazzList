@@ -2,18 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
-
-    <ExpandableListView
-        android:id="@+id/todoList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/category_addtodo_btn"
-        android:layout_margin="20dp"
-        android:background="@drawable/todo_shape"
-        android:dividerHeight="5dp"
-        android:divider="#000000" >
-    </ExpandableListView>
+    android:background="#000000" >
 
     <EditText
         android:id="@+id/category_todoinput"
@@ -26,35 +15,45 @@
         android:layout_toLeftOf="@+id/category_settime_btn"
         android:ems="10"
         android:hint="Add todo..."
-        android:textColor="@color/white"
         android:maxLines="1"
-        android:singleLine="true" >
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="25dp" >
 
         <requestFocus />
     </EditText>
 
+    <ExpandableListView
+        android:id="@+id/todoList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/category_addtodo_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:background="@drawable/todo_shape"
+        android:divider="#000000"
+        android:dividerHeight="5dp" >
+    </ExpandableListView>
+
     <Button
         android:id="@+id/category_settime_btn"
-        android:layout_width="wrap_content"
+        style="@style/black_btn"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/todoList"
-        android:layout_marginRight="24dp"
+        android:layout_alignBaseline="@+id/category_todoinput"
+        android:layout_alignBottom="@+id/category_todoinput"
         android:layout_toLeftOf="@+id/category_addtodo_btn"
-        android:background="@drawable/login_btn_slc"
-        android:textColor="@color/white"
-        android:onClick="showMenu"
-        android:text="SET" />
+        android:text="Deadline"
+        android:textSize="15dp" />
 
     <Button
         android:id="@+id/category_addtodo_btn"
+        style="@style/gray_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/todoList"
-        android:layout_marginTop="21dp"
-        android:textColor="@color/white"
-        android:background="@drawable/login_btn_slc"
-        android:onClick="addTodo"
-        android:text="ADD" />
+        android:text="ADD"
+        android:textColor="@color/white" />
 
 </RelativeLayout>
