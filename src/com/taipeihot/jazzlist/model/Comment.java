@@ -1,5 +1,6 @@
 package com.taipeihot.jazzlist.model;
 
+import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.Util;
 
 public class Comment {
@@ -35,7 +36,10 @@ public class Comment {
 	
 	public int getScore(){return score;}
 	
-	public void incScore(){score++;}
+	public void incScore(){
+		score++;
+		CommunicateHelper.updateCommentByInstance(this);
+	}
 	public void decScore(){score--;}
 	
 	public String getTimeString(){return Util.dateLongToString(time); }
