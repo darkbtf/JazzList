@@ -38,6 +38,7 @@ public class MenuFragment extends Fragment {
                     }
                 });
         categories=Data.getCategories();
+        
         categoryListAdapter = new CategoryListAdapter(this.getActivity(), categories);
         ListView categoryListView = (ListView) view.findViewById(R.id.category_list);
         categoryListView.setAdapter(categoryListAdapter);
@@ -46,6 +47,7 @@ public class MenuFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                     long arg3) {
+            	//System.out.println("now position = " + position);
             	Category category = categories.get(position);
             	getActivity().setTitle(category.getTitle());
             	((MainActivity) getActivity()).changeCategory(category.getId());
