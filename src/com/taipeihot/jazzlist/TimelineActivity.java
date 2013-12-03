@@ -21,10 +21,16 @@ public class TimelineActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
+        Data.addStatus(new Status("gala", "meow", 0));
+        Data.addStatus(new Status("gala", "meow", 1));
         statusListView = (ExpandableListView) findViewById(R.id.status_list);
         statusList = Data.getStatus();
+        //Data.updateStatus();
         statusListAdapter = new StatusListAdapter(this, statusList);
         statusListView.setAdapter(statusListAdapter);
+        
+        // Set expand
+        
     }
 
     @Override
