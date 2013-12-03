@@ -48,6 +48,7 @@ public class Data {
         //return categories;
     }
 	public static ArrayList<User> getFriends() {
+		friends = new ArrayList<User>();
 		setFriendUpdating(true);
 		CommunicateHelper.getFriends();
 		Util.errorReport("wait friends updating");
