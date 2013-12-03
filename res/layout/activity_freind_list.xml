@@ -17,7 +17,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/friend_add"
-        android:background="@style/black_list" >
+		android:dividerHeight="5dp"
+         >
 
     </ListView>
 

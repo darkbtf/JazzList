@@ -52,7 +52,7 @@
             android:layout_height="30dp"
             android:layout_toRightOf="@+id/comment_user_name"
             android:text="comment context"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/comment_time"
