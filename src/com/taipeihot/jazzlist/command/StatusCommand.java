@@ -21,8 +21,21 @@ public class StatusCommand implements Command{
 			int user_id = Integer.valueOf(SocketHelper.getMessage());
 			long deadline = Long.valueOf(SocketHelper.getMessage());
 			int score = Integer.valueOf(SocketHelper.getMessage());
-			Data.addStatus(new Status(nickname,title,user_id,deadline,score,real_id));
+			String category = SocketHelper.getMessage();
+			long updated_at = Long.valueOf(SocketHelper.getMessage());
+			Data.addStatus(new Status(nickname,title,user_id,deadline,score,real_id,category,updated_at));
 			return true;
+		}
+		else if(cmd.equals("update")){
+			int real_id = Integer.valueOf(SocketHelper.getMessage());
+			String nickname = SocketHelper.getMessage();
+			String title = SocketHelper.getMessage();
+			int user_id = Integer.valueOf(SocketHelper.getMessage());
+			long deadline = Long.valueOf(SocketHelper.getMessage());
+			int score = Integer.valueOf(SocketHelper.getMessage());
+			String category = SocketHelper.getMessage();
+			long updated_at = Long.valueOf(SocketHelper.getMessage());
+			Data.updateStatusByRealId(real_id,new Status(nickname,title,user_id,deadline,score,real_id,category,updated_at));
 		}
 		return true;
 	}

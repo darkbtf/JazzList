@@ -6,6 +6,7 @@ import com.taipeihot.jazzlist.command.CommandManager;
 import com.taipeihot.jazzlist.model.Category;
 import com.taipeihot.jazzlist.model.Comment;
 import com.taipeihot.jazzlist.model.Data;
+import com.taipeihot.jazzlist.model.Status;
 import com.taipeihot.jazzlist.model.Todo;
 
 public class CommunicateHelper {
@@ -92,6 +93,10 @@ public class CommunicateHelper {
 
 	public static void getStatus() {
 		SocketHelper.sendMessage(new String[]{"status","get"});
+	}
+
+	public static void updateStatusByInstance(Status s) {
+		SocketHelper.sendMessage(new String[]{"status","update",s.getRealId()+"",s.getScore()+""});
 	}
 	/******************************Do not edit here***************************/
 	public static boolean start(){

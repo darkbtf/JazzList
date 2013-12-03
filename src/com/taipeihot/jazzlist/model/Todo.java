@@ -44,6 +44,7 @@ public class Todo {
 	public void setAlive(boolean alive){this.alive=alive;}
 
 	public String getDeadlineString(){
+		if(deadline == 0)return "";
 		return Util.dateLongToString(deadline);
 	}
 	public Date getDeadline(){return new Date(deadline);}
