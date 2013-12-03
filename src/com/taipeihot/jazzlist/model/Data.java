@@ -46,8 +46,8 @@ public class Data {
 		return CommunicateHelper.addCategory(c);
 	}
 	public static ArrayList<Category> getCategories() {
-		return categories=CategoryTable.All();
-        //return categories;
+		if(categories.size() < 1)categories=CategoryTable.All();
+		return categories;
     }
 	public static ArrayList<User> getFriends() {
 		friends = new ArrayList<User>();
@@ -57,7 +57,6 @@ public class Data {
 		while(getFriendUpdating());
 		Util.errorReport("get friends!");
 		return friends;
-        //return categories;
     }
 	public static void addStatus(Status s) {
 		status.add(s);

@@ -2,6 +2,7 @@ package com.taipeihot.jazzlist.model;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.table.CategoryTable;
@@ -43,7 +44,9 @@ public class Category {
 	public void setCount(int count) {this.count = count;}
 	
 	public ArrayList<Todo> getTodos(){
-		return TodoTable.where("category_id = "+_id);
+		ArrayList<Todo> ret =TodoTable.where("category_id = "+_id);
+		Collections.sort(ret);
+		return ret;
 	}
 	
 	/***************************** For Database ********************************/
