@@ -12,8 +12,18 @@
         android:id="@+id/status_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/update_status_btn"
         android:layout_centerHorizontal="true" >
+
     </ExpandableListView>
+
+    <Button
+        android:id="@+id/update_status_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/status_list"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/status_list"
+        android:text="Status Update" />
 
 </RelativeLayout>
