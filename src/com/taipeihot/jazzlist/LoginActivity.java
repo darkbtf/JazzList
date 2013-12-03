@@ -43,7 +43,6 @@ public class LoginActivity extends Activity {
         .setPositiveButton("Register", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-        		System.out.println("errrrr");
             	EditText accountText = (EditText) alertView.findViewById(R.id.register_account_text);
             	EditText passwordText = (EditText) alertView.findViewById(R.id.register_password_text);
             	EditText confirmText = (EditText) alertView.findViewById(R.id.register_confirm_text);
