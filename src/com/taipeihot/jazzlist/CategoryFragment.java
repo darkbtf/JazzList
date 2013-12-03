@@ -34,9 +34,11 @@ public class CategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	view = inflater.inflate(R.layout.fragment_category, null);
-    	todoList = new ArrayList<Todo>();
+    	currentCategory = Data.getCategories().get(0);
+    	todoList = currentCategory.getTodos();
     	todoListAdapter = new TodoListAdapter(this.getActivity(), todoList);
     	listView = (ExpandableListView) view.findViewById(R.id.todoList);
+    	listView.setAdapter(todoListAdapter);
     	Button addButton = (Button) view.findViewById(R.id.category_addtodo_btn);
     	addButton.setOnClickListener(new OnClickListener(){
 
@@ -46,7 +48,6 @@ public class CategoryFragment extends Fragment {
 			}
     		
     	});
-    	listView.setAdapter(todoListAdapter);
     	return view;
     }
     
