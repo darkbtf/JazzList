@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Deque;
 import java.util.Queue;
 
+import java.util.Calendar;
+
 
 public class Util {
 
@@ -72,5 +74,10 @@ public class Util {
 	public static String dateLongToString(long deadline) { 
 		Date d = new Date(deadline);
 		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
+	}
+
+	public static long getCurrentTime() {
+		Calendar cal = Calendar.getInstance();
+		return (cal.getTime()).getTime();
 	}
 }

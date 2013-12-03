@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.taipeihot.jazzlist.command.CommandManager;
 import com.taipeihot.jazzlist.model.Category;
+import com.taipeihot.jazzlist.model.Comment;
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.Todo;
 
@@ -22,7 +23,10 @@ public class CommunicateHelper {
 	public static void login(String account, String password) {
 		SocketHelper.sendMessage(new String[]{"login",account,Util.MD5(password)});
 	}
-	
+
+	public static void updateStatus() {
+		SocketHelper.sendMessage(new String[]{"status","get",Data.lastUpdateStausTime+""});
+	}
 	public static boolean addTodo(Todo a) {
 		if(!sendMessage(new String[]{"todo","new"}))return false;
 		ArrayList<String> V = new ArrayList<String>();
@@ -36,7 +40,6 @@ public class CommunicateHelper {
 		V.add(a.getBelongId()+"");
 		V.add(a.getRealId()+"");
 		for(String s:V){
-			Util.errorReport(s);
 			if(!sendMessage(new String[]{s}))
 				return false;
 		}
@@ -52,13 +55,25 @@ public class CommunicateHelper {
 		V.add(a.getCount()+"");
 		V.add(a.getRealId()+"");
 		for(String s:V){
-			Util.errorReport(s);
 			if(!sendMessage(new String[]{s}))
 				return false;
 		}
 		return true;
 	}
 	
+	public static boolean addComment(Comment a) {
+		if(!sendMessage(new String[]{"comment","new"}));
+		ArrayList<String> V = new ArrayList<String>();
+		V.add(a.getStatusId()+"");
+		V.add(a.getContent());
+		V.add(a.getUserId()+"");
+		for(String s:V){
+			Util.errorReport(s);
+			if(!sendMessage(new String[]{s}))
+				return false;
+		}
+		return true;
+	}
 
 	public static void getFriends() {
 		SocketHelper.sendMessage(new String[]{"friend","get"});

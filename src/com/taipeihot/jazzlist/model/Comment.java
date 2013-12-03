@@ -19,12 +19,16 @@ public class Comment {
 		this.content = content;
 		this.score = 0;
 	}
-	
 	public String getNickname(){return nickname;}
 	
 	public String getContent(){return content;}
 	
+	public int getUserId() {return user_id;}
+	
 	public int photoNumber(){return user_id;}
+	
+	public int getStatusId(){return status_id;}
+	public void setStatusId(int status_id){this.status_id = status_id;}
 	
 	public int getScore(){return score;}
 	
@@ -42,4 +46,5 @@ public class Comment {
 	}
 	
 	public int getRealId(){return real_id;}
+
 }

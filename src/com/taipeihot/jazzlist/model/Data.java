@@ -17,6 +17,7 @@ public class Data {
 	private static boolean statusUpdating = false;
 	private static boolean friendUpdating = false;
 	private static int logined = 0;
+	public static long lastUpdateStausTime=0;
 	
 	public static boolean login(String account, String password){
 		CommunicateHelper.login(account,password);
@@ -63,6 +64,13 @@ public class Data {
 	}
 	public static ArrayList<Status> getStatus(){
 		return status;
+	}
+	public static void updateStatus(){// MOST call with network
+		setStatusUpdating(true);
+		CommunicateHelper.updateStatus();
+		Util.errorReport("updating satatus");
+		while(getStatusUpdating());
+		lastUpdateStausTime=Util.getCurrentTime();//TODO need write lastUpdateStatusTime to sp
 	}
 	public static void setStatusUpdating(boolean b) {
 		if(b){
