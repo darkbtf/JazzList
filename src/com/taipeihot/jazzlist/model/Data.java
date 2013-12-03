@@ -57,7 +57,6 @@ public class Data {
 		while(getFriendUpdating());
 		Util.errorReport("get friends!");
 		return friends;
-        //return categories;
     }
 	public static void addStatus(Status s) {
 		status.add(s);
