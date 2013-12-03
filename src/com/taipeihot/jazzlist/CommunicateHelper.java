@@ -98,6 +98,9 @@ public class CommunicateHelper {
 	public static void updateStatusByInstance(Status s) {
 		SocketHelper.sendMessage(new String[]{"status","update",s.getRealId()+"",s.getScore()+""});
 	}
+	public static void updateCommentByInstance(Comment c) {
+		SocketHelper.sendMessage(new String[]{"comment","update",c.getRealId()+"",c.getScore()+""});
+	}
 	/******************************Do not edit here***************************/
 	public static boolean start(){
     	if(!SocketHelper.start())return false;
