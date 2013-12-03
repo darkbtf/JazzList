@@ -25,8 +25,8 @@ public class Category {
 		this.count = count;
 	}
 	
-	public long addTodo(String title) { // TODO: not title only?
-		Todo a = new Todo(title,getId(),true,new Date(0),title+" s description");
+	public long addTodo(String title,long deadline) { // TODO: not title only?
+		Todo a = new Todo(title,getId(),true,deadline,title+" s description");
 		CommunicateHelper.addTodo(a);
 		return TodoTable.insert(a);
 	}

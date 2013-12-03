@@ -64,6 +64,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 			@Override
 			public void onClick(View arg0) {
 				comment.incScore();
+				notifyDataSetChanged();
 			}
 			
 		});

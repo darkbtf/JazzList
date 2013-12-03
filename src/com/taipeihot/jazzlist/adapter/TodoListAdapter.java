@@ -101,7 +101,7 @@ public class TodoListAdapter extends BaseExpandableListAdapter{
 			TextView t=(TextView)convertView.findViewById(R.id.big_todo_name);
 			t.setText(todo.getTitle());
 			t=(TextView)convertView.findViewById(R.id.big_todo_time);
-			t.setText(todo.getDeadline().toString());
+			t.setText(todo.getDeadlineString());
 			Button b=(Button)convertView.findViewById(R.id.big_setting_button);
 			b.setFocusable(false);
 			b.setOnClickListener(new Button.OnClickListener() {
