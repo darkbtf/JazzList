@@ -10,7 +10,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/category_addtodo_btn"
         android:layout_margin="20dp"
-        android:background="@drawable/todo_shape" >
+        android:background="@drawable/todo_shape"
+        android:dividerHeight="5dp"
+        android:divider="#000000" >
     </ExpandableListView>
 
     <EditText

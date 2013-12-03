@@ -60,7 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/comment_content"
             android:layout_below="@+id/comment_content"
-            android:text="comment_time" />
+            android:text="comment_time"
+            android:textColor="#888888" />
         
     </RelativeLayout>
 
