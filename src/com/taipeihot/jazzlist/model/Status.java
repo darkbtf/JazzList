@@ -68,6 +68,12 @@ public class Status {
 		Data.updateStatus();
 	}
 	
+	public void addComment(String c){
+		//comments.add(c);  // no need this
+		CommunicateHelper.addComment(real_id,c);
+		Data.updateStatus();
+	}
+	
 	public int photoNumber(){return user_id;}
 	
 	/***************************For Database****************************/
