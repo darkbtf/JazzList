@@ -136,13 +136,17 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 			}
 			
 		});
-		/*
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
+		AlertDialog commentDialog;
+        LayoutInflater inflater = LayoutInflater.from(convertView.getContext());
+		final View alertView = inflater.inflate(R.layout.comment_dialog, null);
+		AlertDialog.Builder builder = new AlertDialog.Builder(convertView.getContext());
         builder.setView(alertView)
-        .setPositiveButton("Register", new DialogInterface.OnClickListener() {
+        .setPositiveButton("Comment", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-            	
+            	EditText commentText = (EditText) alertView.findViewById(R.id.comment_text);
+            	status.addComment(commentText.getText().toString());
             }
         })
         .setNegativeButton("Back", new DialogInterface.OnClickListener() {
@@ -150,8 +154,10 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
             public void onClick(DialogInterface dialog, int id) {
             }
         });
-        registerDialog = builder.create();
-		*/
+        commentDialog = builder.create();
+        
+        commentDialog.show();
+		
 		likeBtn.setFocusable(false);
 		commentBtn.setFocusable(false);
 		userName.setText(status.getNickname());

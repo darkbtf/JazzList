@@ -13,7 +13,7 @@
         android:background="#000000" >
 
        <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/comment_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -25,16 +25,6 @@
 			
 
         </EditText>
-
-        <Button
-            android:id="@+id/comment_btn"
-            style="@style/gray_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/editText1"
-            android:text="Comment" />
 
     </RelativeLayout>
 
