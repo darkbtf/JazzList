@@ -1,6 +1,7 @@
 package com.taipeihot.jazzlist.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.R;
@@ -75,6 +76,7 @@ public class Data {
 		statusUpdating = false;
 		Data.lastUpdateStatusTime = lastUpdateStatusTime;
 		//TODO need write lastUpdateStatusTime to sp
+		Collections.sort(status);
 	}
 	public static void setStatusUpdating() {
 		statusUpdating=true;

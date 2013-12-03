@@ -6,7 +6,7 @@ import java.sql.Date;
 import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.Util;
 
-public class Status {
+public class Status implements Comparable{
 	//private long _id=0;
 	private String nickname;
 	private String title;
@@ -122,5 +122,13 @@ public class Status {
 	
 	private void update(){
 		CommunicateHelper.updateStatusByInstance(this);
+	}
+	
+	@Override
+	public int compareTo(Object o){
+		long a =this.updated_at, b =  ((Status)o).updated_at;
+		if(a < b)return 1;
+		if(a==b)return 0;
+		return -1; 
 	}
 }
