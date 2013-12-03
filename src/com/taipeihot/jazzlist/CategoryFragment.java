@@ -1,14 +1,6 @@
 package com.taipeihot.jazzlist;
 
 import java.util.ArrayList;
-import java.sql.Date;
-
-import com.taipeihot.jazzlist.adapter.TodoListAdapter;
-import com.taipeihot.jazzlist.model.Category;
-import com.taipeihot.jazzlist.model.Data;
-import com.taipeihot.jazzlist.model.Todo;
-import com.taipeihot.jazzlist.table.CategoryTable;
-import com.taipeihot.jazzlist.table.TodoTable;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -20,6 +12,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+
+import com.taipeihot.jazzlist.adapter.TodoListAdapter;
+import com.taipeihot.jazzlist.model.Category;
+import com.taipeihot.jazzlist.model.Data;
+import com.taipeihot.jazzlist.model.Todo;
+import com.taipeihot.jazzlist.table.CategoryTable;
+import com.taipeihot.jazzlist.table.TodoTable;
 
  @SuppressLint("NewApi")
 public class CategoryFragment extends Fragment {
@@ -37,6 +36,7 @@ public class CategoryFragment extends Fragment {
     	currentCategory = Data.getCategories().get(0);
     	todoList = currentCategory.getTodos();
     	todoListAdapter = new TodoListAdapter(this.getActivity(), todoList);
+    	
     	listView = (ExpandableListView) view.findViewById(R.id.todoList);
     	listView.setAdapter(todoListAdapter);
     	Button addButton = (Button) view.findViewById(R.id.category_addtodo_btn);
