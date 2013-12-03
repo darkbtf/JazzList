@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
-import com.haarman.listviewanimations.swinginadapters.prepared.AlphaInAnimationAdapter;
+import com.haarman.listviewanimations.swinginadapters.prepared.SwingLeftInAnimationAdapter;
 import com.taipeihot.jazzlist.adapter.CategoryListAdapter;
 import com.taipeihot.jazzlist.model.Category;
 import com.taipeihot.jazzlist.model.Data;
@@ -45,8 +45,9 @@ public class MenuFragment extends Fragment implements OnNavigationListener{
         categories=Data.getCategories();
         
         categoryListAdapter = new CategoryListAdapter(this.getActivity(), categories);
-        AnimationAdapter animAdapter=new AlphaInAnimationAdapter(categoryListAdapter);
+        AnimationAdapter animAdapter=new SwingLeftInAnimationAdapter(categoryListAdapter);
         ListView categoryListView = (ListView) view.findViewById(R.id.category_list);
+        animAdapter.setAbsListView(categoryListView);
         categoryListView.setAdapter(animAdapter);
         categoryListView.setOnItemClickListener(new OnItemClickListener() {
 
