@@ -4,10 +4,7 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar.OnNavigationListener;
-<<<<<<< HEAD
 import android.content.Intent;
-=======
->>>>>>> 2e545c1c500c61715d61e9411b6d886241fe53ec
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
