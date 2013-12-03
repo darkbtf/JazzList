@@ -15,9 +15,11 @@ public class Status {
 	private int score = 0; //number of like 
 	private boolean visible = true;
 	private int real_id;
+	private String category;
+	private long updated_at;
 	private ArrayList<Comment> comments = new ArrayList<Comment>();
 	
-	public Status(String nickname, Todo todo, ArrayList<Comment>comments){//TODO remove
+	/*public Status(String nickname, Todo todo, ArrayList<Comment>comments){//TODO remove
 		this.nickname = nickname;
 		this.title = todo.getTitle();
 		this.user_id = todo.getUserId();
@@ -31,7 +33,7 @@ public class Status {
 		this.user_id = todo.getUserId();
 		this.deadline = todo.getDeadlineLong();
 		this.comments = new ArrayList<Comment>();
-	}
+	}*/
 	
 	public Status(String nickname,String title,long deadline){
 		this.nickname = nickname;
@@ -48,11 +50,16 @@ public class Status {
 	public String getTitle(){return title;}
 	
 	public String getDeadline(){return Util.dateLongToString(deadline);}
+	public long getDeadlineLong(){return deadline;}
 	
 	public String getNickname(){return nickname;}
 	
+	public String getCategory(){return category;}
 	public int getScore(){return score;}
-	public void incScore(){score++;}
+	public void incScore(){
+		score++;
+		update();
+	}
 	public void decScore(){score--;}
 	
 	public boolean getVisible(){return visible;}
@@ -77,15 +84,17 @@ public class Status {
 	public int photoNumber(){return user_id;}
 	
 	/***************************For Database****************************/
-	public Status(String nickname, String title, int user_id, long deadline, int score, int real_id){
+	public Status(String nickname, String title, int user_id, long deadline, int score, int real_id, String category,long updated_at){
 		this.nickname = nickname;
 		this.title = title;
 		this.user_id = user_id;
 		this.deadline = deadline;
 		this.score = score;
 		this.real_id = real_id;
+		this.category = category;
+		this.updated_at = updated_at;
 	}
-	public Status(String nickname, String title, int user_id, long deadline, int score, boolean visible, int real_id){
+	public Status(String nickname, String title, int user_id, long deadline, int score, boolean visible, int real_id,String category,long updated_at){
 		this.nickname = nickname;
 		this.title = title;
 		this.user_id = user_id;
@@ -93,10 +102,25 @@ public class Status {
 		this.score = score;
 		this.visible = visible;
 		this.real_id = real_id;
+		this.category = category;
+		this.updated_at = updated_at;
 	}
 	public int getRealId(){return real_id;}
 
 	public void updateComment(Comment comment) {
 		comments.add(comment);
+	}
+	public long getUpdatedAt(){return updated_at;}
+	public void clone(Status newStatus) { // clone data except comments;
+		this.title = newStatus.getTitle();
+		this.deadline = newStatus.getDeadlineLong();
+		this.score = newStatus.getScore();
+		this.visible = newStatus.getVisible();
+		this.category = newStatus.getCategory();
+		this.updated_at = newStatus.getUpdatedAt();
+	}
+	
+	private void update(){
+		CommunicateHelper.updateStatusByInstance(this);
 	}
 }

@@ -106,4 +106,11 @@ public class Data {
 				break;
 			}
 	}
+	public static void updateStatusByRealId(int real_id, Status newStatus) {
+		for(Status s:status)
+			if(s.getRealId() == real_id){
+				s.clone(newStatus);
+				break;
+			}
+	}
 }
