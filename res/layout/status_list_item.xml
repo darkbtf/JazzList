@@ -35,23 +35,36 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/state_user_photo"
-                android:text="TextView"
+                android:text="User Name"
                 android:textColor="@android:color/white"
                 android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/status_category_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="5dp"
+                android:text="Default"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
        </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="0dp" >
+
             <TextView
                 android:id="@+id/status_todo_name"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
-                android:text="TextView"
+                android:text="Todo Name"
                 android:textColor="@android:color/white"
-                android:textSize="54dp" />
+                android:textSize="40dp" />
 
             <TextView
                 android:id="@+id/status_todo_time"
@@ -60,7 +73,7 @@
                 android:layout_alignLeft="@+id/status_todo_name"
                 android:layout_below="@+id/status_todo_name"
                 android:text="TextView"
-                android:textColor="#ff3d5a99"
+                android:textColor="#ff7d9ad9"
                 android:textSize="18dp" />
 
         </RelativeLayout>

@@ -56,6 +56,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 		TextView userName=(TextView)convertView.findViewById(R.id.comment_user_name);
 		TextView likeCount=(TextView)convertView.findViewById(R.id.comment_like_count);
 		TextView commentContent=(TextView)convertView.findViewById(R.id.comment_content);
+		TextView commentTime=(TextView)convertView.findViewById(R.id.comment_time);
 		ImageButton imageButton=(ImageButton)convertView.findViewById(R.id.comment_like_btn);
 		final Comment comment=(Comment)getChild(groupPosition,childPosition);
 		imageButton.setOnClickListener(new OnClickListener(){
@@ -66,7 +67,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 			}
 			
 		});
-		
+		commentTime.setText(comment.getTimeString());
 		userName.setText(comment.getNickname());
 		commentContent.setText(comment.getContent());
 		likeCount.setText(Integer.toString((comment.getScore())));
@@ -125,6 +126,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 		TextView todoTime=(TextView)convertView.findViewById(R.id.status_todo_time);
 		TextView likeCount=(TextView)convertView.findViewById(R.id.status_like_count);
 		TextView commentCount=(TextView)convertView.findViewById(R.id.status_comment_count);
+		TextView statusCategory=(TextView)convertView.findViewById(R.id.status_category_name);
 		ImageButton likeBtn=(ImageButton)convertView.findViewById(R.id.status_like_graph);
 		ImageButton commentBtn=(ImageButton)convertView.findViewById(R.id.status_comment_graph);
 		
@@ -136,7 +138,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 			}
 			
 		});
-		
+		statusCategory.setText("DD");
 		final AlertDialog commentDialog;
         LayoutInflater inflater = LayoutInflater.from(convertView.getContext());
 		final View alertView = inflater.inflate(R.layout.comment_dialog, null);
