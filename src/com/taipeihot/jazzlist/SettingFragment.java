@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -45,8 +46,18 @@ public class SettingFragment extends Fragment {
         long todoId = getArguments().getLong("todoId");
     	todo = TodoTable.find(todoId);
     	if (view == null) System.out.println("gg"); 
-        TextView todoTitle = (TextView) view.findViewById(R.id.todo_title);
+        final EditText todoTitle = (EditText) view.findViewById(R.id.todo_title);
         todoTitle.setText(todo.getTitle());
+        todoTitle.setOnFocusChangeListener(new OnFocusChangeListener(){
+
+			@Override
+			public void onFocusChange(View arg0, boolean arg1) {
+				todo.setTitle(todoTitle.getText().toString());
+				todo.save();
+				((CategoryFragment) ((MainActivity) getActivity()).contentFragment).reload();
+			}
+        	
+        });
         return view;
     }
 

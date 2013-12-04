@@ -32,7 +32,7 @@ public class CategoryFragment extends Fragment {
 
 	View view;
 	ArrayList<Todo> todoList=new ArrayList<Todo>();
-	TodoListAdapter2 todoListAdapter2;
+	public TodoListAdapter2 todoListAdapter2;
 	Category currentCategory;
 	ListView todoListView;
 	AlertDialog setTimeDialog;
@@ -129,16 +129,21 @@ public class CategoryFragment extends Fragment {
             //System.out.println(categoryName.getText().toString());
         	long todoId = currentCategory.addTodo(todoName.getText().toString(),d.getTime());
         	todoName.setText("");
-        	todoList = currentCategory.getTodos();
-        	todoListAdapter2 = new TodoListAdapter2(this.getActivity(), todoList);
-        	AnimationAdapter animAdapter=new SwingLeftInAnimationAdapter(todoListAdapter2);
-            todoListView = (ListView) view.findViewById(R.id.todoList);
-            animAdapter.setAbsListView(todoListView);
-            todoListView.setAdapter(animAdapter);
+        	reload();
         	/*todoList.add(TodoTable.find(todoId));
             todoListAdapter.notifyDataSetChanged();*/
         }
     }
+    
+    public void reload() {
+    	todoList = currentCategory.getTodos();
+		todoListAdapter2 = new TodoListAdapter2(this.getActivity(), todoList);
+		AnimationAdapter animAdapter=new SwingLeftInAnimationAdapter(todoListAdapter2);
+	    todoListView = (ListView) view.findViewById(R.id.todoList);
+	    animAdapter.setAbsListView(todoListView);
+	    todoListView.setAdapter(animAdapter);	
+    }
+    
     private void todoSetTime(){
     	setTimeDialog.show();
     }

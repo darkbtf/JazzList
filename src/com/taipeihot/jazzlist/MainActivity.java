@@ -19,7 +19,7 @@ import com.taipeihot.jazzlist.table.CategoryTable;
 public class MainActivity extends BaseActivity {
 
 	ArrayList<Todo> todoList;
-	Fragment contentFragment;
+	public Fragment contentFragment;
 	Fragment settingFragment;
 	Fragment friendFragment;
 	
