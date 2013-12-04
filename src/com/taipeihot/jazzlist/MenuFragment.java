@@ -95,10 +95,12 @@ public class MenuFragment extends Fragment implements OnNavigationListener{
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 					int arg2, long arg3) {
-				toDeleteItemId = arg2;
-				builder.setTitle("You're deleting \""+ categories.get(arg2).getTitle() +"\"");
-				AlertDialog alertDialog = builder.create();
-				alertDialog.show();
+				if (categories.size() > 1) {
+					toDeleteItemId = arg2;
+					builder.setTitle("You're deleting \""+ categories.get(arg2).getTitle() +"\"");
+					AlertDialog alertDialog = builder.create();
+					alertDialog.show();
+				}
 				return true;
 			}
         	
