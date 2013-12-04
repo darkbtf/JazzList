@@ -14,4 +14,7 @@ public class Achievement {
 		this.type = type;
 		this.need = need;
 	}
+	
+	public String getType(){return type.toString();}
+	public int getNeed(){return need;}
 }

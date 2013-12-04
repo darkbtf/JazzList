@@ -143,4 +143,10 @@ public class Data {
 	public static void incAchievementParameter(AchievementType s) {
 		setAchievementParameter(s,getAchievementParameter(s)+1);
 	}
+	public static void showAchievements(){
+		for(Achievement a:getAchievements())
+			Util.errorReport("Achievement:"+a.getType()+", need="+a.getNeed());
+		for(AchievementType a:AchievementType.values())
+			Util.errorReport("Parameter "+a.toString()+"="+getAchievementParameter(a));
+	}
 }
