@@ -100,6 +100,7 @@ public class SettingFragment extends Fragment {
             	d.setMinutes(tp.getCurrentMinute().intValue());
             	((Button)view.findViewById(R.id.setting_time_btn)).setText(Util.dateLongToString(d.getTime()));
             	todo.setDeadline(d.getTime());
+            	todo.save();
             }
         })
         .setNegativeButton("Back", new DialogInterface.OnClickListener() {
@@ -126,6 +127,7 @@ public class SettingFragment extends Fragment {
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
 				todo.setPublic(publicCheckBox.isChecked());
+				todo.save();
 			}
         	
         });
