@@ -38,5 +38,6 @@
     <string name="title_activity_freind_list">FreindListActivity</string>
     <string name="title_activity_timeline">TimelineActivity</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
 
 </resources>

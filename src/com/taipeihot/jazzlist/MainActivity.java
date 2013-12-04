@@ -19,6 +19,7 @@ public class MainActivity extends BaseActivity {
 
 	ArrayList<Todo> todoList;
 	Fragment contentFragment;
+	Fragment rightMenuFragment;
 	
     public MainActivity() {
         super(R.string.left_and_right);
@@ -42,11 +43,12 @@ public class MainActivity extends BaseActivity {
         .replace(R.id.content_frame, contentFragment)
         .commit();
 
+        rightMenuFragment = new FriendListFragment();
         getSlidingMenu().setSecondaryMenu(R.layout.menu_frame_two);
         getSlidingMenu().setSecondaryShadowDrawable(R.drawable.shadowright);
         getSupportFragmentManager()
         .beginTransaction()
-        .replace(R.id.menu_frame_two, new FriendListFragment())
+        .replace(R.id.menu_frame_two, rightMenuFragment)
         .commit();
 
         //getSlidingMenu().showMenu();
@@ -60,12 +62,34 @@ public class MainActivity extends BaseActivity {
     	((CategoryFragment) contentFragment).changeCategory(categoryId);
     	getSlidingMenu().showContent();
     }
-    
+
     private void initData(){
     	Data.achiv_sp = getSharedPreferences("achivement_parameter",MODE_PRIVATE);
     	for(AchievementType a:AchievementType.values())
 			if(Data.getAchievementParameter(a)==-1)
 				Data.setAchievementParameter(a,0);
     }
+
+    public void toSetting(long todoId) {
+    	System.out.println("meowmeowjiao");
+    	rightMenuFragment = new SettingFragment();
+    	Bundle args = new Bundle();
+        args.putLong("todoId", todoId);
+        // Put any other arguments
+        rightMenuFragment.setArguments(args);
+        getSupportFragmentManager()
+        .beginTransaction()
+        .replace(R.id.menu_frame_two, rightMenuFragment)
+        .commit();    
+        getSlidingMenu().showSecondaryMenu();
+        //((SettingFragment) rightMenuFragment).setTodo(todoId);
+    }
     
+    public void toFriendList() {
+    	rightMenuFragment = new FriendListFragment();
+        getSupportFragmentManager()
+        .beginTransaction()
+        .replace(R.id.menu_frame_two, rightMenuFragment)
+        .commit();    	
+    }
 }

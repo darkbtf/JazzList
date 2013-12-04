@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.taipeihot.jazzlist.MainActivity;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.model.Todo;
 
@@ -38,7 +39,7 @@ public class TodoListAdapter extends BaseExpandableListAdapter{
 	}
 
 	@Override
-	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView,
+	public View getChildView(final int groupPosition, int childPosition, boolean isLastChild, View convertView,
 			ViewGroup parent) {
 		// TODO Auto-generated method stub
 		if(convertView==null){
@@ -56,7 +57,7 @@ public class TodoListAdapter extends BaseExpandableListAdapter{
 		b.setFocusable(false);
 		b.setOnClickListener(new Button.OnClickListener() {
 		    public void onClick(View v) {
-		    	Toast.makeText(v.getContext(),"lala",Toast.LENGTH_SHORT).show();
+		    	System.out.println("fuck");
 		    }
 		});
 		return convertView;
@@ -88,7 +89,7 @@ public class TodoListAdapter extends BaseExpandableListAdapter{
 	}
 
 	@Override
-	public View getGroupView(int groupPosition, boolean isExpanded,
+	public View getGroupView(final int groupPosition, boolean isExpanded,
             View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		if(convertView==null){
@@ -106,8 +107,7 @@ public class TodoListAdapter extends BaseExpandableListAdapter{
 			b.setFocusable(false);
 			b.setOnClickListener(new Button.OnClickListener() {
 			    public void onClick(View v) {
-			    	Toast.makeText(v.getContext(),"lala",Toast.LENGTH_SHORT).show();
-
+			    	((MainActivity)context).toSetting(todoItem.get(groupPosition).getId());
 			    }
 			});
 
