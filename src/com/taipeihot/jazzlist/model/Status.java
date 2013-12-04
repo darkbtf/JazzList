@@ -89,7 +89,7 @@ public class Status implements Comparable{
 	public int photoNumber(){return user_id;}
 	
 	/***************************For Database****************************/
-	public Status(String nickname, String title, int user_id, long deadline, int score, int real_id, String category,long updated_at){
+	/*public Status(String nickname, String title, int user_id, long deadline, int score, int real_id, String category,long updated_at){
 		this.nickname = nickname;
 		this.title = title;
 		this.user_id = user_id;
@@ -98,7 +98,7 @@ public class Status implements Comparable{
 		this.real_id = real_id;
 		this.category = category;
 		this.updated_at = updated_at;
-	}
+	}*/
 	public Status(String nickname, String title, int user_id, long deadline, int score, boolean visible, int real_id,String category,long updated_at){
 		this.nickname = nickname;
 		this.title = title;
