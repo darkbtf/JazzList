@@ -25,6 +25,7 @@ public class FriendListFragment extends Fragment {
 	ArrayList<User> friends;
 	FriendListAdapter friendListAdapter;
 	ListView friendListView;
+	boolean initialized = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {

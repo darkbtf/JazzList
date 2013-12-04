@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnClosedListener;
 import com.taipeihot.jazzlist.model.Achievement;
 import com.taipeihot.jazzlist.model.AchievementType;
 import com.taipeihot.jazzlist.model.Data;
@@ -19,7 +20,8 @@ public class MainActivity extends BaseActivity {
 
 	ArrayList<Todo> todoList;
 	Fragment contentFragment;
-	Fragment rightMenuFragment;
+	Fragment settingFragment;
+	Fragment friendFragment;
 	
     public MainActivity() {
         super(R.string.left_and_right);
@@ -43,17 +45,25 @@ public class MainActivity extends BaseActivity {
         .replace(R.id.content_frame, contentFragment)
         .commit();
 
-        rightMenuFragment = new FriendListFragment();
+        friendFragment = new FriendListFragment();
         getSlidingMenu().setSecondaryMenu(R.layout.menu_frame_two);
         getSlidingMenu().setSecondaryShadowDrawable(R.drawable.shadowright);
         getSupportFragmentManager()
         .beginTransaction()
-        .replace(R.id.menu_frame_two, rightMenuFragment)
+        .replace(R.id.menu_frame_two, friendFragment)
         .commit();
 
         //getSlidingMenu().showMenu();
         //getSlidingMenu().showSecondaryMenu();
         //getSlidingMenu().toggle();
+        getSlidingMenu().setOnClosedListener(new OnClosedListener(){
+
+			@Override
+			public void onClosed() {
+				toFriendList();
+			}
+        	
+        });
     	setTitle(Data.getCategories().get(0).getTitle());
     	initData();
     }
@@ -71,26 +81,25 @@ public class MainActivity extends BaseActivity {
     }
 
     public void toSetting(long todoId) {
-    	System.out.println("meowmeowjiao");
-    	rightMenuFragment = new SettingFragment();
+    	//System.out.println("meowmeowjiao");
     	Bundle args = new Bundle();
         args.putLong("todoId", todoId);
-        // Put any other arguments
-        rightMenuFragment.setArguments(args);
+        settingFragment = new SettingFragment();
+        settingFragment.setArguments(args);
         getSupportFragmentManager()
         .beginTransaction()
-        .replace(R.id.menu_frame_two, rightMenuFragment)
+        .replace(R.id.menu_frame_two, settingFragment)
         .commit();    
         getSlidingMenu().showSecondaryMenu();
-        //((SettingFragment) rightMenuFragment).setTodo(todoId);
+        //((SettingFragment) settingFragment).setTodo(todoId);
     }
 
     
     public void toFriendList() {
-    	rightMenuFragment = new FriendListFragment();
         getSupportFragmentManager()
         .beginTransaction()
-        .replace(R.id.menu_frame_two, rightMenuFragment)
+        .replace(R.id.menu_frame_two, friendFragment)
         .commit();    	
     }
+    
 }
