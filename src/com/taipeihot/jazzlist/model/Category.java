@@ -26,10 +26,17 @@ public class Category {
 		this.count = count;
 	}
 	
-	public long addTodo(String title,long deadline) { // TODO: not title only?
+	public long addTodo(String title,long deadline) {
 		Todo a = new Todo(title,getId(),true,deadline,title+" s description");
 		CommunicateHelper.addTodo(a);
+		Data.incAchievementParameter(AchivType.add_todo_number);
 		return TodoTable.insert(a);
+	}
+	
+	public void eraseTodo(int id) { // id in device ,not in server
+		Todo t=TodoTable.find(id);
+		t.setAlive(false);
+		t.save();
 	}
 	public long getId(){return _id;}
 	public void setId(long _id){this._id = _id;}
@@ -48,7 +55,10 @@ public class Category {
 		Collections.sort(ret);
 		return ret;
 	}
-	
+
+	public void die() {
+		count=-1;
+	}
 	/***************************** For Database ********************************/
 	public Category(){}
 	public Category(int _id,String title,int icon,int count,int real_id) {
