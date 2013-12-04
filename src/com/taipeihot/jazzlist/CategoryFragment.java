@@ -1,11 +1,13 @@
 package com.taipeihot.jazzlist;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -45,7 +47,7 @@ public class CategoryFragment extends Fragment implements OnDismissCallback{
 	SwipeDismissAdapter adapter;
 
 	Date d=new Date(0);
-	
+	private MediaPlayer eraseTodoSound;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -62,7 +64,7 @@ public class CategoryFragment extends Fragment implements OnDismissCallback{
         adapter.setAbsListView(todoListView);
         todoListView.setAdapter(adapter);
 
-        
+        eraseTodoSound = MediaPlayer.create(getActivity(), R.raw.knife_slash);
     	
     	Button addButton = (Button) view.findViewById(R.id.category_addtodo_btn);
     	Button setTimeBtn = (Button) view.findViewById(R.id.category_settime_btn);
@@ -167,10 +169,23 @@ public class CategoryFragment extends Fragment implements OnDismissCallback{
     private void todoSetTime(){
     	setTimeDialog.show();
     }
-
 	@Override
 	public void onDismiss(AbsListView listView, int[] reverseSortedPositions) {
 		// TODO Auto-generated method stub
+		Util.errorReport("onDismiss");
+		try {
+			eraseTodoSound.seekTo(0);
+			eraseTodoSound.start();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		for (int position : reverseSortedPositions) {
 			currentCategory.eraseTodo((int)todoList.get(position).getId());
         }
