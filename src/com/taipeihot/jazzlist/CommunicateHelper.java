@@ -39,7 +39,7 @@ public class CommunicateHelper {
 		V.add(a.getUserId()+"");
 		V.add(a.getDescription()+"");
 		V.add(a.getBelongId()+"");
-		V.add(a.getRealId()+"");
+		V.add(a.getRandId()+"");
 		for(String s:V){
 			if(!sendMessage(new String[]{s}))
 				return false;
@@ -47,6 +47,24 @@ public class CommunicateHelper {
 		return true;
 	}
 
+	public static boolean updateTodo(Todo a) {
+		if(!sendMessage(new String[]{"todo","update"}))return false;
+		ArrayList<String> V = new ArrayList<String>();
+		V.add(a.getId()+"");
+		V.add(a.getTitle()+"");
+		V.add(a.getCategoryId()+"");
+		V.add(a.getStatus()+"");
+		V.add(a.getDeadlineLong()+"");
+		V.add(a.getUserId()+"");
+		V.add(a.getDescription()+"");
+		V.add(a.getBelongId()+"");
+		V.add(a.getRandId()+"");
+		for(String s:V){
+			if(!sendMessage(new String[]{s}))
+				return false;
+		}
+		return true;
+	}
 	public static boolean addCategory(Category a) {
 		if(!sendMessage(new String[]{"category","new"}))return false;
 		ArrayList<String> V = new ArrayList<String>();
@@ -101,6 +119,7 @@ public class CommunicateHelper {
 	public static void updateCommentByInstance(Comment c) {
 		SocketHelper.sendMessage(new String[]{"comment","update",c.getRealId()+"",c.getScore()+""});
 	}
+	
 	/******************************Do not edit here***************************/
 	public static boolean start(){
     	if(!SocketHelper.start())return false;

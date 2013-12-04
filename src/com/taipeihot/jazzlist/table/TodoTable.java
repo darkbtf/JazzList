@@ -25,7 +25,7 @@ public class TodoTable extends Table{
 		columns.add(new ColumnElement("user_id","INTEGER NOT NULL"));
 		columns.add(new ColumnElement("description","TEXT NOT NULL"));
 		columns.add(new ColumnElement("belong_id","INTEGER NOT NULL"));
-		columns.add(new ColumnElement("real_id","INTEGER NOT NULL"));
+		columns.add(new ColumnElement("rand_id","INTEGER NOT NULL"));
 		dropSQL = "DROP TABLE IF EXISTS "+tableName;
 		createSQL = makeCreateSQL(tableName, columns);
 		insertSQL = makeInsertSQL(tableName, columns);
@@ -138,7 +138,7 @@ public class TodoTable extends Table{
 		values.put("user_id", todo.getUserId());
 		values.put("description", todo.getDescription());
 		values.put("belong_id", todo.getBelongId());
-		values.put("real_id", todo.getRealId());
+		values.put("rand_id", todo.getRandId());
 		return values;
 	}
 }

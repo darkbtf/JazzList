@@ -3,6 +3,7 @@ package com.taipeihot.jazzlist.model;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.table.TodoTable;
 
@@ -16,7 +17,7 @@ public class Todo implements Comparable{
 	private int user_id = 0;
 	private String description;
 	private long belong_id = 0;
-	private int real_id = 0;
+	private int rand_id;
 	
 	public Todo(String title, long category_id, boolean isPublic, long deadline, String description){
 		this.title = title;
@@ -26,6 +27,7 @@ public class Todo implements Comparable{
 		this.deadline = deadline;
 		// this.user_id = TODO: what's my ID QQ?
 		this.description = description;
+		this.rand_id = Util.rng58();
 		// this.belong_id = TODO: what's my ID QQ?
 	}
 	public long getId(){return _id;}
@@ -48,7 +50,7 @@ public class Todo implements Comparable{
 		return Util.dateLongToString(deadline);
 	}
 	public Date getDeadline(){return new Date(deadline);}
-	public void setDeadline(Date deadline){this.deadline=deadline.getTime();}
+	public void setDeadline(long deadline){this.deadline=deadline;}
 	
 	public String getDescription(){return description;}
 	public void setDescription(String description){this.description=description;}
@@ -69,7 +71,7 @@ public class Todo implements Comparable{
 	/***************************** For Database ********************************/
 	public Todo(){}
 	public Todo(int _id,String title,int category_id,short status, long deadline,
-				int user_id, String description, int belong_id, int real_id){
+				int user_id, String description, int belong_id, int rand_id){
 		this._id=_id;
 		this.title=title;
 		this.category_id = category_id;
@@ -79,14 +81,17 @@ public class Todo implements Comparable{
 		this.user_id = user_id;
 		this.description = description;
 		this.belong_id = belong_id;
-		this.real_id = real_id;
+		this.rand_id = rand_id;
 	}
-	public int save(){return TodoTable.update(this);}
+	public void save(){
+		TodoTable.update(this);
+		CommunicateHelper.updateTodo(this);
+	}
 	public short getStatus(){return (short) ((isPublic?2:0)+(alive?1:0));}
 	public long getDeadlineLong(){return getDeadline().getTime();}
 	public int getUserId(){return user_id;}
-	public int getRealId(){return real_id;}
-
+	public int getRandId(){return rand_id;}
+	
 	@Override
 	public int compareTo(Object o){
 		Todo A = (Todo)o;
