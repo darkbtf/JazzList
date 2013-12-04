@@ -95,7 +95,7 @@ public class TodoListAdapter extends BaseExpandableListAdapter{
 		if(convertView==null){
 			LayoutInflater infalInflater = (LayoutInflater) this.context
 	                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView=infalInflater.inflate(R.layout.todo_list_big_item, null);
+			convertView=infalInflater.inflate(R.layout.todo_list_item, null);
 		}
 		Todo todo=todoItem.get(groupPosition);
 		if(todo.isAlive()){
