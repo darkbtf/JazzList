@@ -18,9 +18,10 @@
         android:maxLines="1"
         android:singleLine="true"
         android:textColor="@color/white"
+        android:textCursorDrawable="@null"
         android:textSize="25dp" >
+		
 
-        <requestFocus />
     </EditText>
 
     <ListView
@@ -61,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/category_addtodo_btn"
         android:layout_below="@+id/category_addtodo_btn"
-        android:background="#ff222222"
+
         android:text="PUBLIC"
         android:textColor="@color/white" />
 
