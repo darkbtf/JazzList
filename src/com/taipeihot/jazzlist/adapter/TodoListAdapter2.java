@@ -43,18 +43,12 @@ public class TodoListAdapter2 extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
     	Todo todo=todoItems.get(position);
-    	if (convertView == null) {
-            LayoutInflater mInflater = (LayoutInflater)
-                    context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            if(todo.isAlive()){
-            	if(isEm)convertView = mInflater.inflate(R.layout.todo_list_item, null);
-            	else convertView=mInflater.inflate(R.layout.todo_list_em_item, null);
-            }
-            else convertView =mInflater.inflate(R.layout.todo_list_dead_item, null);
-    	}
     	LayoutInflater mInflater = (LayoutInflater)
                 context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-    	if(todo.isAlive())convertView = mInflater.inflate(R.layout.todo_list_item, null);
+    	if(todo.isAlive()){
+        	if(todo.isEmergency())convertView = mInflater.inflate(R.layout.todo_list_em_item, null);
+        	else convertView=mInflater.inflate(R.layout.todo_list_item, null);
+        }
         else convertView =mInflater.inflate(R.layout.todo_list_dead_item, null);
     	if(todo.isAlive()){
 
