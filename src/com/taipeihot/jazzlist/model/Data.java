@@ -139,6 +139,7 @@ public class Data {
 						status.add(s);
 					else status.remove(s);
 				}
+				break;
 			}
 	}
 	
