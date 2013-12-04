@@ -132,6 +132,5 @@ public class CategoryFragment extends Fragment {
     }
     private void todoSetTime(){
     	setTimeDialog.show();
-
     }
 }
