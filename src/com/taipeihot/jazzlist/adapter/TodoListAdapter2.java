@@ -42,24 +42,43 @@ public class TodoListAdapter2 extends BaseAdapter {
  
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
+    	Todo todo=todoItems.get(position);
+    	if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.todo_list_big_item, null);
-        }
-        Todo todo=todoItems.get(position);
-        TextView todoName = (TextView) convertView.findViewById(R.id.big_todo_name);
-        TextView todoTime = (TextView) convertView.findViewById(R.id.big_todo_time);
-        todoName.setText(todo.getTitle());
-        todoTime.setText(todo.getDeadlineString());
-        Button b=(Button)convertView.findViewById(R.id.big_setting_button);
-		b.setFocusable(false);
-		b.setOnClickListener(new Button.OnClickListener() {
-		    public void onClick(View v) {
-		    	((MainActivity)context).toSetting(todoItems.get(position).getId());
-		    }
-		});
-        
+            if(todo.isAlive())convertView = mInflater.inflate(R.layout.todo_list_item, null);
+            else convertView =mInflater.inflate(R.layout.todo_list_dead_item, null);
+    	}
+    	LayoutInflater mInflater = (LayoutInflater)
+                context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+    	if(todo.isAlive())convertView = mInflater.inflate(R.layout.todo_list_item, null);
+        else convertView =mInflater.inflate(R.layout.todo_list_dead_item, null);
+    	if(todo.isAlive()){
+	        TextView todoName = (TextView) convertView.findViewById(R.id.big_todo_name);
+	        TextView todoTime = (TextView) convertView.findViewById(R.id.big_todo_time);
+	        todoName.setText(todo.getTitle());
+	        todoTime.setText(todo.getDeadlineString());
+	        Button b=(Button)convertView.findViewById(R.id.big_setting_button);
+			b.setFocusable(false);
+			b.setOnClickListener(new Button.OnClickListener() {
+			    public void onClick(View v) {
+			    	((MainActivity)context).toSetting(todoItems.get(position).getId());
+			    }
+			});
+    	}
+    	else{
+	        TextView todoName = (TextView) convertView.findViewById(R.id.dead_todo_name);
+	        TextView todoTime = (TextView) convertView.findViewById(R.id.dead_todo_time);
+	        todoName.setText(todo.getTitle());
+	        todoTime.setText(todo.getDeadlineString());
+	        Button b=(Button)convertView.findViewById(R.id.dead_setting_button);
+			b.setFocusable(false);
+			b.setOnClickListener(new Button.OnClickListener() {
+			    public void onClick(View v) {
+			    	((MainActivity)context).toSetting(todoItems.get(position).getId());
+			    }
+			});
+    	}
         
          
         return convertView;
