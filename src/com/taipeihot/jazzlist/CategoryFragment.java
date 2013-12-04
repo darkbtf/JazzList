@@ -1,6 +1,7 @@
 package com.taipeihot.jazzlist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import android.annotation.SuppressLint;
@@ -20,9 +21,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.haarman.listviewanimations.itemmanipulation.OnDismissCallback;
 import com.haarman.listviewanimations.itemmanipulation.SwipeDismissAdapter;
+<<<<<<< HEAD
+=======
+import com.haarman.listviewanimations.itemmanipulation.contextualundo.ContextualUndoAdapter;
+import com.haarman.listviewanimations.itemmanipulation.contextualundo.ContextualUndoAdapter.DeleteItemCallback;
+>>>>>>> dissmiss half
 import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
 import com.haarman.listviewanimations.swinginadapters.prepared.SwingLeftInAnimationAdapter;
 import com.taipeihot.jazzlist.adapter.TodoListAdapter2;
@@ -42,6 +49,7 @@ public class CategoryFragment extends Fragment implements OnDismissCallback{
 	AlertDialog setTimeDialog;
 	AnimationAdapter animAdapter;
 	SwipeDismissAdapter adapter;
+
 	Date d=new Date(0);
 	
     @Override
@@ -59,6 +67,7 @@ public class CategoryFragment extends Fragment implements OnDismissCallback{
         adapter = new SwipeDismissAdapter(animAdapter, this);
         adapter.setAbsListView(todoListView);
         todoListView.setAdapter(adapter);
+
         
     	
     	Button addButton = (Button) view.findViewById(R.id.category_addtodo_btn);
