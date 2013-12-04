@@ -1,6 +1,7 @@
 package com.taipeihot.jazzlist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import android.annotation.SuppressLint;
@@ -13,12 +14,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.haarman.listviewanimations.itemmanipulation.OnDismissCallback;
+import com.haarman.listviewanimations.itemmanipulation.SwipeDismissAdapter;
+import com.haarman.listviewanimations.itemmanipulation.contextualundo.ContextualUndoAdapter;
+import com.haarman.listviewanimations.itemmanipulation.contextualundo.ContextualUndoAdapter.DeleteItemCallback;
 import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
 import com.haarman.listviewanimations.swinginadapters.prepared.SwingLeftInAnimationAdapter;
 import com.taipeihot.jazzlist.adapter.TodoListAdapter2;
@@ -28,7 +35,7 @@ import com.taipeihot.jazzlist.model.Todo;
 import com.taipeihot.jazzlist.table.CategoryTable;
 
  @SuppressLint("NewApi")
-public class CategoryFragment extends Fragment {
+public class CategoryFragment extends Fragment implements OnDismissCallback{
 
 	View view;
 	ArrayList<Todo> todoList=new ArrayList<Todo>();
@@ -36,6 +43,7 @@ public class CategoryFragment extends Fragment {
 	Category currentCategory;
 	ListView todoListView;
 	AlertDialog setTimeDialog;
+	AnimationAdapter animAdapter;
 	Date d=new Date(0);
 	
     @Override
@@ -46,10 +54,14 @@ public class CategoryFragment extends Fragment {
     	
     	todoList = currentCategory.getTodos();
     	todoListAdapter2 = new TodoListAdapter2(this.getActivity(), todoList);
-    	AnimationAdapter animAdapter=new SwingLeftInAnimationAdapter(todoListAdapter2);
+    	animAdapter=new SwingLeftInAnimationAdapter(todoListAdapter2);
+    	
         todoListView = (ListView) view.findViewById(R.id.todoList);
         animAdapter.setAbsListView(todoListView);
+        //SwipeDismissAdapter adapter = new SwipeDismissAdapter(animAdapter, this);
+        //adapter.setAbsListView(todoListView);
         todoListView.setAdapter(animAdapter);
+        
     	
     	Button addButton = (Button) view.findViewById(R.id.category_addtodo_btn);
     	Button setTimeBtn = (Button) view.findViewById(R.id.category_settime_btn);
@@ -115,7 +127,7 @@ public class CategoryFragment extends Fragment {
     	currentCategory=CategoryTable.find(categoryId);
     	todoList = CategoryTable.find(categoryId).getTodos(); 
     	todoListAdapter2 = new TodoListAdapter2(this.getActivity(), todoList);
-    	AnimationAdapter animAdapter=new SwingLeftInAnimationAdapter(todoListAdapter2);
+    	animAdapter=new SwingLeftInAnimationAdapter(todoListAdapter2);
         todoListView = (ListView) view.findViewById(R.id.todoList);
         animAdapter.setAbsListView(todoListView);
         todoListView.setAdapter(animAdapter);
@@ -129,7 +141,9 @@ public class CategoryFragment extends Fragment {
             //System.out.println(categoryName.getText().toString());
         	long todoId = currentCategory.addTodo(todoName.getText().toString(),d.getTime());
         	todoName.setText("");
+
         	reload();
+
         	/*todoList.add(TodoTable.find(todoId));
             todoListAdapter.notifyDataSetChanged();*/
         }
@@ -147,4 +161,16 @@ public class CategoryFragment extends Fragment {
     private void todoSetTime(){
     	setTimeDialog.show();
     }
+
+	@Override
+	public void onDismiss(AbsListView listView, int[] reverseSortedPositions) {
+		// TODO Auto-generated method stub
+		for (int position : reverseSortedPositions) {
+            todoList.remove(position);
+            animAdapter.notifyDataSetChanged();
+        }
+	}
+
+    
+    
 }
