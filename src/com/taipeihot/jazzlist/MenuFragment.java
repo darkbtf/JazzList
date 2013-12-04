@@ -7,12 +7,17 @@ import android.app.ActionBar.OnNavigationListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GestureDetectorCompat;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -60,6 +65,16 @@ public class MenuFragment extends Fragment implements OnNavigationListener{
             	((MainActivity) getActivity()).changeCategory(category.getId());
             }
         });
+        categoryListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				System.out.println(arg2 + " pressed");
+				return true;
+			}
+        	
+        });
         Button timelineButton = (Button) view.findViewById(R.id.menu_status_btn);
         timelineButton.setOnClickListener(new OnClickListener() {
 
@@ -69,6 +84,18 @@ public class MenuFragment extends Fragment implements OnNavigationListener{
 				intent.setClass(getActivity(), TimelineActivity.class);
 				startActivity(intent);
 			}
+        });
+        
+        Button profileButton = (Button) view.findViewById(R.id.menu_profile_btn);
+        profileButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(getActivity(), ProfileActivity.class);
+				startActivity(intent);
+			}
+        	
         });
         return view;
     }
@@ -83,6 +110,10 @@ public class MenuFragment extends Fragment implements OnNavigationListener{
         }
     }
 
+    private void deleteCategory() {
+    	
+    }
+    
 	@Override
 	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
 		// TODO Auto-generated method stub

@@ -23,6 +23,7 @@ public class TimelineActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Timeline");
         setContentView(R.layout.activity_timeline);
         statusListView = (ExpandableListView) findViewById(R.id.status_list);
         statusList = Data.getStatus();

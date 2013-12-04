@@ -127,7 +127,7 @@ public class StatusListAdapter extends BaseExpandableListAdapter{
 		TextView todoTime=(TextView)convertView.findViewById(R.id.status_todo_time);
 		TextView likeCount=(TextView)convertView.findViewById(R.id.status_like_count);
 		TextView commentCount=(TextView)convertView.findViewById(R.id.status_comment_count);
-		TextView statusCategory=(TextView)convertView.findViewById(R.id.status_category_name);
+		TextView statusCategory=(TextView)convertView.findViewById(R.id.todo_title);
 		ImageButton likeBtn=(ImageButton)convertView.findViewById(R.id.status_like_graph);
 		ImageButton commentBtn=(ImageButton)convertView.findViewById(R.id.status_comment_graph);
 		
