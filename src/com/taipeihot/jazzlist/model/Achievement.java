@@ -17,4 +17,5 @@ public class Achievement {
 	
 	public String getType(){return type.toString();}
 	public int getNeed(){return need;}
+	public int getIcon(){return icon;}
 }
