@@ -50,7 +50,7 @@ public class Todo implements Comparable{
 		return Util.dateLongToString(deadline);
 	}
 	public Date getDeadline(){return new Date(deadline);}
-	public void setDeadline(Date deadline){this.deadline=deadline.getTime();}
+	public void setDeadline(long deadline){this.deadline=deadline;}
 	
 	public String getDescription(){return description;}
 	public void setDescription(String description){this.description=description;}
