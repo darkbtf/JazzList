@@ -107,8 +107,9 @@ public class Data {
 	public static ArrayList<Status> getStatusById(int id){
 		ArrayList<Status> ret = new ArrayList<Status>();
 		for(Status s:realStatus)
-			if(s.photoNumber() == id)
+			if(s.getVisible() && s.photoNumber() == id)
 				ret.add(s);
+		Collections.sort(ret);
 		return ret;
 	}
 	public static void updateStatus(){// MOST call with network
