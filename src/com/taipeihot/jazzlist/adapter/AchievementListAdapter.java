@@ -53,24 +53,26 @@ public class AchievementListAdapter extends BaseAdapter {
         final Achievement achievement=(Achievement)getItem(position);
         ImageView achiveImage = (ImageView) convertView.findViewById(R.id.achive_image);
         TextView achivTitle = (TextView) convertView.findViewById(R.id.achive_title);
-        achiveImage.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Toast.makeText(context,achievement.getDescription() , Toast.LENGTH_LONG).show();
-			}
-		});
+
+        achivTitle.setText(achievement.getTitle());
         if(achievement.done()){  
-        	int photoNum=achivItems.get(position).getIcon();
+        	int photoNum=achievement.getIcon();
 
     		achiveImage.setBackgroundResource(
     				context.getResources()
     				.getIdentifier(
     						"achiv_"+Integer
     						.toString(photoNum),
-    						"drawable", context.getPackageName()));        
-        	achivTitle.setText(achivItems.get(position).getTitle());
+    						"drawable", context.getPackageName()));
+            achiveImage.setOnClickListener(new OnClickListener() {
+    			
+    			@Override
+    			public void onClick(View v) {
+    				// TODO Auto-generated method stub
+    				Toast.makeText(context,achievement.getDescription() , Toast.LENGTH_SHORT).show();
+    			}
+    		});
+        	
         }
         else {
         	achiveImage.setBackgroundResource(R.drawable.achiv_default);
