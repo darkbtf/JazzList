@@ -23,17 +23,16 @@
         <requestFocus />
     </EditText>
 
-    <ExpandableListView
+    <ListView
         android:id="@+id/todoList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/category_addtodo_btn"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
-        android:background="@drawable/todo_shape"
         android:divider="#000000"
         android:dividerHeight="5dp" >
-    </ExpandableListView>
+    </ListView>
 
     <Button
         android:id="@+id/category_settime_btn"
