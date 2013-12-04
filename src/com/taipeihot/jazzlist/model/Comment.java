@@ -38,6 +38,7 @@ public class Comment {
 	
 	public void incScore(){
 		score++;
+		Data.incAchievementParameter(AchievementType.like_number);
 		CommunicateHelper.updateCommentByInstance(this);
 	}
 	public void decScore(){score--;}

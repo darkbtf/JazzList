@@ -61,6 +61,7 @@ public class Status implements Comparable{
 	public int getScore(){return score;}
 	public void incScore(){
 		score++;
+		Data.incAchievementParameter(AchievementType.like_number);
 		update();
 	}
 	public void decScore(){score--;}
@@ -80,6 +81,7 @@ public class Status implements Comparable{
 	
 	public void addComment(String c){
 		//comments.add(c);  // no need this
+		Data.incAchievementParameter(AchievementType.comment_number);
 		CommunicateHelper.addComment(real_id,c);
 		Data.updateStatus();
 	}

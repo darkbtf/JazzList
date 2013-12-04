@@ -24,7 +24,7 @@ public class Data {
 	public static long lastUpdateStatusTime=0;
 	public static SharedPreferences achiv_sp;
 	
-	private void init(){
+	private static void init(){
 		achievements = new ArrayList<Achievement>();
 	}
 	
