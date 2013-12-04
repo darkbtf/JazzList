@@ -14,7 +14,9 @@ public class AchievementCommand implements Command{
 			int icon=Integer.valueOf(SocketHelper.getMessage());
 			AchievementType type = AchievementType.valueOf(SocketHelper.getMessage());
 			int need = Integer.valueOf(SocketHelper.getMessage());
-			Data.addAchivements(new Achievement(icon,type,need));
+			String title = SocketHelper.getMessage();
+			String description = SocketHelper.getMessage();
+			Data.addAchivements(new Achievement(icon,type,need,title,description));
 		}
 		else return false;
 		return true;
