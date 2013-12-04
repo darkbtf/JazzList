@@ -80,7 +80,9 @@ public class SettingFragment extends Fragment {
 			}
         	
         });
+        final Button setTimeButton = (Button) view.findViewById(R.id.set_time_btn);
 
+    	setTimeButton.setText(Util.dateLongToString(todo.getDeadlineLong()));
     	//final Date d=new Date(0);
         final View alertView = inflater.inflate(R.layout.dialog_time, null);
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -98,7 +100,7 @@ public class SettingFragment extends Fragment {
             	Date d=new Date(dp.getYear()-1900,dp.getMonth(),dp.getDayOfMonth());
             	d.setHours(tp.getCurrentHour().intValue());
             	d.setMinutes(tp.getCurrentMinute().intValue());
-            	((Button)view.findViewById(R.id.set_time_btn)).setText(Util.dateLongToString(d.getTime()));
+            	setTimeButton.setText(Util.dateLongToString(d.getTime()));
             	todo.setDeadline(d.getTime());
             	todo.save();
 				((CategoryFragment) ((MainActivity) getActivity()).contentFragment).reload();
@@ -111,7 +113,6 @@ public class SettingFragment extends Fragment {
         });
         setTimeDialog = builder.create();
         
-        Button setTimeButton = (Button) view.findViewById(R.id.set_time_btn);
         setTimeButton.setOnClickListener(new OnClickListener(){
 
 			@Override
