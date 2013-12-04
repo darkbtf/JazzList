@@ -30,7 +30,7 @@
         android:layout_alignParentRight="true"
         android:text="ADD" />
 
-    <EditText
+   <EditText
         android:id="@+id/friend_add_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,9 +39,11 @@
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/friend_add"
         android:ems="10"
+        android:textColor="@color/white"
+        android:textCursorDrawable="@null"
         android:hint="friend name ..." >
 
-        <requestFocus />
+
     </EditText>
 
 </RelativeLayout>

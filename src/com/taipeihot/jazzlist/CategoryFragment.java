@@ -1,7 +1,6 @@
 package com.taipeihot.jazzlist;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 import android.annotation.SuppressLint;
@@ -21,11 +20,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.haarman.listviewanimations.itemmanipulation.OnDismissCallback;
 import com.haarman.listviewanimations.itemmanipulation.SwipeDismissAdapter;
 import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
+import com.haarman.listviewanimations.swinginadapters.prepared.SwingBottomInAnimationAdapter;
 import com.haarman.listviewanimations.swinginadapters.prepared.SwingLeftInAnimationAdapter;
 import com.taipeihot.jazzlist.adapter.TodoListAdapter2;
 import com.taipeihot.jazzlist.model.Category;
@@ -42,7 +41,7 @@ public class CategoryFragment extends Fragment implements OnDismissCallback{
 	Category currentCategory;
 	ListView todoListView;
 	AlertDialog setTimeDialog;
-	AnimationAdapter animAdapter;
+	SwingBottomInAnimationAdapter animAdapter;
 	SwipeDismissAdapter adapter;
 
 	Date d=new Date(0);
@@ -55,7 +54,7 @@ public class CategoryFragment extends Fragment implements OnDismissCallback{
     	
     	todoList = currentCategory.getTodos();
     	todoListAdapter2 = new TodoListAdapter2(this.getActivity(), todoList);
-    	animAdapter=new SwingLeftInAnimationAdapter(todoListAdapter2);
+    	animAdapter=new SwingBottomInAnimationAdapter(todoListAdapter2);
     	
         todoListView = (ListView) view.findViewById(R.id.todoList);
         animAdapter.setAbsListView(todoListView);
@@ -129,7 +128,7 @@ public class CategoryFragment extends Fragment implements OnDismissCallback{
     	currentCategory=CategoryTable.find(categoryId);
     	todoList = CategoryTable.find(categoryId).getTodos(); 
     	todoListAdapter2 = new TodoListAdapter2(this.getActivity(), todoList);
-    	animAdapter=new SwingLeftInAnimationAdapter(todoListAdapter2);
+    	animAdapter=new SwingBottomInAnimationAdapter(todoListAdapter2);
         todoListView = (ListView) view.findViewById(R.id.todoList);
         animAdapter.setAbsListView(todoListView);
         adapter = new SwipeDismissAdapter(animAdapter, this);
