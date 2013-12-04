@@ -25,11 +25,6 @@ import android.widget.Toast;
 
 import com.haarman.listviewanimations.itemmanipulation.OnDismissCallback;
 import com.haarman.listviewanimations.itemmanipulation.SwipeDismissAdapter;
-<<<<<<< HEAD
-=======
-import com.haarman.listviewanimations.itemmanipulation.contextualundo.ContextualUndoAdapter;
-import com.haarman.listviewanimations.itemmanipulation.contextualundo.ContextualUndoAdapter.DeleteItemCallback;
->>>>>>> dissmiss half
 import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
 import com.haarman.listviewanimations.swinginadapters.prepared.SwingLeftInAnimationAdapter;
 import com.taipeihot.jazzlist.adapter.TodoListAdapter2;
