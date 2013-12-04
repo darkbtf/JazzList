@@ -16,13 +16,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TimePicker;
 
 import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
 import com.haarman.listviewanimations.swinginadapters.prepared.SwingLeftInAnimationAdapter;
-import com.taipeihot.jazzlist.adapter.TodoListAdapter;
 import com.taipeihot.jazzlist.adapter.TodoListAdapter2;
 import com.taipeihot.jazzlist.model.Category;
 import com.taipeihot.jazzlist.model.Data;
@@ -36,7 +34,7 @@ public class CategoryFragment extends Fragment {
 	ArrayList<Todo> todoList=new ArrayList<Todo>();
 	TodoListAdapter2 todoListAdapter2;
 	Category currentCategory;
-	ListView listView;
+	ListView todoListView;
 	AlertDialog setTimeDialog;
 	Date d=new Date(0);
 	
@@ -49,9 +47,9 @@ public class CategoryFragment extends Fragment {
     	todoList = currentCategory.getTodos();
     	todoListAdapter2 = new TodoListAdapter2(this.getActivity(), todoList);
     	AnimationAdapter animAdapter=new SwingLeftInAnimationAdapter(todoListAdapter2);
-        ListView todoListView = (ListView) view.findViewById(R.id.todoList);
+        todoListView = (ListView) view.findViewById(R.id.todoList);
         animAdapter.setAbsListView(todoListView);
-    	listView.setAdapter(animAdapter);
+        todoListView.setAdapter(animAdapter);
     	
     	Button addButton = (Button) view.findViewById(R.id.category_addtodo_btn);
     	Button setTimeBtn = (Button) view.findViewById(R.id.category_settime_btn);
@@ -101,7 +99,7 @@ public class CategoryFragment extends Fragment {
         });
         setTimeDialog = builder.create();
     	
-        listView.setOnLongClickListener(new OnLongClickListener() {
+        todoListView.setOnLongClickListener(new OnLongClickListener() {
 
 			@Override
 			public boolean onLongClick(View arg0) {
@@ -117,7 +115,11 @@ public class CategoryFragment extends Fragment {
     	currentCategory=CategoryTable.find(categoryId);
     	todoList = CategoryTable.find(categoryId).getTodos(); 
     	todoListAdapter2 = new TodoListAdapter2(this.getActivity(), todoList);
-    	listView.setAdapter(todoListAdapter2);
+    	AnimationAdapter animAdapter=new SwingLeftInAnimationAdapter(todoListAdapter2);
+        todoListView = (ListView) view.findViewById(R.id.todoList);
+        animAdapter.setAbsListView(todoListView);
+        todoListView.setAdapter(animAdapter);
+
     	//todoListAdapter.notifyDataSetChanged();
     }
     
@@ -129,8 +131,10 @@ public class CategoryFragment extends Fragment {
         	todoName.setText("");
         	todoList = currentCategory.getTodos();
         	todoListAdapter2 = new TodoListAdapter2(this.getActivity(), todoList);
-        	listView = (ExpandableListView) view.findViewById(R.id.todoList);
-        	listView.setAdapter(todoListAdapter2);
+        	AnimationAdapter animAdapter=new SwingLeftInAnimationAdapter(todoListAdapter2);
+            todoListView = (ListView) view.findViewById(R.id.todoList);
+            animAdapter.setAbsListView(todoListView);
+            todoListView.setAdapter(animAdapter);
         	/*todoList.add(TodoTable.find(todoId));
             todoListAdapter.notifyDataSetChanged();*/
         }

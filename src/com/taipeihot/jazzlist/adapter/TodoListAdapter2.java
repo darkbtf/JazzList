@@ -9,12 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.taipeihot.jazzlist.MainActivity;
 import com.taipeihot.jazzlist.R;
-import com.taipeihot.jazzlist.model.Category;
 import com.taipeihot.jazzlist.model.Todo;
  
 public class TodoListAdapter2 extends BaseAdapter {
@@ -52,6 +50,8 @@ public class TodoListAdapter2 extends BaseAdapter {
         Todo todo=todoItems.get(position);
         TextView todoName = (TextView) convertView.findViewById(R.id.big_todo_name);
         TextView todoTime = (TextView) convertView.findViewById(R.id.big_todo_time);
+        todoName.setText(todo.getTitle());
+        todoTime.setText(todo.getDeadlineString());
         Button b=(Button)convertView.findViewById(R.id.big_setting_button);
 		b.setFocusable(false);
 		b.setOnClickListener(new Button.OnClickListener() {
@@ -59,8 +59,7 @@ public class TodoListAdapter2 extends BaseAdapter {
 		    	((MainActivity)context).toSetting(todoItems.get(position).getId());
 		    }
 		});
-        todoName.setText(todo.getTitle());
-        todoTime.setText(todo.getDeadlineString());
+        
         
          
         return convertView;
