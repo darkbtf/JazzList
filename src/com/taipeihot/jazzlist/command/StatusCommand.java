@@ -23,7 +23,8 @@ public class StatusCommand implements Command{
 			int score = Integer.valueOf(SocketHelper.getMessage());
 			String category = SocketHelper.getMessage();
 			long updated_at = Long.valueOf(SocketHelper.getMessage());
-			Data.addStatus(new Status(nickname,title,user_id,deadline,score,real_id,category,updated_at));
+			boolean visible = Boolean.valueOf(SocketHelper.getMessage());
+			Data.addStatus(new Status(nickname,title,user_id,deadline,score,visible,real_id,category,updated_at));
 			return true;
 		}
 		else if(cmd.equals("update")){
@@ -35,7 +36,8 @@ public class StatusCommand implements Command{
 			int score = Integer.valueOf(SocketHelper.getMessage());
 			String category = SocketHelper.getMessage();
 			long updated_at = Long.valueOf(SocketHelper.getMessage());
-			Data.updateStatusByRealId(real_id,new Status(nickname,title,user_id,deadline,score,real_id,category,updated_at));
+			boolean visible = Boolean.valueOf(SocketHelper.getMessage());
+			Data.updateStatusByRealId(real_id,new Status(nickname,title,user_id,deadline,score,visible,real_id,category,updated_at));
 		}
 		return true;
 	}
