@@ -57,7 +57,7 @@ public class Data {
 		setFriendUpdating(true);
 		CommunicateHelper.getFriends();
 		while(getFriendUpdating());
-		setAchievementParameter(AchivType.friend_number,friends.size());
+		setAchievementParameter(AchievementType.friend_number,friends.size());
 		return friends;
     }
 
@@ -127,20 +127,20 @@ public class Data {
 	}
 	
 	/****************************For Achievement *********************************/
-	public void addAchivements(Achievement a){
+	public static void addAchivements(Achievement a){
 		achievements.add(a);
 	}
 	public static ArrayList<Achievement> getAchievements(){
 		return achievements;
 	}
 	
-	public static int getAchievementParameter(AchivType s) {
+	public static int getAchievementParameter(AchievementType s) {
 		return achiv_sp.getInt(s.toString(), -1);
 	}
-	public static void setAchievementParameter(AchivType s, int v) {
+	public static void setAchievementParameter(AchievementType s, int v) {
 		achiv_sp.edit().putInt(s.toString(), v).commit();
 	}
-	public static void incAchievementParameter(AchivType s) {
+	public static void incAchievementParameter(AchievementType s) {
 		setAchievementParameter(s,getAchievementParameter(s)+1);
 	}
 }

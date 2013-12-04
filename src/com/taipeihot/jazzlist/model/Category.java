@@ -29,7 +29,7 @@ public class Category {
 	public long addTodo(String title,long deadline) {
 		Todo a = new Todo(title,getId(),true,deadline,title+" s description");
 		CommunicateHelper.addTodo(a);
-		Data.incAchievementParameter(AchivType.add_todo_number);
+		Data.incAchievementParameter(AchievementType.add_todo_number);
 		return TodoTable.insert(a);
 	}
 	

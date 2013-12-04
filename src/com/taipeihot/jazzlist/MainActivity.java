@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.taipeihot.jazzlist.model.Achievement;
-import com.taipeihot.jazzlist.model.AchivType;
+import com.taipeihot.jazzlist.model.AchievementType;
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.Todo;
 import com.taipeihot.jazzlist.table.CategoryTable;
@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity {
     
     private void initData(){
     	Data.achiv_sp = getSharedPreferences("achivement_parameter",MODE_PRIVATE);
-    	for(AchivType a:AchivType.values())
+    	for(AchievementType a:AchievementType.values())
 			if(Data.getAchievementParameter(a)==-1)
 				Data.setAchievementParameter(a,0);
     }
