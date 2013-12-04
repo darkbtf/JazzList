@@ -40,4 +40,12 @@
         android:hint="Todo Description......"
         android:textColor="@color/white" />
 
+    <CheckBox
+        android:id="@+id/public_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff222222"
+        android:text="PUBLIC"
+        android:textColor="@color/white" />
+
 </LinearLayout>

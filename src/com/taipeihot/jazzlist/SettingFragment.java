@@ -1,9 +1,12 @@
 package com.taipeihot.jazzlist;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ActionBar.OnNavigationListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,9 +23,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
 import com.haarman.listviewanimations.swinginadapters.prepared.SwingLeftInAnimationAdapter;
@@ -37,6 +42,7 @@ public class SettingFragment extends Fragment {
 
 	View view;
     Todo todo;
+    AlertDialog setTimeDialog;
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +61,56 @@ public class SettingFragment extends Fragment {
 				todo.setTitle(todoTitle.getText().toString());
 				todo.save();
 				((CategoryFragment) ((MainActivity) getActivity()).contentFragment).reload();
+			}
+        	
+        });
+        final EditText todoDescription = (EditText) view.findViewById(R.id.todo_description);
+        todoDescription.setText(todo.getDescription());
+        todoDescription.setOnFocusChangeListener(new OnFocusChangeListener(){
+
+			@Override
+			public void onFocusChange(View arg0, boolean arg1) {
+				System.out.println(todoDescription.getText().toString());
+				todo.setDescription(todoDescription.getText().toString());
+				todo.save();				
+			}
+        	
+        });
+
+    	//final Date d=new Date(0);
+        final View alertView = inflater.inflate(R.layout.dialog_time, null);
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setView(alertView)
+        .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            	Util.errorReport("positive");
+            	TimePicker tp = (TimePicker)setTimeDialog.findViewById(R.id.setTime_time);
+            	int hour=tp.getCurrentHour();
+            	int min=tp.getCurrentMinute();
+            	DatePicker dp=(DatePicker)setTimeDialog.findViewById(R.id.setTime_date);
+            	int day=dp.getDayOfMonth();
+            	
+            	Util.errorReport(""+hour+" "+min+" "+day);
+            	Date d=new Date(dp.getYear()-1900,dp.getMonth(),dp.getDayOfMonth());
+            	d.setHours(tp.getCurrentHour().intValue());
+            	d.setMinutes(tp.getCurrentMinute().intValue());
+            	((Button)view.findViewById(R.id.category_settime_btn)).setText(Util.dateLongToString(d.getTime()));
+            }
+        })
+        .setNegativeButton("Back", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+        setTimeDialog = builder.create();
+        
+        Button setTimeButton = (Button) view.findViewById(R.id.setting_time_btn);
+        setTimeButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				setTimeDialog.show();				
 			}
         	
         });

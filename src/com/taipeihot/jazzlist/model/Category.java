@@ -26,8 +26,8 @@ public class Category {
 		this.count = count;
 	}
 	
-	public long addTodo(String title,long deadline) {
-		Todo a = new Todo(title,getId(),true,deadline,title+" s description");
+	public long addTodo(String title,long deadline,boolean isPublic) {
+		Todo a = new Todo(title, getId(), isPublic, deadline, title+" s description");
 		CommunicateHelper.addTodo(a);
 		Data.incAchievementParameter(AchievementType.add_todo_number);
 		return TodoTable.insert(a);
@@ -35,9 +35,10 @@ public class Category {
 	
 	public void eraseTodo(int id) { // id in device ,not in server
 		Todo t=TodoTable.find(id);
-		t.setAlive(false);
+		t.setAlive(!t.isAlive());
 		t.save();
 	}
+	
 	public long getId(){return _id;}
 	public void setId(long _id){this._id = _id;}
 	
