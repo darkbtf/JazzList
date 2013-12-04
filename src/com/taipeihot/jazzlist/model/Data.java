@@ -24,6 +24,10 @@ public class Data {
 	public static long lastUpdateStatusTime=0;
 	public static SharedPreferences achiv_sp;
 	
+	private void init(){
+		achievements = new ArrayList<Achievement>();
+	}
+	
 	/**************************** User Login and Register****************************/
 	public static boolean login(String account, String password){
 		CommunicateHelper.login(account,password);
@@ -45,7 +49,7 @@ public class Data {
 	public static boolean hasLogined(){return logined==1;}
 	
 	public static void loginWait(){logined = 0;}
-	public static void loginSuccess(){logined = 1;}
+	public static void loginSuccess(){init();logined = 1;}
 	public static void loginFail(){logined = 2;}
 	/**************************** About Friends*************************************/
 	public static boolean addFriend(String account){
