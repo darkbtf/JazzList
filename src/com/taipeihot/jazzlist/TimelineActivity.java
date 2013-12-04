@@ -8,6 +8,7 @@ import com.taipeihot.jazzlist.model.Status;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,6 +26,8 @@ public class TimelineActivity extends Activity {
         super.onCreate(savedInstanceState);
         setTitle("Timeline");
         setContentView(R.layout.activity_timeline);
+        Intent intent = getIntent();
+        int userId = intent.getIntExtra("userId", -1);
         statusListView = (ExpandableListView) findViewById(R.id.status_list);
         statusList = Data.getStatus();
         Data.updateStatus();
