@@ -22,7 +22,7 @@
            android:textSize="40dp" />
 
        <Button
-           android:id="@+id/setting_time_btn"
+           android:id="@+id/set_time_btn"
            style="@style/gray_btn"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         android:textColor="@color/white" />
 
     <CheckBox
-        android:id="@+id/public_checkbox"
+        android:id="@+id/set_public_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#ff222222"

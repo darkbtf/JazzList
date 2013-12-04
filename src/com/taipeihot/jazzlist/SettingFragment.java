@@ -98,9 +98,10 @@ public class SettingFragment extends Fragment {
             	Date d=new Date(dp.getYear()-1900,dp.getMonth(),dp.getDayOfMonth());
             	d.setHours(tp.getCurrentHour().intValue());
             	d.setMinutes(tp.getCurrentMinute().intValue());
-            	((Button)view.findViewById(R.id.setting_time_btn)).setText(Util.dateLongToString(d.getTime()));
+            	((Button)view.findViewById(R.id.set_time_btn)).setText(Util.dateLongToString(d.getTime()));
             	todo.setDeadline(d.getTime());
             	todo.save();
+				((CategoryFragment) ((MainActivity) getActivity()).contentFragment).reload();
             }
         })
         .setNegativeButton("Back", new DialogInterface.OnClickListener() {
@@ -110,7 +111,7 @@ public class SettingFragment extends Fragment {
         });
         setTimeDialog = builder.create();
         
-        Button setTimeButton = (Button) view.findViewById(R.id.setting_time_btn);
+        Button setTimeButton = (Button) view.findViewById(R.id.set_time_btn);
         setTimeButton.setOnClickListener(new OnClickListener(){
 
 			@Override
@@ -120,12 +121,13 @@ public class SettingFragment extends Fragment {
         	
         });
         
-        final CheckBox publicCheckBox = (CheckBox) view.findViewById(R.id.public_checkbox);
+        final CheckBox publicCheckBox = (CheckBox) view.findViewById(R.id.set_public_checkbox);
         publicCheckBox.setChecked(todo.isPublic());
         publicCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
 
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+				System.out.println("jizzjizz");
 				todo.setPublic(publicCheckBox.isChecked());
 				todo.save();
 			}
