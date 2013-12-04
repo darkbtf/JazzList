@@ -34,7 +34,8 @@ public class AchievementListAdapter extends BaseAdapter {
     }
  
     @Override
-    public Object getItem(int position) {       
+    public Object getItem(int position) {
+    	Util.errorReport(position+"");
         return achivItems.get(position);
     }
  

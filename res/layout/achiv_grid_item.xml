@@ -25,7 +25,7 @@
             android:layout_marginTop="21dp"
             android:text="unkwon"
             android:textColor="@color/white"
-            android:textSize="40dp" />
+            android:textSize="30dp" />
 
     </RelativeLayout>
 	
