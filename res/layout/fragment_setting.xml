@@ -16,6 +16,7 @@
            android:layout_height="wrap_content"
            android:layout_alignParentLeft="true"
            android:layout_centerVertical="true"
+           android:hint="todoName......"
            android:text="Todo name"
            android:textColor="@color/white"
            android:textSize="40dp" />
@@ -32,9 +33,11 @@
    </RelativeLayout>
 
     <EditText
-        android:id="@+id/todo_note"
+        android:id="@+id/todo_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" />
+        android:ems="10"
+        android:hint="Todo Description......"
+        android:textColor="@color/white" />
 
 </LinearLayout>
