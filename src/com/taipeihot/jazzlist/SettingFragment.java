@@ -120,6 +120,7 @@ public class SettingFragment extends Fragment {
         });
         
         final CheckBox publicCheckBox = (CheckBox) view.findViewById(R.id.public_checkbox);
+        publicCheckBox.setChecked(todo.isPublic());
         publicCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
 
 			@Override
