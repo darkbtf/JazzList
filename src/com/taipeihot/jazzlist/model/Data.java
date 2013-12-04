@@ -107,7 +107,7 @@ public class Data {
 	public static void updateStatus(){// MOST call with network
 		setStatusUpdating();
 		CommunicateHelper.updateStatus();
-		Util.errorReport("updating satatus");
+		Util.errorReport("updating status");
 		while(getStatusUpdating());
 	}
 	public static void doneStatusUpdate(long lastUpdateStatusTime) {
@@ -135,7 +135,7 @@ public class Data {
 				boolean b = newStatus.getVisible();
 				s.clone(newStatus);
 				if(a != b){
-					if(newStatus.getVisible()) // Private -> public doesn't work QQ
+					if(newStatus.getVisible())
 						status.add(s);
 					else status.remove(s);
 				}
