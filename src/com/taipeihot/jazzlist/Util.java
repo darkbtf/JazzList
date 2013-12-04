@@ -80,4 +80,7 @@ public class Util {
 		Calendar cal = Calendar.getInstance();
 		return (cal.getTime()).getTime();
 	}
+	public static int rng58() {
+		return (int)getCurrentTime();
+	}
 }
