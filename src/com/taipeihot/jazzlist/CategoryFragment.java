@@ -142,7 +142,7 @@ public class CategoryFragment extends Fragment implements OnDismissCallback{
     private void addTodo() {
         EditText todoName = (EditText) view.findViewById(R.id.category_todoinput);
         CheckBox checkBox = (CheckBox) view.findViewById(R.id.public_checkbox);
-        if (todoName.getText().toString() != "") {
+        if (!todoName.getText().toString().equals("")) {
             //System.out.println(categoryName.getText().toString());
         	long todoId = currentCategory.addTodo(todoName.getText().toString(), d.getTime(), checkBox.isChecked());
         	todoName.setText("");

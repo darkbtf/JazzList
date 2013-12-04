@@ -8,6 +8,7 @@ import com.taipeihot.jazzlist.model.Category;
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.User;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -25,7 +26,6 @@ public class FriendListFragment extends Fragment {
 	ArrayList<User> friends;
 	FriendListAdapter friendListAdapter;
 	ListView friendListView;
-	boolean initialized = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -43,6 +43,17 @@ public class FriendListFragment extends Fragment {
         friendListAdapter = new FriendListAdapter(this.getActivity(), friends);
         friendListView = (ListView) view.findViewById(R.id.friendList);
         friendListView.setAdapter(friendListAdapter);
+        friendListView.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
+				Intent intent = new Intent(getActivity(), TimelineActivity.class);
+				intent.putExtra("userId", friends.get(position).photoNumber());
+				startActivity(intent);
+			}
+        	
+        });
         
         return view;
     }
