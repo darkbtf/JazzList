@@ -3,7 +3,9 @@ package com.taipeihot.jazzlist;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ActionBar.OnNavigationListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,6 +35,7 @@ public class MenuFragment extends Fragment implements OnNavigationListener{
 
     CategoryListAdapter categoryListAdapter;
     View view;
+    int toDeleteItemId;
     ArrayList<Category> categories;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,12 +68,37 @@ public class MenuFragment extends Fragment implements OnNavigationListener{
             	((MainActivity) getActivity()).changeCategory(category.getId());
             }
         });
+        
+        
+		final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		builder
+		.setPositiveButton("Delete",  new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				Data.deleteCategory(categories.get(toDeleteItemId).getId());
+	            categoryListAdapter.notifyDataSetChanged();
+			}
+			
+		})
+		.setNegativeButton("Back",  new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				
+			}
+			
+		});
+        
         categoryListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 					int arg2, long arg3) {
-				System.out.println(arg2 + " pressed");
+				toDeleteItemId = arg2;
+				builder.setTitle("You're deleting \""+ categories.get(arg2).getTitle() +"\"");
+				AlertDialog alertDialog = builder.create();
+				alertDialog.show();
 				return true;
 			}
         	
@@ -102,16 +130,12 @@ public class MenuFragment extends Fragment implements OnNavigationListener{
 
     private void addCategory(View view) {
         EditText categoryName = (EditText) view.findViewById(R.id.category_name);
-        if (categoryName.getText().toString() != "") {
+        if (!categoryName.getText().toString().equals("")) {
             //System.out.println(categoryName.getText().toString());
             Data.addCategory(categoryName.getText().toString());
         	categoryName.setText("");
             categoryListAdapter.notifyDataSetChanged();
         }
-    }
-
-    private void deleteCategory() {
-    	
     }
     
 	@Override
