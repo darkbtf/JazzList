@@ -104,6 +104,13 @@ public class Data {
 		realStatus.add(s);
 	}
 	public static ArrayList<Status> getStatus(){return status;}
+	public static ArrayList<Status> getStatusById(int id){
+		ArrayList<Status> ret = new ArrayList<Status>();
+		for(Status s:realStatus)
+			if(s.photoNumber() == id)
+				ret.add(s);
+		return ret;
+	}
 	public static void updateStatus(){// MOST call with network
 		setStatusUpdating();
 		CommunicateHelper.updateStatus();
