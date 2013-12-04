@@ -46,7 +46,10 @@ public class TodoListAdapter2 extends BaseAdapter {
     	if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            if(todo.isAlive())convertView = mInflater.inflate(R.layout.todo_list_item, null);
+            if(todo.isAlive()){
+            	if(isEm)convertView = mInflater.inflate(R.layout.todo_list_item, null);
+            	else convertView=mInflater.inflate(R.layout.todo_list_em_item, null);
+            }
             else convertView =mInflater.inflate(R.layout.todo_list_dead_item, null);
     	}
     	LayoutInflater mInflater = (LayoutInflater)
@@ -54,6 +57,7 @@ public class TodoListAdapter2 extends BaseAdapter {
     	if(todo.isAlive())convertView = mInflater.inflate(R.layout.todo_list_item, null);
         else convertView =mInflater.inflate(R.layout.todo_list_dead_item, null);
     	if(todo.isAlive()){
+
 	        TextView todoName = (TextView) convertView.findViewById(R.id.big_todo_name);
 	        TextView todoTime = (TextView) convertView.findViewById(R.id.big_todo_time);
 	        todoName.setText(todo.getTitle());
