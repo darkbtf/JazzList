@@ -75,9 +75,9 @@ public class Data {
 		return CommunicateHelper.addCategory(c);
 	}
 	
-	public static void deleteCategory(int category_id){
+	public static void deleteCategory(long category_id){
 		for(int i=0;i<categories.size();i++)
-			if(categories.get(i).getRealId()==category_id){
+			if(categories.get(i).getId()==category_id){
 				Category c = categories.get(i); 
 				categories.remove(i);
 				c.die();
