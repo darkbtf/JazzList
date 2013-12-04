@@ -6,24 +6,26 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.taipeihot.jazzlist.R;
+import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.model.Achievement;
 import com.taipeihot.jazzlist.model.Category;
-import com.taipeihot.jazzlist.model.User;
  
 public class AchievementListAdapter extends BaseAdapter {
      
     private Context context;
     private ArrayList<Achievement> achivItems;
      
-    public AchievementListAdapter(Context context, ArrayList<Category> categoryItems){
+    public AchievementListAdapter(Context context, ArrayList<Achievement> achivItems){
         this.context = context;
-        this.achivItems = categoryItems;
+        this.achivItems = achivItems;
     }
  
     @Override
@@ -48,13 +50,30 @@ public class AchievementListAdapter extends BaseAdapter {
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.achiv_grid_item, null);
         }
-        Achievement achievement=(Achievement)getItem(position);
+        final Achievement achievement=(Achievement)getItem(position);
         ImageView achiveImage = (ImageView) convertView.findViewById(R.id.achive_image);
         TextView achivTitle = (TextView) convertView.findViewById(R.id.achive_title);
-
+        achiveImage.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Toast.makeText(context,achievement.getDescription() , Toast.LENGTH_LONG).show();
+			}
+		});
         if(achievement.done()){  
-        	achiveImage.setImageResource(achivItems.get(position).getIcon());        
+        	int photoNum=achivItems.get(position).getIcon();
+
+    		achiveImage.setBackgroundResource(
+    				context.getResources()
+    				.getIdentifier(
+    						"achiv_"+Integer
+    						.toString(photoNum),
+    						"drawable", context.getPackageName()));        
         	achivTitle.setText(achivItems.get(position).getTitle());
+        }
+        else {
+        	achiveImage.setBackgroundResource(R.drawable.achiv_default);
         }
         // displaying count
         // check whether it set visible or not
