@@ -84,6 +84,7 @@ public class MainActivity extends BaseActivity {
         getSlidingMenu().showSecondaryMenu();
         //((SettingFragment) rightMenuFragment).setTodo(todoId);
     }
+
     
     public void toFriendList() {
     	rightMenuFragment = new FriendListFragment();
