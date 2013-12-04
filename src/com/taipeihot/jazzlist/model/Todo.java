@@ -58,6 +58,11 @@ public class Todo implements Comparable{
 	public long getBelongId(){return belong_id;}
 	public void setBelongId(long belong_id){this.belong_id=belong_id;}
 	
+	public boolean isEmergency (){
+		if(deadline-86400000l <= Util.getCurrentTime())return true;
+		return false;
+	}
+	
 	public ArrayList<Todo> getSubtodos(){
 		if(_id == 0){
 			Util.errorReport("cannot get subtodos because _id=0");
