@@ -56,6 +56,12 @@ public class AchievementListAdapter extends BaseAdapter {
         TextView achivTitle = (TextView) convertView.findViewById(R.id.achive_title);
 
         achivTitle.setText(achievement.getTitle());
+        achiveImage.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+			}
+		});
         if(achievement.done()){  
         	int photoNum=achievement.getIcon();
 
@@ -65,7 +71,7 @@ public class AchievementListAdapter extends BaseAdapter {
     						"achiv_"+Integer
     						.toString(photoNum),
     						"drawable", context.getPackageName()));
-            achiveImage.setOnClickListener(new OnClickListener() {
+    		achiveImage.setOnClickListener(new OnClickListener() {
     			
     			@Override
     			public void onClick(View v) {
