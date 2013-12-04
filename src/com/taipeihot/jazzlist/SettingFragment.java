@@ -1,7 +1,7 @@
 package com.taipeihot.jazzlist;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -23,6 +23,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -43,7 +46,8 @@ public class SettingFragment extends Fragment {
 	View view;
     Todo todo;
     AlertDialog setTimeDialog;
-	
+	Date date;
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -84,7 +88,6 @@ public class SettingFragment extends Fragment {
         .setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-            	Util.errorReport("positive");
             	TimePicker tp = (TimePicker)setTimeDialog.findViewById(R.id.setTime_time);
             	int hour=tp.getCurrentHour();
             	int min=tp.getCurrentMinute();
@@ -95,7 +98,8 @@ public class SettingFragment extends Fragment {
             	Date d=new Date(dp.getYear()-1900,dp.getMonth(),dp.getDayOfMonth());
             	d.setHours(tp.getCurrentHour().intValue());
             	d.setMinutes(tp.getCurrentMinute().intValue());
-            	((Button)view.findViewById(R.id.category_settime_btn)).setText(Util.dateLongToString(d.getTime()));
+            	((Button)view.findViewById(R.id.setting_time_btn)).setText(Util.dateLongToString(d.getTime()));
+            	todo.setDeadline(d.getTime());
             }
         })
         .setNegativeButton("Back", new DialogInterface.OnClickListener() {
@@ -111,6 +115,16 @@ public class SettingFragment extends Fragment {
 			@Override
 			public void onClick(View arg0) {
 				setTimeDialog.show();				
+			}
+        	
+        });
+        
+        final CheckBox publicCheckBox = (CheckBox) view.findViewById(R.id.public_checkbox);
+        publicCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+				todo.setPublic(publicCheckBox.isChecked());
 			}
         	
         });
