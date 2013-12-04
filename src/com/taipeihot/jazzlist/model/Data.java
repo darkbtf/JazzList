@@ -82,7 +82,7 @@ public class Data {
 				categories.remove(i);
 				c.die();
 				c.save();
-				//TODO　communicate server
+				//TODO communicate server
 				break;
 			}
 	}
@@ -98,7 +98,14 @@ public class Data {
 	
 	/**************************** About Status*************************************/
 	public static void addStatus(Status s) {status.add(s);}
-	public static ArrayList<Status> getStatus(){return status;}
+	static private ArrayList<Status> showStatus = new ArrayList<Status>();
+	public static ArrayList<Status> getStatus(){
+		showStatus.clear();
+		for(Status s:status)
+			if(s.getVisible())
+				showStatus.add(s);
+		return showStatus;
+	}
 	public static void updateStatus(){// MOST call with network
 		setStatusUpdating();
 		CommunicateHelper.updateStatus();
@@ -106,10 +113,10 @@ public class Data {
 		while(getStatusUpdating());
 	}
 	public static void doneStatusUpdate(long lastUpdateStatusTime) {
+		Collections.sort(status);//Magic sort.
 		statusUpdating = false;
 		Data.lastUpdateStatusTime = lastUpdateStatusTime;
 		//TODO need write lastUpdateStatusTime to sp
-		Collections.sort(status);//Magic sort.
 	}
 	
 	public static void setStatusUpdating() {statusUpdating=true;}
