@@ -20,6 +20,7 @@ public class TimelineActivity extends Activity {
 	ExpandableListView statusListView;
 	StatusListAdapter statusListAdapter;
 	ArrayList<Status> statusList;
+	int userId;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,14 @@ public class TimelineActivity extends Activity {
         setTitle("Timeline");
         setContentView(R.layout.activity_timeline);
         Intent intent = getIntent();
-        int userId = intent.getIntExtra("userId", -1);
+        userId = intent.getIntExtra("userId", -1);
+        if (userId == -1) {
+        	statusList = Data.getStatus();
+        } else {
+        	statusList = Data.getStatusById(userId);
+        }
         statusListView = (ExpandableListView) findViewById(R.id.status_list);
-        statusList = Data.getStatus();
+        
         Data.updateStatus();
         statusListAdapter = new StatusListAdapter(this, statusList);
         statusListView.setAdapter(statusListAdapter);
