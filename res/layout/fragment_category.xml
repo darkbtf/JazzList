@@ -27,7 +27,7 @@
         android:id="@+id/todoList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/category_addtodo_btn"
+        android:layout_below="@+id/public_checkbox"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
         android:divider="#000000"
@@ -53,6 +53,16 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/todoList"
         android:text="ADD"
+        android:textColor="@color/white" />
+
+    <CheckBox
+        android:id="@+id/public_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/category_addtodo_btn"
+        android:layout_below="@+id/category_addtodo_btn"
+        android:background="#ff222222"
+        android:text="PUBLIC"
         android:textColor="@color/white" />
 
 </RelativeLayout>
