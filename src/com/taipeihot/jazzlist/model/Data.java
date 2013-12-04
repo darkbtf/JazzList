@@ -97,19 +97,17 @@ public class Data {
     }
 	
 	/**************************** About Status*************************************/
-	public static void addStatus(Status s) {status.add(s);}
-	static private ArrayList<Status> showStatus = new ArrayList<Status>();
-	public static ArrayList<Status> getStatus(){
-		showStatus.clear();
-		for(Status s:status)
-			if(s.getVisible())
-				showStatus.add(s);
-		return showStatus;
+	static private ArrayList<Status> realStatus = new ArrayList<Status>();
+	public static void addStatus(Status s) {
+		Util.errorReport(s.getTitle()+" meow "+s.getVisible());
+		if(s.getVisible())status.add(s);
+		realStatus.add(s);
 	}
+	public static ArrayList<Status> getStatus(){return status;}
 	public static void updateStatus(){// MOST call with network
 		setStatusUpdating();
 		CommunicateHelper.updateStatus();
-		Util.errorReport("updating satatus");
+		Util.errorReport("updating status");
 		while(getStatusUpdating());
 	}
 	public static void doneStatusUpdate(long lastUpdateStatusTime) {
@@ -129,10 +127,18 @@ public class Data {
 				break;
 			}
 	}
+	
 	public static void updateStatusByRealId(int real_id, Status newStatus) {
-		for(Status s:status)
+		for(Status s:realStatus)
 			if(s.getRealId() == real_id){
+				boolean a = s.getVisible();
+				boolean b = newStatus.getVisible();
 				s.clone(newStatus);
+				if(a != b){
+					if(newStatus.getVisible())
+						status.add(s);
+					else status.remove(s);
+				}
 				break;
 			}
 	}
