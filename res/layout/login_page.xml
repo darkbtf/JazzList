@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000" >
+
+    <EditText
+        android:id="@+id/account_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="244dp"
+        android:maxLines="1"
+        android:background="#ff333333"
+        android:textColor="@color/login_text_color"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/category_addtodo_btn"
+        android:layout_alignBottom="@+id/category_addtodo_btn"
+        android:layout_alignLeft="@+id/password_text"
+        android:text="Login"
+        android:textColor="@color/login_text_color"
+        android:background="@drawable/login_norm_bg" />
+
+    <EditText
+        android:id="@+id/password_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/account_text"
+        android:layout_below="@+id/account_text"
+        android:layout_marginTop="99dp"
+        android:ems="10"
+        android:maxLines="1"
+        android:background="#ff333333"
+        android:textColor="@color/login_text_color"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/category_addtodo_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/password_text"
+        android:layout_below="@+id/password_text"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/login_norm_bg"
+        android:textColor="@color/login_text_color"
+        android:text="Register" />
+
+    <Button
+        android:id="@+id/login_later_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Login"
+        android:layout_alignRight="@+id/category_addtodo_btn"
+        android:layout_below="@+id/Login"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/login_norm_bg"
+        android:textColor="@color/login_text_color"
+        android:text="Later" />
+
+</RelativeLayout>

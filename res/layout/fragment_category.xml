@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000" >
+
+    <EditText
+        android:id="@+id/category_todoinput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/todoList"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/category_addtodo_btn"
+        android:layout_marginLeft="25dp"
+        android:layout_toLeftOf="@+id/category_settime_btn"
+        android:ems="10"
+        android:hint="Add todo..."
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textCursorDrawable="@null"
+        android:textSize="25dp" >
+		
+
+    </EditText>
+
+    <ListView
+        android:id="@+id/todoList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/public_checkbox"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:divider="#000000"
+        android:dividerHeight="5dp" >
+    </ListView>
+
+    <Button
+        android:id="@+id/category_settime_btn"
+        style="@style/black_btn"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/category_todoinput"
+        android:layout_alignBottom="@+id/category_todoinput"
+        android:layout_toLeftOf="@+id/category_addtodo_btn"
+        android:text="Deadline"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/category_addtodo_btn"
+        style="@style/gray_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/todoList"
+        android:text="ADD"
+        android:textColor="@color/white" />
+
+    <CheckBox
+        android:id="@+id/public_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/category_addtodo_btn"
+        android:layout_below="@+id/category_addtodo_btn"
+
+        android:text="PUBLIC"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

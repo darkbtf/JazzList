@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000"
+    android:dividerPadding="10dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/category_add_btn"
+            style="@style/gray_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="ADD" />
+
+        <EditText
+            android:id="@+id/category_name"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/category_add_btn"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/category_add_btn"
+            style="@style/black_editview"
+            android:textCursorDrawable="@null"
+            android:hint="Add a category..." >
+
+            <requestFocus />
+        </EditText>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/menu_profile_btn"
+        style="@style/gray_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile" />
+
+    <ListView
+        android:id="@+id/category_list"
+        android:layout_width="match_parent"
+        android:layout_height="223dp"
+        android:layout_weight="0.73" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/menu_status_btn"
+        style="@style/gray_btn"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:text="Friend Status" />
+
+</LinearLayout>
