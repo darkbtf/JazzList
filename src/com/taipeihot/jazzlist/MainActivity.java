@@ -1,33 +1,16 @@
 package com.taipeihot.jazzlist;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-
 import com.taipeihot.jazzlist.model.Todo;
 import com.taipeihot.jazzlist.table.Table;
 import com.taipeihot.jazzlist.table.TodoTable;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -48,7 +31,6 @@ public class MainActivity extends Activity {
     private Button btn_connect,btn_send;
     private EditText ed;
     private  TextView tv1,tv2;
-    static private String str1="nothing",str2="nothing";
     public static Handler receiveServer = null;
     private void initialComponent(){
     	btn_connect = (Button) findViewById(R.id.btn_connect);
