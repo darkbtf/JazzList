@@ -2,9 +2,7 @@ package com.taipeihot.jazzlist;
 
 import java.util.ArrayList;
 
-import com.taipeihot.jazzlist.adapter.CategoryListAdapter;
 import com.taipeihot.jazzlist.adapter.FriendListAdapter;
-import com.taipeihot.jazzlist.model.Category;
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.User;
 
@@ -29,7 +27,7 @@ public class FriendListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        view= inflater.inflate(R.layout.activity_freind_list, null);
+        view= inflater.inflate(R.layout.activity_friend_list, null);
         Button addButton = (Button) view.findViewById(R.id.friend_add);
         addButton.setOnClickListener(
                 new OnClickListener() {
