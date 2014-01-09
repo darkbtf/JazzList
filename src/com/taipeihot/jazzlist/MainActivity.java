@@ -5,23 +5,19 @@ import java.util.ArrayList;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.View;
-
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnClosedListener;
-import com.taipeihot.jazzlist.model.Achievement;
 import com.taipeihot.jazzlist.model.AchievementType;
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.Todo;
-import com.taipeihot.jazzlist.table.CategoryTable;
 
 
 public class MainActivity extends BaseActivity {
 
 	ArrayList<Todo> todoList;
-	public Fragment contentFragment;
+	Fragment contentFragment;
 	Fragment settingFragment;
 	Fragment friendFragment;
+	Fragment menuFragment;
 	
     public MainActivity() {
         super(R.string.left_and_right);
@@ -34,11 +30,13 @@ public class MainActivity extends BaseActivity {
         	Data.addCategory("Default");
         }
         super.onCreate(savedInstanceState);
-        getSlidingMenu().setMode(SlidingMenu.LEFT_RIGHT);
-        getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
 
         setContentView(R.layout.content_frame);
 
+        menuFragment = new MenuFragment();
+        setBehindContentView(R.layout.menu_frame);
+        getSupportFragmentManager().beginTransaction().replace(R.id.menu_frame, menuFragment).commit();
+        
         contentFragment = new CategoryFragment();
         getSupportFragmentManager()
         .beginTransaction()
