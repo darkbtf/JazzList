@@ -61,8 +61,8 @@ public class Data {
 	public static int getMoney(){return getCharacterInfo(CharacterInfo.money);}
 	public static int getAttack(){return getCharacterInfo(CharacterInfo.attack);}
 	public static int getDefense(){return getCharacterInfo(CharacterInfo.defense);}
-	public static int getHp(){return getLevel() * 23 + 100;}
-	public static int getMp(){return getLevel() * 37 + 50;}
+	public static int getHp(){return getLevel() * 37 + 100;}
+	public static int getMp(){return getLevel() * 23 + 50;}
 	
 	private static int getCharacterInfo(CharacterInfo s) {
 		return character_info_sp.getInt(s.toString(), -1);
