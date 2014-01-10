@@ -41,18 +41,6 @@ public class FriendListFragment extends Fragment {
         friendListAdapter = new FriendListAdapter(this.getActivity(), friends);
         friendListView = (ListView) view.findViewById(R.id.friendList);
         friendListView.setAdapter(friendListAdapter);
-        friendListView.setOnItemClickListener(new OnItemClickListener(){
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-					long arg3) {
-				Intent intent = new Intent(getActivity(), TimelineActivity.class);
-				intent.putExtra("userId", friends.get(position).photoNumber());
-				startActivity(intent);
-			}
-        	
-        });
-        
         return view;
     }
 
