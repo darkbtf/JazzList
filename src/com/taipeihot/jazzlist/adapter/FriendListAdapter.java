@@ -23,10 +23,12 @@ public class FriendListAdapter extends BaseAdapter {
      
     private Context context;
     private ArrayList<User> userItems;
+    private boolean fightOnly;
      
-    public FriendListAdapter(Context context, ArrayList<User> categoryItems){
+    public FriendListAdapter(Context context, ArrayList<User> categoryItems, boolean fightOnly){
         this.context = context;
         this.userItems = categoryItems;
+        this.fightOnly = fightOnly;
     }
  
     @Override
@@ -74,6 +76,9 @@ public class FriendListAdapter extends BaseAdapter {
 				context.startActivity(intent);
 			}
 		});
+		if (fightOnly) {
+			statusButton.setVisibility(View.GONE);
+		}
 		
 		ImageButton fightButton = (ImageButton) convertView.findViewById(R.id.friend_fight_button);
 		fightButton.setOnClickListener(new OnClickListener() {

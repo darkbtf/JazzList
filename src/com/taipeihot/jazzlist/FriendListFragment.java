@@ -38,7 +38,7 @@ public class FriendListFragment extends Fragment {
                     }
                 });
         friends=Data.getFriends();
-        friendListAdapter = new FriendListAdapter(this.getActivity(), friends);
+        friendListAdapter = new FriendListAdapter(this.getActivity(), friends, false);
         friendListView = (ListView) view.findViewById(R.id.friendList);
         friendListView.setAdapter(friendListAdapter);
         return view;
@@ -51,7 +51,7 @@ public class FriendListFragment extends Fragment {
             Data.addFriend(friendName.getText().toString());
         	friendName.setText("");
         	friends=Data.getFriends();
-            friendListAdapter = new FriendListAdapter(this.getActivity(), friends);
+            friendListAdapter = new FriendListAdapter(this.getActivity(), friends, false);
             friendListView = (ListView) view.findViewById(R.id.friendList);
             friendListView.setAdapter(friendListAdapter); 
         }
