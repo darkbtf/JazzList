@@ -13,10 +13,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-
-import com.facebook.*;
-import com.facebook.model.*;
 
 import com.facebook.*;
 import com.facebook.model.*;
@@ -34,30 +30,6 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initRegisterDialog();//Can be removed after release
-        Session.openActiveSession(this, true, new Session.StatusCallback() {
-
-            // callback when session changes state
-            @Override
-            public void call(Session session, SessionState state, Exception exception) {
-              if (session.isOpened()) {
-
-                // make request to the /me API
-                Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
-
-                  // callback after Graph API response with user object
-                  @Override
-                  public void onCompleted(GraphUser user, Response response) {
-                    if (user != null) {
-                    	toMainActivity();
-                    }
-                  }
-                });
-              }
-            }
-          });
-        initRegisterDialog();
-        writeAccount();
-        readAccount();
         new Table(this);
         connect_to_server();
         loginWithFacebook();
