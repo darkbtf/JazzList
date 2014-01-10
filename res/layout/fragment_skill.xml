@@ -1,7 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_skilltree"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000" >
+    android:background="@drawable/firetree"
+    android:orientation="vertical" >
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="剩餘點數:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/skillPointNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		 >
+    
+	    <LinearLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:orientation="vertical"
+	        android:layout_weight="20" >
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:orientation="vertical"
+	        android:gravity="center"
+	        android:layout_weight="1" >
+	
+	        <ImageButton
+	            android:id="@+id/fireSkillBtn"
+	            android:layout_width="80dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:scaleType="fitCenter"
+	            android:src="@drawable/firebtn" />
+	
+	        <ImageButton
+	            android:id="@+id/waterSkillBtn"
+	            android:layout_width="80dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:scaleType="fitCenter"
+	            android:src="@drawable/waterbtn" />
+	
+	        <ImageButton
+	            android:id="@+id/thunderSkillBtn"
+	            android:layout_width="80dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:scaleType="fitCenter"
+	            android:src="@drawable/thunderbtn" />
+	
+	    </LinearLayout>
+	</LinearLayout>
+</LinearLayout>
