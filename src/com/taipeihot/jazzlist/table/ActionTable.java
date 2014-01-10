@@ -23,15 +23,34 @@ public class ActionTable extends Table{
 		columns.add(new ColumnElement("mp_consume","INT NOT NULL"));
 		columns.add(new ColumnElement("hp_damage","INT NOT NULL"));
 		columns.add(new ColumnElement("mp_damage","INT NOT NULL"));
+		columns.add(new ColumnElement("name","TINYTEXT NOT NULL"));
 		columns.add(new ColumnElement("description","TEXT NOT NULL"));
 		columns.add(new ColumnElement("number","INTEGER NOT NULL"));
+		columns.add(new ColumnElement("object_id","INT NOT NULL"));
+		columns.add(new ColumnElement("level_limit","INT NOT NULL"));
 		dropSQL = "DROP TABLE IF EXISTS "+tableName;
 		createSQL = makeCreateSQL(tableName, columns);
 		insertSQL = makeInsertSQL(tableName, columns);
 		selectSQL = "select * from "+tableName+" ";
 		updateSQL = makeUpdateSQL(tableName, columns);
 	}
-	
+	static public void init(int should){
+		if(All().size() != should){
+			/* rate% hp_consume mp_consume hp_damage, mp_damage Name description number object_id level_limit*/
+			/*level 1*/
+			insert(new Action(120,0,0,10,0,"Ember","little damage, +1 heat on your opponent",0,1,1));
+			insert(new Action(120,-8,0,0,0,"Bless","little heal",0,2,1));
+			insert(new Action(120,0,0,10,0,"Thunderbolt","damage!",0,3,1));
+			/*level 3*/
+			insert(new Action(120,0,0,10,0,"Fire2","mewo meow",0,4,3));
+			insert(new Action(120,0,0,10,0,"Water2","little heal",0,5,3));
+			insert(new Action(120,0,0,10,0,"Thunder2","QQzzThunder",0,6,3));
+			/*level 5*/ 
+			insert(new Action(120,0,0,10,0,"Fire3","Fire 3",0,7,5));
+			insert(new Action(120,0,0,10,0,"Water3","Water3 ~~",0,8,5));
+			insert(new Action(120,0,0,10,0,"Maxwell","Monster Kill",0,9,5));
+		}
+	}
 	static public long insert(Action a){
 		if(a.getId() != 0){
 			Util.errorReport("Insert action, You can't insert action with id!=0, use update instead.");
@@ -123,7 +142,10 @@ public class ActionTable extends Table{
 				c.getInt(4),
 				c.getInt(5),
 				c.getString(6),
-				c.getInt(7)
+				c.getString(7),
+				c.getInt(8),
+				c.getInt(9),
+				c.getInt(10)
 				);
 	}
 
@@ -136,6 +158,8 @@ public class ActionTable extends Table{
 		values.put("mp_damage", a.getMpDamage());
 		values.put("description", a.getDescription());
 		values.put("number", a.getNumber());
+		values.put("object_id", a.getObjectId());
+		values.put("level_limit", a.getLevelLimit());
 		return values;
 	}
 }

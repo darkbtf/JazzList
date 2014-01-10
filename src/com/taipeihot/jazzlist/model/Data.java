@@ -9,6 +9,7 @@ import com.facebook.model.GraphUser;
 import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.Util;
+import com.taipeihot.jazzlist.table.ActionTable;
 import com.taipeihot.jazzlist.table.CategoryTable;
 
 public class Data {
@@ -195,5 +196,24 @@ public class Data {
 			Util.errorReport("Achievement:"+a.getType()+", need="+a.getNeed());
 		for(AchievementType a:AchievementType.values())
 			Util.errorReport("Parameter "+a.toString()+"="+getAchievementParameter(a));
+	}
+	/****************************For Skills and Items*******************************/
+	public static ArrayList<Action> getAvailableSkills(){
+		return ActionTable.where("object_id > 0 && number > 0");
+	}
+	public static ArrayList<Action> getFireSkills(){
+		Util.errorReport("int Data.java geting fire skills");
+		return ActionTable.where("object_id > 0 && object_id%3 ==1");
+	}
+	public static ArrayList<Action> getWaterSkills(){
+		Util.errorReport("int Data.java geting water skills");
+		return ActionTable.where("object_id > 0 && object_id%3 ==2");
+	}
+	public static ArrayList<Action> getThunderSkills(){
+		Util.errorReport("int Data.java geting thunder skills");
+		return ActionTable.where("object_id > 0 && object_id%3 ==3");
+	}
+	public static ArrayList<Action> getItems(){
+		return ActionTable.where("object_id < 0");
 	}
 }

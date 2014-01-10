@@ -11,7 +11,9 @@ public class Table {
 	public Table(Context context){
 		new TodoTable();
 		new CategoryTable();
+		new ActionTable();
 		con = new DatabaseHelper(context);
+		ActionTable.init(0);
 	}
 	protected String makeCreateSQL(String tableName,ArrayList<ColumnElement>columns){
 		String ret = "CREATE TABLE IF NOT EXISTS "+tableName+" ( _id INTEGER primary key autoincrement ";

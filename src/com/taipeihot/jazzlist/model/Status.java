@@ -18,23 +18,7 @@ public class Status implements Comparable{
 	private String category;
 	private long updated_at;
 	private ArrayList<Comment> comments = new ArrayList<Comment>();
-	
-	/*public Status(String nickname, Todo todo, ArrayList<Comment>comments){//TODO remove
-		this.nickname = nickname;
-		this.title = todo.getTitle();
-		this.user_id = todo.getUserId();
-		this.deadline = todo.getDeadlineLong();
-		this.comments = comments;
-	}
-	
-	public Status(String nickname, Todo todo){//TODO remove
-		this.nickname = nickname;
-		this.title = todo.getTitle();
-		this.user_id = todo.getUserId();
-		this.deadline = todo.getDeadlineLong();
-		this.comments = new ArrayList<Comment>();
-	}*/
-	
+		
 	public Status(String nickname,String title,long deadline){
 		this.nickname = nickname;
 		this.title = title;
