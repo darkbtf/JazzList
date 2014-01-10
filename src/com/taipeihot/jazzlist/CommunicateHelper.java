@@ -21,8 +21,8 @@ public class CommunicateHelper {
 		SocketHelper.sendMessage(new String[]{"register",account,Util.MD5(password)});
 	}
 
-	public static void login(String account, String password) {
-		SocketHelper.sendMessage(new String[]{"login",account,Util.MD5(password)});
+	public static void login(String facebookId, String nickname) {
+		SocketHelper.sendMessage(new String[]{"login",facebookId,nickname});
 	}
 
 	public static void updateStatus() {
