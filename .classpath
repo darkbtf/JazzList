@@ -9,5 +9,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/actionbarsherlock"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/library"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Library-ListViewAnimations"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/FacebookSDK"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
