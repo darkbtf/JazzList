@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.facebook.*;
 import com.facebook.model.*;
@@ -31,37 +29,39 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        initRegisterDialog();
+        initRegisterDialog();//Can be removed after release
         new Table(this);
         connect_to_server();
-        Session.openActiveSession(this, true, new Session.StatusCallback() {
-               @Override
-        	      public void call(Session session, SessionState state,Exception exception) {
-        	          if (session.isOpened()) {
-        	               Util.errorReport(session.getAccessToken()); // get token
-        	               Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
-
-        	                   // callback after Graph API response with user object
-        	                   @Override
-        	                   public void onCompleted(GraphUser user, Response response) {
-        	                     if (user != null) {
-        	                    	 Util.errorReport(user.getName());
-        	                    	 Data.login(user.getId(),user.getName());
-        	                    	 toMainActivity();
-        	                     }
-        	                   }
-        	                 });
-        	           }
-        	          else Util.errorReport("OAOO3");
-        	      }
-        	  });
-        writeAccount();
-        readAccount();
+        loginWithFacebook();
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Session.getActiveSession().onActivityResult(this, requestCode,resultCode, data);
+    }
+    private void loginWithFacebook(){
+        Session.openActiveSession(this, true, new Session.StatusCallback() {
+        	@SuppressWarnings("deprecation")
+			@Override
+			public void call(Session session, SessionState state,Exception exception) {
+        		if (session.isOpened()) {
+        			Util.errorReport(session.getAccessToken()); // get token
+        			Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
+        				// callback after Graph API response with user object
+        				@Override
+        				public void onCompleted(GraphUser user, Response response) {
+        					if (user != null) {
+        						Util.errorReport(user.getName());
+        	                    Data.login(user.getId(),user.getName());
+        	                    Data.setUser(user);
+        	                    toMainActivity();
+        					}
+        				}
+        			});
+        		}
+        		else Util.errorReport("session.isOpened() failed");
+        	}
+        });
     }
     private void initRegisterDialog() {
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -161,21 +161,6 @@ public class LoginActivity extends Activity {
         //intent.setClass(LoginActivity.this, MainActivity.class);
         intent.setClass(LoginActivity.this, MainActivity.class);
         startActivity(intent);
-    }
-
-    private void writeAccount(){
-        SharedPreferences pre = getSharedPreferences("loginValue",MODE_PRIVATE);
-        String account = "david942jizz@gmail.com";
-        String nickname = "david";
-        String password = "Hue Nguyen";
-        pre.edit().putString("account", account).putString("nickname",nickname).putString("password",Util.MD5(password)).commit();
-    }
-    private void readAccount(){
-        SharedPreferences sp = getSharedPreferences("loginValue", MODE_PRIVATE);
-        String account = sp.getString("account", null);
-        String nickname = sp.getString("nickname", null);
-        String password = sp.getString("password", null);
-        Data.setAccount(account,nickname,password);
     }
     private void connect_to_server(){
         Thread thread = new Thread(new Runnable(){

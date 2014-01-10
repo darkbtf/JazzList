@@ -76,6 +76,8 @@ public class MainActivity extends BaseActivity {
     	for(AchievementType a:AchievementType.values())
 			if(Data.getAchievementParameter(a)==-1)
 				Data.setAchievementParameter(a,0);
+    	Data.character_info_sp = getSharedPreferences("character_information",MODE_PRIVATE);
+    	Data.initCharacterInfo();
     }
 
     public void toSetting(long todoId) {

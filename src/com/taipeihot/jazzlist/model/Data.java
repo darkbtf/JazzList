@@ -5,15 +5,14 @@ import java.util.Collections;
 
 import android.content.SharedPreferences;
 
+import com.facebook.model.GraphUser;
 import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.table.CategoryTable;
 
 public class Data {
-	public static String account = null;
-	public static String nickname = null;
-	public static String encryptedPassword = null;
+	public static GraphUser user;
 	public static ArrayList<User> friends = new ArrayList<User>();
 	public static ArrayList<Status> status = new ArrayList<Status>();
 	public static ArrayList<Category> categories = new ArrayList<Category>();
@@ -23,6 +22,7 @@ public class Data {
 	private static ArrayList<Achievement> achievements = new ArrayList<Achievement>();
 	public static long lastUpdateStatusTime=0;
 	public static SharedPreferences achiv_sp;
+	public static SharedPreferences character_info_sp;
 	
 	private static void init(){
 		achievements = new ArrayList<Achievement>();
@@ -40,10 +40,8 @@ public class Data {
 		return hasLogined();
 		//setAccount(account,account,Util.MD5(password));
 	}
-	public static void setAccount(String a, String n, String password) {
-		account = a;
-		nickname = n;
-		encryptedPassword = password;
+	public static void setUser(GraphUser user){
+		Data.user = user;
 	}
 	public static boolean waittingLogin(){return logined==0;}
 	public static boolean hasLogined(){return logined==1;}
@@ -51,6 +49,30 @@ public class Data {
 	public static void loginWait(){logined = 0;}
 	public static void loginSuccess(){init();logined = 1;}
 	public static void loginFail(){logined = 2;}
+	/************************** About Character information ************************/
+	public static void initCharacterInfo(){
+		for(CharacterInfo a:CharacterInfo.values())
+			if(Data.getCharacterInfo(a)==-1)
+				Data.setCharacterInfo(a,0);
+	}
+	public static int getCharacterId(){return getCharacterInfo(CharacterInfo.character_id);}
+	public static int getLevel(){return getCharacterInfo(CharacterInfo.level);}
+	public static int getExp(){return getCharacterInfo(CharacterInfo.exp);}
+	public static int getMoney(){return getCharacterInfo(CharacterInfo.money);}
+	public static int getAttack(){return getCharacterInfo(CharacterInfo.attack);}
+	public static int getDefense(){return getCharacterInfo(CharacterInfo.defense);}
+	public static int getHp(){return getLevel() * 37 + 100;}
+	public static int getMp(){return getLevel() * 23 + 50;}
+	
+	private static int getCharacterInfo(CharacterInfo s) {
+		return character_info_sp.getInt(s.toString(), -1);
+	}
+	private static void setCharacterInfo(CharacterInfo s, int v) {
+		character_info_sp.edit().putInt(s.toString(), v).commit();
+	}
+	public static void incCharacterInfo(CharacterInfo s) {
+		setCharacterInfo(s,getCharacterInfo(s)+1);
+	}
 	/**************************** About Friends*************************************/
 	public static boolean addFriend(String account){
 		return CommunicateHelper.addFriend(account);
