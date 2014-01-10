@@ -21,7 +21,14 @@ public class Data {
 	private static int logined = 0;
 	private static ArrayList<Achievement> achievements = new ArrayList<Achievement>();
 	public static long lastUpdateStatusTime=0;
+	private static int character_id=0;//1~3 ?
+	private static int level=0;
+	private static int exp=0;
+	private static int money=0;
+	private static int attack=0;
+	private static int defense=0;// change all this to Enum
 	public static SharedPreferences achiv_sp;
+	public static SharedPreferences character_info_sp;
 	
 	private static void init(){
 		achievements = new ArrayList<Achievement>();
@@ -48,6 +55,18 @@ public class Data {
 	public static void loginWait(){logined = 0;}
 	public static void loginSuccess(){init();logined = 1;}
 	public static void loginFail(){logined = 2;}
+	/************************** About Character information ************************/
+	public static void initCharacterInfo(){
+		
+	}
+	public static int getCharacterId(){return character_id;}
+	public static int getLevel(){return level;}
+	public static int getExp(){return exp;}
+	public static int getMoney(){return money;}
+	public static int getAttack(){return attack;}
+	public static int getDefense(){return defense;}
+	public static int getHp(){return level * 23 + 100;}
+	public static int getMp(){return level * 37 + 50;}
 	/**************************** About Friends*************************************/
 	public static boolean addFriend(String account){
 		return CommunicateHelper.addFriend(account);
