@@ -145,21 +145,6 @@ public class CommunicateHelper {
 		Data.loginWait();
 		SocketHelper.close();
 	}
-	static private boolean trylogin(){
-		if(Data.hasLogined())return true;
-		if(!SocketHelper.connecting)return false;
-		if(Data.account==null)return false;
-		if(!sendMessage(new String[]{"login",Data.account,Data.encryptedPassword}))return false;
-		String cmd = getMessage();
-		if(cmd.equals("login")){
-			if(cmdMgr.parseCmd("login")){
-				Data.loginSuccess();
-				return true;
-			}
-			else Util.errorReport("why login fail QQ?");
-		}
-		return false;
-	}
 	static private boolean sendMessage(String[] messages){
     	return SocketHelper.sendMessage(messages);
 	}

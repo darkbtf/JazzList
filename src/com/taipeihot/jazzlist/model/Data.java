@@ -5,15 +5,14 @@ import java.util.Collections;
 
 import android.content.SharedPreferences;
 
+import com.facebook.model.GraphUser;
 import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.table.CategoryTable;
 
 public class Data {
-	public static String account = null;
-	public static String nickname = null;
-	public static String encryptedPassword = null;
+	public static GraphUser user;
 	public static ArrayList<User> friends = new ArrayList<User>();
 	public static ArrayList<Status> status = new ArrayList<Status>();
 	public static ArrayList<Category> categories = new ArrayList<Category>();
@@ -40,10 +39,8 @@ public class Data {
 		return hasLogined();
 		//setAccount(account,account,Util.MD5(password));
 	}
-	public static void setAccount(String a, String n, String password) {
-		account = a;
-		nickname = n;
-		encryptedPassword = password;
+	public static void setUser(GraphUser user){
+		Data.user = user;
 	}
 	public static boolean waittingLogin(){return logined==0;}
 	public static boolean hasLogined(){return logined==1;}
