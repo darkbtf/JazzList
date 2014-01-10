@@ -1,7 +1,6 @@
 package com.taipeihot.jazzlist;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -21,12 +20,8 @@ public class BaseActivity extends SlidingFragmentActivity {
 
         setTitle(mTitleRes);
 
-        // set the Behind View
-        setBehindContentView(R.layout.menu_frame);
-        FragmentTransaction t = this.getSupportFragmentManager().beginTransaction();
-        t.replace(R.id.menu_frame, new MenuFragment());
-        t.commit();
-
+        getSlidingMenu().setMode(SlidingMenu.LEFT_RIGHT);
+        getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
         // customize the SlidingMenu
         SlidingMenu sm = getSlidingMenu();
         sm.setShadowWidthRes(R.dimen.shadow_width);
