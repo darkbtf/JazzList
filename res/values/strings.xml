@@ -39,13 +39,10 @@
     <string name="title_activity_timeline">TimelineActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_setting">SettingActivity</string>
-<<<<<<< HEAD
     <string name="title_activity_equipment">EquipmentActivity</string>
     <string name="title_activity_fight">FightActivity</string>
     <string name="title_activity_tree">TreeActivity</string>
     <string name="title_activity_shop">ShopActivity</string>
-=======
     <string name="app_id">621136791256809</string>
->>>>>>> have facebook login
 
 </resources>
