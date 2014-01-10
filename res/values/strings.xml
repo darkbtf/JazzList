@@ -39,5 +39,6 @@
     <string name="title_activity_timeline">TimelineActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_setting">SettingActivity</string>
+    <string name="app_id">621136791256809</string>
 
 </resources>
