@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import com.haarman.listviewanimations.swinginadapters.prepared.SwingBottomInAnimationAdapter;
 import com.taipeihot.jazzlist.R;
+import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.adapter.AchievementListAdapter;
 import com.taipeihot.jazzlist.adapter.CategoryListAdapter;
 import com.taipeihot.jazzlist.model.Achievement;
@@ -36,6 +37,8 @@ public class AchievementFragment extends Fragment implements OnNavigationListene
         
 		achievItems=Data.getAchievements();
 	
+		Util.errorReport("meow " + achievItems.size());
+		
 		GridView achievGridView=(GridView)view.findViewById(R.id.achive_grid_view);
 		achievementListAdapter = new AchievementListAdapter(this.getActivity(), achievItems);
 		SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(achievementListAdapter);
