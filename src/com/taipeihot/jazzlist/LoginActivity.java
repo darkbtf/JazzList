@@ -14,6 +14,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import com.facebook.*;
+import com.facebook.model.*;
 
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.table.Table;
@@ -27,14 +31,38 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         initRegisterDialog();
-        writeAccount();
-        readAccount();
         new Table(this);
         connect_to_server();
-    }
+        Session.openActiveSession(this, true, new Session.StatusCallback() {
+               @Override
+        	      public void call(Session session, SessionState state,Exception exception) {
+        	          if (session.isOpened()) {
+        	               Util.errorReport(session.getAccessToken()); // get token
+        	               Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
 
+        	                   // callback after Graph API response with user object
+        	                   @Override
+        	                   public void onCompleted(GraphUser user, Response response) {
+        	                     if (user != null) {
+        	                    	 Util.errorReport(user.getName());
+        	                    	 Data.login(user.getId(),user.getName());
+        	                    	 toMainActivity();
+        	                     }
+        	                   }
+        	                 });
+        	           }
+        	          else Util.errorReport("OAOO3");
+        	      }
+        	  });
+        writeAccount();
+        readAccount();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Session.getActiveSession().onActivityResult(this, requestCode,resultCode, data);
+    }
     private void initRegisterDialog() {
         LayoutInflater inflater = LayoutInflater.from(this);
         alertView = inflater.inflate(R.layout.register_dialog, null);
@@ -64,7 +92,6 @@ public class LoginActivity extends Activity {
             				errorDialog("Dulplicated account name.");
             			}
             		}
-            		// TODO: galagala
             	}
             }
         })

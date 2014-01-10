@@ -29,8 +29,8 @@ public class Data {
 	}
 	
 	/**************************** User Login and Register****************************/
-	public static boolean login(String account, String password){
-		CommunicateHelper.login(account,password);
+	public static boolean login(String facebookId, String nickname){
+		CommunicateHelper.login(facebookId,nickname);
 		while(waittingLogin());
 		return hasLogined();
 	}
