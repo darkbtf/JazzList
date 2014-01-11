@@ -26,7 +26,7 @@
                 android:orientation="vertical" >
 
                 <ProgressBar
-                    android:id="@+id/ProgressBar03"
+                    android:id="@+id/fight_enemy_hp"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -38,7 +38,7 @@
                     android:progressDrawable="@drawable/hp_bar" />
 
                 <ProgressBar
-                    android:id="@+id/ProgressBar02"
+                    android:id="@+id/fight_enemy_mp"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -64,14 +64,14 @@
                 android:layout_weight="1" >
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/fight_enemy_monster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:src="@drawable/monster" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/fight_enemy_animation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/testing_small" />
@@ -101,7 +101,7 @@
                 android:layout_weight="1" >
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/fight_self_monster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -109,7 +109,7 @@
                     android:src="@drawable/androidback" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/fight_self_animation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/friend_status_button" />
@@ -128,7 +128,7 @@
                     android:orientation="vertical" >
                 </LinearLayout>
                 <ProgressBar
-                    android:id="@+id/progressBar1"
+                    android:id="@+id/fight_self_hp"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -142,7 +142,7 @@
                      />
 
                 <ProgressBar
-                    android:id="@+id/ProgressBar01"
+                    android:id="@+id/fight_self_mp"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
