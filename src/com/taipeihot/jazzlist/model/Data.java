@@ -60,6 +60,9 @@ public class Data {
 	public static int getLevel(){return getCharacterInfo(CharacterInfo.level);}
 	public static int getExp(){return getCharacterInfo(CharacterInfo.exp);}
 	public static int getMoney(){return getCharacterInfo(CharacterInfo.money);}
+	public static void incMoney(int v){
+		setCharacterInfo(CharacterInfo.money, getCharacterInfo(CharacterInfo.money)+v);
+	}
 	public static int getAttack(){return getCharacterInfo(CharacterInfo.attack);}
 	public static int getDefense(){return getCharacterInfo(CharacterInfo.defense);}
 	public static int getHp(){return getLevel() * 37 + 100;}

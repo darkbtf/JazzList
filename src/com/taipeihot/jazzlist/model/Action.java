@@ -1,5 +1,7 @@
 package com.taipeihot.jazzlist.model;
 
+import com.taipeihot.jazzlist.table.ActionTable;
+
 public class Action {
 	private long _id=0;
 	private int rate;
@@ -47,6 +49,16 @@ public class Action {
 	public int getImageId(){return object_id>0?object_id:-object_id;}
 	
 	public boolean exist(){return number!=0;}
+	
+	public int getMoney(){return level_limit;}
+	
+	public void buyItem(){
+		if(Data.getMoney() < level_limit)
+			return;
+		Data.incMoney(-level_limit);
+		number++;
+		save();
+	}
 	/***************************** For Database ********************************/
 	public Action(){}
 	public Action(int _id,int rate,int hp_consume, int mp_consume, int hp_damage, int mp_damage, String name, String description, int number, int object_id, int level_limit){
@@ -62,4 +74,5 @@ public class Action {
 		this.object_id = object_id;
 		this.level_limit = level_limit;
 	}
+	public void save(){ActionTable.update(this);}
 }

@@ -49,6 +49,11 @@ public class ActionTable extends Table{
 			insert(new Action(120,0,0,10,0,"Fire3","Fire 3",0,7,5));
 			insert(new Action(120,0,0,10,0,"Water3","Water3 ~~",0,8,5));
 			insert(new Action(120,0,0,10,0,"Maxwell","Monster Kill",0,9,5));
+			
+			/*Items: rate% hp_consume mp_consume hp_damage, mp_damage Name description number object_id money*/
+			insert(new Action(120,-8,-8,0,0,"Heal","Resume HP and MP",0,-1,20));
+			insert(new Action(120,-20,-20,0,0,"Great Heal","Resume more HP and MP",0,-1,30));
+			insert(new Action(120,-500,-500,0,0,"Max Heal","Totally Resume HP and MP",0,-1,100));
 		}
 	}
 	static public long insert(Action a){
