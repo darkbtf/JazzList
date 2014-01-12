@@ -14,8 +14,8 @@ public class FightActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fight);
-		ImageView img = (ImageView)findViewById(R.id.spinning_wheel_image);
-		img.setBackgroundResource(R.drawable.spin_animation);
+		ImageView img = (ImageView)findViewById(R.id.fight_enemy_animation);
+		img.setBackgroundResource(R.drawable.fire0);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
