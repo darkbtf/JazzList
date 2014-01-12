@@ -59,7 +59,7 @@
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1" >
 
@@ -67,14 +67,13 @@
                     android:id="@+id/fight_enemy_monster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:src="@drawable/monster" />
 
                 <ImageView
                     android:id="@+id/fight_enemy_animation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/testing_small" />
+                    android:src="@drawable/friend_status_button" />
 
             </RelativeLayout>
 
@@ -104,8 +103,6 @@
                     android:id="@+id/fight_self_monster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:scaleType="fitCenter"
                     android:src="@drawable/androidback" />
 
                 <ImageView
