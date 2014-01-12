@@ -15,11 +15,11 @@ public class Player {
 	private Player opponent;
 	
 	/** === constructor === **/
-	Player() {
+	public Player() {
 		
 	}
 	
-	Player(int level, int HP, int MP, int attack, int defense) {
+	public Player(int level, int HP, int MP, int attack, int defense) {
 		this.level = level;
 		this.HP = HP;
 		this.MP = MP;
