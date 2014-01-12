@@ -9,7 +9,7 @@ public class Thunderbolt implements FightAction {
 	
 	@Override
 	public void exec(Player player1, Player player2) {
-		player1.addMp();
+		//player1.addMp();
 		
 	}
 
