@@ -202,19 +202,19 @@ public class Data {
 	}
 	/****************************For Skills and Items*******************************/
 	public static ArrayList<Action> getAvailableSkills(){
-		return ActionTable.where("object_id > 0 && number > 0");
+		return ActionTable.where("object_id>0 and number>0");
 	}
 	public static ArrayList<Action> getFireSkills(){
 		Util.errorReport("int Data.java geting fire skills");
-		return ActionTable.where("object_id > 0 && object_id%3 ==1");
+		return ActionTable.where("object_id > 0 and object_id%3 ==1");
 	}
 	public static ArrayList<Action> getWaterSkills(){
 		Util.errorReport("int Data.java geting water skills");
-		return ActionTable.where("object_id > 0 && object_id%3 ==2");
+		return ActionTable.where("object_id > 0 and object_id%3 ==2");
 	}
 	public static ArrayList<Action> getThunderSkills(){
 		Util.errorReport("int Data.java geting thunder skills");
-		return ActionTable.where("object_id > 0 && object_id%3 ==3");
+		return ActionTable.where("object_id > 0 and object_id%3 ==3");
 	}
 	public static ArrayList<Action> getItems(){
 		return ActionTable.where("object_id < 0");

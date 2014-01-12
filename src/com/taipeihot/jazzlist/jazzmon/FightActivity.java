@@ -1,19 +1,28 @@
 package com.taipeihot.jazzlist.jazzmon;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.taipeihot.jazzlist.R;
+import com.taipeihot.jazzlist.adapter.AchievementListAdapter;
+import com.taipeihot.jazzlist.adapter.ActionListAdapter;
+import com.taipeihot.jazzlist.model.Action;
+import com.taipeihot.jazzlist.model.Data;
 
 public class FightActivity extends Activity {
-
+	ActionListAdapter actionListAdapter;
+	ArrayList<Action> actionItems=new ArrayList<Action>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fight);
+		actionItems=Data.getAvailableSkills();
 		ImageView img = (ImageView)findViewById(R.id.fight_enemy_animation);
 		img.setBackgroundResource(R.drawable.water2);
 
@@ -30,6 +39,9 @@ public class FightActivity extends Activity {
 
 		 // Start the animation (looped playback by default).
 		frameAnimation2.start();
+		GridView skillList=(GridView)findViewById(R.id.skill_gridview);
+		actionListAdapter = new ActionListAdapter(this, actionItems);
+		skillList.setAdapter(actionListAdapter);
 	}
 
 	@Override
