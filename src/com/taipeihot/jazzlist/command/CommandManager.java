@@ -13,6 +13,7 @@ public class CommandManager {
 		cmdMap.put("status",new StatusCommand());
 		cmdMap.put("friend", new FriendCommand());
 		cmdMap.put("comment", new CommentCommand());
+		cmdMap.put("fight", new FightCommand());
 	}
 
 	public boolean parseCmd(String cmd) {

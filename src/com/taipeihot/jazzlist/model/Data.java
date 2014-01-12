@@ -11,8 +11,10 @@ import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.table.ActionTable;
 import com.taipeihot.jazzlist.table.CategoryTable;
+import com.taipeihot.jazzlist.fight.FightUtils;
 
 public class Data {
+	
 	public static GraphUser user;
 	public static ArrayList<User> friends = new ArrayList<User>();
 	public static ArrayList<Status> status = new ArrayList<Status>();
@@ -65,8 +67,8 @@ public class Data {
 	}
 	public static int getAttack(){return getCharacterInfo(CharacterInfo.attack);}
 	public static int getDefense(){return getCharacterInfo(CharacterInfo.defense);}
-	public static int getHp(){return getLevel() * 37 + 100;}
-	public static int getMp(){return getLevel() * 23 + 50;}
+	public static int getHp(){return FightUtils.calcHp(getLevel());}
+	public static int getMp(){return FightUtils.calcMp(getLevel());}
 	
 	private static int getCharacterInfo(CharacterInfo s) {
 		return character_info_sp.getInt(s.toString(), -1);
