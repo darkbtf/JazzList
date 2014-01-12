@@ -38,16 +38,16 @@ public class ActionTable extends Table{
 		if(All().size() != should){
 			/* rate% hp_consume mp_consume hp_damage, mp_damage Name description number object_id level_limit*/
 			/*level 1*/
-			insert(new Action(120,0,0,10,0,"Ember","little damage, +1 heat on your opponent",0,1,1));
-			insert(new Action(120,-8,0,0,0,"Bless","little heal",0,2,1));
-			insert(new Action(120,0,0,10,0,"Thunderbolt","damage!",0,3,1));
+			insert(new Action(120,0,0,10,0,"Ember","little damage, +1 heat on your opponent",999,1,1));
+			insert(new Action(120,-8,0,0,0,"Bless","little heal",999,2,1));
+			insert(new Action(120,0,0,10,0,"Thunderbolt","damage!",999,3,1));
 			/*level 3*/
 			insert(new Action(120,0,0,10,0,"Fire2","mewo meow",0,4,3));
-			insert(new Action(120,0,0,10,0,"Water2","little heal",0,5,3));
+			insert(new Action(120,0,0,10,0,"Water2","little heal",999,5,3));
 			insert(new Action(120,0,0,10,0,"Thunder2","QQzzThunder",0,6,3));
 			/*level 5*/ 
 			insert(new Action(120,0,0,10,0,"Fire3","Fire 3",0,7,5));
-			insert(new Action(120,0,0,10,0,"Water3","Water3 ~~",0,8,5));
+			insert(new Action(120,0,0,10,0,"Water3","Water3 ~~",999,8,5));
 			insert(new Action(120,0,0,10,0,"Maxwell","Monster Kill",0,9,5));
 			
 			/*Items: rate% hp_consume mp_consume hp_damage, mp_damage Name description number object_id money*/
@@ -161,6 +161,7 @@ public class ActionTable extends Table{
 		values.put("mp_consume", a.getMpConsume());
 		values.put("hp_damage", a.getHpDamage());
 		values.put("mp_damage", a.getMpDamage());
+		values.put("name", a.getName());
 		values.put("description", a.getDescription());
 		values.put("number", a.getNumber());
 		values.put("object_id", a.getObjectId());
