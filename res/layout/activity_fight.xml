@@ -73,7 +73,7 @@
                     android:id="@+id/fight_enemy_animation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/friend_status_button" />
+                     />
 
             </RelativeLayout>
 
@@ -109,7 +109,7 @@
                     android:id="@+id/fight_self_animation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/friend_status_button" />
+                     />
 
             </RelativeLayout>
 

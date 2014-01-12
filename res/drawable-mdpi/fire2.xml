@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item android:drawable="@drawable/fire2_0" android:duration="80" />
+	<item android:drawable="@drawable/fire2_1" android:duration="80" />
+	<item android:drawable="@drawable/fire2_2" android:duration="80" />
+	<item android:drawable="@drawable/fire2_3" android:duration="80" />
+	<item android:drawable="@drawable/fire2_4" android:duration="80" />
+	<item android:drawable="@drawable/fire2_5" android:duration="80" />
+	<item android:drawable="@drawable/fire2_6" android:duration="80" />
+	<item android:drawable="@drawable/fire2_7" android:duration="80" />
+	<item android:drawable="@drawable/fire2_8" android:duration="80" />
+	<item android:drawable="@drawable/fire2_9" android:duration="80" />
+	<item android:drawable="@drawable/fire2_10" android:duration="80" />
+	<item android:drawable="@drawable/fire2_11" android:duration="80" />
+	<item android:drawable="@drawable/fire2_12" android:duration="80" />
+	<item android:drawable="@drawable/fire2_13" android:duration="80" />
+	<item android:drawable="@drawable/fire2_14" android:duration="80" />
+	<item android:drawable="@drawable/fire2_15" android:duration="80" />
+	<item android:drawable="@drawable/fire2_16" android:duration="80" />
+	<item android:drawable="@drawable/fire2_17" android:duration="80" />
+	<item android:drawable="@drawable/fire2_18" android:duration="80" />
+	<item android:drawable="@drawable/fire2_19" android:duration="80" />
+	<item android:drawable="@drawable/fire2_20" android:duration="80" />
+	<item android:drawable="@drawable/fire2_21" android:duration="80" />
+	<item android:drawable="@drawable/fire2_22" android:duration="80" />
+	<item android:drawable="@drawable/fire2_23" android:duration="80" />
+	<item android:drawable="@drawable/fire2_24" android:duration="80" />
+	<item android:drawable="@drawable/fire2_25" android:duration="80" />
+	<item android:drawable="@drawable/fire2_26" android:duration="80" />
+	<item android:drawable="@drawable/fire2_27" android:duration="80" />
+	<item android:drawable="@drawable/fire2_28" android:duration="80" />
+	<item android:drawable="@drawable/fire2_29" android:duration="80" />
+	<item android:drawable="@drawable/fire2_30" android:duration="80" />
+	<item android:drawable="@drawable/fire2_31" android:duration="80" />
+	<item android:drawable="@drawable/fire2_32" android:duration="80" />
+	<item android:drawable="@drawable/fire2_33" android:duration="80" />
+	<item android:drawable="@drawable/fire2_34" android:duration="80" />
+	<item android:drawable="@drawable/fire2_35" android:duration="80" />
+	<item android:drawable="@drawable/fire2_36" android:duration="80" />
+	<item android:drawable="@drawable/fire2_37" android:duration="80" />
+	<item android:drawable="@drawable/fire2_38" android:duration="80" />
+	<item android:drawable="@drawable/fire2_39" android:duration="80" />
+	<item android:drawable="@drawable/fire2_40" android:duration="80" />
+	<item android:drawable="@drawable/fire2_41" android:duration="80" />
+	<item android:drawable="@drawable/fire2_42" android:duration="80" />
+</animation-list>

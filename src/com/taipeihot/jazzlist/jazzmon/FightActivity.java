@@ -15,13 +15,21 @@ public class FightActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fight);
 		ImageView img = (ImageView)findViewById(R.id.fight_enemy_animation);
-		img.setBackgroundResource(R.drawable.fire0);
+		img.setBackgroundResource(R.drawable.water2);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
 
 		 // Start the animation (looped playback by default).
 		frameAnimation.start();
+		ImageView img2 = (ImageView)findViewById(R.id.fight_self_animation);
+		img2.setBackgroundResource(R.drawable.fire2);
+
+		 // Get the background, which has been compiled to an AnimationDrawable object.
+		AnimationDrawable frameAnimation2 = (AnimationDrawable) img2.getBackground();
+
+		 // Start the animation (looped playback by default).
+		frameAnimation2.start();
 	}
 
 	@Override
