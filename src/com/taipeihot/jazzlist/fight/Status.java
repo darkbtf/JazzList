@@ -1,5 +1,5 @@
 package com.taipeihot.jazzlist.fight;
 
-class FightConsole {
-	
+interface Status {
+	public void exec();
 }
