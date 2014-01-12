@@ -1,9 +1,12 @@
 package com.taipeihot.jazzlist.jazzmon;
 
-import com.taipeihot.jazzlist.R;
-import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ImageView;
+
+import com.taipeihot.jazzlist.R;
 
 public class FightActivity extends Activity {
 
@@ -11,6 +14,14 @@ public class FightActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fight);
+		ImageView img = (ImageView)findViewById(R.id.spinning_wheel_image);
+		img.setBackgroundResource(R.drawable.spin_animation);
+
+		 // Get the background, which has been compiled to an AnimationDrawable object.
+		AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+		 // Start the animation (looped playback by default).
+		frameAnimation.start();
 	}
 
 	@Override
