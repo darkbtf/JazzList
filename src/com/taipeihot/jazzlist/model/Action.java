@@ -47,6 +47,8 @@ public class Action {
 	public int getImageId(){return object_id>0?object_id:-object_id;}
 	
 	public boolean exist(){return number!=0;}
+	
+	public int getMoney(){return level_limit;}
 	/***************************** For Database ********************************/
 	public Action(){}
 	public Action(int _id,int rate,int hp_consume, int mp_consume, int hp_damage, int mp_damage, String name, String description, int number, int object_id, int level_limit){
