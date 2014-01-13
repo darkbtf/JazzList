@@ -78,6 +78,7 @@ public class MainActivity extends BaseActivity {
 					//Util.errorReport("guava");
 					if (FightData.isStarted()) {
 						FightData.setPrepared();
+						Util.errorReport("started");
 						Intent intent = new Intent(MainActivity.this, FightActivity.class);
 						startActivity(intent);
 					} else if (FightData.isInvited()) {
