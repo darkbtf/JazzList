@@ -3,6 +3,7 @@ package com.taipeihot.jazzlist.jazzmon;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.taipeihot.jazzlist.MainActivity;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.adapter.ItemListAdapter;
 import com.taipeihot.jazzlist.adapter.ActionListAdapter;
@@ -22,8 +24,13 @@ import com.taipeihot.jazzlist.model.Action;
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.fight.FightData;
 import com.taipeihot.jazzlist.fight.Player;
+import com.taipeihot.jazzlist.Util;
 
 public class FightActivity extends Activity {
+	ProgressBar myHpBar;
+	ProgressBar myMpBar;
+	ProgressBar oppoHpBar;
+	ProgressBar oppoMpBar;
 	ActionListAdapter actionListAdapter;
 	ArrayList<Action> actionItems=new ArrayList<Action>();
 	ItemListAdapter itemListAdapter;
@@ -77,13 +84,29 @@ public class FightActivity extends Activity {
 				}
 			}
 		});
+
+		oppoHpBar = ((ProgressBar) findViewById(R.id.fight_enemy_hp));
+		oppoMpBar = ((ProgressBar) findViewById(R.id.fight_enemy_mp));
 		
 		fightThread = new Thread(new Runnable(){
 
 			@Override
 			public void run() {
 				while (true) {
-					
+
+					//Util.errorReport("gg");
+					if (FightData.isStarted() || FightData.isUpdated()) {
+						Util.errorReport("fuck");
+
+						me = FightData.getMe();
+						opponent = FightData.getOpponent();
+						refreshBars();
+						FightData.setIdle();
+					} else if (FightData.isEnded()) {
+						FightData.reset();
+						Intent intent = new Intent(FightActivity.this, MainActivity.class);
+						startActivity(intent);
+					}
 					try {
 						Thread.sleep(500);
 					} catch (InterruptedException e) {
@@ -94,18 +117,30 @@ public class FightActivity extends Activity {
 			
 		});
 		fightThread.start();
-		me = FightData.getMe();
-		opponent = FightData.getOpponent();
-		((ProgressBar) findViewById(R.id.fight_enemy_hp)).setMax(opponent.getHp());
-		((ProgressBar) findViewById(R.id.fight_enemy_hp)).setProgress(opponent.getHp());
-		((ProgressBar) findViewById(R.id.fight_enemy_mp)).setMax(opponent.getMp());
-		((ProgressBar) findViewById(R.id.fight_enemy_mp)).setProgress(opponent.getMp());
-		((ProgressBar) findViewById(R.id.fight_self_hp)).setMax(me.getHp());
-		((ProgressBar) findViewById(R.id.fight_self_hp)).setProgress(me.getHp());
-		((ProgressBar) findViewById(R.id.fight_self_mp)).setMax(me.getMp());
-		((ProgressBar) findViewById(R.id.fight_self_mp)).setProgress(me.getMp());
 		
 		
+	}
+	
+	public void refreshBars() {
+
+		/*runOnUiThread*/
+		findViewById(android.R.id.content).post(new Runnable() {
+			public void run() {
+				Util.errorReport("QQQQQQ");
+				Util.errorReport(((ProgressBar) findViewById(R.id.fight_enemy_hp)).getMax() + "");
+				oppoHpBar.setMax(opponent.getHp());
+				Util.errorReport("QQQQQQ");
+				oppoHpBar.setProgress(opponent.getHp());
+				Util.errorReport("QQQQQQ");
+				oppoMpBar.setMax(opponent.getMp());
+				oppoMpBar.setProgress(opponent.getMp());
+				((ProgressBar) findViewById(R.id.fight_self_hp)).setMax(me.getHp());
+				((ProgressBar) findViewById(R.id.fight_self_hp)).setProgress(me.getHp());
+				((ProgressBar) findViewById(R.id.fight_self_mp)).setMax(me.getMp());
+				((ProgressBar) findViewById(R.id.fight_self_mp)).setProgress(me.getMp());
+				//((ProgressBar) findViewById(R.id.fight_self_mp)).
+			}
+		});
 	}
 	
 	@Override

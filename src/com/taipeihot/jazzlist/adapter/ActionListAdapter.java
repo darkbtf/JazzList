@@ -1,6 +1,7 @@
 package com.taipeihot.jazzlist.adapter;
  
 import java.util.ArrayList;
+import com.taipeihot.jazzlist.fight.FightData;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,6 +18,7 @@ import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.model.Achievement;
 import com.taipeihot.jazzlist.model.Action;
+import com.taipeihot.jazzlist.CommunicateHelper;
  
 public class ActionListAdapter extends BaseAdapter {
      
@@ -73,7 +75,10 @@ public class ActionListAdapter extends BaseAdapter {
     			
     			@Override
     			public void onClick(View v) {
-    				// TODO Auto-generated method stub
+    				if (!FightData.isDone()) {
+    					FightData.setDone();
+    					CommunicateHelper.actionFight(action.getObjectId());
+    				}
     				Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
     			}
     		});

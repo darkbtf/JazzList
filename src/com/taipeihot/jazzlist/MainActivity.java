@@ -77,17 +77,16 @@ public class MainActivity extends BaseActivity {
 				while (true) {
 					//Util.errorReport("guava");
 					if (FightData.isStarted()) {
-						
-						FightData.setStarted(false);
-						
+						Util.errorReport("started");
 						Intent intent = new Intent(MainActivity.this, FightActivity.class);
 						startActivity(intent);
 						
 					} else if (FightData.isInvited()) {
+						Util.errorReport("invited");
 						int userId = FightData.getInviterId();
 						String nickname = FightData.getInviterNickname();
 						showFightInvitationBox(userId, nickname);
-						FightData.setInvited(false);
+						FightData.reset();
 					}
 					
 					try {
