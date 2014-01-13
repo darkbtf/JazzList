@@ -7,20 +7,16 @@ public class Action {
 	private int rate;
 	private int hp_consume;
 	private int mp_consume;
-	private int hp_damage;
-	private int mp_damage;
 	private String name;
 	private String description;
 	private int number;
 	private int object_id;
 	private int level_limit;
 	
-	public Action(int rate, int hp_consume, int mp_consume, int hp_damage, int mp_damage, String name, String description, int number, int object_id, int level_limit) {
+	public Action(int rate, int hp_consume, int mp_consume, String name, String description, int number, int object_id, int level_limit) {
 		this.rate = rate;
 		this.hp_consume = hp_consume;
 		this.mp_consume = mp_consume;
-		this.hp_damage = hp_damage;
-		this.mp_damage = mp_damage;
 		this.name = name;
 		this.description = description;
 		this.number = number;
@@ -34,8 +30,6 @@ public class Action {
 	
 	public int getHpConsume(){return hp_consume;}
 	public int getMpConsume(){return mp_consume;}
-	public int getHpDamage(){return hp_damage;}
-	public int getMpDamage(){return mp_damage;}
 	
 	public String getName(){return name;}
 	public String getDescription(){return description;}
@@ -52,22 +46,33 @@ public class Action {
 	
 	public int getMoney(){return level_limit;}
 	
-	public void buyItem(){
+	public boolean buy() {
 		if(Data.getMoney() < level_limit)
-			return;
+			return false;
 		Data.incMoney(-level_limit);
 		number++;
 		save();
+		return true;
+	}
+	
+	public boolean learn() {
+		if(Data.getSkillPoint()<=0)return false;
+		if(object_id < 0)return false;
+		if(object_id > 3 && ActionTable.where("object_id = "+(object_id-3)).get(0).getNumber() <=0)return false;
+		number = 999;
+		save();
+		return true;
+	}
+	public boolean canUseInFight(int mp) {
+		return mp>=mp_consume && number>0;
 	}
 	/***************************** For Database ********************************/
 	public Action(){}
-	public Action(int _id,int rate,int hp_consume, int mp_consume, int hp_damage, int mp_damage, String name, String description, int number, int object_id, int level_limit){
+	public Action(int _id,int rate,int hp_consume, int mp_consume, String name, String description, int number, int object_id, int level_limit){
 		this._id=_id;
 		this.rate = rate;
 		this.hp_consume = hp_consume;
 		this.mp_consume = mp_consume;
-		this.hp_damage = hp_damage;
-		this.mp_damage = mp_damage;
 		this.name = name;
 		this.description = description;
 		this.number = number;

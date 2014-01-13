@@ -6,5 +6,6 @@ public enum CharacterInfo{
 	exp,
 	money,
 	attack,
-	defense
+	defense,
+	skill_point
 }
