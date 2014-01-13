@@ -36,24 +36,27 @@ public class ActionTable extends Table{
 	}
 	static public void init(int should){
 		if(All().size() != should){
-			/* rate% hp_consume mp_consume hp_damage, mp_damage Name description number object_id level_limit*/
+			/* rate% Hp_consume Mp_consume Name description number object_id level_limit*/
 			/*level 1*/
-			insert(new Action(120,0,0,10,0,"Ember","little damage, +1 heat on your opponent",0,1,1));
-			insert(new Action(120,-8,0,0,0,"Bless","little heal",0,2,1));
-			insert(new Action(120,0,0,10,0,"Thunderbolt","damage!",0,3,1));
+			insert(new Action(120,0,0,"Ember","little damage, +1 heat on your opponent",0,1,1));
+			insert(new Action(120,0,0,"Bless","little heal",0,2,1));
+			insert(new Action(120,0,0,"Thunderbolt","little damage",0,3,1));
 			/*level 3*/
-			insert(new Action(120,0,0,10,0,"Fire2","mewo meow",0,4,3));
-			insert(new Action(120,0,0,10,0,"Water2","little heal",0,5,3));
-			insert(new Action(120,0,0,10,0,"Thunder2","QQzzThunder",0,6,3));
+			insert(new Action(120,0,16,"Immolation","+2 heat on yourself",0,4,3));
+			insert(new Action(120,0,0,"Mana Stream","regain some MP",0,5,3));
+			insert(new Action(120,20,10,"Static Field","add 20% on attack value",0,6,3));
 			/*level 5*/ 
-			insert(new Action(120,0,0,10,0,"Fire3","Fire 3",0,7,5));
-			insert(new Action(120,0,0,10,0,"Water3","Water3 ~~",0,8,5));
-			insert(new Action(120,0,0,10,0,"Maxwell","Monster Kill",0,9,5));
+			insert(new Action(120,0,30,"Karma Blast","release all heat on you and your oppoenet and make a great damage on your opponent",0,7,5));
+			insert(new Action(120,0,30,"Frostnova","your opponent can't move in 2 round",0,8,5));
+			insert(new Action(120,0,30,"Maxwell Equation","Kill your opponent directly in a probablity",0,9,5));
 			
-			/*Items: rate% hp_consume mp_consume hp_damage, mp_damage Name description number object_id money*/
-			insert(new Action(120,-8,-8,0,0,"Healing Potion","Resume HP and MP",40,-1,20));
-			insert(new Action(120,-20,-20,0,0,"Great Healing Potion","Resume more HP and MP",0,-2,30));
-			insert(new Action(120,-500,-500,0,0,"Max Healing Potion","Totally Resume HP and MP",50,-3,100));
+			/*Items: rate% Hp_consume Mp_consume Name description number object_id money*/
+			insert(new Action(120,0,0,"Health Potion","Resume 25 HP",40,-1,20));
+			insert(new Action(120,0,0,"Mana Potion","Resume 25 MP",10,-2,30));
+			insert(new Action(120,0,0,"Omni Potion","Resume 30 HP and 30 MP",0,-3,100));
+			insert(new Action(120,0,0,"Great Health Potion","Resume half of your HP",40,-4,200));
+			insert(new Action(120,0,0,"Great Mana Potion","Resume half of your MP",0,-5,300));
+			insert(new Action(120,0,0,"Great Omni Potion","Resume half of your HP and MP",50,-6,800));
 		}
 	}
 	static public long insert(Action a){
@@ -144,13 +147,11 @@ public class ActionTable extends Table{
 				c.getInt(1),
 				c.getInt(2),
 				c.getInt(3),
-				c.getInt(4),
-				c.getInt(5),
-				c.getString(6),
-				c.getString(7),
-				c.getInt(8),
-				c.getInt(9),
-				c.getInt(10)
+				c.getString(4),
+				c.getString(5),
+				c.getInt(6),
+				c.getInt(7),
+				c.getInt(8)
 				);
 	}
 
@@ -159,8 +160,6 @@ public class ActionTable extends Table{
 		values.put("rate", a.getRate());
 		values.put("hp_consume", a.getHpConsume());
 		values.put("mp_consume", a.getMpConsume());
-		values.put("hp_damage", a.getHpDamage());
-		values.put("mp_damage", a.getMpDamage());
 		values.put("name", a.getName());
 		values.put("description", a.getDescription());
 		values.put("number", a.getNumber());

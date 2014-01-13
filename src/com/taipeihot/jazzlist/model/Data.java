@@ -54,22 +54,30 @@ public class Data {
 	public static void loginFail(){logined = 2;}
 	/************************** About Character information ************************/
 	public static void initCharacterInfo(){
-		for(CharacterInfo a:CharacterInfo.values())
-			if(Data.getCharacterInfo(a)==-1)
-				Data.setCharacterInfo(a,0);
+		Data.setCharacterInfo(CharacterInfo.character_id, 1);
+		Data.setCharacterInfo(CharacterInfo.level, 1);
+		Data.setCharacterInfo(CharacterInfo.exp, 0);
+		Data.setCharacterInfo(CharacterInfo.money, 0);
+		Data.setCharacterInfo(CharacterInfo.attack, 100);
+		Data.setCharacterInfo(CharacterInfo.defense, 100);
+		Data.setCharacterInfo(CharacterInfo.skill_point, 1);
 	}
 	public static int getCharacterId(){return getCharacterInfo(CharacterInfo.character_id);}
 	public static int getLevel(){return getCharacterInfo(CharacterInfo.level);}
 	public static int getExp(){return getCharacterInfo(CharacterInfo.exp);}
 	public static int getMoney(){return getCharacterInfo(CharacterInfo.money);}
-	public static void incMoney(int v){
-		setCharacterInfo(CharacterInfo.money, getCharacterInfo(CharacterInfo.money)+v);
-	}
 	public static int getAttack(){return getCharacterInfo(CharacterInfo.attack);}
 	public static int getDefense(){return getCharacterInfo(CharacterInfo.defense);}
+	public static int getSkillPoint(){return getCharacterInfo(CharacterInfo.skill_point);}
 	public static int getHp(){return FightUtils.calcHp(getLevel());}
 	public static int getMp(){return FightUtils.calcMp(getLevel());}
 	
+	public static void incMoney(int v){
+		setCharacterInfo(CharacterInfo.money, getCharacterInfo(CharacterInfo.money)+v);
+	}
+	public static void decSkillPoint(){
+		setCharacterInfo(CharacterInfo.skill_point, getCharacterInfo(CharacterInfo.skill_point)-1);
+	}
 	private static int getCharacterInfo(CharacterInfo s) {
 		return character_info_sp.getInt(s.toString(), -1);
 	}
