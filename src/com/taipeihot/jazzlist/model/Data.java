@@ -216,7 +216,7 @@ public class Data {
 	}
 	public static ArrayList<Action> getThunderSkills(){
 		Util.errorReport("int Data.java geting thunder skills");
-		return ActionTable.where("object_id > 0 and object_id%3 ==3");
+		return ActionTable.where("object_id > 0 and object_id%3 ==0");
 	}
 	public static ArrayList<Action> getItems(){
 		return ActionTable.where("object_id < 0");
