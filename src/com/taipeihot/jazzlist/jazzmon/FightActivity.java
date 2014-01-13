@@ -34,7 +34,7 @@ public class FightActivity extends Activity {
 		itemItems=Data.getItems();
 		
 		ImageView img = (ImageView)findViewById(R.id.fight_enemy_animation);
-		img.setBackgroundResource(R.drawable.fire1);
+		img.setBackgroundResource(R.drawable.fire0);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
@@ -42,7 +42,7 @@ public class FightActivity extends Activity {
 		 // Start the animation (looped playback by default).
 		frameAnimation.start();
 		ImageView img2 = (ImageView)findViewById(R.id.fight_self_animation);
-		img2.setBackgroundResource(R.drawable.fire2);
+		img2.setBackgroundResource(R.drawable.water2);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation2 = (AnimationDrawable) img2.getBackground();

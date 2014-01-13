@@ -26,53 +26,64 @@
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/white" />
-
     </LinearLayout>
-	
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="horizontal"
-		 >
-    
-	    <LinearLayout
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:orientation="vertical"
-	        android:layout_weight="20" >
-	    </LinearLayout>
-	
-	    <LinearLayout
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:orientation="vertical"
-	        android:gravity="center"
-	        android:layout_weight="1" >
-	
-	        <ImageButton
-	            android:id="@+id/fireSkillBtn"
-	            android:layout_width="80dp"
-	            android:layout_height="wrap_content"
-	            android:layout_weight="1"
-	            android:scaleType="fitCenter"
-	            android:src="@drawable/firebtn" />
-	
-	        <ImageButton
-	            android:id="@+id/waterSkillBtn"
-	            android:layout_width="80dp"
-	            android:layout_height="wrap_content"
-	            android:layout_weight="1"
-	            android:scaleType="fitCenter"
-	            android:src="@drawable/waterbtn" />
-	
-	        <ImageButton
-	            android:id="@+id/thunderSkillBtn"
-	            android:layout_width="80dp"
-	            android:layout_height="wrap_content"
-	            android:layout_weight="1"
-	            android:scaleType="fitCenter"
-	            android:src="@drawable/thunderbtn" />
-	
-	    </LinearLayout>
-	</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <GridView
+                android:id="@+id/tree_skill_tree"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:numColumns="1"
+                android:verticalSpacing="20dp" >
+            </GridView>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/fireSkillBtn"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/firebtn" />
+
+            <ImageButton
+                android:id="@+id/waterSkillBtn"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/waterbtn" />
+
+            <ImageButton
+                android:id="@+id/thunderSkillBtn"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/thunderbtn" />
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>
