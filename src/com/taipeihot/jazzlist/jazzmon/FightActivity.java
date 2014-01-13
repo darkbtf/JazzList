@@ -6,25 +6,35 @@ import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.taipeihot.jazzlist.R;
-import com.taipeihot.jazzlist.adapter.AchievementListAdapter;
 import com.taipeihot.jazzlist.adapter.ActionListAdapter;
+import com.taipeihot.jazzlist.adapter.ItemListAdapter;
 import com.taipeihot.jazzlist.model.Action;
 import com.taipeihot.jazzlist.model.Data;
 
 public class FightActivity extends Activity {
 	ActionListAdapter actionListAdapter;
 	ArrayList<Action> actionItems=new ArrayList<Action>();
+	ItemListAdapter itemListAdapter;
+	ArrayList<Action> itemItems=new ArrayList<Action>();
+	private String menuName[]={"Skills","Items"};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fight);
 		actionItems=Data.getAvailableSkills();
+		itemItems=Data.getItems();
+		
 		ImageView img = (ImageView)findViewById(R.id.fight_enemy_animation);
-		img.setBackgroundResource(R.drawable.water2);
+		img.setBackgroundResource(R.drawable.fire1);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
@@ -39,11 +49,32 @@ public class FightActivity extends Activity {
 
 		 // Start the animation (looped playback by default).
 		frameAnimation2.start();
-		GridView skillList=(GridView)findViewById(R.id.skill_gridview);
+		
+		final GridView skillList=(GridView)findViewById(R.id.skill_gridview);
 		actionListAdapter = new ActionListAdapter(this, actionItems);
 		skillList.setAdapter(actionListAdapter);
+		itemListAdapter = new ItemListAdapter(this, itemItems);
+		
+		
+		ListView menuList=(ListView)findViewById(R.id.fight_menu);
+		menuList.setAdapter(new ArrayAdapter<String>(
+				this,android.R.layout.simple_list_item_1 , menuName));
+		menuList.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+				if(position==0)
+				{
+					skillList.setAdapter(actionListAdapter);
+				}
+				else if(position==1)
+				{
+					skillList.setAdapter(itemListAdapter);
+				}
+			}
+		});
+				
+		
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
