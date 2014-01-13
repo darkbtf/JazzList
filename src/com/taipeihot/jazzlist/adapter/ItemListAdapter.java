@@ -18,12 +18,12 @@ import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.model.Achievement;
 import com.taipeihot.jazzlist.model.Action;
  
-public class ActionListAdapter extends BaseAdapter {
+public class ItemListAdapter extends BaseAdapter {
      
     private Context context;
     private ArrayList<Action> actionItems;
      
-    public ActionListAdapter(Context context, ArrayList<Action> actionItems){
+    public ItemListAdapter(Context context, ArrayList<Action> actionItems){
         this.context = context;
         this.actionItems = actionItems;
     }
@@ -49,34 +49,29 @@ public class ActionListAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.action_grid_item, null);
+            convertView = mInflater.inflate(R.layout.item_grid_item, null);
         }
         final Action action=(Action)getItem(position);
-        ImageView actionImage = (ImageView) convertView.findViewById(R.id.actionImage);
-        actionImage.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-			}
-		});
-
+        ImageView actionImage = (ImageView) convertView.findViewById(R.id.item_image);
+        TextView itemNum=(TextView)convertView.findViewById(R.id.item_item_num);
+        itemNum.setText(Integer.toString(action.getNumber()));
         int photoNum=action.getImageId();
-        String type="skill_";
+        String type="item_";
         if(!action.exist())type+="h_";
-    		actionImage.setBackgroundResource(
-    				context.getResources()
-    				.getIdentifier(
-    						type+Integer
-    						.toString(photoNum),
-    						"drawable", context.getPackageName()));
-    		actionImage.setOnClickListener(new OnClickListener() {
+    	actionImage.setBackgroundResource(
+    			context.getResources()
+    			.getIdentifier(
+    					type+Integer
+    					.toString(photoNum),
+    					"drawable", context.getPackageName()));
+    	actionImage.setOnClickListener(new OnClickListener() {
     			
     			@Override
-    			public void onClick(View v) {
-    				// TODO Auto-generated method stub
-    				Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
-    			}
-    		});
+    		public void onClick(View v) {
+    			// TODO Auto-generated method stub
+    			Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
+    		}
+    	});
         	
         
         // displaying count
