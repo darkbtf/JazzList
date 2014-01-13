@@ -3,9 +3,12 @@ package com.taipeihot.jazzlist;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnClosedListener;
+import com.taipeihot.jazzlist.fight.FightData;
+import com.taipeihot.jazzlist.jazzmon.FightActivity;
 import com.taipeihot.jazzlist.model.AchievementType;
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.Todo;
@@ -18,6 +21,7 @@ public class MainActivity extends BaseActivity {
 	Fragment settingFragment;
 	Fragment friendFragment;
 	Fragment menuFragment;
+	Thread waitFighting;
 	
     public MainActivity() {
         super(R.string.left_and_right);
@@ -100,6 +104,25 @@ public class MainActivity extends BaseActivity {
         .beginTransaction()
         .replace(R.id.menu_frame_two, friendFragment)
         .commit();    	
+    }
+    
+    public void waitFightingInit() {
+    	waitFighting = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (!FightData.isFighting()) {
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				Intent intent = new Intent(MainActivity.this, FightActivity.class);
+				startActivity(intent);
+			}
+    		
+    	});
     }
     
 }
