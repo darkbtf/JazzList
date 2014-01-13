@@ -120,6 +120,23 @@ public class CommunicateHelper {
 		SocketHelper.sendMessage(new String[]{"comment","update",c.getRealId()+"",c.getScore()+""});
 	}
 	
+	public static void inviteFight(int userId) {
+		SocketHelper.sendMessage(new String[]{"fight", "invite", userId + ""});
+	}
+	
+	public static void replyFight(int userId, boolean result) {
+		Util.errorReport("QQPIE");
+		SocketHelper.sendMessage(new String[]{"fight", (result ? "accept" : "reject"), userId + ""});
+	}
+	
+	public static void startFight(int level, int HP, int MP, int attack, int defense) {
+		SocketHelper.sendMessage(new String[]{"fight", "start", level + "", HP + "", MP + "", attack + "", defense + ""});
+	}
+	
+	public static void actionFight(int objectId) {
+		SocketHelper.sendMessage(new String[]{"fight", "action", objectId + ""});
+	}
+	
 	/******************************Do not edit here***************************/
 	public static boolean start(){
     	if(!SocketHelper.start())return false;
