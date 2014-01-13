@@ -23,7 +23,6 @@ public class ProfileMainActivity extends BaseActivity  {
     
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		Util.errorReport("fuck!");
 		super.onCreate(savedInstanceState);
 
         setContentView(R.layout.content_frame);
@@ -45,7 +44,6 @@ public class ProfileMainActivity extends BaseActivity  {
         .beginTransaction()
         .replace(R.id.menu_frame_two, monsterFragment)
         .commit();
-		Util.errorReport("shit!");
 		
 	}
 	
@@ -54,14 +52,14 @@ public class ProfileMainActivity extends BaseActivity  {
 
 			@Override
 			public void run() {
-				while (!FightData.isFighting()) {
+				while (!FightData.isStarted()) {
 					try {
 						Thread.sleep(500);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
-				Intent intent = new Intent(MainActivity.this, FightActivity.class);
+				Intent intent = new Intent(ProfileMainActivity.this, FightActivity.class);
 				startActivity(intent);
 			}
     		

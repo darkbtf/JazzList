@@ -3,8 +3,13 @@ package com.taipeihot.jazzlist;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnClosedListener;
 import com.taipeihot.jazzlist.fight.FightData;
@@ -21,7 +26,7 @@ public class MainActivity extends BaseActivity {
 	Fragment settingFragment;
 	Fragment friendFragment;
 	Fragment menuFragment;
-	Thread waitFighting;
+	Thread fightListener;
 	
     public MainActivity() {
         super(R.string.left_and_right);
@@ -55,9 +60,6 @@ public class MainActivity extends BaseActivity {
         .replace(R.id.menu_frame_two, friendFragment)
         .commit();
 
-        //getSlidingMenu().showMenu();
-        //getSlidingMenu().showSecondaryMenu();
-        //getSlidingMenu().toggle();
         getSlidingMenu().setOnClosedListener(new OnClosedListener(){
 
 			@Override
@@ -68,6 +70,36 @@ public class MainActivity extends BaseActivity {
         });
     	setTitle(Data.getCategories().get(0).getTitle());
     	initData();
+    	fightListener = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (true) {
+					//Util.errorReport("guava");
+					if (FightData.isStarted()) {
+						
+						FightData.setStarted(false);
+						
+						Intent intent = new Intent(MainActivity.this, FightActivity.class);
+						startActivity(intent);
+						
+					} else if (FightData.isInvited()) {
+						int userId = FightData.getInviterId();
+						String nickname = FightData.getInviterNickname();
+						showFightInvitationBox(userId, nickname);
+						FightData.setInvited(false);
+					}
+					
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+    		
+    	});
+    	fightListener.start();
     }
 
     public void changeCategory(long categoryId) {
@@ -85,7 +117,6 @@ public class MainActivity extends BaseActivity {
     }
 
     public void toSetting(long todoId) {
-    	//System.out.println("meowmeowjiao");
     	Bundle args = new Bundle();
         args.putLong("todoId", todoId);
         settingFragment = new SettingFragment();
@@ -95,7 +126,6 @@ public class MainActivity extends BaseActivity {
         .replace(R.id.menu_frame_two, settingFragment)
         .commit();    
         getSlidingMenu().showSecondaryMenu();
-        //((SettingFragment) settingFragment).setTodo(todoId);
     }
 
     
@@ -106,23 +136,36 @@ public class MainActivity extends BaseActivity {
         .commit();    	
     }
     
-    public void waitFightingInit() {
-    	waitFighting = new Thread(new Runnable() {
+    public void showFightInvitationBox(final int userId, final String nickname) {
+    	final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+    	builder
+    	.setPositiveButton("Fight!",  new DialogInterface.OnClickListener() {
+    		@Override
+    		public void onClick(DialogInterface arg0, int arg1) {
+    			Util.errorReport("wtf");
+				CommunicateHelper.replyFight(userId, true);
+    		}
+    		
+    	})
+    	.setNegativeButton("Cancel",  new DialogInterface.OnClickListener() {
+
+    		@Override
+    		public void onClick(DialogInterface arg0, int arg1) {
+				CommunicateHelper.replyFight(userId, false);
+    		}
+    		
+    	});
+    	//Looper.prepare();
+    	this.runOnUiThread(new Runnable() {
 
 			@Override
 			public void run() {
-				while (!FightData.isFighting()) {
-					try {
-						Thread.sleep(500);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				Intent intent = new Intent(MainActivity.this, FightActivity.class);
-				startActivity(intent);
+		    	Dialog dialog = builder.create();
+		    	dialog.setTitle(nickname + " wanna have a fight with you A__A");
+		    	dialog.show();
 			}
-    		
     	});
     }
+
     
 }

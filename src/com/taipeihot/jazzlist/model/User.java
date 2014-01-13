@@ -14,4 +14,5 @@ public class User {
 	public void setNickname(String nickname){this.nickname=nickname;}
 	
 	public int photoNumber(){return real_id;}
+	public int getReadId() { return real_id; }
 }

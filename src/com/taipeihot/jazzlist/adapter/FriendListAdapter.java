@@ -3,7 +3,9 @@ package com.taipeihot.jazzlist.adapter;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +16,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.TimelineActivity;
 import com.taipeihot.jazzlist.jazzmon.FightActivity;
+import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.User;
  
 public class FriendListAdapter extends BaseAdapter {
@@ -24,11 +28,31 @@ public class FriendListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<User> userItems;
     private boolean fightOnly;
+	AlertDialog.Builder builder;
+    private int toFightId;
      
     public FriendListAdapter(Context context, ArrayList<User> categoryItems, boolean fightOnly){
         this.context = context;
         this.userItems = categoryItems;
         this.fightOnly = fightOnly;
+        builder = new AlertDialog.Builder(context);
+    	builder
+    	.setPositiveButton("Fight!",  new DialogInterface.OnClickListener() {
+    		@Override
+    		public void onClick(DialogInterface arg0, int arg1) {
+    			CommunicateHelper.inviteFight(userItems.get(toFightId).getReadId());
+    		}
+    		
+    	})
+    	.setNegativeButton("Cancel",  new DialogInterface.OnClickListener() {
+
+    		@Override
+    		public void onClick(DialogInterface arg0, int arg1) {
+    			
+    		}
+    		
+    	}); 
+    	
     }
  
     @Override
@@ -46,6 +70,10 @@ public class FriendListAdapter extends BaseAdapter {
         return position;
     }
  
+    public void showInviteBox() {
+ 	
+    }
+    
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
@@ -65,6 +93,7 @@ public class FriendListAdapter extends BaseAdapter {
          
         // displaying count
         // check whether it set visible or not
+
 		
 		ImageButton statusButton = (ImageButton) convertView.findViewById(R.id.friend_status_button);
 		statusButton.setOnClickListener(new OnClickListener() {
@@ -84,9 +113,9 @@ public class FriendListAdapter extends BaseAdapter {
 		fightButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
-				Intent intent = new Intent(context, FightActivity.class);
-				context.startActivity(intent);
+				builder.setTitle("Fight?");
+				AlertDialog dialog = builder.create();
+				dialog.show();
 			}
 		});
 		
