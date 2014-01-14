@@ -19,7 +19,9 @@ import android.widget.ProgressBar;
 import com.taipeihot.jazzlist.MainActivity;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.adapter.ItemListAdapter;
+
 import com.taipeihot.jazzlist.adapter.ActionListAdapter;
+
 import com.taipeihot.jazzlist.model.Action;
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.fight.FightData;
@@ -27,11 +29,9 @@ import com.taipeihot.jazzlist.fight.Player;
 import com.taipeihot.jazzlist.Util;
 
 public class FightActivity extends Activity {
-	/*ProgressBar myHpBar;
-	ProgressBar myMpBar;
-	ProgressBar oppoHpBar;
-	ProgressBar oppoMpBar;*/
+
 	ActionListAdapter actionListAdapter;
+
 	ArrayList<Action> actionItems=new ArrayList<Action>();
 	ItemListAdapter itemListAdapter;
 	ArrayList<Action> itemItems=new ArrayList<Action>();
@@ -48,7 +48,7 @@ public class FightActivity extends Activity {
 		itemItems=Data.getItems();
 		
 		ImageView img = (ImageView)findViewById(R.id.fight_enemy_animation);
-		img.setBackgroundResource(R.drawable.fire0);
+		img.setBackgroundResource(R.drawable.thunder0);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
