@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.adapter.TreeListAdapter;
@@ -31,6 +33,7 @@ public class SkillFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	view = inflater.inflate(R.layout.fragment_skill, null);
+    	init();
     	skillTree=(GridView)view.findViewById(R.id.tree_skill_tree);
     	treeListAdapter=new TreeListAdapter(this.getActivity(),fireSkills);
     	skillTree.setAdapter(treeListAdapter);
@@ -77,5 +80,14 @@ public class SkillFragment extends Fragment {
         	skillTree.setAdapter(treeListAdapter);
     	}
     }
-    
+    public void init()
+    {
+    	TextView skillPoint=(TextView)view.findViewById(R.id.skillPointNum);
+    	skillPoint.setText(Data.getSkillPoint()+"");
+    	TextView moneyText=(TextView)view.findViewById(R.id.skill_money_num);
+    	moneyText.setText(Data.getMoney()+"");
+    	ProgressBar expPro=(ProgressBar)view.findViewById(R.id.skill_exp_bar);
+    	expPro.setProgress(Data.getExp());
+    	
+    }
 }

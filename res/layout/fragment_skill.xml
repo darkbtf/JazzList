@@ -9,23 +9,64 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" >
+        android:gravity="center"
+        android:background="#ff333333" >
 
         <TextView
             android:id="@+id/tree_point_num"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="剩餘點數:"
+            android:text="Skill point:"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/skillPointNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:layout_weight="2" />
+
+        <ImageView
+            android:id="@+id/money_image"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/gold_coin_1" />
+
+        <TextView
+            android:id="@+id/skill_money_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="100"
+            android:layout_weight="2"
+            android:textColor="@color/white"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="exp:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:layout_weight="1" />
+
+        <ProgressBar
+            android:id="@+id/skill_exp_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:max="50"
+            android:progress="10"
+            android:gravity="center"
+            android:layout_weight="2" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -46,12 +87,26 @@
                 android:id="@+id/tree_skill_tree"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="150dp"
                 android:numColumns="1"
-                android:verticalSpacing="20dp" >
+                android:verticalSpacing="40dp" >
             </GridView>
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="260dp"
+                android:src="@drawable/treearrow" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="40dp"
+                android:layout_marginTop="330dp"
+                android:src="@drawable/treearrow" />
 
         </RelativeLayout>
 
@@ -87,5 +142,11 @@
                 android:src="@drawable/thunderbtn" />
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </LinearLayout>
