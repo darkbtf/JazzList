@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
-	<item android:drawable="@drawable/thunder2_0_en" android:duration="120" />
-	<item android:drawable="@drawable/thunder2_1_en" android:duration="120" />
-	<item android:drawable="@drawable/thunder2_2_en" android:duration="120" />
-	<item android:drawable="@drawable/thunder2_3_en" android:duration="120" />
-	<item android:drawable="@drawable/thunder2_4_en" android:duration="120" />
-	<item android:drawable="@drawable/thunder2_5_en" android:duration="120" />
-	<item android:drawable="@drawable/thunder2_6_en" android:duration="120" />
-	<item android:drawable="@drawable/thunder2_7_en" android:duration="120" />
-	<item android:drawable="@drawable/thunder2_8_en" android:duration="120" />
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:oneshot="true">
+	<item android:drawable="@drawable/thunder2_0_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_1_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_2_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_3_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_4_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_5_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_6_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_7_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_8_en" android:duration="30" />
 </animation-list>
