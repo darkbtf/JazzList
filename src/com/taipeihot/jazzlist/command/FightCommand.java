@@ -38,7 +38,7 @@ public class FightCommand implements Command {
 			attack = Integer.valueOf(SocketHelper.getMessage());
 			defense = Integer.valueOf(SocketHelper.getMessage());
 			FightData.setOpponent(new Player(level, HP, MP, attack, defense));
-			FightData.setStarted();
+			FightData.setPrepared();
 		} else if (cmd.equals("update")) {
 			
 			int first = Integer.valueOf(SocketHelper.getMessage());

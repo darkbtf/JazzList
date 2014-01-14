@@ -27,10 +27,10 @@ import com.taipeihot.jazzlist.fight.Player;
 import com.taipeihot.jazzlist.Util;
 
 public class FightActivity extends Activity {
-	ProgressBar myHpBar;
+	/*ProgressBar myHpBar;
 	ProgressBar myMpBar;
 	ProgressBar oppoHpBar;
-	ProgressBar oppoMpBar;
+	ProgressBar oppoMpBar;*/
 	ActionListAdapter actionListAdapter;
 	ArrayList<Action> actionItems=new ArrayList<Action>();
 	ItemListAdapter itemListAdapter;
@@ -41,6 +41,7 @@ public class FightActivity extends Activity {
 	private String menuName[]={"Skills","Items"};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Util.errorReport("gua4: " + (FightData.isPrepared() ? "PREPARED!" : "NOT PREPARED"));
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fight);
 		actionItems=Data.getAvailableSkills();
@@ -54,14 +55,14 @@ public class FightActivity extends Activity {
 
 		 // Start the animation (looped playback by default).
 		frameAnimation.start();
-		ImageView img2 = (ImageView)findViewById(R.id.fight_self_animation);
+		/*ImageView img2 = (ImageView)findViewById(R.id.fight_self_animation);
 		img2.setBackgroundResource(R.drawable.water2);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation2 = (AnimationDrawable) img2.getBackground();
 
 		 // Start the animation (looped playback by default).
-		frameAnimation2.start();
+		frameAnimation2.start();*/
 		
 		final GridView skillList=(GridView)findViewById(R.id.skill_gridview);
 		actionListAdapter = new ActionListAdapter(this, actionItems);
@@ -85,22 +86,58 @@ public class FightActivity extends Activity {
 			}
 		});
 
-		oppoHpBar = ((ProgressBar) findViewById(R.id.fight_enemy_hp));
-		oppoMpBar = ((ProgressBar) findViewById(R.id.fight_enemy_mp));
+		final ProgressBar oppoHpBar =((ProgressBar) findViewById(R.id.fight_enemy_hp));
+		final ProgressBar oppoMpBar = ((ProgressBar) findViewById(R.id.fight_enemy_mp));
+		
+		Thread XD = new Thread(new Runnable(){
+			@Override
+			public void run(){
+				runOnUiThread(new Runnable(){
+					@Override
+					public void run(){
+						Util.errorReport("mewoQQQQQya");
+						ImageView img2 = (ImageView)findViewById(R.id.fight_self_animation);
+						img2.setBackgroundResource(R.drawable.fire2);
+
+						 // Get the background, which has been compiled to an AnimationDrawable object.
+						AnimationDrawable frameAnimation2 = (AnimationDrawable) img2.getBackground();
+
+						 // Start the animation (looped playback by default).
+						frameAnimation2.start();
+						((ProgressBar) findViewById(R.id.fight_self_hp)).setMax(100);
+						((ProgressBar) findViewById(R.id.fight_self_hp)).setProgress(100);
+						((ProgressBar) findViewById(R.id.fight_self_mp)).setMax(100);
+						((ProgressBar) findViewById(R.id.fight_self_mp)).setProgress(100);
+						Util.errorReport("zzz");
+					}
+				});
+			}
+		});
+		//XD.start();
 		
 		fightThread = new Thread(new Runnable(){
 
 			@Override
 			public void run() {
 				while (true) {
-
-					//Util.errorReport("gg");
-					if (FightData.isStarted() || FightData.isUpdated()) {
-						Util.errorReport("fuck");
-
+					if (FightData.isPrepared() || FightData.isUpdated()) {
 						me = FightData.getMe();
 						opponent = FightData.getOpponent();
-						refreshBars();
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								Util.errorReport("meow "+((ProgressBar) findViewById(R.id.fight_enemy_hp)).getMax());
+								((ProgressBar) findViewById(R.id.fight_enemy_hp)).setMax(opponent.getHp());
+								((ProgressBar) findViewById(R.id.fight_enemy_hp)).setProgress(opponent.getHp());
+								((ProgressBar) findViewById(R.id.fight_enemy_mp)).setMax(opponent.getMp());
+								((ProgressBar) findViewById(R.id.fight_enemy_mp)).setProgress(opponent.getMp());
+								Util.errorReport("meow2 "+((ProgressBar) findViewById(R.id.fight_enemy_hp)).getMax());
+								((ProgressBar) findViewById(R.id.fight_self_hp)).setMax(me.getHp());
+								((ProgressBar) findViewById(R.id.fight_self_hp)).setProgress(me.getHp());
+								((ProgressBar) findViewById(R.id.fight_self_mp)).setMax(me.getMp());
+								((ProgressBar) findViewById(R.id.fight_self_mp)).setProgress(me.getMp());
+							}
+						});
 						FightData.setIdle();
 					} else if (FightData.isEnded()) {
 						FightData.reset();
@@ -113,6 +150,7 @@ public class FightActivity extends Activity {
 						e.printStackTrace();
 					}
 				}
+				
 			}
 			
 		});
@@ -124,7 +162,7 @@ public class FightActivity extends Activity {
 	public void refreshBars() {
 
 		/*runOnUiThread*/
-		findViewById(android.R.id.content).post(new Runnable() {
+		/*findViewById(android.R.id.content).post(new Runnable() {
 			public void run() {
 				Util.errorReport("QQQQQQ");
 				Util.errorReport(((ProgressBar) findViewById(R.id.fight_enemy_hp)).getMax() + "");
@@ -140,7 +178,7 @@ public class FightActivity extends Activity {
 				((ProgressBar) findViewById(R.id.fight_self_mp)).setProgress(me.getMp());
 				//((ProgressBar) findViewById(R.id.fight_self_mp)).
 			}
-		});
+		});*/
 	}
 	
 	@Override

@@ -77,10 +77,9 @@ public class MainActivity extends BaseActivity {
 				while (true) {
 					//Util.errorReport("guava");
 					if (FightData.isStarted()) {
-						Util.errorReport("started");
+						FightData.setPrepared();
 						Intent intent = new Intent(MainActivity.this, FightActivity.class);
 						startActivity(intent);
-						
 					} else if (FightData.isInvited()) {
 						Util.errorReport("invited");
 						int userId = FightData.getInviterId();
@@ -90,7 +89,7 @@ public class MainActivity extends BaseActivity {
 					}
 					
 					try {
-						Thread.sleep(500);
+						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
