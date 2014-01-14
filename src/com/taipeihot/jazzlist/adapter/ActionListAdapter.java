@@ -75,7 +75,6 @@ public class ActionListAdapter extends BaseAdapter {
     			public void onClick(View v) {
     				// TODO Auto-generated method stub
     				Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
-    				action.learn();
     				
     			}
     		});

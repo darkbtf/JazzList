@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item android:drawable="@drawable/thunder0_0" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_1" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_2" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_3" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_4" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_5" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_6" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_7" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_8" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_9" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_10" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_11" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_12" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_13" android:duration="80" />
+	<item android:drawable="@drawable/thunder0_14" android:duration="80" />
+</animation-list>

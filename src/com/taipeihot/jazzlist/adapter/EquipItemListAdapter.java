@@ -18,12 +18,12 @@ import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.model.Achievement;
 import com.taipeihot.jazzlist.model.Action;
  
-public class ItemListAdapter extends BaseAdapter {
+public class EquipItemListAdapter extends BaseAdapter {
      
     private Context context;
     private ArrayList<Action> actionItems;
      
-    public ItemListAdapter(Context context, ArrayList<Action> actionItems){
+    public EquipItemListAdapter(Context context, ArrayList<Action> actionItems){
         this.context = context;
         this.actionItems = actionItems;
     }
@@ -70,6 +70,8 @@ public class ItemListAdapter extends BaseAdapter {
     		public void onClick(View v) {
     			// TODO Auto-generated method stub
     			Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
+    			action.buy();
+    			//this.notifyAll();
     		}
     	});
         	

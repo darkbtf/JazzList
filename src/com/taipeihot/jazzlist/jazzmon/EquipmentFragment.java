@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.taipeihot.jazzlist.R;
-import com.taipeihot.jazzlist.adapter.ItemListAdapter;
+import com.taipeihot.jazzlist.adapter.EquipItemListAdapter;
 import com.taipeihot.jazzlist.model.Action;
 import com.taipeihot.jazzlist.model.Data;
 
  @SuppressLint("NewApi")
 public class EquipmentFragment extends Fragment {
-	 ItemListAdapter itemListAdapter;
+	 EquipItemListAdapter equaipItemListAdapter;
 	 ArrayList<Action> itemItems;
 	View view;
 
@@ -27,8 +27,8 @@ public class EquipmentFragment extends Fragment {
     	view = inflater.inflate(R.layout.fragment_equipment, null);
     	itemItems=Data.getItems();
     	GridView itemGrid=(GridView)view.findViewById(R.id.equip_item_gridview);
-    	itemListAdapter=new ItemListAdapter(this.getActivity(),itemItems);
-    	itemGrid.setAdapter(itemListAdapter);
+    	equaipItemListAdapter=new EquipItemListAdapter(this.getActivity(),itemItems);
+    	itemGrid.setAdapter(equaipItemListAdapter);
     	return view;
     }
     

@@ -17,11 +17,12 @@ import android.widget.ListView;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.adapter.ActionListAdapter;
 import com.taipeihot.jazzlist.adapter.ItemListAdapter;
+import com.taipeihot.jazzlist.adapter.TreeListAdapter;
 import com.taipeihot.jazzlist.model.Action;
 import com.taipeihot.jazzlist.model.Data;
 
 public class FightActivity extends Activity {
-	ActionListAdapter actionListAdapter;
+	TreeListAdapter actionListAdapter;
 	ArrayList<Action> actionItems=new ArrayList<Action>();
 	ItemListAdapter itemListAdapter;
 	ArrayList<Action> itemItems=new ArrayList<Action>();
@@ -34,7 +35,7 @@ public class FightActivity extends Activity {
 		itemItems=Data.getItems();
 		
 		ImageView img = (ImageView)findViewById(R.id.fight_enemy_animation);
-		img.setBackgroundResource(R.drawable.fire0);
+		img.setBackgroundResource(R.drawable.thunder0);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
@@ -51,7 +52,7 @@ public class FightActivity extends Activity {
 		frameAnimation2.start();
 		
 		final GridView skillList=(GridView)findViewById(R.id.skill_gridview);
-		actionListAdapter = new ActionListAdapter(this, actionItems);
+		actionListAdapter = new TreeListAdapter(this, actionItems);
 		skillList.setAdapter(actionListAdapter);
 		itemListAdapter = new ItemListAdapter(this, itemItems);
 		
