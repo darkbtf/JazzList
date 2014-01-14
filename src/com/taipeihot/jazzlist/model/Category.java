@@ -34,7 +34,11 @@ public class Category {
 	
 	public void eraseTodo(int id) { // id in device ,not in server
 		Todo t=TodoTable.find(id);
-		if(t.isAlive())Data.incAchievementParameter(AchievementType.erase_todo_number);
+		if(t.isAlive()){
+			Data.incAchievementParameter(AchievementType.erase_todo_number);
+			Data.incCharacterInfo(CharacterInfo.money);
+			Data.incExp();
+		}
 		t.setAlive(!t.isAlive());
 		t.save();
 	}
