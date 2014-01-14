@@ -11,6 +11,7 @@ public class Player {
 	private int MP;
 	private int attack;
 	private int defense;
+	private int move;
 	private ArrayList<Status> status;
 	private Player opponent;
 	
@@ -19,12 +20,13 @@ public class Player {
 		
 	}
 	
-	public Player(int level, int HP, int MP, int attack, int defense) {
+	public Player(int level, int HP, int MP, int attack, int defense, int move) {
 		this.level = level;
 		this.HP = HP;
 		this.MP = MP;
 		this.attack = attack;
 		this.defense = defense;
+		this.move = move;
 	}
 	
 	/** === setters & getters === **/
