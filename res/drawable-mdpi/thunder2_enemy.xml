@@ -10,5 +10,14 @@
 	<item android:drawable="@drawable/thunder2_6_en" android:duration="30" />
 	<item android:drawable="@drawable/thunder2_7_en" android:duration="30" />
 	<item android:drawable="@drawable/thunder2_8_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_0_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_1_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_2_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_3_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_4_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_5_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_6_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_7_en" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_8_en" android:duration="30" />
 	<item android:drawable="@drawable/deafult" android:duration="30"/>
 </animation-list>
