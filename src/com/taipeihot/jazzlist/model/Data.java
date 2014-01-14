@@ -57,10 +57,10 @@ public class Data {
 		Data.setCharacterInfo(CharacterInfo.character_id, 1);
 		Data.setCharacterInfo(CharacterInfo.level, 1);
 		Data.setCharacterInfo(CharacterInfo.exp, 0);
-		Data.setCharacterInfo(CharacterInfo.money, 0);
+		Data.setCharacterInfo(CharacterInfo.money, 10000);
 		Data.setCharacterInfo(CharacterInfo.attack, 100);
 		Data.setCharacterInfo(CharacterInfo.defense, 100);
-		Data.setCharacterInfo(CharacterInfo.skill_point, 1);
+		Data.setCharacterInfo(CharacterInfo.skill_point, 10);
 	}
 	public static int getCharacterId(){return getCharacterInfo(CharacterInfo.character_id);}
 	public static int getLevel(){return getCharacterInfo(CharacterInfo.level);}

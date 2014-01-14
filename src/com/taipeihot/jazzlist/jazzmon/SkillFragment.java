@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.taipeihot.jazzlist.R;
+import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.adapter.ActionListAdapter;
 import com.taipeihot.jazzlist.model.Action;
 import com.taipeihot.jazzlist.model.Data;
@@ -32,6 +33,7 @@ public class SkillFragment extends Fragment {
             Bundle savedInstanceState) {
     	view = inflater.inflate(R.layout.fragment_skill, null);
     	skillTree=(GridView)view.findViewById(R.id.tree_skill_tree);
+    	Util.errorReport(fireSkills.size()+"QQQQLALALALALA");
     	actionListAdapter=new ActionListAdapter(this.getActivity(),fireSkills);
     	skillTree.setAdapter(actionListAdapter);
     	
