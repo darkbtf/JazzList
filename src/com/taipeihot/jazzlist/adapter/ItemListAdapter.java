@@ -13,8 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.Util;
+import com.taipeihot.jazzlist.fight.FightData;
 import com.taipeihot.jazzlist.model.Achievement;
 import com.taipeihot.jazzlist.model.Action;
  
@@ -68,7 +70,10 @@ public class ItemListAdapter extends BaseAdapter {
     			
     			@Override
     		public void onClick(View v) {
-    			// TODO Auto-generated method stub
+				if (!FightData.isDone() && action.exist()) {
+					FightData.setDone();
+					CommunicateHelper.actionFight(action.getObjectId());
+				}
     			Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
     		}
     	});
