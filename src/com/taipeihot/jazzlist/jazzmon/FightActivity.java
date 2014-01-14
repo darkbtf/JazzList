@@ -55,14 +55,14 @@ public class FightActivity extends Activity {
 
 		 // Start the animation (looped playback by default).
 		frameAnimation.start();
-		/*ImageView img2 = (ImageView)findViewById(R.id.fight_self_animation);
+		ImageView img2 = (ImageView)findViewById(R.id.fight_self_animation);
 		img2.setBackgroundResource(R.drawable.water2);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation2 = (AnimationDrawable) img2.getBackground();
 
 		 // Start the animation (looped playback by default).
-		frameAnimation2.start();*/
+		frameAnimation2.start();
 		
 		final GridView skillList=(GridView)findViewById(R.id.skill_gridview);
 		actionListAdapter = new ActionListAdapter(this, actionItems);
@@ -85,36 +85,13 @@ public class FightActivity extends Activity {
 				}
 			}
 		});
-
-		final ProgressBar oppoHpBar =((ProgressBar) findViewById(R.id.fight_enemy_hp));
-		final ProgressBar oppoMpBar = ((ProgressBar) findViewById(R.id.fight_enemy_mp));
-		
-		Thread XD = new Thread(new Runnable(){
-			@Override
-			public void run(){
-				runOnUiThread(new Runnable(){
-					@Override
-					public void run(){
-						Util.errorReport("mewoQQQQQya");
-						ImageView img2 = (ImageView)findViewById(R.id.fight_self_animation);
-						img2.setBackgroundResource(R.drawable.fire2);
-
-						 // Get the background, which has been compiled to an AnimationDrawable object.
-						AnimationDrawable frameAnimation2 = (AnimationDrawable) img2.getBackground();
-
-						 // Start the animation (looped playback by default).
-						frameAnimation2.start();
-					}
-				});
-			}
-		});
-		//XD.start();
 		
 		fightThread = new Thread(new Runnable(){
 
 			@Override
 			public void run() {
 				while (true) {
+					Util.errorReport("banana");					
 					if (FightData.isPrepared()) {
 						me = FightData.getMe();
 						opponent = FightData.getOpponent();
@@ -150,6 +127,7 @@ public class FightActivity extends Activity {
 						FightData.reset();
 						Intent intent = new Intent(FightActivity.this, MainActivity.class);
 						startActivity(intent);
+						break;
 					}
 					try {
 						Thread.sleep(500);
@@ -161,33 +139,13 @@ public class FightActivity extends Activity {
 			}
 			
 		});
-		fightThread.start();
-		
-		
 	}
-	
-	public void refreshBars() {
 
-		/*runOnUiThread*/
-		/*findViewById(android.R.id.content).post(new Runnable() {
-			public void run() {
-				Util.errorReport("QQQQQQ");
-				Util.errorReport(((ProgressBar) findViewById(R.id.fight_enemy_hp)).getMax() + "");
-				oppoHpBar.setMax(opponent.getHp());
-				Util.errorReport("QQQQQQ");
-				oppoHpBar.setProgress(opponent.getHp());
-				Util.errorReport("QQQQQQ");
-				oppoMpBar.setMax(opponent.getMp());
-				oppoMpBar.setProgress(opponent.getMp());
-				((ProgressBar) findViewById(R.id.fight_self_hp)).setMax(me.getHp());
-				((ProgressBar) findViewById(R.id.fight_self_hp)).setProgress(me.getHp());
-				((ProgressBar) findViewById(R.id.fight_self_mp)).setMax(me.getMp());
-				((ProgressBar) findViewById(R.id.fight_self_mp)).setProgress(me.getMp());
-				//((ProgressBar) findViewById(R.id.fight_self_mp)).
-			}
-		});*/
-	}
-	
+    public void onResume() {
+    	super.onResume();
+    	fightThread.start();
+    }
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

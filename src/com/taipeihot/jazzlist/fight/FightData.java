@@ -1,5 +1,7 @@
 package com.taipeihot.jazzlist.fight;
 
+import com.taipeihot.jazzlist.Util;
+
 public class FightData {
 	
 	final static int NONE = 0;
@@ -17,7 +19,8 @@ public class FightData {
 	static int first;
 	static Player me;
 	static Player opponent; 
-	
+
+	static public boolean isNone() { return status == NONE; }
 	static public boolean isInvited() { return status == INVITED; }
 	static public boolean isStarted() { return status == STARTED; }
 	static public boolean isPrepared() { return status == PREPARED; }
@@ -31,14 +34,14 @@ public class FightData {
 	static public Player getMe() { return me; }
 	static public Player getOpponent() { return opponent ; }
 	
-	static public void reset() { status = 0; }
-	static public void setInvited() { status = INVITED; }
-	static public void setStarted() { status = STARTED; }
-	static public void setPrepared() { status = PREPARED; }
-	static public void setIdle() { status = IDLE; }
-	static public void setDone() { status = DONE; }
-	public static void setUpdated() { status = UPDATED; }
-	static public void setEnded() { status = ENDED; }
+	static public void reset() { Util.errorReport("reset");  status = 0; }
+	static public void setInvited() { Util.errorReport("set invited"); status = INVITED; }
+	static public void setStarted() { Util.errorReport("set started"); status = STARTED; }
+	static public void setPrepared() { Util.errorReport("set prepared"); status = PREPARED; }
+	static public void setIdle() { Util.errorReport("set idle"); status = IDLE; }
+	static public void setDone() { Util.errorReport("set done"); status = DONE; }
+	public static void setUpdated() { Util.errorReport("set updated"); status = UPDATED; }
+	static public void setEnded() { Util.errorReport("set ended"); status = ENDED; }
 	
 	static public void setInviterId(int inv) { inviterId = inv; } 
 	static public void setInviterNickname(String inv) { inviterNickname = inv; } 
