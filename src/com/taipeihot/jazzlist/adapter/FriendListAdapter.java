@@ -1,6 +1,7 @@
 package com.taipeihot.jazzlist.adapter;
  
 import java.util.ArrayList;
+import com.taipeihot.jazzlist.Util;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -40,7 +41,8 @@ public class FriendListAdapter extends BaseAdapter {
     	.setPositiveButton("Fight!",  new DialogInterface.OnClickListener() {
     		@Override
     		public void onClick(DialogInterface arg0, int arg1) {
-    			CommunicateHelper.inviteFight(userItems.get(toFightId).getReadId());
+    			//Util.errorReport(userItems.get(toFightId).getRealId() + "");
+    			CommunicateHelper.inviteFight(userItems.get(toFightId).getRealId());
     		}
     		
     	})
@@ -114,6 +116,8 @@ public class FriendListAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				builder.setTitle("Fight?");
+				toFightId = position;
+				
 				AlertDialog dialog = builder.create();
 				dialog.show();
 			}

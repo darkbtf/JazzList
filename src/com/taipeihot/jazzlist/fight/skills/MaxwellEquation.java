@@ -3,12 +3,16 @@ package com.taipeihot.jazzlist.fight.skills;
 import com.taipeihot.jazzlist.fight.FightAction;
 import com.taipeihot.jazzlist.fight.Player;
 
-public class MaxwellEquation implements FightAction {
+public class MaxwellEquation extends FightAction {
+
+	public MaxwellEquation(String selfAnime, String opponentAnime) {
+		super(selfAnime, opponentAnime);
+	}
 
 	@Override
-	public void exec(Player player1, Player player2) {
+	public String getMessage(Player player1, Player player2) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }

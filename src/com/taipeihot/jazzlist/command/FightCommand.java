@@ -20,9 +20,11 @@ public class FightCommand implements Command {
 			FightData.setInviterId(id);
 			FightData.setInviterNickname(SocketHelper.getMessage());
 		} else if (cmd.equals("start")) {
+			Util.errorReport("start command");
 			FightData.setStarted();
 			CommunicateHelper.startFight(Data.getLevel(), Data.getHp(), Data.getMp(), Data.getAttack(), Data.getDefense());
 		} else if (cmd.equals("init")) {
+			Util.errorReport("init command");
 			
 			int first = Integer.valueOf(SocketHelper.getMessage());
 			int level = Integer.valueOf(SocketHelper.getMessage());
@@ -40,7 +42,7 @@ public class FightCommand implements Command {
 			FightData.setOpponent(new Player(level, HP, MP, attack, defense));
 			FightData.setPrepared();
 		} else if (cmd.equals("update")) {
-			Util.errorReport("updated");
+			Util.errorReport("updated command");
 			int first = Integer.valueOf(SocketHelper.getMessage());
 			Player me = FightData.getMe();
 			Player opponent = FightData.getOpponent();
