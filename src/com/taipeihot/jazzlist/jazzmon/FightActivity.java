@@ -48,7 +48,7 @@ public class FightActivity extends Activity {
 		itemItems=Data.getItems();
 		
 		ImageView img = (ImageView)findViewById(R.id.fight_enemy_animation);
-		img.setBackgroundResource(R.drawable.fire0);
+		img.setBackgroundResource(R.drawable.thunder0);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
