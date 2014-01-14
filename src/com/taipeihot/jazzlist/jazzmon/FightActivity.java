@@ -104,11 +104,6 @@ public class FightActivity extends Activity {
 
 						 // Start the animation (looped playback by default).
 						frameAnimation2.start();
-						((ProgressBar) findViewById(R.id.fight_self_hp)).setMax(100);
-						((ProgressBar) findViewById(R.id.fight_self_hp)).setProgress(100);
-						((ProgressBar) findViewById(R.id.fight_self_mp)).setMax(100);
-						((ProgressBar) findViewById(R.id.fight_self_mp)).setProgress(100);
-						Util.errorReport("zzz");
 					}
 				});
 			}
@@ -120,25 +115,37 @@ public class FightActivity extends Activity {
 			@Override
 			public void run() {
 				while (true) {
-					if (FightData.isPrepared() || FightData.isUpdated()) {
+					if (FightData.isPrepared()) {
 						me = FightData.getMe();
 						opponent = FightData.getOpponent();
+						FightData.setIdle();
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								Util.errorReport("meow "+((ProgressBar) findViewById(R.id.fight_enemy_hp)).getMax());
 								((ProgressBar) findViewById(R.id.fight_enemy_hp)).setMax(opponent.getHp());
-								((ProgressBar) findViewById(R.id.fight_enemy_hp)).setProgress(opponent.getHp());
 								((ProgressBar) findViewById(R.id.fight_enemy_mp)).setMax(opponent.getMp());
-								((ProgressBar) findViewById(R.id.fight_enemy_mp)).setProgress(opponent.getMp());
-								Util.errorReport("meow2 "+((ProgressBar) findViewById(R.id.fight_enemy_hp)).getMax());
-								((ProgressBar) findViewById(R.id.fight_self_hp)).setMax(me.getHp());
-								((ProgressBar) findViewById(R.id.fight_self_hp)).setProgress(me.getHp());
 								((ProgressBar) findViewById(R.id.fight_self_mp)).setMax(me.getMp());
+								((ProgressBar) findViewById(R.id.fight_self_hp)).setMax(me.getHp());
+								((ProgressBar) findViewById(R.id.fight_enemy_hp)).setProgress(opponent.getHp());
+								((ProgressBar) findViewById(R.id.fight_self_hp)).setProgress(me.getHp());
+								((ProgressBar) findViewById(R.id.fight_enemy_mp)).setProgress(opponent.getMp());
 								((ProgressBar) findViewById(R.id.fight_self_mp)).setProgress(me.getMp());
 							}
 						});
+					} else if (FightData.isUpdated()) {
+						me = FightData.getMe();
+						opponent = FightData.getOpponent();
 						FightData.setIdle();
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								((ProgressBar) findViewById(R.id.fight_enemy_hp)).setProgress(opponent.getHp());
+								((ProgressBar) findViewById(R.id.fight_self_hp)).setProgress(me.getHp());
+								((ProgressBar) findViewById(R.id.fight_enemy_mp)).setProgress(opponent.getMp());
+								((ProgressBar) findViewById(R.id.fight_self_mp)).setProgress(me.getMp());
+							}
+						});
+						
 					} else if (FightData.isEnded()) {
 						FightData.reset();
 						Intent intent = new Intent(FightActivity.this, MainActivity.class);
