@@ -120,7 +120,6 @@ public class FightActivity extends Activity {
 							@Override
 							public void run() {
 								if (selfOnselfAnime != null) {
-									Util.errorReport(selfOnselfAnime);
 									int res = getResources().getIdentifier(selfOnselfAnime, "drawable", getPackageName());
 									selfImage.setBackgroundResource(res);
 									AnimationDrawable selfAnimation = (AnimationDrawable) selfImage.getBackground();
@@ -128,8 +127,6 @@ public class FightActivity extends Activity {
 									selfAnimation.start();
 								}
 								if (selfOnOpponentAnime != null) {
-									
-									Util.errorReport(selfOnOpponentAnime);
 									int res = getResources().getIdentifier(selfOnOpponentAnime, "drawable", getPackageName());
 									opponentImage.setBackgroundResource(res);
 									final AnimationDrawable opponentAnimation = (AnimationDrawable) opponentImage.getBackground();
@@ -140,7 +137,13 @@ public class FightActivity extends Activity {
 							}
 						});
 						
-						/* == jizz jizz jizz == */
+						try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
 						
 						final String opponentOnSelfAnime = actionManager.getOpponentAnimation(opponent.getMove());
 						final String opponentOnOpponentAnime = actionManager.getSelfAnimation(opponent.getMove());
@@ -149,7 +152,6 @@ public class FightActivity extends Activity {
 							@Override
 							public void run() {
 								if (opponentOnSelfAnime != null) {
-									Util.errorReport(opponentOnSelfAnime);
 									int res = getResources().getIdentifier(opponentOnSelfAnime, "drawable", getPackageName());
 									selfImage.setBackgroundResource(res);
 									AnimationDrawable selfAnimation = (AnimationDrawable) selfImage.getBackground();
@@ -157,9 +159,7 @@ public class FightActivity extends Activity {
 									selfAnimation.start();
 								}
 								if (opponentOnOpponentAnime != null) {
-									
-									Util.errorReport(opponentOnSelfAnime);
-									int res = getResources().getIdentifier(opponentOnSelfAnime, "drawable", getPackageName());
+									int res = getResources().getIdentifier(opponentOnOpponentAnime, "drawable", getPackageName());
 									opponentImage.setBackgroundResource(res);
 									final AnimationDrawable opponentAnimation = (AnimationDrawable) opponentImage.getBackground();
 									opponentAnimation.stop();
@@ -187,6 +187,14 @@ public class FightActivity extends Activity {
 			}
 			
 		});
+	}
+	
+	public void showMessage(String msg) {
+		
+	}
+	
+	public void showAction(int actionId) {
+		
 	}
 
     public void onResume() {

@@ -75,7 +75,7 @@ public class ActionListAdapter extends BaseAdapter {
     			
     			@Override
     			public void onClick(View v) {
-    				if (!FightData.isDone()) {
+    				if (!FightData.isDone() && action.canUseInFight(FightData.getMe().getMp())) {
     					FightData.setDone();
     					CommunicateHelper.actionFight(action.getObjectId());
     				}
