@@ -31,6 +31,7 @@ public class FightActivity extends Activity {
 	ProgressBar myMpBar;
 	ProgressBar oppoHpBar;
 	ProgressBar oppoMpBar;*/
+	static 
 	ActionListAdapter actionListAdapter;
 	ArrayList<Action> actionItems=new ArrayList<Action>();
 	ItemListAdapter itemListAdapter;
