@@ -9,5 +9,13 @@
 	<item android:drawable="@drawable/thunder2_5_self" android:duration="30" />
 	<item android:drawable="@drawable/thunder2_6_self" android:duration="30" />
 	<item android:drawable="@drawable/thunder2_7_self" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_0_self" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_1_self" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_2_self" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_3_self" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_4_self" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_5_self" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_6_self" android:duration="30" />
+	<item android:drawable="@drawable/thunder2_7_self" android:duration="30" />
 	<item android:drawable="@drawable/deafult" android:duration="30"/>
 </animation-list>
