@@ -12,8 +12,10 @@ public class Table {
 		new TodoTable();
 		new CategoryTable();
 		new ActionTable();
+		new EquipmentTable();
 		con = new DatabaseHelper(context);
 		ActionTable.init(15);
+		EquipmentTable.init();
 	}
 	protected String makeCreateSQL(String tableName,ArrayList<ColumnElement>columns){
 		String ret = "CREATE TABLE IF NOT EXISTS "+tableName+" ( _id INTEGER primary key autoincrement ";

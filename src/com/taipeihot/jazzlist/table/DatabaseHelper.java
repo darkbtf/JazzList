@@ -15,6 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		db.execSQL(TodoTable.createSQL);
 		db.execSQL(CategoryTable.createSQL);
 		db.execSQL(ActionTable.createSQL);
+		db.execSQL(EquipmentTable.createSQL);
 	}
 	
 	@Override
@@ -22,6 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		db.execSQL(TodoTable.dropSQL);
 		db.execSQL(CategoryTable.dropSQL);
 		db.execSQL(ActionTable.dropSQL);
+		db.execSQL(EquipmentTable.dropSQL);
 		onCreate(db);
 	}
 }
