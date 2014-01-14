@@ -9,18 +9,18 @@ public class Equipment {
 	private int attack_change;
 	private int defense_change;
 	private int money;
-	private int where;
+	private int at;
 	private String name;
 	private String description;
 	private int type;
 	
-	public Equipment(int hp_change, int mp_change, int attack_change, int defense_change, int money, int where, String name, String description, int type) {
+	public Equipment(int hp_change, int mp_change, int attack_change, int defense_change, int money, int at, String name, String description, int type) {
 		this.hp_change = hp_change;
 		this.mp_change = mp_change;
 		this.attack_change = attack_change;
 		this.defense_change = defense_change;
 		this.money = money;
-		this.where = where;
+		this.at = at;
 		this.name = name;
 		this.description = description;
 		this.type = type;
@@ -32,7 +32,7 @@ public class Equipment {
 	public int getMpChange(){return mp_change;}
 	public int getAttackChange(){return attack_change;}
 	public int getDefenseChange(){return defense_change;}
-	public int getWhere(){return where;}
+	public int getAt(){return at;}
 
 	public String getName(){return name;}
 	public String getDescription(){return description;}
@@ -42,39 +42,39 @@ public class Equipment {
 	public int getMoney(){return money;}
 	public int getType() {return type;}
 	public void setType(int type){this.type=type;}
-	public boolean exist(){return !(where==-1);}
+	public boolean exist(){return !(at==-1);}
 	public boolean buy() {
 		if(Data.getMoney() < money)
 			return false;
 		Data.incMoney(-money);
-		where=0;
+		at=0;
 		save();
 		return true;
 	}
 	public void remove(){
-		if(where!=1)return;
-		where=0;
+		if(at!=1)return;
+		at=0;
 		save();
 	}
 	public void wear() {
-		if(where!=0)return;
+		if(at!=0)return;
 		for(Equipment e:EquipmentTable.where("type = ? and where = 1",new String[]{type+""})){
 			e.setType(0);
 			e.save();
 		}
-		where=1;
+		at=1;
 		save();
 	}
 	/***************************** For Database ********************************/
 	public Equipment(){}
-	public Equipment(int _id, int hp_change, int mp_change, int attack_change, int defense_change, int money, int where, String name, String description, int type){
+	public Equipment(int _id, int hp_change, int mp_change, int attack_change, int defense_change, int money, int at, String name, String description, int type){
 		this._id=_id;
 		this.hp_change = hp_change;
 		this.mp_change = mp_change;
 		this.attack_change = attack_change;
 		this.defense_change = defense_change;
 		this.money = money;
-		this.where = where;
+		this.at = at;
 		this.name = name;
 		this.description = description;
 		this.type = type;

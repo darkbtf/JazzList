@@ -25,13 +25,14 @@ import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.fight.FightData;
 import com.taipeihot.jazzlist.fight.Player;
 import com.taipeihot.jazzlist.Util;
+import com.taipeihot.jazzlist.fight.ActionManager;
 
 public class FightActivity extends Activity {
 	/*ProgressBar myHpBar;
 	ProgressBar myMpBar;
 	ProgressBar oppoHpBar;
 	ProgressBar oppoMpBar;*/
-	static 
+	static ActionManager actionManager = new ActionManager();
 	ActionListAdapter actionListAdapter;
 	ArrayList<Action> actionItems=new ArrayList<Action>();
 	ItemListAdapter itemListAdapter;
@@ -48,22 +49,17 @@ public class FightActivity extends Activity {
 		actionItems=Data.getAvailableSkills();
 		itemItems=Data.getItems();
 		
-		ImageView img = (ImageView)findViewById(R.id.fight_enemy_animation);
-		img.setBackgroundResource(R.drawable.thunder0);
+		final ImageView img = (ImageView)findViewById(R.id.fight_enemy_animation);
+		img.setBackgroundResource(R.drawable.thunder2_enemy);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
 
 		 // Start the animation (looped playback by default).
-		frameAnimation.start();
 		ImageView img2 = (ImageView)findViewById(R.id.fight_self_animation);
-		img2.setBackgroundResource(R.drawable.water2);
 
 		 // Get the background, which has been compiled to an AnimationDrawable object.
 		AnimationDrawable frameAnimation2 = (AnimationDrawable) img2.getBackground();
-
-		 // Start the animation (looped playback by default).
-		frameAnimation2.start();
 		
 		final GridView skillList=(GridView)findViewById(R.id.skill_gridview);
 		actionListAdapter = new ActionListAdapter(this, actionItems);
@@ -113,7 +109,6 @@ public class FightActivity extends Activity {
 					} else if (FightData.isUpdated()) {
 						me = FightData.getMe();
 						opponent = FightData.getOpponent();
-						FightData.setIdle();
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
@@ -123,6 +118,26 @@ public class FightActivity extends Activity {
 								((ProgressBar) findViewById(R.id.fight_self_mp)).setProgress(me.getMp());
 							}
 						});
+						final String selfAnime = actionManager.getSelfAnimation();
+						final String opponentAnime = actionManager.getOpponentAnimation();
+						
+
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								if (selfAnime != null) {
+									int res = getResources().getIdentifier(selfAnime, "drawable", "R");
+									img.setBackgroundResource(res);
+								}
+								if (opponentAnime != null) {
+									int res = getResources().getIdentifier(opponentAnime, "drawable", "R");
+									img.setBackgroundResource(res);
+								}
+							}
+						});
+						
+						FightData.setIdle();
+						
 						
 					} else if (FightData.isEnded()) {
 						FightData.reset();
