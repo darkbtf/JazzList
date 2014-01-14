@@ -16,6 +16,7 @@ public class FightData {
 	static int status = 0;
 	static int inviterId;
 	static String inviterNickname;
+	static int lastFirst;
 	static int first;
 	static Player me;
 	static Player opponent; 
@@ -30,6 +31,8 @@ public class FightData {
 	static public boolean isEnded() { return status == ENDED; }
 
 	static public int getInviterId() { return inviterId; }
+	static public int getLastFirst() { return lastFirst; }
+	static public int getFirst() { return first; }
 	static public String getInviterNickname() { return inviterNickname; }
 	static public Player getMe() { return me; }
 	static public Player getOpponent() { return opponent ; }
@@ -47,6 +50,9 @@ public class FightData {
 	static public void setInviterNickname(String inv) { inviterNickname = inv; } 
 	static public void setMe(Player player) { me = player; }
 	static public void setOpponent(Player player) { opponent = player; }
-	static public void setFirst(int fst) { first = fst; }
+	static public void setFirst(int fst) { 
+		lastFirst = first;
+		first = fst; 
+	}
 	
 }

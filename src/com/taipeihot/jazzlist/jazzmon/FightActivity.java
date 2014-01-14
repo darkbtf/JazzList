@@ -26,6 +26,7 @@ import com.taipeihot.jazzlist.fight.FightData;
 import com.taipeihot.jazzlist.fight.Player;
 import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.fight.ActionManager;
+import com.taipeihot.jazzlist.CommunicateHelper;
 
 public class FightActivity extends Activity {
 	/*ProgressBar myHpBar;
@@ -114,9 +115,10 @@ public class FightActivity extends Activity {
 						});
 						final String selfOnselfAnime = actionManager.getSelfAnimation(me.getMove());
 						final String selfOnOpponentAnime = actionManager.getOpponentAnimation(me.getMove());
+						final String opponentOnSelfAnime = actionManager.getOpponentAnimation(opponent.getMove());
+						final String opponentOnOpponentAnime = actionManager.getSelfAnimation(opponent.getMove());
 						
-
-						runOnUiThread(new Runnable() {
+						Runnable myMove = new Runnable() {
 							@Override
 							public void run() {
 								if (selfOnselfAnime != null) {
@@ -135,20 +137,9 @@ public class FightActivity extends Activity {
 									
 								}
 							}
-						});
+						};
 						
-						try {
-							Thread.sleep(2000);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						
-						
-						final String opponentOnSelfAnime = actionManager.getOpponentAnimation(opponent.getMove());
-						final String opponentOnOpponentAnime = actionManager.getSelfAnimation(opponent.getMove());
-
-						runOnUiThread(new Runnable() {
+						Runnable opponentMove = new Runnable() {
 							@Override
 							public void run() {
 								if (opponentOnSelfAnime != null) {
@@ -167,9 +158,31 @@ public class FightActivity extends Activity {
 									
 								}
 							}
-						});					
-						FightData.setIdle();
+						};	
 						
+						if (FightData.getLastFirst() > 0) {
+							runOnUiThread(myMove);
+							try {
+								Thread.sleep(2000);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+							runOnUiThread(opponentMove);
+						} else {
+							runOnUiThread(opponentMove);
+							try {
+								Thread.sleep(2000);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+							runOnUiThread(myMove);
+						}
+						
+						if (FightData.getFirst() != 0) FightData.setIdle();
+						else {
+							CommunicateHelper.actionFight(0);
+							FightData.setDone();
+						}
 						
 					} else if (FightData.isEnded()) {
 						FightData.reset();
