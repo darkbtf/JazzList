@@ -23,7 +23,7 @@ public class EquipmentTable extends Table{
 		columns.add(new ColumnElement("attack_change","INT NOT NULL"));
 		columns.add(new ColumnElement("defense_change","INT NOT NULL"));
 		columns.add(new ColumnElement("money","INT NOT NULL"));
-		columns.add(new ColumnElement("where","INT NOT NULL"));
+		columns.add(new ColumnElement("at","INT NOT NULL"));
 		columns.add(new ColumnElement("name","TINYTEXT NOT NULL"));
 		columns.add(new ColumnElement("description","TEXT NOT NULL"));
 		columns.add(new ColumnElement("type","INTEGER NOT NULL"));
@@ -35,7 +35,7 @@ public class EquipmentTable extends Table{
 	}
 	static public void init(){
 		if(All().size() == 0){
-			/*hp mp attack defense money where name description type*/
+			/*hp mp attack defense money at name description type*/
 			insert(new Equipment(35,0,0,0,300,-1,"Head","Increase your base HP",1));
 			insert(new Equipment(0,0,15,0,500,-1,"Sword","Increase your base attack",2));
 			insert(new Equipment(0,0,0,15,300,-1,"Gloves","Increase your base defense",2));
@@ -146,7 +146,7 @@ public class EquipmentTable extends Table{
 		values.put("attack_change", a.getAttackChange());
 		values.put("defense_change", a.getDefenseChange());
 		values.put("money", a.getMoney());
-		values.put("where", a.getWhere());
+		values.put("at", a.getAt());
 		values.put("name", a.getName());
 		values.put("description", a.getDescription());
 		values.put("type", a.getType());

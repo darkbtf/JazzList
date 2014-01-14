@@ -35,6 +35,7 @@ public class Player {
 	public int getMp() { return MP; }
 	public int getAttack() { return attack; }
 	public int getDefense() { return defense; }
+	public int getMove() { return move; }
 	public ArrayList<Status> getStatus() { return status; }
 	public Player getOpponent() { return opponent; }
 	
@@ -44,6 +45,7 @@ public class Player {
 	public void setAttack(int attack) { this.attack = attack; }
 	public void setDefense(int defense) { this.defense = defense; }
 	public void setOpponent(Player player) { this.opponent = player; }
+	public void setMove(int move) { this.move = move; }
 	
 	public void addStatus(Status stat) { status.add(stat); }
 	
