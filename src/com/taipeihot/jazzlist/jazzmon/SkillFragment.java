@@ -14,8 +14,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.taipeihot.jazzlist.R;
-import com.taipeihot.jazzlist.Util;
-import com.taipeihot.jazzlist.adapter.ActionListAdapter;
+import com.taipeihot.jazzlist.adapter.TreeListAdapter;
 import com.taipeihot.jazzlist.model.Action;
 import com.taipeihot.jazzlist.model.Data;
 
@@ -26,16 +25,15 @@ public class SkillFragment extends Fragment {
 	ArrayList<Action> fireSkills=Data.getFireSkills();
 	ArrayList<Action> waterSkills=Data.getWaterSkills();
 	ArrayList<Action> thunderSkills=Data.getThunderSkills();
-	ActionListAdapter actionListAdapter;
+	TreeListAdapter treeListAdapter;
 	GridView skillTree;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	view = inflater.inflate(R.layout.fragment_skill, null);
     	skillTree=(GridView)view.findViewById(R.id.tree_skill_tree);
-    	Util.errorReport(fireSkills.size()+"QQQQLALALALALA");
-    	actionListAdapter=new ActionListAdapter(this.getActivity(),fireSkills);
-    	skillTree.setAdapter(actionListAdapter);
+    	treeListAdapter=new TreeListAdapter(this.getActivity(),fireSkills);
+    	skillTree.setAdapter(treeListAdapter);
     	
     	ImageButton fireButton = (ImageButton) view.findViewById(R.id.fireSkillBtn);
     	fireButton.setOnClickListener(new OnClickListener(){
@@ -67,16 +65,16 @@ public class SkillFragment extends Fragment {
     	
     	if (skillSetId == 0) {
     		layout.setBackground(getResources().getDrawable(R.drawable.firetree));
-    		actionListAdapter=new ActionListAdapter(this.getActivity(),fireSkills);
-    		skillTree.setAdapter(actionListAdapter);
+    		treeListAdapter=new TreeListAdapter(this.getActivity(),fireSkills);
+    		skillTree.setAdapter(treeListAdapter);
     	} else if (skillSetId == 1) {
     		layout.setBackground(getResources().getDrawable(R.drawable.watertree));	
-    		actionListAdapter=new ActionListAdapter(this.getActivity(),waterSkills);
-        	skillTree.setAdapter(actionListAdapter);
+    		treeListAdapter=new TreeListAdapter(this.getActivity(),waterSkills);
+        	skillTree.setAdapter(treeListAdapter);
     	} else {
     		layout.setBackground(getResources().getDrawable(R.drawable.thundertree));
-    		actionListAdapter=new ActionListAdapter(this.getActivity(),thunderSkills);
-        	skillTree.setAdapter(actionListAdapter);
+    		treeListAdapter=new TreeListAdapter(this.getActivity(),thunderSkills);
+        	skillTree.setAdapter(treeListAdapter);
     	}
     }
     
