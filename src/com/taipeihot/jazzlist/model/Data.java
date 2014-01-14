@@ -9,9 +9,10 @@ import com.facebook.model.GraphUser;
 import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.Util;
+import com.taipeihot.jazzlist.fight.FightUtils;
 import com.taipeihot.jazzlist.table.ActionTable;
 import com.taipeihot.jazzlist.table.CategoryTable;
-import com.taipeihot.jazzlist.fight.FightUtils;
+import com.taipeihot.jazzlist.table.EquipmentTable;
 
 public class Data {
 	
@@ -246,5 +247,24 @@ public class Data {
 	}
 	public static ArrayList<Action> getItems(){
 		return ActionTable.where("object_id < 0");
+	}
+	/****************************For Equipments*************************************/
+	public static Equipment getHeadWear(){
+		ArrayList<Equipment> ret=EquipmentTable.where("type=1 and number=1");
+		if(ret.size()==0)return null;
+		return ret.get(0);
+	}
+	public static Equipment getHandWear(){
+		ArrayList<Equipment> ret=EquipmentTable.where("type=2 and number=1");
+		if(ret.size()==0)return null;
+		return ret.get(0);
+	}
+	public static Equipment getFeetWear(){
+		ArrayList<Equipment> ret=EquipmentTable.where("type=3 and number=1");
+		if(ret.size()==0)return null;
+		return ret.get(0);
+	}
+	public static ArrayList<Equipment> getEquipments() {
+		return EquipmentTable.where("where != 1");
 	}
 }
