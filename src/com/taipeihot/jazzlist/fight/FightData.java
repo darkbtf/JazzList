@@ -5,10 +5,11 @@ public class FightData {
 	final static int NONE = 0;
 	final static int INVITED = 1;
 	final static int STARTED = 2;
-	final static int IDLE = 3;
-	final static int DONE = 4;
-	final static int UPDATED = 5;
-	final static int ENDED = 6;
+	final static int PREPARED = 3;
+	final static int IDLE = 4;
+	final static int DONE = 5;
+	final static int UPDATED = 6;
+	final static int ENDED = 7;
 	
 	static int status = 0;
 	static int inviterId;
@@ -19,6 +20,7 @@ public class FightData {
 	
 	static public boolean isInvited() { return status == INVITED; }
 	static public boolean isStarted() { return status == STARTED; }
+	static public boolean isPrepared() { return status == PREPARED; }
 	static public boolean isIdle() { return status == IDLE; }
 	static public boolean isDone() { return status == DONE; }
 	static public boolean isUpdated() { return status == UPDATED; }
@@ -32,6 +34,7 @@ public class FightData {
 	static public void reset() { status = 0; }
 	static public void setInvited() { status = INVITED; }
 	static public void setStarted() { status = STARTED; }
+	static public void setPrepared() { status = PREPARED; }
 	static public void setIdle() { status = IDLE; }
 	static public void setDone() { status = DONE; }
 	public static void setUpdated() { status = UPDATED; }
