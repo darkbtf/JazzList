@@ -54,7 +54,6 @@ public class Action {
 		save();
 		return true;
 	}
-	
 	public boolean learn() {
 		if(Data.getSkillPoint()<=0)return false;
 		if(object_id < 0)return false;
@@ -62,6 +61,9 @@ public class Action {
 		number = 999;
 		save();
 		return true;
+	}
+	public void reset(){
+		number=0;
 	}
 	public boolean canUseInFight(int mp) {
 		return mp>=mp_consume && number>0;

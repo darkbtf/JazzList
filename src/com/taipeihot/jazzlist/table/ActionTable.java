@@ -37,15 +37,15 @@ public class ActionTable extends Table{
 			/* rate% Hp_consume Mp_consume Name description number object_id level_limit*/
 			/*level 1*/
 			insert(new Action(120,0,0,"Ember","little damage, +1 heat on your opponent",999,1,1));
-			insert(new Action(120,0,0,"Bless","little heal",999,2,1));
-			insert(new Action(120,0,0,"Thunderbolt","little damage",999,3,1));
+			insert(new Action(120,0,0,"Bless","little heal",0,2,1));
+			insert(new Action(120,0,0,"Thunderbolt","little damage",0,3,1));
 			/*level 3*/
 			insert(new Action(120,0,16,"Immolation","+2 heat on yourself",999,4,3));
 			insert(new Action(120,0,0,"Mana Stream","regain some MP",999,5,3));
-			insert(new Action(120,20,10,"Static Field","add 20% on attack value",999,6,3));
+			insert(new Action(120,20,10,"Static Field","add 20% on attack value",0,6,3));
 			/*level 5*/ 
 			insert(new Action(120,0,30,"Karma Blast","release all heat on you and your oppoenet and make a great damage on your opponent",999,7,5));
-			insert(new Action(120,0,30,"Frostnova","your opponent can't move in 2 round",999,8,5));
+			insert(new Action(120,0,30,"Frostnova","your opponent can't move in 2 round",0,8,5));
 			insert(new Action(120,0,30,"Maxwell Equation","Kill your opponent directly in a probablity",999,9,5));
 			
 			/*Items: rate% Hp_consume Mp_consume Name description number object_id money*/

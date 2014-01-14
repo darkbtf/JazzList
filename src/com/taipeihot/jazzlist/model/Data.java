@@ -87,6 +87,24 @@ public class Data {
 	public static void incCharacterInfo(CharacterInfo s) {
 		setCharacterInfo(s,getCharacterInfo(s)+1);
 	}
+	public static void incExp() {
+		if(getCharacterInfo(CharacterInfo.level)==5)return;
+		int now = getCharacterInfo(CharacterInfo.exp);
+		if (now >= 49){
+			now=0;
+			incCharacterInfo(CharacterInfo.level);
+			incCharacterInfo(CharacterInfo.skill_point);
+		}
+		else now++;
+		setCharacterInfo(CharacterInfo.exp,now);
+	}
+	public static void resetSkillPoints() {
+		setCharacterInfo(CharacterInfo.skill_point, getLevel());
+		for(Action a:ActionTable.where("object_id>0")) {
+			a.reset();
+			a.save();
+		}
+	}
 	/**************************** About Friends*************************************/
 	public static boolean addFriend(String account){
 		return CommunicateHelper.addFriend(account);
