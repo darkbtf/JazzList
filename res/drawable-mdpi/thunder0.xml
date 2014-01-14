@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true" >
 	<item android:drawable="@drawable/thunder0_0" android:duration="80" />
 	<item android:drawable="@drawable/thunder0_1" android:duration="80" />
 	<item android:drawable="@drawable/thunder0_2" android:duration="80" />
@@ -15,4 +16,5 @@
 	<item android:drawable="@drawable/thunder0_12" android:duration="80" />
 	<item android:drawable="@drawable/thunder0_13" android:duration="80" />
 	<item android:drawable="@drawable/thunder0_14" android:duration="80" />
+	<item android:drawable="@drawable/deafult" android:duration="30"/>
 </animation-list>
