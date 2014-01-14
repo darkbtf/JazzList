@@ -10,4 +10,5 @@
 	<item android:drawable="@drawable/thunder2_6_en" android:duration="30" />
 	<item android:drawable="@drawable/thunder2_7_en" android:duration="30" />
 	<item android:drawable="@drawable/thunder2_8_en" android:duration="30" />
+	<item android:drawable="@drawable/deafult" android:duration="30"/>
 </animation-list>
