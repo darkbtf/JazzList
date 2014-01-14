@@ -21,8 +21,6 @@ public class ActionTable extends Table{
 		columns.add(new ColumnElement("rate","TINYINT NOT NULL"));
 		columns.add(new ColumnElement("hp_consume","INT NOT NULL"));
 		columns.add(new ColumnElement("mp_consume","INT NOT NULL"));
-		columns.add(new ColumnElement("hp_damage","INT NOT NULL"));
-		columns.add(new ColumnElement("mp_damage","INT NOT NULL"));
 		columns.add(new ColumnElement("name","TINYTEXT NOT NULL"));
 		columns.add(new ColumnElement("description","TEXT NOT NULL"));
 		columns.add(new ColumnElement("number","INTEGER NOT NULL"));

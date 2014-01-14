@@ -13,7 +13,7 @@ public class Table {
 		new CategoryTable();
 		new ActionTable();
 		con = new DatabaseHelper(context);
-		ActionTable.init(12);
+		ActionTable.init(15);
 	}
 	protected String makeCreateSQL(String tableName,ArrayList<ColumnElement>columns){
 		String ret = "CREATE TABLE IF NOT EXISTS "+tableName+" ( _id INTEGER primary key autoincrement ";

@@ -71,7 +71,7 @@
 
 
 		<GridView
-		    android:id="@+id/skill_gridview"
+		    android:id="@+id/equip_item_gridview"
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent"
 		    android:layout_margin="10dp"

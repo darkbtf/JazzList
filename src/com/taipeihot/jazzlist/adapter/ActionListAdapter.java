@@ -63,7 +63,7 @@ public class ActionListAdapter extends BaseAdapter {
         int photoNum=action.getImageId();
         String type="skill_";
         if(!action.exist())type+="h_";
-    		actionImage.setBackgroundResource(
+    		actionImage.setImageResource(
     				context.getResources()
     				.getIdentifier(
     						type+Integer
@@ -75,9 +75,11 @@ public class ActionListAdapter extends BaseAdapter {
     			public void onClick(View v) {
     				// TODO Auto-generated method stub
     				Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
+    				action.learn();
+    				
     			}
     		});
-        	
+        Util.errorReport(action.getDescription()+"QQQQQQQ");
         
         // displaying count
         // check whether it set visible or not

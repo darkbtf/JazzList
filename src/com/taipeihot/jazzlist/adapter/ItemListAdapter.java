@@ -58,7 +58,7 @@ public class ItemListAdapter extends BaseAdapter {
         int photoNum=action.getImageId();
         String type="item_";
         if(!action.exist())type+="h_";
-    	actionImage.setBackgroundResource(
+    	actionImage.setImageResource(
     			context.getResources()
     			.getIdentifier(
     					type+Integer
@@ -70,6 +70,7 @@ public class ItemListAdapter extends BaseAdapter {
     		public void onClick(View v) {
     			// TODO Auto-generated method stub
     			Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
+    			action.buy();
     		}
     	});
         	
