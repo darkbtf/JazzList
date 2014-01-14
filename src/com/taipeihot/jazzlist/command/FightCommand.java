@@ -47,6 +47,7 @@ public class FightCommand implements Command {
 			Player me = FightData.getMe();
 			Player opponent = FightData.getOpponent();
 			int moveId = Integer.valueOf(SocketHelper.getMessage());
+			me.setMove(moveId);
 			int HP = Integer.valueOf(SocketHelper.getMessage());
 			me.setHp(HP);
 			int MP = Integer.valueOf(SocketHelper.getMessage());
@@ -58,6 +59,7 @@ public class FightCommand implements Command {
 			String stat = SocketHelper.getMessage();
 			FightData.setFirst(first);
 			moveId = Integer.valueOf(SocketHelper.getMessage());
+			opponent.setMove(moveId);
 			HP = Integer.valueOf(SocketHelper.getMessage());
 			opponent.setHp(HP);
 			MP = Integer.valueOf(SocketHelper.getMessage());

@@ -49,17 +49,11 @@ public class FightActivity extends Activity {
 		actionItems=Data.getAvailableSkills();
 		itemItems=Data.getItems();
 		
-		final ImageView img = (ImageView)findViewById(R.id.fight_enemy_animation);
-		img.setBackgroundResource(R.drawable.thunder2_enemy);
+		final ImageView opponentImage = (ImageView)findViewById(R.id.fight_enemy_animation);
 
-		 // Get the background, which has been compiled to an AnimationDrawable object.
-		AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+		// Start the animation (looped playback by default).
+		final ImageView selfImage = (ImageView)findViewById(R.id.fight_self_animation);
 
-		 // Start the animation (looped playback by default).
-		ImageView img2 = (ImageView)findViewById(R.id.fight_self_animation);
-
-		 // Get the background, which has been compiled to an AnimationDrawable object.
-		AnimationDrawable frameAnimation2 = (AnimationDrawable) img2.getBackground();
 		
 		final GridView skillList=(GridView)findViewById(R.id.skill_gridview);
 		actionListAdapter = new ActionListAdapter(this, actionItems);
@@ -118,24 +112,62 @@ public class FightActivity extends Activity {
 								((ProgressBar) findViewById(R.id.fight_self_mp)).setProgress(me.getMp());
 							}
 						});
-						final String selfAnime = actionManager.getSelfAnimation();
-						final String opponentAnime = actionManager.getOpponentAnimation();
+						final String selfOnselfAnime = actionManager.getSelfAnimation(me.getMove());
+						final String selfOnOpponentAnime = actionManager.getOpponentAnimation(me.getMove());
 						
 
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								if (selfAnime != null) {
-									int res = getResources().getIdentifier(selfAnime, "drawable", "R");
-									img.setBackgroundResource(res);
+								if (selfOnselfAnime != null) {
+									Util.errorReport(selfOnselfAnime);
+									int res = getResources().getIdentifier(selfOnselfAnime, "drawable", getPackageName());
+									selfImage.setBackgroundResource(res);
+									AnimationDrawable selfAnimation = (AnimationDrawable) selfImage.getBackground();
+									selfAnimation.stop();
+									selfAnimation.start();
 								}
-								if (opponentAnime != null) {
-									int res = getResources().getIdentifier(opponentAnime, "drawable", "R");
-									img.setBackgroundResource(res);
+								if (selfOnOpponentAnime != null) {
+									
+									Util.errorReport(selfOnOpponentAnime);
+									int res = getResources().getIdentifier(selfOnOpponentAnime, "drawable", getPackageName());
+									opponentImage.setBackgroundResource(res);
+									final AnimationDrawable opponentAnimation = (AnimationDrawable) opponentImage.getBackground();
+									opponentAnimation.stop();
+									opponentAnimation.start();
+									
 								}
 							}
 						});
 						
+						/* == jizz jizz jizz == */
+						
+						final String opponentOnSelfAnime = actionManager.getOpponentAnimation(opponent.getMove());
+						final String opponentOnOpponentAnime = actionManager.getSelfAnimation(opponent.getMove());
+
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								if (opponentOnSelfAnime != null) {
+									Util.errorReport(opponentOnSelfAnime);
+									int res = getResources().getIdentifier(opponentOnSelfAnime, "drawable", getPackageName());
+									selfImage.setBackgroundResource(res);
+									AnimationDrawable selfAnimation = (AnimationDrawable) selfImage.getBackground();
+									selfAnimation.stop();
+									selfAnimation.start();
+								}
+								if (opponentOnOpponentAnime != null) {
+									
+									Util.errorReport(opponentOnSelfAnime);
+									int res = getResources().getIdentifier(opponentOnSelfAnime, "drawable", getPackageName());
+									opponentImage.setBackgroundResource(res);
+									final AnimationDrawable opponentAnimation = (AnimationDrawable) opponentImage.getBackground();
+									opponentAnimation.stop();
+									opponentAnimation.start();
+									
+								}
+							}
+						});					
 						FightData.setIdle();
 						
 						
