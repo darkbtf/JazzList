@@ -29,11 +29,19 @@ public class ActionManager {
 
 	public String getSelfAnimation(int moveId) {
 		if (moveId > 0) return skillList.get(moveId - 1).getSelfAnimation();
-		else return itemList.get(-moveId - 1).getSelfAnimation();
+		else if (moveId < 0) return itemList.get(-moveId - 1).getSelfAnimation();
+		else return null;
 	}
 	
 	public String getOpponentAnimation(int moveId) {
 		if (moveId > 0) return skillList.get(moveId - 1).getOpponentAnimation();
-		else return itemList.get(-moveId - 1).getOpponentAnimation();
+		else if (moveId < 0) return itemList.get(-moveId - 1).getOpponentAnimation();
+		else return null;
+	}
+	
+	public String getMessage(Player player1, Player player2, int moveId) {
+		if (moveId > 0) return skillList.get(moveId - 1).getMessage(player1, player2);
+		else if (moveId < 0) return itemList.get(-moveId - 1).getMessage(player1, player2);
+		else return null;
 	}
 }
