@@ -3,7 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fight_bg"
+    android:background="@drawable/background2"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -82,7 +82,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="2"
             android:orientation="vertical" >
         </LinearLayout>
 
@@ -103,13 +103,12 @@
                     android:id="@+id/fight_self_monster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/androidback" />
+                    android:src="@drawable/dragon_back_1" />
 
                 <ImageView
                     android:id="@+id/fight_self_animation"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                     />
+                    android:layout_height="match_parent" />
 
             </RelativeLayout>
 
