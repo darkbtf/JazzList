@@ -1,5 +1,7 @@
 package com.taipeihot.jazzlist;
 
+import java.util.Arrays;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -24,7 +26,6 @@ public class LoginActivity extends Activity {
 
     AlertDialog registerDialog;
     View alertView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,12 @@ public class LoginActivity extends Activity {
         Session.getActiveSession().onActivityResult(this, requestCode,resultCode, data);
     }
     private void loginWithFacebook(){
+    	try{
+    		Session.OpenRequest request = new Session.OpenRequest(this);
+    		request.setPermissions(Arrays.asList("publish_actions","publish_stream"));
+    	} catch (Exception e){
+    		e.printStackTrace();
+    	}
         Session.openActiveSession(this, true, new Session.StatusCallback() {
         	@SuppressWarnings("deprecation")
 			@Override
