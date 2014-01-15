@@ -71,11 +71,6 @@ public class ItemListAdapter extends BaseAdapter {
     			
     		@Override
     		public void onClick(View v) {
-				if (!FightData.isDone() && action.exist()) {
-					FightData.setDone();
-					CommunicateHelper.actionFight(action.getObjectId());
-				}
-    			Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
     			notifyDataSetChanged();
     			((FightActivity) context).setAction(action, res);
     		}

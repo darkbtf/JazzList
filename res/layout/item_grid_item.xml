@@ -7,9 +7,10 @@
 
     <ImageView
         android:id="@+id/item_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-         />
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        
+        android:src="@drawable/item_1" />
 
     <TextView
         android:id="@+id/item_item_num"
@@ -17,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="2dp"
+        android:layout_margin="5dp"
         android:textColor="#ffffff"
         android:text="10" />
 
