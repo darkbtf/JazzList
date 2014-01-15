@@ -210,6 +210,7 @@ public class FightActivity extends Activity {
 							public void run() {
 								AlertDialog.Builder builder = new AlertDialog.Builder(FightActivity.this);
 								if (FightData.getResult()) {
+									Data.winInBattle();
 									builder.setMessage("Publish to Facebook?");
 									builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 	
@@ -222,6 +223,8 @@ public class FightActivity extends Activity {
 	
 									});
 								}
+								else 
+									Data.loseInBattle();
 								builder.setTitle(FightData.getResult() ? "YOU WIN!!!" : "YOU LOSE");
 								builder.setNegativeButton(FightData.getResult() ? "OK" : "No", new DialogInterface.OnClickListener() {
 
