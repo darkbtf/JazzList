@@ -52,6 +52,7 @@ public class Player {
 	public Player getOpponent() { return opponent; }
 	public Player getPrevious() { return prev; }
 
+	public void setNickname(String nickname) { this.nickname = nickname; }
 	public void setRealId(int realId) { this.realId = realId; }
 	public void setLevel(int level) { this.level = level; }
 	public void setHp(int HP) { this.HP = HP; }
