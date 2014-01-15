@@ -273,7 +273,13 @@ public class Data {
 		if(ret.size()==0)return null;
 		return ret.get(0);
 	}
-	public static ArrayList<Equipment> getEquipments() {
-		return EquipmentTable.where("at != 1");
+	public static ArrayList<Equipment> getHeadEquipments() {
+		return EquipmentTable.where("type = 1");
+	}
+	public static ArrayList<Equipment> getHandEquipments() {
+		return EquipmentTable.where("type = 2");
+	}
+	public static ArrayList<Equipment> getFeetEquipments() {
+		return EquipmentTable.where("type = 3");
 	}
 }
