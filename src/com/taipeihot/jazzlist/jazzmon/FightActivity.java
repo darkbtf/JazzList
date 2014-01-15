@@ -139,7 +139,22 @@ public class FightActivity extends Activity {
 							}
 						};
 						
+//<<<<<<< HEAD
 						Runnable opponentMove = new Runnable() {
+//=======
+						/*try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						
+						final String opponentOnSelfAnime = actionManager.getOpponentAnimation(opponent.getMove());
+						final String opponentOnOpponentAnime = actionManager.getSelfAnimation(opponent.getMove());
+
+						runOnUiThread(new Runnable() {*/
+//>>>>>>> 4891b986b799b4f8d97764aea5ea73b861df1dcc
 							@Override
 							public void run() {
 								if (opponentOnSelfAnime != null) {
