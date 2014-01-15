@@ -13,8 +13,7 @@ public class Ember extends FightAction {
 	
 	@Override
 	public String getMessage(Player player1, Player player2) {
-		int hpDiff = FightUtils.calcHpDiff(player2);
-		return player1.getNickname() + " lit " + player2.getNickname() + " on fire and dealt " + hpDiff + " points of damage";
+		return player1.getNickname() + " lit " + player2.getNickname() + " on fire and dealt some damage.";
 	}
 
 }

@@ -83,4 +83,23 @@ public class Util {
 	public static int rng58() {
 		return (int)getCurrentTime();
 	}
+
+	public static String[] parseJAZZ(String s) {
+		if(s.equals(""))return new String[0];
+		int cnt=0;
+		for(int i=0;i<s.length();i++)
+			if(s.charAt(i)=='@')
+				cnt++;
+		String []ret=new String[cnt];
+		cnt=0;
+		for(int i=0;i<s.length();i++){
+			String tmp="";
+			while(s.charAt(i)!='@'){
+				tmp+=(s.charAt(i)+"");
+				i++;
+			}
+			ret[cnt++]=tmp;
+		}
+		return ret;
+	}
 }

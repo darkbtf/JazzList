@@ -11,7 +11,6 @@ public class KarmaBlast extends FightAction {
 	
 	@Override
 	public String getMessage(Player player1, Player player2) {
-		// TODO Auto-generated method stub
-		return null;
+		return player1.getNickname() + " smashed " + player2.getNickname() + "'s face with KARMA BLAST!!! ·~¤O¤ÞÃz!!!";
 	}
 }

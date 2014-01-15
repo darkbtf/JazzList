@@ -11,8 +11,7 @@ public class MaxwellEquation extends FightAction {
 
 	@Override
 	public String getMessage(Player player1, Player player2) {
-		// TODO Auto-generated method stub
-		return null;
+		return player2.getNickname() + " took a electromagnetics final exam from " + player1.getNickname() + ".";
 	}
 
 }
