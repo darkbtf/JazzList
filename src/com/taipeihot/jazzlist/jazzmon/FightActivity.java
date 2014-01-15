@@ -209,27 +209,27 @@ public class FightActivity extends Activity {
 							@Override
 							public void run() {
 								AlertDialog.Builder builder = new AlertDialog.Builder(FightActivity.this);
-								builder.setMessage("Publish to Facebook?");
+								if (FightData.getResult()) {
+									builder.setMessage("Publish to Facebook?");
+									builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+	
+										@Override
+										public void onClick(DialogInterface arg0,
+												int arg1) {
+											FacebookHelper.postCombat(FightData.getOpponent().getRealId());
+											finish();
+										}
+	
+									});
+								}
 								builder.setTitle(FightData.getResult() ? "YOU WIN!!!" : "YOU LOSE");
-								builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
-									@Override
-									public void onClick(DialogInterface arg0,
-											int arg1) {
-										FacebookHelper.postCombat(FightData.getOpponent().getRealId());
-										Intent intent = new Intent(FightActivity.this, MainActivity.class);
-										startActivity(intent);
-									}
-
-								});
-								builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+								builder.setNegativeButton(FightData.getResult() ? "OK" : "No", new DialogInterface.OnClickListener() {
 
 									@Override
 									public void onClick(DialogInterface dialog,
 											int which) {
 										
-										Intent intent = new Intent(FightActivity.this, MainActivity.class);
-										startActivity(intent);
+										finish();
 									}
 								});
 								FightData.reset();
@@ -257,7 +257,9 @@ public class FightActivity extends Activity {
 
     public void onResume() {
     	super.onResume();
-    	fightThread.start();
+    	if (fightThread.getState() == Thread.State.NEW)  {
+    		fightThread.start();
+    	}
     }
 
 	@Override

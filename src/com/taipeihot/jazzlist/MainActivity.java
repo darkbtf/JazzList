@@ -103,7 +103,9 @@ public class MainActivity extends BaseActivity {
     }
     public void onResume() {
     	super.onResume();
-    	fightListener.start();
+    	if (fightListener.getState() == Thread.State.NEW)  {
+    		fightListener.start();
+    	}
     }
 
     public void changeCategory(long categoryId) {
