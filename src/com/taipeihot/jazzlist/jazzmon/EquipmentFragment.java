@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.adapter.EquipItemListAdapter;
@@ -57,6 +59,12 @@ public class EquipmentFragment extends Fragment {
     	else setImage(handImg,"defualt");
     	if(feet!=null)setImage(feetImg,type+feet.getImageId());
     	else setImage(feetImg,"defualt");
+    	TextView skillPoint=(TextView)view.findViewById(R.id.equipPointNum);
+    	skillPoint.setText(Data.getSkillPoint()+"");
+    	TextView moneyText=(TextView)view.findViewById(R.id.equip_money_num);
+    	moneyText.setText(Data.getMoney()+"");
+    	ProgressBar expPro=(ProgressBar)view.findViewById(R.id.equip_exp_bar);
+    	expPro.setProgress(Data.getExp());
     }
     private void setImage(ImageView img,String photoName)
     {
