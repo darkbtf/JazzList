@@ -149,7 +149,7 @@ public class LoginActivity extends Activity {
     private void toMainActivity() {
         Intent intent = new Intent();
         //intent.setClass(LoginActivity.this, MainActivity.class);
-        intent.setClass(LoginActivity.this, MainActivity.class);
+        intent.setClass(LoginActivity.this, EnterActivity.class);
         startActivity(intent);
     }
     
