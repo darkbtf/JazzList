@@ -103,7 +103,7 @@
                     android:id="@+id/fight_self_monster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/dragon_back_1" />
+                    android:src="@drawable/dragon_back" />
 
                 <ImageView
                     android:id="@+id/fight_self_animation"
