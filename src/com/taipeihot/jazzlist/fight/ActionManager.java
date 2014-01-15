@@ -1,6 +1,10 @@
 package com.taipeihot.jazzlist.fight;
 
 import java.util.ArrayList;
+
+import com.taipeihot.jazzlist.fight.items.GreatHealingPotion;
+import com.taipeihot.jazzlist.fight.items.HealingPotion;
+import com.taipeihot.jazzlist.fight.items.MasterHealingPotion;
 import com.taipeihot.jazzlist.fight.skills.*;
 
 public class ActionManager {
@@ -17,6 +21,10 @@ public class ActionManager {
 		skillList.add(new KarmaBlast(null, "fire2"));
 		skillList.add(new Frostnova(null, "water2"));
 		skillList.add(new MaxwellEquation("thunder2_self", "thunder2_enemy"));
+		
+		itemList.add(new HealingPotion(null, null));
+		itemList.add(new GreatHealingPotion(null, null));
+		itemList.add(new MasterHealingPotion(null, null));
 	}
 
 	public String getSelfAnimation(int moveId) {

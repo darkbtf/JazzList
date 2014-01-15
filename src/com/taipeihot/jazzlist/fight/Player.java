@@ -6,6 +6,7 @@ public class Player {
 	/**
 	 * @author DarkBtf
 	 * */
+	private String nickname;
 	private int level;
 	private int HP;
 	private int MP;
@@ -30,6 +31,7 @@ public class Player {
 	}
 	
 	/** === setters & getters === **/
+	public String getNickname() { return nickname; }
 	public int getLevel() { return level; }
 	public int getHp() { return HP; }
 	public int getMp() { return MP; }
