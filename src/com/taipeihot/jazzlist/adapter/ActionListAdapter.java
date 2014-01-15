@@ -19,6 +19,7 @@ import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.model.Achievement;
 import com.taipeihot.jazzlist.model.Action;
 import com.taipeihot.jazzlist.CommunicateHelper;
+import com.taipeihot.jazzlist.jazzmon.FightActivity;
  
 public class ActionListAdapter extends BaseAdapter {
      
@@ -64,23 +65,18 @@ public class ActionListAdapter extends BaseAdapter {
 
         int photoNum=action.getImageId();
         String type="skill_";
+        final int res = context.getResources()
+				.getIdentifier(
+						type+Integer
+						.toString(photoNum),
+						"drawable", context.getPackageName());
         if(!action.exist())type+="h_";
-    		actionImage.setImageResource(
-    				context.getResources()
-    				.getIdentifier(
-    						type+Integer
-    						.toString(photoNum),
-    						"drawable", context.getPackageName()));
+    		actionImage.setImageResource(res);
     		actionImage.setOnClickListener(new OnClickListener() {
     			
     			@Override
     			public void onClick(View v) {
-    				if (!FightData.isDone() && action.canUseInFight(FightData.getMe().getMp())) {
-    					FightData.setDone();
-    					CommunicateHelper.actionFight(action.getObjectId());
-    				}
-    				Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
-    				
+    				((FightActivity) context).setAction(action, res);
     			}
     		});
         Util.errorReport(action.getDescription()+"QQQQQQQ");
