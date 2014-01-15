@@ -36,7 +36,7 @@ public class EquipmentFragment extends Fragment {
    	 	feetImg=(ImageView)view.findViewById(R.id.equip_feet);
    	 	headBtn=(Button)view.findViewById(R.id.equip_head_btn);
    	 	handBtn=(Button)view.findViewById(R.id.equip_hand_btn);
-   	 	itemBtn=(Button)view.findViewById(R.id.equip_hand_btn);
+   	 	itemBtn=(Button)view.findViewById(R.id.equip_items_btn);
    	 	feetBtn=(Button)view.findViewById(R.id.equip_feet_btn);
    	 	headBtn.setOnClickListener(new OnClickListener(){
 			@Override

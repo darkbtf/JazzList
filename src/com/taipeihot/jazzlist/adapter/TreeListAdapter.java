@@ -10,22 +10,23 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.Util;
-import com.taipeihot.jazzlist.model.Achievement;
+import com.taipeihot.jazzlist.jazzmon.SkillFragment;
 import com.taipeihot.jazzlist.model.Action;
  
 public class TreeListAdapter extends BaseAdapter {
      
     private Context context;
     private ArrayList<Action> actionItems;
+    private SkillFragment skillFragment;
      
-    public TreeListAdapter(Context context, ArrayList<Action> actionItems){
-        this.context = context;
+    public TreeListAdapter(SkillFragment skillFragment, ArrayList<Action> actionItems){
         this.actionItems = actionItems;
+        this.skillFragment=skillFragment;
+        this.context = skillFragment.getActivity();
     }
  
     @Override
@@ -77,6 +78,7 @@ public class TreeListAdapter extends BaseAdapter {
     				Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
     				action.learn();
     				notifyDataSetChanged();
+    				skillFragment.init();
     				
     			}
     		});
