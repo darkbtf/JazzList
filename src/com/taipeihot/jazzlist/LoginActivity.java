@@ -48,6 +48,8 @@ public class LoginActivity extends Activity {
 			public void call(Session session, SessionState state,Exception exception) {
         		if (session.isOpened()) {
         			final List permissions = Arrays.asList("publish_actions","publish_stream");
+        			if(session !=null && !session.getPermissions().containsAll(permissions))
+        	    		session.requestNewPublishPermissions(new Session.NewPermissionsRequest(LoginActivity.this,permissions));
         	    	//Session session=Session.getActiveSession();
         			/*Session.NewPermissionsRequest newPermissionsRequest = new Session.NewPermissionsRequest(LoginActivity.this, Arrays.asList("publish_actions","publish_stream"));
 

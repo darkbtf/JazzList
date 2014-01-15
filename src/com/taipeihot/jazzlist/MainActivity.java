@@ -101,13 +101,6 @@ public class MainActivity extends BaseActivity {
 			}
     		
     	});
-    	getPublishPermissions();
-    }
-    public void getPublishPermissions() {
-    	final List permissions = Arrays.asList("publish_actions","publish_stream");
-    	Session session=Session.getActiveSession();
-    	if(Data.user!=null && session !=null && !session.getPermissions().containsAll(permissions))
-    		session.requestNewPublishPermissions(new Session.NewPermissionsRequest(MainActivity.this,permissions));
     }
     public void onResume() {
     	super.onResume();
