@@ -31,6 +31,7 @@ public class MainActivity extends BaseActivity {
 	Fragment friendFragment;
 	Fragment menuFragment;
 	Thread fightListener;
+	Runnable fightRunnable;
 	
     public MainActivity() {
         super(R.string.left_and_right);
@@ -73,7 +74,7 @@ public class MainActivity extends BaseActivity {
         });
     	setTitle(Data.getCategories().get(0).getTitle());
     	initData();
-    	fightListener = new Thread(new Runnable() {
+    	fightRunnable = new Runnable() {
 
 			@Override
 			public void run() {
@@ -99,13 +100,18 @@ public class MainActivity extends BaseActivity {
 				}
 			}
     		
-    	});
+    	};
+    	fightListener = null;
     }
     public void onResume() {
     	super.onResume();
+    	if (fightListener == null || fightListener.getState() == Thread.State.TERMINATED) {
+    		fightListener = new Thread(fightRunnable);
+    	}   		
+    		
     	if (fightListener.getState() == Thread.State.NEW)  {
     		fightListener.start();
-    	}
+    	} else Util.errorReport(fightListener.getState() + "");
     }
 
     public void changeCategory(long categoryId) {

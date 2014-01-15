@@ -21,6 +21,7 @@ import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.FacebookHelper;
 import com.taipeihot.jazzlist.MainActivity;
 import com.taipeihot.jazzlist.R;
+import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.adapter.ActionListAdapter;
 import com.taipeihot.jazzlist.adapter.ItemListAdapter;
 import com.taipeihot.jazzlist.fight.ActionManager;
@@ -41,6 +42,7 @@ public class FightActivity extends Activity {
 	Player me;
 	Player opponent;
 	Thread fightThread;
+	Runnable fightRunnable;
 	private Action actionToUse;;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +94,7 @@ public class FightActivity extends Activity {
 			
 		});
 	
-		fightThread = new Thread(new Runnable(){
+		fightRunnable = new Runnable(){
 
 			@Override
 			public void run() {
@@ -226,7 +228,7 @@ public class FightActivity extends Activity {
 								else 
 									Data.loseInBattle();
 								builder.setTitle(FightData.getResult() ? "YOU WIN!!!" : "YOU LOSE");
-								builder.setNegativeButton(FightData.getResult() ? "OK" : "No", new DialogInterface.OnClickListener() {
+								builder.setNegativeButton(FightData.getResult() ? "NO" : "OK", new DialogInterface.OnClickListener() {
 
 									@Override
 									public void onClick(DialogInterface dialog,
@@ -250,7 +252,8 @@ public class FightActivity extends Activity {
 				
 			}
 			
-		});
+		};
+		fightThread = null;
 	}
 	
 	public void showMessage(String msg) {
@@ -260,9 +263,13 @@ public class FightActivity extends Activity {
 
     public void onResume() {
     	super.onResume();
-    	if (fightThread.getState() == Thread.State.NEW)  {
-    		fightThread.start();
+    	if (fightThread == null ||  fightThread.getState() == Thread.State.TERMINATED) {
+    		fightThread = new Thread(fightRunnable);
     	}
+    		
+    	if (fightThread.getState() == Thread.State.NEW )  {
+    		fightThread.start();
+    	} else Util.errorReport(fightThread.getState() + "");
     }
 
 	@Override
