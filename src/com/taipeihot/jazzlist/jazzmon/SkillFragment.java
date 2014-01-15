@@ -35,7 +35,7 @@ public class SkillFragment extends Fragment {
     	view = inflater.inflate(R.layout.fragment_skill, null);
     	init();
     	skillTree=(GridView)view.findViewById(R.id.tree_skill_tree);
-    	treeListAdapter=new TreeListAdapter(this.getActivity(),fireSkills);
+    	treeListAdapter=new TreeListAdapter(this,fireSkills);
     	skillTree.setAdapter(treeListAdapter);
     	
     	ImageButton fireButton = (ImageButton) view.findViewById(R.id.fireSkillBtn);
@@ -68,15 +68,15 @@ public class SkillFragment extends Fragment {
     	
     	if (skillSetId == 0) {
     		layout.setBackground(getResources().getDrawable(R.drawable.firetree));
-    		treeListAdapter=new TreeListAdapter(this.getActivity(),fireSkills);
+    		treeListAdapter=new TreeListAdapter(this,fireSkills);
     		skillTree.setAdapter(treeListAdapter);
     	} else if (skillSetId == 1) {
     		layout.setBackground(getResources().getDrawable(R.drawable.watertree));	
-    		treeListAdapter=new TreeListAdapter(this.getActivity(),waterSkills);
+    		treeListAdapter=new TreeListAdapter(this,waterSkills);
         	skillTree.setAdapter(treeListAdapter);
     	} else {
     		layout.setBackground(getResources().getDrawable(R.drawable.thundertree));
-    		treeListAdapter=new TreeListAdapter(this.getActivity(),thunderSkills);
+    		treeListAdapter=new TreeListAdapter(this,thunderSkills);
         	skillTree.setAdapter(treeListAdapter);
     	}
     }
@@ -88,6 +88,5 @@ public class SkillFragment extends Fragment {
     	moneyText.setText(Data.getMoney()+"");
     	ProgressBar expPro=(ProgressBar)view.findViewById(R.id.skill_exp_bar);
     	expPro.setProgress(Data.getExp());
-    	
     }
 }
