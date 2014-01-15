@@ -39,7 +39,7 @@ public class EquipmentTable extends Table{
 			insert(new Equipment(35,0,0,0,300,-1,"Head","Increase your base HP",1));
 			insert(new Equipment(0,0,15,0,500,-1,"Sword","Increase your base attack",2));
 			insert(new Equipment(0,0,0,15,300,-1,"Gloves","Increase your base defense",2));
-			insert(new Equipment(0,35,0,0,300,-1,"Feet","Increase your base MP",3));
+			insert(new Equipment(0,35,0,0,300,-1,"Boots","Increase your base MP",3));
 		}
 	}
 	static public long insert(Equipment a){

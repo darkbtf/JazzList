@@ -76,6 +76,7 @@ public class TreeListAdapter extends BaseAdapter {
     				// TODO Auto-generated method stub
     				Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
     				action.learn();
+    				notifyDataSetChanged();
     				
     			}
     		});

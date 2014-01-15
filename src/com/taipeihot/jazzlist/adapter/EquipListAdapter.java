@@ -13,30 +13,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.Util;
-import com.taipeihot.jazzlist.model.Achievement;
+import com.taipeihot.jazzlist.fight.FightData;
 import com.taipeihot.jazzlist.model.Action;
+import com.taipeihot.jazzlist.model.Equipment;
  
-public class EquipItemListAdapter extends BaseAdapter {
+public class EquipListAdapter extends BaseAdapter {
      
     private Context context;
-    private ArrayList<Action> actionItems;
-     
-    public EquipItemListAdapter(Context context, ArrayList<Action> actionItems){
+    private ArrayList<Equipment> equipmentItems;
+    public EquipListAdapter(Context context, ArrayList<Equipment> equipmentItems){
         this.context = context;
-        this.actionItems = actionItems;
+        this.equipmentItems = equipmentItems;
     }
  
     @Override
     public int getCount() {
-        return actionItems.size();
+        return equipmentItems.size();
     }
  
     @Override
     public Object getItem(int position) {
     	Util.errorReport(position+"");
-        return actionItems.get(position);
+        return equipmentItems.get(position);
     }
  
     @Override
@@ -49,30 +50,36 @@ public class EquipItemListAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.item_grid_item, null);
+            convertView = mInflater.inflate(R.layout.equip_grid_item, null);
         }
-        final Action action=(Action)getItem(position);
-        ImageView actionImage = (ImageView) convertView.findViewById(R.id.item_image);
-        TextView itemNum=(TextView)convertView.findViewById(R.id.item_item_num);
-        itemNum.setText(Integer.toString(action.getNumber()));
-        int photoNum=action.getImageId();
-        String type="item_";
-        if(!action.exist())type+="h_";
-    	actionImage.setImageResource(
+        final Equipment equipment=(Equipment)getItem(position);
+        ImageView actionImage = (ImageView) convertView.findViewById(R.id.equip_image);
+
+        int photoNum=equipment.getImageId();
+        String type="equip_";
+        if(!equipment.exist())type+="h_";
+    	
+        actionImage.setImageResource(
     			context.getResources()
-    			.getIdentifier(
+    				.getIdentifier(
     					type+Integer
     					.toString(photoNum),
     					"drawable", context.getPackageName()));
-    	actionImage.setOnClickListener(new OnClickListener() {
-    			
-    			@Override
-    		public void onClick(View v) {
-    			// TODO Auto-generated method stub
-    			Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
-    			if(action.buy())notifyDataSetChanged();
-    		}
-    	});
+    	
+    	actionImage.setOnClickListener(new OnClickListener() {	
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Toast.makeText(context,equipment.getDescription() , Toast.LENGTH_SHORT).show();
+				if(!equipment.exist())equipment.buy();
+				else
+				{
+					equipment.wear();
+				}
+				
+				notifyDataSetChanged();
+			}
+		});
         	
         
         // displaying count
