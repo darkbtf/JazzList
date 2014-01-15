@@ -11,8 +11,7 @@ public class Bless extends FightAction {
 	
 	@Override
 	public String getMessage(Player player1, Player player2) {
-		// TODO Auto-generated method stub
-		return null;
+		return player1.getNickname() + " Blessed himself and regain ";
 	}
 
 }

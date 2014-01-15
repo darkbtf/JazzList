@@ -8,9 +8,11 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -27,12 +29,13 @@ import com.taipeihot.jazzlist.fight.Player;
 import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.fight.ActionManager;
 import com.taipeihot.jazzlist.CommunicateHelper;
+import android.widget.TextView;
 
 public class FightActivity extends Activity {
-	/*ProgressBar myHpBar;
-	ProgressBar myMpBar;
-	ProgressBar oppoHpBar;
-	ProgressBar oppoMpBar;*/
+	
+	// in ms
+	final int ANIMATION_INTERVAL = 2800;
+	
 	static ActionManager actionManager = new ActionManager();
 	ActionListAdapter actionListAdapter;
 	ArrayList<Action> actionItems=new ArrayList<Action>();
@@ -41,10 +44,9 @@ public class FightActivity extends Activity {
 	Player me;
 	Player opponent;
 	Thread fightThread;
-	private String menuName[]={"Skills","Items"};
+	private int actionToUse = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		Util.errorReport("gua4: " + (FightData.isPrepared() ? "PREPARED!" : "NOT PREPARED"));
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fight);
 		actionItems=Data.getAvailableSkills();
@@ -61,23 +63,33 @@ public class FightActivity extends Activity {
 		skillList.setAdapter(actionListAdapter);
 		itemListAdapter = new ItemListAdapter(this, itemItems);
 		
-		
-		ListView menuList=(ListView)findViewById(R.id.fight_menu);
-		menuList.setAdapter(new ArrayAdapter<String>(
-				this,android.R.layout.simple_list_item_1 , menuName));
-		menuList.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-				if(position==0)
-				{
-					skillList.setAdapter(actionListAdapter);
-				}
-				else if(position==1)
-				{
-					skillList.setAdapter(itemListAdapter);
-				}
+		TextView skillTab = (TextView) findViewById(R.id.skills_tab);
+		skillTab.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				skillList.setAdapter(actionListAdapter);
+			}
+		});
+
+		TextView itemTab = (TextView) findViewById(R.id.items_tab);
+		itemTab.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				skillList.setAdapter(itemListAdapter);
 			}
 		});
 		
+		Button actionButton = (Button) findViewById(R.id.action_button);
+		actionButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				CommunicateHelper.actionFight(actionToUse);
+				FightData.setDone();
+			}
+			
+		});
+	
 		fightThread = new Thread(new Runnable(){
 
 			@Override
@@ -136,25 +148,14 @@ public class FightActivity extends Activity {
 									opponentAnimation.start();
 									
 								}
+								TextView fightConsole = (TextView) findViewById(R.id.fight_console);
+								fightConsole.setText(actionManager.getMessage(me, opponent, me.getMove()));
 							}
 						};
 						
-//<<<<<<< HEAD
-						Runnable opponentMove = new Runnable() {
-//=======
-						/*try {
-							Thread.sleep(2000);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						
-						
-						final String opponentOnSelfAnime = actionManager.getOpponentAnimation(opponent.getMove());
-						final String opponentOnOpponentAnime = actionManager.getSelfAnimation(opponent.getMove());
 
-						runOnUiThread(new Runnable() {*/
-//>>>>>>> 4891b986b799b4f8d97764aea5ea73b861df1dcc
+						Runnable opponentMove = new Runnable() {
+
 							@Override
 							public void run() {
 								if (opponentOnSelfAnime != null) {
@@ -172,13 +173,15 @@ public class FightActivity extends Activity {
 									opponentAnimation.start();
 									
 								}
+								TextView fightConsole = (TextView) findViewById(R.id.fight_console);
+								fightConsole.setText(actionManager.getMessage(opponent, me, opponent.getMove()));
 							}
 						};	
 						
 						if (FightData.getLastFirst() > 0) {
 							runOnUiThread(myMove);
 							try {
-								Thread.sleep(2000);
+								Thread.sleep(ANIMATION_INTERVAL);
 							} catch (InterruptedException e) {
 								e.printStackTrace();
 							}
@@ -186,7 +189,7 @@ public class FightActivity extends Activity {
 						} else {
 							runOnUiThread(opponentMove);
 							try {
-								Thread.sleep(2000);
+								Thread.sleep(ANIMATION_INTERVAL);
 							} catch (InterruptedException e) {
 								e.printStackTrace();
 							}
@@ -218,11 +221,8 @@ public class FightActivity extends Activity {
 	}
 	
 	public void showMessage(String msg) {
-		
-	}
-	
-	public void showAction(int actionId) {
-		
+		TextView msgBox = (TextView) findViewById(R.id.fight_console);
+		msgBox.setText(msg);
 	}
 
     public void onResume() {
@@ -235,6 +235,25 @@ public class FightActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.fight, menu);
 		return true;
+	}
+
+	public void setAction(Action action, int res) {
+		ImageView actionImg = (ImageView) findViewById(R.id.action_img);
+		actionImg.setImageResource(res);
+		
+		TextView actionDescription = (TextView) findViewById(R.id.action_description);
+		actionDescription.setText(action.getDescription());
+		
+		actionToUse = action.getObjectId();
+		
+		if (action.canUseInFight(FightData.getMe().getMp())) {
+			Button fightButton = (Button) findViewById(R.id.action_button);
+			fightButton.setEnabled(true);
+		} else {
+			Button fightButton = (Button) findViewById(R.id.action_button);
+			fightButton.setEnabled(false);
+			
+		}
 	}
 
 }

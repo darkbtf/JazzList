@@ -15,4 +15,12 @@ public class FightUtils {
 		ratio *= (1 + Math.random() * 0.1 - 0.05);
 		return (int) Math.ceil(baseDamage * ratio);
 	}
+	
+	public static int calcHpDiff(Player player) {
+		return player.getPrevious().getHp() - player.getHp();
+	}
+	
+	public static int calcMpDiff(Player player) {
+		return player.getPrevious().getMp() - player.getMp();
+	}
 }
