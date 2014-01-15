@@ -241,6 +241,9 @@ public class FightActivity extends Activity {
 		ImageView actionImg = (ImageView) findViewById(R.id.action_img);
 		actionImg.setImageResource(res);
 		
+		TextView actionTitle = (TextView) findViewById(R.id.action_title);
+		actionTitle.setText(action.getName());
+		
 		TextView actionDescription = (TextView) findViewById(R.id.action_description);
 		actionDescription.setText(action.getDescription());
 		

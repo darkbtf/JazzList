@@ -11,8 +11,8 @@ public class Frostnova extends FightAction {
 	
 	@Override
 	public String getMessage(Player player1, Player player2) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return "A frostnova exploded under " + player2.getNickname() + "'s feet. " + player2.getNickname() + " can't move for 2 rounds.";
 	}
 
 

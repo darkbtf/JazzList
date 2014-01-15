@@ -11,8 +11,7 @@ public class StaticField extends FightAction {
 	
 	@Override
 	public String getMessage(Player player1, Player player2) {
-		// TODO Auto-generated method stub
-		return null;
+		return "A static field surronded " + player1.getNickname() + ", attack increased.";
 	}
 
 }
