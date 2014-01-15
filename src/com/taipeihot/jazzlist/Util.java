@@ -1,9 +1,6 @@
 package com.taipeihot.jazzlist;
 
 import android.annotation.SuppressLint;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Deque;
 import java.util.Queue;
 
