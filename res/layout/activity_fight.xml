@@ -186,13 +186,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="2.81"
-                    android:orientation="vertical" >
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">"
 
                     <ImageView
                         android:id="@+id/action_img"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/equip_defualt" />
 
                     <TextView
                         android:id="@+id/action_title"
@@ -200,7 +202,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text=""
-                        android:gravity=""
+                        android:gravity="center"
                         android:textColor="#dddddd" />
 
                 </LinearLayout>
