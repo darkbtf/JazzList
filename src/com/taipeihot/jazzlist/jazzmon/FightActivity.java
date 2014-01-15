@@ -3,33 +3,30 @@ package com.taipeihot.jazzlist.jazzmon;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.MainActivity;
 import com.taipeihot.jazzlist.R;
-import com.taipeihot.jazzlist.adapter.ItemListAdapter;
 import com.taipeihot.jazzlist.adapter.ActionListAdapter;
-import com.taipeihot.jazzlist.model.Action;
-import com.taipeihot.jazzlist.model.Data;
+import com.taipeihot.jazzlist.adapter.ItemListAdapter;
+import com.taipeihot.jazzlist.fight.ActionManager;
 import com.taipeihot.jazzlist.fight.FightData;
 import com.taipeihot.jazzlist.fight.Player;
-import com.taipeihot.jazzlist.Util;
-import com.taipeihot.jazzlist.fight.ActionManager;
-import com.taipeihot.jazzlist.CommunicateHelper;
-import android.widget.TextView;
+import com.taipeihot.jazzlist.model.Action;
+import com.taipeihot.jazzlist.model.Data;
 
 public class FightActivity extends Activity {
 	
@@ -43,7 +40,7 @@ public class FightActivity extends Activity {
 	Player me;
 	Player opponent;
 	Thread fightThread;
-	private int actionToUse = 0;
+	private Action actionToUse;;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -78,13 +75,18 @@ public class FightActivity extends Activity {
 			}
 		});
 		
-		Button actionButton = (Button) findViewById(R.id.action_button);
+		final Button actionButton = (Button) findViewById(R.id.action_button);
 		actionButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				CommunicateHelper.actionFight(actionToUse);
-				FightData.setDone();
+				if (!FightData.isDone()) {
+					CommunicateHelper.actionFight(actionToUse.getObjectId());
+					actionToUse.use();
+					actionButton.setEnabled(false);
+					actionButton.setVisibility(View.INVISIBLE);
+					FightData.setDone();
+				}
 			}
 			
 		});
@@ -93,8 +95,7 @@ public class FightActivity extends Activity {
 
 			@Override
 			public void run() {
-				while (true) {
-					Util.errorReport("banana");					
+				while (true) {				
 					if (FightData.isPrepared()) {
 						me = FightData.getMe();
 						opponent = FightData.getOpponent();
@@ -201,10 +202,38 @@ public class FightActivity extends Activity {
 							FightData.setDone();
 						}
 						
-					} else if (FightData.isEnded()) {
-						FightData.reset();
-						Intent intent = new Intent(FightActivity.this, MainActivity.class);
-						startActivity(intent);
+					}
+					if (FightData.isEnded()) {
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								AlertDialog.Builder builder = new AlertDialog.Builder(FightActivity.this);
+								builder.setMessage("Publish to Facebook?");
+								builder.setTitle(FightData.getResult() ? "YOU WIN!!!" : "YOU LOSE");
+								builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface arg0,
+											int arg1) {
+										Intent intent = new Intent(FightActivity.this, MainActivity.class);
+										startActivity(intent);
+									}
+
+								});
+								builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface dialog,
+											int which) {
+										
+										Intent intent = new Intent(FightActivity.this, MainActivity.class);
+										startActivity(intent);
+									}
+								});
+								FightData.reset();
+								builder.show();
+							}
+						});
 						break;
 					}
 					try {
@@ -246,14 +275,16 @@ public class FightActivity extends Activity {
 		TextView actionDescription = (TextView) findViewById(R.id.action_description);
 		actionDescription.setText(action.getDescription());
 		
-		actionToUse = action.getObjectId();
+		actionToUse = action;
 		
-		if (action.canUseInFight(FightData.getMe().getMp())) {
+		if (action.canUseInFight(FightData.getMe().getMp()) && FightData.isIdle()) {
 			Button fightButton = (Button) findViewById(R.id.action_button);
 			fightButton.setEnabled(true);
+			fightButton.setVisibility(View.VISIBLE);
 		} else {
 			Button fightButton = (Button) findViewById(R.id.action_button);
 			fightButton.setEnabled(false);
+			fightButton.setVisibility(View.INVISIBLE);
 			
 		}
 	}

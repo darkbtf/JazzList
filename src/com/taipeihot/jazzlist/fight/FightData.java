@@ -11,7 +11,9 @@ public class FightData {
 	final static int IDLE = 4;
 	final static int DONE = 5;
 	final static int UPDATED = 6;
-	final static int ENDED = 7;
+	
+	static boolean result = false;
+	static boolean ended = false;
 	
 	static int status = 0;
 	static int inviterId;
@@ -28,7 +30,8 @@ public class FightData {
 	static public boolean isIdle() { return status == IDLE; }
 	static public boolean isDone() { return status == DONE; }
 	static public boolean isUpdated() { return status == UPDATED; }
-	static public boolean isEnded() { return status == ENDED; }
+	static public boolean isEnded() { return ended; }
+	static public boolean getResult() { return result; }
 
 	static public int getInviterId() { return inviterId; }
 	static public int getLastFirst() { return lastFirst; }
@@ -37,15 +40,15 @@ public class FightData {
 	static public Player getMe() { return me; }
 	static public Player getOpponent() { return opponent ; }
 	
-	static public void reset() { Util.errorReport("reset");  status = 0; }
+	static public void reset() { Util.errorReport("reset");  status = 0; ended = false; }
 	static public void setInvited() { Util.errorReport("set invited"); status = INVITED; }
 	static public void setStarted() { Util.errorReport("set started"); status = STARTED; }
 	static public void setPrepared() { Util.errorReport("set prepared"); status = PREPARED; }
 	static public void setIdle() { Util.errorReport("set idle"); status = IDLE; }
 	static public void setDone() { Util.errorReport("set done"); status = DONE; }
 	public static void setUpdated() { Util.errorReport("set updated"); status = UPDATED; }
-	static public void setEnded() { Util.errorReport("set ended"); status = ENDED; }
-	
+	static public void setEnded() { ended = true;}
+	static public void setResult(boolean res) { result = res; }
 	
 	
 	static public void setInviterId(int inv) { inviterId = inv; } 

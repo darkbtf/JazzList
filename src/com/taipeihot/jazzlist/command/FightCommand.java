@@ -64,6 +64,7 @@ public class FightCommand implements Command {
 			FightData.setUpdated();
 			
 		} else if (cmd.equals("end")) {
+			FightData.setResult(SocketHelper.getMessage().equals("true"));
 			FightData.setEnded();
 		} else {
 			return false;

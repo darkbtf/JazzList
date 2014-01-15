@@ -78,7 +78,6 @@ public class MainActivity extends BaseActivity {
 			@Override
 			public void run() {
 				while (true) {
-					Util.errorReport("guava");
 					if (FightData.isPrepared()) {
 						Util.errorReport("started");
 						Intent intent = new Intent(MainActivity.this, FightActivity.class);
