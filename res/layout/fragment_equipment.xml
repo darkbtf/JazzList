@@ -34,14 +34,14 @@
         <ImageView
             android:id="@+id/money_image"
             android:layout_width="80dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/gold_coin_1" />
 
         <TextView
             android:id="@+id/equip_money_num"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="100"
             android:layout_weight="2"
             android:textColor="@color/white"
