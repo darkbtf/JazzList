@@ -15,5 +15,5 @@
 	<item android:drawable="@drawable/water_1_4" android:duration="50" />
 	<item android:drawable="@drawable/water_1_5" android:duration="50" />
 	<item android:drawable="@drawable/water_1_6" android:duration="50" />
-	<item android:drawable="@drawable/deafult" android:duration="30"/>
+	<item android:drawable="@drawable/defualt" android:duration="30"/>
 </animation-list>

@@ -17,5 +17,5 @@
 	<item android:drawable="@drawable/thunder2_5_self" android:duration="30" />
 	<item android:drawable="@drawable/thunder2_6_self" android:duration="30" />
 	<item android:drawable="@drawable/thunder2_7_self" android:duration="30" />
-	<item android:drawable="@drawable/deafult" android:duration="30"/>
+	<item android:drawable="@drawable/defualt" android:duration="30"/>
 </animation-list>

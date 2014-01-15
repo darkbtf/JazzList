@@ -15,5 +15,5 @@
 	<item android:drawable="@drawable/fire1_11" android:duration="100" />
 	<item android:drawable="@drawable/fire1_12" android:duration="100" />
 	<item android:drawable="@drawable/fire1_13" android:duration="100" />
-	<item android:drawable="@drawable/deafult" android:duration="30"/>
+	<item android:drawable="@drawable/defualt" android:duration="30"/>
 </animation-list>

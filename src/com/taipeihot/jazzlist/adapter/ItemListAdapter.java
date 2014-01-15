@@ -75,6 +75,7 @@ public class ItemListAdapter extends BaseAdapter {
 					CommunicateHelper.actionFight(action.getObjectId());
 				}
     			Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
+    			notifyDataSetChanged();
     		}
     	});
         	
