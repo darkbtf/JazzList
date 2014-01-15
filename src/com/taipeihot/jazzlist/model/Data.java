@@ -16,7 +16,7 @@ import com.taipeihot.jazzlist.table.EquipmentTable;
 
 public class Data {
 	
-	public static GraphUser user;
+	public static GraphUser user = null;
 	public static ArrayList<User> friends = new ArrayList<User>();
 	public static ArrayList<Status> status = new ArrayList<Status>();
 	public static ArrayList<Category> categories = new ArrayList<Category>();
@@ -47,6 +47,7 @@ public class Data {
 	public static void setUser(GraphUser user){
 		Data.user = user;
 	}
+	public static GraphUser getUser(){return user;}
 	public static boolean waittingLogin(){return logined==0;}
 	public static boolean hasLogined(){return logined==1;}
 	
@@ -55,13 +56,15 @@ public class Data {
 	public static void loginFail(){logined = 2;}
 	/************************** About Character information ************************/
 	public static void initCharacterInfo(){
-		Data.setCharacterInfo(CharacterInfo.character_id, 1);
-		Data.setCharacterInfo(CharacterInfo.level, 1);
-		Data.setCharacterInfo(CharacterInfo.exp, 0);
-		Data.setCharacterInfo(CharacterInfo.money, 10000);
-		Data.setCharacterInfo(CharacterInfo.attack, 100);
-		Data.setCharacterInfo(CharacterInfo.defense, 100);
-		Data.setCharacterInfo(CharacterInfo.skill_point, 10);
+		if(getCharacterInfo(CharacterInfo.level)==-1) {
+			Data.setCharacterInfo(CharacterInfo.character_id, 1);
+			Data.setCharacterInfo(CharacterInfo.level, 1);
+			Data.setCharacterInfo(CharacterInfo.exp, 0);
+			Data.setCharacterInfo(CharacterInfo.money, 10000);
+			Data.setCharacterInfo(CharacterInfo.attack, 100);
+			Data.setCharacterInfo(CharacterInfo.defense, 100);
+			Data.setCharacterInfo(CharacterInfo.skill_point, 10);
+		}
 	}
 	public static int getCharacterId(){return getCharacterInfo(CharacterInfo.character_id);}
 	public static int getLevel(){return getCharacterInfo(CharacterInfo.level);}
@@ -122,6 +125,12 @@ public class Data {
 
 	public static boolean getFriendUpdating() {return friendUpdating;}
 	public static void setFriendUpdating(boolean b) {friendUpdating = b;}
+	public static User getFriendByRealId(int user_id) {
+		for(User u:friends)
+			if(u.getRealId()==user_id)
+				return u;
+		return null;
+	}
 	/**************************** About Category************************************/
 	public static boolean addCategory(String title){
 		Category c = new Category(title,R.drawable.ic_home);
@@ -264,7 +273,13 @@ public class Data {
 		if(ret.size()==0)return null;
 		return ret.get(0);
 	}
-	public static ArrayList<Equipment> getEquipments() {
-		return EquipmentTable.where("where != 1");
+	public static ArrayList<Equipment> getHeadEquipments() {
+		return EquipmentTable.where("type = 1");
+	}
+	public static ArrayList<Equipment> getHandEquipments() {
+		return EquipmentTable.where("type = 2");
+	}
+	public static ArrayList<Equipment> getFeetEquipments() {
+		return EquipmentTable.where("type = 3");
 	}
 }
