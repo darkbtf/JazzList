@@ -82,6 +82,14 @@ public class EquipListAdapter extends BaseAdapter {
 				{
 					equipmentItems=Data.getHandEquipments();
 				}
+				else if(where.equals("head"))
+				{
+					equipmentItems=Data.getHeadEquipments();
+				}
+				else if(where.equals("feet"))
+				{
+					equipmentItems=Data.getFeetEquipments();
+				}
 				equipFragment.init();
 				notifyDataSetChanged();
 			}

@@ -67,7 +67,7 @@
                     android:id="@+id/fight_enemy_monster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/monster" />
+                    android:src="@drawable/dragon_front" />
 
                 <ImageView
                     android:id="@+id/fight_enemy_animation"

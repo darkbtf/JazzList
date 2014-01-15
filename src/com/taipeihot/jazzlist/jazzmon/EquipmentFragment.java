@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -24,20 +26,7 @@ import com.taipeihot.jazzlist.model.Equipment;
 
  @SuppressLint("NewApi")
 public class EquipmentFragment extends Fragment {
-	 EquipItemListAdapter equaipItemListAdapter;
-	 ArrayList<Action> itemItems;
-	 View view;
-	 EquipListAdapter equipListAdapter;
-	 ArrayList<Equipment> headEquips=Data.getHeadEquipments();
-	 ArrayList<Equipment> handEquips=Data.getHandEquipments();
-	 ArrayList<Equipment> feetEquips=Data.getFeetEquipments();
-	 Equipment head;
-	 Equipment hand;
-	 Equipment feet;
-	 ImageView headImg;
-	 ImageView handImg;
-	 ImageView feetImg;
-	 private Context context;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -45,15 +34,42 @@ public class EquipmentFragment extends Fragment {
     	headImg=(ImageView)view.findViewById(R.id.equip_head);
    	 	handImg=(ImageView)view.findViewById(R.id.equip_hand);
    	 	feetImg=(ImageView)view.findViewById(R.id.equip_feet);
+   	 	headBtn=(Button)view.findViewById(R.id.equip_head_btn);
+   	 	handBtn=(Button)view.findViewById(R.id.equip_hand_btn);
+   	 	itemBtn=(Button)view.findViewById(R.id.equip_hand_btn);
+   	 	feetBtn=(Button)view.findViewById(R.id.equip_feet_btn);
+   	 	headBtn.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				changeTo("head");
+			}
+   	 	});
+   	 	handBtn.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				changeTo("hand");
+			}
+   	 	});
+   	 	feetBtn.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				changeTo("feet");
+			}
+   	 	});
+   	 	itemBtn.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				changeTo("item");
+			}
+   	 	});
    	 	context=this.getActivity();
     	init();
     	itemItems=Data.getItems();
     	
-    	GridView itemGrid=(GridView)view.findViewById(R.id.equip_item_gridview);
+    	itemGrid=(GridView)view.findViewById(R.id.equip_item_gridview);
     	/*equaipItemListAdapter=new EquipItemListAdapter(this.getActivity(),itemItems);
     	itemGrid.setAdapter(equaipItemListAdapter);*/
-    	equipListAdapter=new EquipListAdapter(this,handEquips,"hand");
-    	itemGrid.setAdapter(equipListAdapter);
+    	changeTo("head");
     	
     	return view;
     }
@@ -85,5 +101,44 @@ public class EquipmentFragment extends Fragment {
 					photoName,
 					"drawable", context.getPackageName()));
     }
+    private void changeTo(String type){
+    	if(type.equals("item")) {
+    		equaipItemListAdapter=new EquipItemListAdapter(this.getActivity(),itemItems);
+        	itemGrid.setAdapter(equaipItemListAdapter);
+    	}
+    	else if(type.equals("hand")) {
+    		equipListAdapter=new EquipListAdapter(this,handEquips,"hand");
+        	itemGrid.setAdapter(equipListAdapter);
+    	}
+    	else if(type.equals("head")){
+    		equipListAdapter=new EquipListAdapter(this,headEquips,"head");
+        	itemGrid.setAdapter(equipListAdapter);
+    	}
+    	else if(type.equals("feet")){
+    		equipListAdapter=new EquipListAdapter(this,feetEquips,"feet");
+        	itemGrid.setAdapter(equipListAdapter);
+    	}
+    	
+    }
+    //parameters
+	 EquipItemListAdapter equaipItemListAdapter;
+	 ArrayList<Action> itemItems;
+	 View view;
+	 EquipListAdapter equipListAdapter;
+	 ArrayList<Equipment> headEquips=Data.getHeadEquipments();
+	 ArrayList<Equipment> handEquips=Data.getHandEquipments();
+	 ArrayList<Equipment> feetEquips=Data.getFeetEquipments();
+	 Equipment head;
+	 Equipment hand;
+	 Equipment feet;
+	 ImageView headImg;
+	 ImageView handImg;
+	 ImageView feetImg;
+	 Button headBtn;
+	 Button handBtn;
+	 Button feetBtn;
+	 Button itemBtn;
+	 GridView itemGrid;
+	 private Context context;
     
 }
