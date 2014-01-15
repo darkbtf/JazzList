@@ -33,6 +33,7 @@ public class Equipment {
 	public int getAttackChange(){return attack_change;}
 	public int getDefenseChange(){return defense_change;}
 	public int getAt(){return at;}
+	public void setAt(int at){ this.at=at;}
 
 	public String getName(){return name;}
 	public String getDescription(){return description;}
@@ -59,7 +60,7 @@ public class Equipment {
 	public void wear() {
 		if(at!=0)return;
 		for(Equipment e:EquipmentTable.where("type = ? and where = 1",new String[]{type+""})){
-			e.setType(0);
+			e.setAt(0);
 			e.save();
 		}
 		at=1;

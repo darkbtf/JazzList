@@ -1,6 +1,8 @@
 package com.taipeihot.jazzlist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -11,6 +13,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
+
+import com.facebook.Session;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnClosedListener;
 import com.taipeihot.jazzlist.fight.FightData;
 import com.taipeihot.jazzlist.jazzmon.FightActivity;
@@ -39,7 +43,6 @@ public class MainActivity extends BaseActivity {
         	Data.addCategory("Default");
         }
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.content_frame);
 
         menuFragment = new MenuFragment();
@@ -98,8 +101,14 @@ public class MainActivity extends BaseActivity {
 			}
     		
     	});
+    	getPublishPermissions();
     }
-    
+    public void getPublishPermissions() {
+    	final List permissions = Arrays.asList("publish_actions","publish_stream");
+    	Session session=Session.getActiveSession();
+    	if(Data.user!=null && session !=null && !session.getPermissions().containsAll(permissions))
+    		session.requestNewPublishPermissions(new Session.NewPermissionsRequest(MainActivity.this,permissions));
+    }
     public void onResume() {
     	super.onResume();
     	fightListener.start();
