@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.taipeihot.jazzlist.CommunicateHelper;
+import com.taipeihot.jazzlist.FacebookHelper;
 import com.taipeihot.jazzlist.MainActivity;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.adapter.ActionListAdapter;
@@ -215,6 +216,7 @@ public class FightActivity extends Activity {
 									@Override
 									public void onClick(DialogInterface arg0,
 											int arg1) {
+										FacebookHelper.postCombat(FightData.getOpponent().getRealId());
 										Intent intent = new Intent(FightActivity.this, MainActivity.class);
 										startActivity(intent);
 									}

@@ -33,13 +33,14 @@ public class FightCommand implements Command {
 			int attack = Integer.valueOf(SocketHelper.getMessage());
 			int defense = Integer.valueOf(SocketHelper.getMessage());
 			FightData.setFirst(first);
-			FightData.setMe(new Player(level, HP, MP, attack, defense, 0, ""));
+			FightData.setMe(new Player(-1, level, HP, MP, attack, defense, 0, ""));
 			level = Integer.valueOf(SocketHelper.getMessage());
 			HP = Integer.valueOf(SocketHelper.getMessage());
 			MP = Integer.valueOf(SocketHelper.getMessage());
 			attack = Integer.valueOf(SocketHelper.getMessage());
 			defense = Integer.valueOf(SocketHelper.getMessage());
-			FightData.setOpponent(new Player(level, HP, MP, attack, defense, 0, ""));
+			int opponentId = Integer.valueOf(SocketHelper.getMessage());
+			FightData.setOpponent(new Player(opponentId, level, HP, MP, attack, defense, 0, ""));
 			FightData.setPrepared();
 		} else if (cmd.equals("update")) {
 			Util.errorReport("updated command");
@@ -51,7 +52,7 @@ public class FightCommand implements Command {
 			int attack = Integer.valueOf(SocketHelper.getMessage());
 			int defense = Integer.valueOf(SocketHelper.getMessage());
 			String stat = SocketHelper.getMessage();
-			Player me = new Player(FightData.getMe().getLevel(), HP, MP, attack, defense, moveId, stat);
+			Player me = new Player(-1, FightData.getMe().getLevel(), HP, MP, attack, defense, moveId, stat);
 			FightData.setMe(me);
 			moveId = Integer.valueOf(SocketHelper.getMessage());
 			HP = Integer.valueOf(SocketHelper.getMessage());
@@ -59,7 +60,7 @@ public class FightCommand implements Command {
 			attack = Integer.valueOf(SocketHelper.getMessage());
 			defense = Integer.valueOf(SocketHelper.getMessage());
 			stat = SocketHelper.getMessage();
-			Player opponent = new Player(FightData.getOpponent().getLevel(), HP, MP, attack, defense, moveId, stat);
+			Player opponent = new Player(FightData.getOpponent().getRealId(), FightData.getOpponent().getLevel(), HP, MP, attack, defense, moveId, stat);
 			FightData.setOpponent(opponent);
 			FightData.setUpdated();
 			
