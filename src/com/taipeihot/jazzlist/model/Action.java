@@ -60,6 +60,7 @@ public class Action {
 		if(object_id > 3 && ActionTable.where("object_id = "+(object_id-3)).get(0).getNumber() <=0)return false;
 		number = 999999999;
 		save();
+		Data.decSkillPoint();
 		return true;
 	}
 	public void reset(){
