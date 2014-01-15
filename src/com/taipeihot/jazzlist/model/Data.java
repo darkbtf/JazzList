@@ -125,6 +125,12 @@ public class Data {
 
 	public static boolean getFriendUpdating() {return friendUpdating;}
 	public static void setFriendUpdating(boolean b) {friendUpdating = b;}
+	public static User getFriendByRealId(int user_id) {
+		for(User u:friends)
+			if(u.getRealId()==user_id)
+				return u;
+		return null;
+	}
 	/**************************** About Category************************************/
 	public static boolean addCategory(String title){
 		Category c = new Category(title,R.drawable.ic_home);

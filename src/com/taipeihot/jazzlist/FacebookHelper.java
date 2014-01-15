@@ -9,6 +9,7 @@ import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphUser;
 import com.taipeihot.jazzlist.model.Data;
+import com.taipeihot.jazzlist.model.User;
 
 public class FacebookHelper {
 	
@@ -16,7 +17,12 @@ public class FacebookHelper {
 		Bundle params = new Bundle();
 		Session session = Session.getActiveSession();
 		GraphUser user=Data.getUser();
-		params.putString("message", Dat)
+		User fri=Data.getFriendByRealId(user_id);
+		params.putString("message", user.getName()+" combat "+fri.getNickname()+" in JazzList!");
+		params.putString("tags", fri.getFacebookId());
+		params.putString("place", "611250202243422");
+		post(params);
+		return true;
 	}
 	static boolean post(Bundle params) {
 		Session session = Session.getActiveSession();

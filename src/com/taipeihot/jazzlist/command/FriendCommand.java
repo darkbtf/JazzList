@@ -15,7 +15,8 @@ public class FriendCommand implements Command{
 				return true;
 			}
 			String nickname = SocketHelper.getMessage();
-			Data.friends.add(new User(nickname,real_id));
+			String facebook_id = SocketHelper.getMessage();
+			Data.friends.add(new User(nickname,real_id,facebook_id));
 		}
 		return true;
 	}
