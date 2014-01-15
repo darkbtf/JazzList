@@ -26,6 +26,7 @@ import com.taipeihot.jazzlist.fight.FightData;
 import com.taipeihot.jazzlist.fight.Player;
 import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.fight.ActionManager;
+import com.taipeihot.jazzlist.CommunicateHelper;
 
 public class FightActivity extends Activity {
 	/*ProgressBar myHpBar;
@@ -114,13 +115,13 @@ public class FightActivity extends Activity {
 						});
 						final String selfOnselfAnime = actionManager.getSelfAnimation(me.getMove());
 						final String selfOnOpponentAnime = actionManager.getOpponentAnimation(me.getMove());
+						final String opponentOnSelfAnime = actionManager.getOpponentAnimation(opponent.getMove());
+						final String opponentOnOpponentAnime = actionManager.getSelfAnimation(opponent.getMove());
 						
-
-						runOnUiThread(new Runnable() {
+						Runnable myMove = new Runnable() {
 							@Override
 							public void run() {
 								if (selfOnselfAnime != null) {
-									Util.errorReport(selfOnselfAnime);
 									int res = getResources().getIdentifier(selfOnselfAnime, "drawable", getPackageName());
 									selfImage.setBackgroundResource(res);
 									AnimationDrawable selfAnimation = (AnimationDrawable) selfImage.getBackground();
@@ -128,8 +129,6 @@ public class FightActivity extends Activity {
 									selfAnimation.start();
 								}
 								if (selfOnOpponentAnime != null) {
-									
-									Util.errorReport(selfOnOpponentAnime);
 									int res = getResources().getIdentifier(selfOnOpponentAnime, "drawable", getPackageName());
 									opponentImage.setBackgroundResource(res);
 									final AnimationDrawable opponentAnimation = (AnimationDrawable) opponentImage.getBackground();
@@ -138,18 +137,27 @@ public class FightActivity extends Activity {
 									
 								}
 							}
-						});
+						};
 						
-						/* == jizz jizz jizz == */
+//<<<<<<< HEAD
+						Runnable opponentMove = new Runnable() {
+//=======
+						/*try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
 						
 						final String opponentOnSelfAnime = actionManager.getOpponentAnimation(opponent.getMove());
 						final String opponentOnOpponentAnime = actionManager.getSelfAnimation(opponent.getMove());
 
-						runOnUiThread(new Runnable() {
+						runOnUiThread(new Runnable() {*/
+//>>>>>>> 4891b986b799b4f8d97764aea5ea73b861df1dcc
 							@Override
 							public void run() {
 								if (opponentOnSelfAnime != null) {
-									Util.errorReport(opponentOnSelfAnime);
 									int res = getResources().getIdentifier(opponentOnSelfAnime, "drawable", getPackageName());
 									selfImage.setBackgroundResource(res);
 									AnimationDrawable selfAnimation = (AnimationDrawable) selfImage.getBackground();
@@ -157,9 +165,7 @@ public class FightActivity extends Activity {
 									selfAnimation.start();
 								}
 								if (opponentOnOpponentAnime != null) {
-									
-									Util.errorReport(opponentOnSelfAnime);
-									int res = getResources().getIdentifier(opponentOnSelfAnime, "drawable", getPackageName());
+									int res = getResources().getIdentifier(opponentOnOpponentAnime, "drawable", getPackageName());
 									opponentImage.setBackgroundResource(res);
 									final AnimationDrawable opponentAnimation = (AnimationDrawable) opponentImage.getBackground();
 									opponentAnimation.stop();
@@ -167,9 +173,31 @@ public class FightActivity extends Activity {
 									
 								}
 							}
-						});					
-						FightData.setIdle();
+						};	
 						
+						if (FightData.getLastFirst() > 0) {
+							runOnUiThread(myMove);
+							try {
+								Thread.sleep(2000);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+							runOnUiThread(opponentMove);
+						} else {
+							runOnUiThread(opponentMove);
+							try {
+								Thread.sleep(2000);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+							runOnUiThread(myMove);
+						}
+						
+						if (FightData.getFirst() != 0) FightData.setIdle();
+						else {
+							CommunicateHelper.actionFight(0);
+							FightData.setDone();
+						}
 						
 					} else if (FightData.isEnded()) {
 						FightData.reset();
@@ -187,6 +215,14 @@ public class FightActivity extends Activity {
 			}
 			
 		});
+	}
+	
+	public void showMessage(String msg) {
+		
+	}
+	
+	public void showAction(int actionId) {
+		
 	}
 
     public void onResume() {
