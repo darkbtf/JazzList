@@ -5,5 +5,11 @@
 	<item android:drawable="@drawable/water0_2" android:duration="120" />
 	<item android:drawable="@drawable/water0_1" android:duration="120" />
 	<item android:drawable="@drawable/water0_0" android:duration="120" />
+	<item android:drawable="@drawable/water0_2" android:duration="120" />
+	<item android:drawable="@drawable/water0_1" android:duration="120" />
+	<item android:drawable="@drawable/water0_0" android:duration="120" />
+	<item android:drawable="@drawable/water0_2" android:duration="120" />
+	<item android:drawable="@drawable/water0_1" android:duration="120" />
+	<item android:drawable="@drawable/water0_0" android:duration="120" />
 	<item android:drawable="@drawable/defualt" android:duration="30"/>
 </animation-list>
