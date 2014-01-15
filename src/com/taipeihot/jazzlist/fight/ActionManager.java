@@ -33,12 +33,12 @@ public class ActionManager {
 		skillList.add(new Frostnova(null, "water2"));
 		skillList.add(new MaxwellEquation("thunder2_self", "thunder2_enemy"));
 		
-		itemList.add(new HealingPotion(null, null));
-		itemList.add(new ManaPotion(null, null));
-		itemList.add(new OmniPotion(null, null));		
-		itemList.add(new GreatHealingPotion(null, null));
-		itemList.add(new GreatManaPotion(null, null));
-		itemList.add(new GreatOmniPotion(null, null));
+		itemList.add(new HealingPotion("red_potion", null));
+		itemList.add(new ManaPotion("red_potion", null));
+		itemList.add(new OmniPotion("red_potion", null));		
+		itemList.add(new GreatHealingPotion("red_potion", null));
+		itemList.add(new GreatManaPotion("red_potion", null));
+		itemList.add(new GreatOmniPotion("red_potion", null));
 	}
 
 	public String getSelfAnimation(int moveId) {
