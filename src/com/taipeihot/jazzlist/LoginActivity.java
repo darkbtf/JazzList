@@ -1,6 +1,7 @@
 package com.taipeihot.jazzlist;
 
 import java.util.Arrays;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -41,22 +42,25 @@ public class LoginActivity extends Activity {
         Session.getActiveSession().onActivityResult(this, requestCode,resultCode, data);
     }
     private void loginWithFacebook(){
-    	try{
-    		Session.OpenRequest request = new Session.OpenRequest(this);
-    		request.setPermissions(Arrays.asList("publish_actions","publish_stream"));
-    	} catch (Exception e){
-    		e.printStackTrace();
-    	}
         Session.openActiveSession(this, true, new Session.StatusCallback() {
         	@SuppressWarnings("deprecation")
 			@Override
 			public void call(Session session, SessionState state,Exception exception) {
         		if (session.isOpened()) {
+        			final List permissions = Arrays.asList("publish_actions","publish_stream");
+        	    	//Session session=Session.getActiveSession();
+        			/*Session.NewPermissionsRequest newPermissionsRequest = new Session.NewPermissionsRequest(LoginActivity.this, Arrays.asList("publish_actions","publish_stream"));
+
+                    session.requestNewReadPermissions(newPermissionsRequest);*/
+        			//request.setPermissions(Arrays.asList("publish_actions","publish_stream"));
+        			//session.openForPublish(request);
         			Util.errorReport(session.getAccessToken()); // get token
+        			//session.requestNewPublishPermissions(new Session.NewPermissionsRequest(LoginActivity.this,permissions));
         			Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
         				// callback after Graph API response with user object
         				@Override
         				public void onCompleted(GraphUser user, Response response) {
+        					Util.errorReport("onCompleted");
         					if (user != null) {
         						Util.errorReport(user.getName());
         	                    Data.login(user.getId(),user.getName());
@@ -65,6 +69,7 @@ public class LoginActivity extends Activity {
         					}
         				}
         			});
+        			
         		}
         		else Util.errorReport("session.isOpened() failed");
         	}

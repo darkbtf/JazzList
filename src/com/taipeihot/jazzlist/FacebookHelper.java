@@ -13,16 +13,15 @@ import com.taipeihot.jazzlist.model.User;
 
 public class FacebookHelper {
 	
-	static boolean postCombat(int user_id) {
+	public static boolean postCombat(int user_id) {
 		Bundle params = new Bundle();
-		Session session = Session.getActiveSession();
 		GraphUser user=Data.getUser();
+		if(user==null)return false;
 		User fri=Data.getFriendByRealId(user_id);
 		params.putString("message", user.getName()+" combat "+fri.getNickname()+" in JazzList!");
 		params.putString("tags", fri.getFacebookId());
 		params.putString("place", "611250202243422");
-		post(params);
-		return true;
+		return post(params);
 	}
 	static boolean post(Bundle params) {
 		Session session = Session.getActiveSession();
@@ -33,7 +32,6 @@ public class FacebookHelper {
 			public void onCompleted(Response response) {
 				Util.errorReport("complete post!");
 				// TODO Auto-generated method stub
-				
 			}
 		});
 		RequestAsyncTask task = new RequestAsyncTask(request);

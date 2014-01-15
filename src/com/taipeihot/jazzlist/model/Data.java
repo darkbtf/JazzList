@@ -274,6 +274,6 @@ public class Data {
 		return ret.get(0);
 	}
 	public static ArrayList<Equipment> getEquipments() {
-		return EquipmentTable.where("where != 1");
+		return EquipmentTable.where("at != 1");
 	}
 }
