@@ -35,9 +35,6 @@ public class FightActivity extends Activity {
 	
 	// in ms
 	final int ANIMATION_INTERVAL = 2800;
-
-
-	
 	static ActionManager actionManager = new ActionManager();
 	ActionListAdapter actionListAdapter;
 	ArrayList<Action> actionItems=new ArrayList<Action>();

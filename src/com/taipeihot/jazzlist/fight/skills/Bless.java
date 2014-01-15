@@ -11,7 +11,6 @@ public class Bless extends FightAction {
 	
 	@Override
 	public String getMessage(Player player1, Player player2) {
-
 		return player1.getNickname() + " Blessed himself and regained some HP.";
 	}
 
