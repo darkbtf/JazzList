@@ -31,14 +31,17 @@ public class EquipmentFragment extends Fragment {
 	 Equipment head;
 	 Equipment hand;
 	 Equipment feet;
-	 ImageView headImg=(ImageView)view.findViewById(R.id.equip_head);
-	 ImageView handImg=(ImageView)view.findViewById(R.id.equip_hand);
-	 ImageView feetImg=(ImageView)view.findViewById(R.id.equip_feet);
+	 ImageView headImg;
+	 ImageView handImg;
+	 ImageView feetImg;
 	 private Context context=this.getActivity();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	view = inflater.inflate(R.layout.fragment_equipment, null);
+    	ImageView headImg=(ImageView)view.findViewById(R.id.equip_head);
+   	 	ImageView handImg=(ImageView)view.findViewById(R.id.equip_hand);
+   	 	ImageView feetImg=(ImageView)view.findViewById(R.id.equip_feet);
     	init();
     	itemItems=Data.getItems();
     	
