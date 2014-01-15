@@ -70,11 +70,31 @@ public class Data {
 	public static int getLevel(){return getCharacterInfo(CharacterInfo.level);}
 	public static int getExp(){return getCharacterInfo(CharacterInfo.exp);}
 	public static int getMoney(){return getCharacterInfo(CharacterInfo.money);}
-	public static int getAttack(){return getCharacterInfo(CharacterInfo.attack);}
-	public static int getDefense(){return getCharacterInfo(CharacterInfo.defense);}
+	public static int getAttack(){
+		int ret =getCharacterInfo(CharacterInfo.attack);
+		for(Equipment e:EquipmentTable.where("at=1"))
+			ret+=e.getAttackChange();
+		return ret;
+	}
+	public static int getDefense(){
+		int ret =getCharacterInfo(CharacterInfo.defense);
+		for(Equipment e:EquipmentTable.where("at=1"))
+			ret+=e.getDefenseChange();
+		return ret;
+	}
 	public static int getSkillPoint(){return getCharacterInfo(CharacterInfo.skill_point);}
-	public static int getHp(){return FightUtils.calcHp(getLevel());}
-	public static int getMp(){return FightUtils.calcMp(getLevel());}
+	public static int getHp(){
+		int ret =FightUtils.calcHp(getLevel());
+		for(Equipment e:EquipmentTable.where("at=1"))
+			ret+=e.getHpChange();
+		return ret;
+	}
+	public static int getMp(){
+		int ret =FightUtils.calcMp(getLevel());
+		for(Equipment e:EquipmentTable.where("at=1"))
+			ret+=e.getMpChange();
+		return ret;
+	}
 	
 	public static void incMoney(int v){
 		setCharacterInfo(CharacterInfo.money, getCharacterInfo(CharacterInfo.money)+v);
