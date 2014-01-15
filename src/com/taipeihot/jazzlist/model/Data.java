@@ -70,7 +70,7 @@ public class Data {
 	public static int getLevel(){return getCharacterInfo(CharacterInfo.level);}
 	public static int getExp(){return getCharacterInfo(CharacterInfo.exp);}
 	public static int getMoney(){return getCharacterInfo(CharacterInfo.money);}
-	public static int getAttack(){
+	public static int getAttack(){ 
 		int ret =getCharacterInfo(CharacterInfo.attack);
 		for(Equipment e:EquipmentTable.where("at=1"))
 			ret+=e.getAttackChange();

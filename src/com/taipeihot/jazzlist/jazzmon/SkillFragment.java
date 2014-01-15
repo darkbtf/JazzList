@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -39,7 +40,7 @@ public class SkillFragment extends Fragment {
     	treeListAdapter=new TreeListAdapter(this,fireSkills);
     	now=0;
     	skillTree.setAdapter(treeListAdapter);
-    	ImageButton resetButton=(ImageButton)view.findViewById(R.id.reset_btn);
+    	Button resetButton=(Button)view.findViewById(R.id.reset_btn);
     	resetButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0) {
@@ -102,12 +103,12 @@ public class SkillFragment extends Fragment {
     		skillTree.setAdapter(treeListAdapter);
     	} else if (skillSetId == 1) {
     		layout.setBackground(getResources().getDrawable(R.drawable.watertree));	
-    		fireSkills=Data.getWaterSkills();
+    		waterSkills=Data.getWaterSkills();
     		treeListAdapter=new TreeListAdapter(this,waterSkills);
         	skillTree.setAdapter(treeListAdapter);
     	} else {
     		layout.setBackground(getResources().getDrawable(R.drawable.thundertree));
-    		fireSkills=Data.getThunderSkills();
+    		thunderSkills=Data.getThunderSkills();
     		treeListAdapter=new TreeListAdapter(this,thunderSkills);
         	skillTree.setAdapter(treeListAdapter);
     	}
