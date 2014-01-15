@@ -44,7 +44,6 @@ public class SkillFragment extends Fragment {
     	resetButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0) {
-				switchSkillSet(0);
 				Data.resetSkillPoints();
 				init();
 				resetSkillSet(now);
@@ -96,19 +95,19 @@ public class SkillFragment extends Fragment {
     public void resetSkillSet(int skillSetId) {
     	LinearLayout layout = ((LinearLayout) view.findViewById(R.id.layout_skilltree));
     	now=skillSetId;
+		waterSkills=Data.getWaterSkills();
+    	fireSkills=Data.getFireSkills();
+		thunderSkills=Data.getThunderSkills();
     	if (skillSetId == 0) {
     		layout.setBackground(getResources().getDrawable(R.drawable.firetree));
-    		fireSkills=Data.getFireSkills();
     		treeListAdapter=new TreeListAdapter(this,fireSkills);
     		skillTree.setAdapter(treeListAdapter);
     	} else if (skillSetId == 1) {
     		layout.setBackground(getResources().getDrawable(R.drawable.watertree));	
-    		waterSkills=Data.getWaterSkills();
     		treeListAdapter=new TreeListAdapter(this,waterSkills);
         	skillTree.setAdapter(treeListAdapter);
     	} else {
     		layout.setBackground(getResources().getDrawable(R.drawable.thundertree));
-    		thunderSkills=Data.getThunderSkills();
     		treeListAdapter=new TreeListAdapter(this,thunderSkills);
         	skillTree.setAdapter(treeListAdapter);
     	}
