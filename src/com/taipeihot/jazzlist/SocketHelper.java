@@ -35,7 +35,7 @@ public class SocketHelper {
 						for(int i=0;i<length;i++)
 							bufferInput.add(new Byte(b[i]));
 						try {
-							Thread.sleep(1000);
+							Thread.sleep(100);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
@@ -86,18 +86,15 @@ public class SocketHelper {
 	}
     
     static public String getMessage(){
-    	Util.errorReport("getting message");
 		while(messages.isEmpty()){
-			Util.errorReport("isempty");
 			while(!Util.parseByte(bufferInput, messages)){
-				Util.errorReport("trying parsing");
 				try {
-					Thread.sleep(5000);
+					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
-		}Util.errorReport("get msg");
+		}
 		return messages.poll();
 	}
     static void close(){

@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
     }
     private Button btn_connect,btn_send;
     private EditText ed;
-    private TextView tv1,tv2;
+    private  TextView tv1,tv2;
     static private String str1="nothing",str2="nothing";
     public static Handler receiveServer = null;
     private void initialComponent(){
@@ -74,12 +74,27 @@ public class MainActivity extends Activity {
     			sendMessage(new String[]{str});
     		}
     	});
-    	tv1.post(new Runnable() {
-    	    public void run() {
-    	    	String cmd="XC";//SocketHelper.getMessage();
-    	    	tv1.setText(cmd);
-    	    } 
+    	Thread t = new Thread(new Runnable(){
+    		@Override
+    		public void run(){
+    			while(true){
+	    			final String cmd=SocketHelper.getMessage();
+	    			tv1.post(new Runnable() {
+	    				@Override
+	            	    public void run() {
+	            	    	tv1.setText(cmd);
+	            	    } 
+	            	});
+	    			try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+    			}
+    		}
     	});
+    	t.start();
     }
     public Boolean sendMessage(String[] messages){
     	return SocketHelper.sendMessage(messages);
