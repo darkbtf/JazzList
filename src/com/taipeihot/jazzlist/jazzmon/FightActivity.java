@@ -29,10 +29,10 @@ import com.taipeihot.jazzlist.fight.ActionManager;
 import com.taipeihot.jazzlist.CommunicateHelper;
 
 public class FightActivity extends Activity {
-	/*ProgressBar myHpBar;
-	ProgressBar myMpBar;
-	ProgressBar oppoHpBar;
-	ProgressBar oppoMpBar;*/
+	
+	// in ms
+	final int ANIMATION_INTERVAL = 3500;
+	
 	static ActionManager actionManager = new ActionManager();
 	ActionListAdapter actionListAdapter;
 	ArrayList<Action> actionItems=new ArrayList<Action>();
@@ -139,22 +139,9 @@ public class FightActivity extends Activity {
 							}
 						};
 						
-//<<<<<<< HEAD
-						Runnable opponentMove = new Runnable() {
-//=======
-						/*try {
-							Thread.sleep(2000);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						
-						
-						final String opponentOnSelfAnime = actionManager.getOpponentAnimation(opponent.getMove());
-						final String opponentOnOpponentAnime = actionManager.getSelfAnimation(opponent.getMove());
 
-						runOnUiThread(new Runnable() {*/
-//>>>>>>> 4891b986b799b4f8d97764aea5ea73b861df1dcc
+						Runnable opponentMove = new Runnable() {
+
 							@Override
 							public void run() {
 								if (opponentOnSelfAnime != null) {
@@ -178,7 +165,7 @@ public class FightActivity extends Activity {
 						if (FightData.getLastFirst() > 0) {
 							runOnUiThread(myMove);
 							try {
-								Thread.sleep(2000);
+								Thread.sleep(ANIMATION_INTERVAL);
 							} catch (InterruptedException e) {
 								e.printStackTrace();
 							}
@@ -186,7 +173,7 @@ public class FightActivity extends Activity {
 						} else {
 							runOnUiThread(opponentMove);
 							try {
-								Thread.sleep(2000);
+								Thread.sleep(ANIMATION_INTERVAL);
 							} catch (InterruptedException e) {
 								e.printStackTrace();
 							}
