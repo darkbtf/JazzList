@@ -44,7 +44,6 @@ public class FriendListAdapter extends BaseAdapter {
     		public void onClick(DialogInterface arg0, int arg1) {
     			//Util.errorReport(userItems.get(toFightId).getRealId() + "");
     			CommunicateHelper.inviteFight(userItems.get(toFightId).getRealId());
-    	        FacebookHelper.postCombat(2);
     		}
     		
     	})
