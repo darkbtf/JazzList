@@ -302,4 +302,23 @@ public class Data {
 	public static ArrayList<Equipment> getFeetEquipments() {
 		return EquipmentTable.where("type = 3");
 	}
+
+	/**********************About profile ********************************/
+	public static int getEraseTodoNumber() {
+		return getAchievementParameter(AchievementType.erase_todo_number);
+	}
+	public static int getWinCount() {
+		return getAchievementParameter(AchievementType.win_count);
+	}
+	public static int getBattleCount() {
+		return getAchievementParameter(AchievementType.battle_count);
+	}
+	public static void winInBattle(){
+		incAchievementParameter(AchievementType.win_count);
+		incAchievementParameter(AchievementType.battle_count);
+	}
+	public static void loseInBattle(){
+		incAchievementParameter(AchievementType.win_count);
+		incAchievementParameter(AchievementType.battle_count);
+	}
 }

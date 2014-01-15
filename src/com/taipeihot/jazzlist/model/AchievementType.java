@@ -5,5 +5,7 @@ public enum AchievementType{
 	erase_todo_number,
 	friend_number,
 	like_number,
-	comment_number
+	comment_number,
+	win_count,
+	battle_count
 }
