@@ -58,13 +58,19 @@ public class Action {
 		if(Data.getSkillPoint()<=0)return false;
 		if(object_id < 0)return false;
 		if(object_id > 3 && ActionTable.where("object_id = "+(object_id-3)).get(0).getNumber() <=0)return false;
-		number = 999;
+		number = 999999999;
 		save();
 		return true;
 	}
 	public void reset(){
 		number=0;
 	}
+	
+	public void use() {
+		--number;
+		save();
+	}
+	
 	public boolean canUseInFight(int mp) {
 		return mp>=mp_consume && number>0;
 	}

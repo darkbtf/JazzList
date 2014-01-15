@@ -49,10 +49,10 @@ public class ActionTable extends Table{
 			insert(new Action(120,0,30,"Maxwell Equation","Kill your opponent directly in a probablity",999,9,5));
 			
 			/*Items: rate% Hp_consume Mp_consume Name description number object_id money*/
-			insert(new Action(120,0,0,"Health Potion","Resume 25 HP",40,-1,20));
+			insert(new Action(120,0,0,"Healing Potion","Resume 25 HP",40,-1,20));
 			insert(new Action(120,0,0,"Mana Potion","Resume 25 MP",10,-2,30));
 			insert(new Action(120,0,0,"Omni Potion","Resume 30 HP and 30 MP",0,-3,100));
-			insert(new Action(120,0,0,"Great Health Potion","Resume half of your HP",40,-4,200));
+			insert(new Action(120,0,0,"Great Healing Potion","Resume half of your HP",40,-4,200));
 			insert(new Action(120,0,0,"Great Mana Potion","Resume half of your MP",0,-5,300));
 			insert(new Action(120,0,0,"Great Omni Potion","Resume half of your HP and MP",50,-6,800));
 		}

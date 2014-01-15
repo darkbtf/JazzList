@@ -3,9 +3,20 @@ package com.taipeihot.jazzlist.fight;
 import java.util.ArrayList;
 
 import com.taipeihot.jazzlist.fight.items.GreatHealingPotion;
+import com.taipeihot.jazzlist.fight.items.GreatManaPotion;
+import com.taipeihot.jazzlist.fight.items.GreatOmniPotion;
 import com.taipeihot.jazzlist.fight.items.HealingPotion;
-import com.taipeihot.jazzlist.fight.items.MasterHealingPotion;
-import com.taipeihot.jazzlist.fight.skills.*;
+import com.taipeihot.jazzlist.fight.items.ManaPotion;
+import com.taipeihot.jazzlist.fight.items.OmniPotion;
+import com.taipeihot.jazzlist.fight.skills.Bless;
+import com.taipeihot.jazzlist.fight.skills.Ember;
+import com.taipeihot.jazzlist.fight.skills.Frostnova;
+import com.taipeihot.jazzlist.fight.skills.Immolation;
+import com.taipeihot.jazzlist.fight.skills.KarmaBlast;
+import com.taipeihot.jazzlist.fight.skills.ManaStream;
+import com.taipeihot.jazzlist.fight.skills.MaxwellEquation;
+import com.taipeihot.jazzlist.fight.skills.StaticField;
+import com.taipeihot.jazzlist.fight.skills.Thunderbolt;
 
 public class ActionManager {
 	ArrayList<FightAction> skillList = new ArrayList<FightAction>();
@@ -23,8 +34,11 @@ public class ActionManager {
 		skillList.add(new MaxwellEquation("thunder2_self", "thunder2_enemy"));
 		
 		itemList.add(new HealingPotion(null, null));
+		itemList.add(new ManaPotion(null, null));
+		itemList.add(new OmniPotion(null, null));		
 		itemList.add(new GreatHealingPotion(null, null));
-		itemList.add(new MasterHealingPotion(null, null));
+		itemList.add(new GreatManaPotion(null, null));
+		itemList.add(new GreatOmniPotion(null, null));
 	}
 
 	public String getSelfAnimation(int moveId) {

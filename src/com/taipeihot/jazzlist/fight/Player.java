@@ -19,13 +19,15 @@ public class Player {
 	private Player opponent;
 	private Player prev;
 	private String stat;
+	private int realId;
 	
 	/** === constructor === **/
 	public Player() {
 		
 	}
 	
-	public Player(int level, int HP, int MP, int attack, int defense, int move, String stat) {
+	public Player(int realId, int level, int HP, int MP, int attack, int defense, int move, String stat) {
+		this.realId = realId;
 		this.level = level;
 		this.HP = HP;
 		this.MP = MP;
@@ -44,11 +46,13 @@ public class Player {
 	public int getAttack() { return attack; }
 	public int getDefense() { return defense; }
 	public int getMove() { return move; }
+	public int getRealId() { return realId; }
 	public String getStat() { return stat; }
 	public ArrayList<Status> getStatus() { return status; }
 	public Player getOpponent() { return opponent; }
 	public Player getPrevious() { return prev; }
-	
+
+	public void setRealId(int realId) { this.realId = realId; }
 	public void setLevel(int level) { this.level = level; }
 	public void setHp(int HP) { this.HP = HP; }
 	public void setMp(int MP) { this.MP = MP; }
