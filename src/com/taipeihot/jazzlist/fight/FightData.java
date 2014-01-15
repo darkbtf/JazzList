@@ -46,10 +46,18 @@ public class FightData {
 	public static void setUpdated() { Util.errorReport("set updated"); status = UPDATED; }
 	static public void setEnded() { Util.errorReport("set ended"); status = ENDED; }
 	
+	
+	
 	static public void setInviterId(int inv) { inviterId = inv; } 
 	static public void setInviterNickname(String inv) { inviterNickname = inv; } 
-	static public void setMe(Player player) { me = player; }
-	static public void setOpponent(Player player) { opponent = player; }
+	static public void setMe(Player player) { 
+		player.setPrevious(me);
+		me = player;
+	}
+	static public void setOpponent(Player player) {
+		player.setPrevious(opponent);
+		opponent = player; 
+	}
 	static public void setFirst(int fst) { 
 		lastFirst = first;
 		first = fst; 

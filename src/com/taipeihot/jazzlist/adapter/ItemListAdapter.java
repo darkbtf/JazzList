@@ -17,6 +17,7 @@ import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.fight.FightData;
+import com.taipeihot.jazzlist.jazzmon.FightActivity;
 import com.taipeihot.jazzlist.model.Achievement;
 import com.taipeihot.jazzlist.model.Action;
  
@@ -57,25 +58,20 @@ public class ItemListAdapter extends BaseAdapter {
         ImageView actionImage = (ImageView) convertView.findViewById(R.id.item_image);
         TextView itemNum=(TextView)convertView.findViewById(R.id.item_item_num);
         itemNum.setText(Integer.toString(action.getNumber()));
-        int photoNum=action.getImageId();
+        final int photoNum=action.getImageId();
         String type="item_";
         if(!action.exist())type+="h_";
-    	actionImage.setImageResource(
-    			context.getResources()
+        final int res = context.getResources()
     			.getIdentifier(
     					type+Integer
     					.toString(photoNum),
-    					"drawable", context.getPackageName()));
+    					"drawable", context.getPackageName());
+    	actionImage.setImageResource(res);
     	actionImage.setOnClickListener(new OnClickListener() {
     			
-    			@Override
+    		@Override
     		public void onClick(View v) {
-				if (!FightData.isDone() && action.exist()) {
-					FightData.setDone();
-					CommunicateHelper.actionFight(action.getObjectId());
-				}
-    			Toast.makeText(context,action.getDescription() , Toast.LENGTH_SHORT).show();
-    			notifyDataSetChanged();
+    			((FightActivity) context).setAction(action, res);
     		}
     	});
         	
