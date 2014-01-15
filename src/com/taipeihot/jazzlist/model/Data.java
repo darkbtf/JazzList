@@ -279,17 +279,17 @@ public class Data {
 	}
 	/****************************For Equipments*************************************/
 	public static Equipment getHeadWear(){
-		ArrayList<Equipment> ret=EquipmentTable.where("type=1 and number=1");
+		ArrayList<Equipment> ret=EquipmentTable.where("type=1 and at=1");
 		if(ret.size()==0)return null;
 		return ret.get(0);
 	}
 	public static Equipment getHandWear(){
-		ArrayList<Equipment> ret=EquipmentTable.where("type=2 and number=1");
+		ArrayList<Equipment> ret=EquipmentTable.where("type=2 and at=1");
 		if(ret.size()==0)return null;
 		return ret.get(0);
 	}
 	public static Equipment getFeetWear(){
-		ArrayList<Equipment> ret=EquipmentTable.where("type=3 and number=1");
+		ArrayList<Equipment> ret=EquipmentTable.where("type=3 and at=1");
 		if(ret.size()==0)return null;
 		return ret.get(0);
 	}

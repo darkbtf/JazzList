@@ -10,22 +10,24 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.taipeihot.jazzlist.CommunicateHelper;
 import com.taipeihot.jazzlist.R;
 import com.taipeihot.jazzlist.Util;
-import com.taipeihot.jazzlist.fight.FightData;
-import com.taipeihot.jazzlist.model.Action;
+import com.taipeihot.jazzlist.jazzmon.EquipmentFragment;
+import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.Equipment;
  
 public class EquipListAdapter extends BaseAdapter {
      
+	private EquipmentFragment equipFragment;
     private Context context;
+    private String where;
     private ArrayList<Equipment> equipmentItems;
-    public EquipListAdapter(Context context, ArrayList<Equipment> equipmentItems){
-        this.context = context;
+    public EquipListAdapter(EquipmentFragment equipFragment, ArrayList<Equipment> equipmentItems,String where){
+    	this.where=where;
+    	this.equipFragment=equipFragment;
+        this.context = equipFragment.getActivity();
         this.equipmentItems = equipmentItems;
     }
  
@@ -76,7 +78,11 @@ public class EquipListAdapter extends BaseAdapter {
 				{
 					equipment.wear();
 				}
-				
+				if(where.equals("hand"))
+				{
+					equipmentItems=Data.getHandEquipments();
+				}
+				equipFragment.init();
 				notifyDataSetChanged();
 			}
 		});

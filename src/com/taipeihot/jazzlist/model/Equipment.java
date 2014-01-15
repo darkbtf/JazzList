@@ -59,7 +59,7 @@ public class Equipment {
 	}
 	public void wear() {
 		if(at!=0)return;
-		for(Equipment e:EquipmentTable.where("type = ? and where = 1",new String[]{type+""})){
+		for(Equipment e:EquipmentTable.where("type = ? and at = 1",new String[]{type+""})){
 			e.setAt(0);
 			e.save();
 		}

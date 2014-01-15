@@ -15,7 +15,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.taipeihot.jazzlist.R;
+import com.taipeihot.jazzlist.Util;
 import com.taipeihot.jazzlist.adapter.EquipItemListAdapter;
+import com.taipeihot.jazzlist.adapter.EquipListAdapter;
 import com.taipeihot.jazzlist.model.Action;
 import com.taipeihot.jazzlist.model.Data;
 import com.taipeihot.jazzlist.model.Equipment;
@@ -25,32 +27,37 @@ public class EquipmentFragment extends Fragment {
 	 EquipItemListAdapter equaipItemListAdapter;
 	 ArrayList<Action> itemItems;
 	 View view;
-	 ArrayList<Equipment> headEquips;
-	 ArrayList<Equipment> handEquips;
-	 ArrayList<Equipment> feetEquips;
+	 EquipListAdapter equipListAdapter;
+	 ArrayList<Equipment> headEquips=Data.getHeadEquipments();
+	 ArrayList<Equipment> handEquips=Data.getHandEquipments();
+	 ArrayList<Equipment> feetEquips=Data.getFeetEquipments();
 	 Equipment head;
 	 Equipment hand;
 	 Equipment feet;
 	 ImageView headImg;
 	 ImageView handImg;
 	 ImageView feetImg;
-	 private Context context=this.getActivity();
+	 private Context context;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	view = inflater.inflate(R.layout.fragment_equipment, null);
-    	ImageView headImg=(ImageView)view.findViewById(R.id.equip_head);
-   	 	ImageView handImg=(ImageView)view.findViewById(R.id.equip_hand);
-   	 	ImageView feetImg=(ImageView)view.findViewById(R.id.equip_feet);
+    	headImg=(ImageView)view.findViewById(R.id.equip_head);
+   	 	handImg=(ImageView)view.findViewById(R.id.equip_hand);
+   	 	feetImg=(ImageView)view.findViewById(R.id.equip_feet);
+   	 	context=this.getActivity();
     	init();
     	itemItems=Data.getItems();
     	
     	GridView itemGrid=(GridView)view.findViewById(R.id.equip_item_gridview);
-    	equaipItemListAdapter=new EquipItemListAdapter(this.getActivity(),itemItems);
-    	itemGrid.setAdapter(equaipItemListAdapter);
+    	/*equaipItemListAdapter=new EquipItemListAdapter(this.getActivity(),itemItems);
+    	itemGrid.setAdapter(equaipItemListAdapter);*/
+    	equipListAdapter=new EquipListAdapter(this,handEquips,"hand");
+    	itemGrid.setAdapter(equipListAdapter);
+    	
     	return view;
     }
-    private void init()
+    public void init()
     {
     	head=Data.getHeadWear();
     	hand=Data.getHandWear();
@@ -71,8 +78,9 @@ public class EquipmentFragment extends Fragment {
     }
     private void setImage(ImageView img,String photoName)
     {
+    	Util.errorReport(photoName);
     	img.setImageResource(
-    			context.getResources()
+    		getResources()
 				.getIdentifier(
 					photoName,
 					"drawable", context.getPackageName()));
