@@ -44,5 +44,6 @@
     <string name="title_activity_tree">TreeActivity</string>
     <string name="title_activity_shop">ShopActivity</string>
     <string name="app_id">621136791256809</string>
+    <string name="title_activity_enter">EnterActivity</string>
 
 </resources>
