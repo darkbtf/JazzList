@@ -17,7 +17,7 @@
             android:layout_height="150dp"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:src="@drawable/user_photo_4" />
+            android:src="@drawable/fb" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Paul"
+                android:text="Paul Hsia"
                 android:textSize="50dp"
                 android:textColor="@color/white" />
 
